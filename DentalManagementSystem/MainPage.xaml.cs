@@ -28,9 +28,9 @@ namespace DentalManagementSystem
         {
             this.InitializeComponent();
 
-            DAO.AddData("Hello");
-            List<String> li = DAO.GetData();
-            Debug.Write(li[0]);
+            DAO.InitializeDatabase();
+
+
 
             //add string resource
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");

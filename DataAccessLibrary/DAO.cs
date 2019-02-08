@@ -18,9 +18,11 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                String tableCommand = "CREATE TABLE IF NOT " +
-                    "EXISTS MyTable (Primary_Key INTEGER PRIMARY KEY, " +
-                    "Text_Entry NVARCHAR(2048) NULL)";
+                String tableCommand = "CREATE TABLE IF NOT EXISTS treatment(  treatmentID tinyint auto_increment,   treatmentName varchar(50) NOT NULL,price float,PRIMARY KEY (treatmentID))";
+
+
+
+
 
                 SqliteCommand createTable = new SqliteCommand(tableCommand, db);
 

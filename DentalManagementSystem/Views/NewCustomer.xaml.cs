@@ -65,6 +65,9 @@ namespace DentalManagementSystem.Views
             {
                 topTextBlock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("IDError/Text");
                 topTextBlock.Foreground = new SolidColorBrush(Colors.Red);
+            }else
+            {
+                ClearButton_Tapped(this, new TappedRoutedEventArgs());
             }
         }
     }
