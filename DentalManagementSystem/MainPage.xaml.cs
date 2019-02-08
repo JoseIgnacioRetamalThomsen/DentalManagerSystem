@@ -29,8 +29,9 @@ namespace DentalManagementSystem
             this.InitializeComponent();
 
             DAO.InitializeDatabase();
+            DAO.AddNewCustomer("G000352030", "mark", "ndipenoch","2899-23-12", "1 Dublin Road", "Galway", "Connaught", "Ireland", "HP1009", "008795623", "00000", "G00352031@GMIT.IE");
 
-            
+
 
             //add string resource
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");

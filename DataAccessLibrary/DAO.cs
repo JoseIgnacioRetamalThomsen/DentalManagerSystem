@@ -10,22 +10,22 @@ using System.Collections.Generic;
 namespace DataAccessLibrary
 {
     public static class DAO
-    { 
+    {
         /// <summary>
         /// Create a database and tables
         /// </summary>
         public static void InitializeDatabase()
         {
-            
+
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
                 db.Open();
-                
+
                 String customers = "CREATE TABLE IF NOT EXISTS customers(  customerID varchar(20)NOT NULL, firstName varchar(30)NOT NULL,surname varchar(30)NOT NULL,DOB varchar(12),street varchar(45),city varchar(30),province varchar(30),country varchar(15),postcode varchar(15),mobileNum varchar(15),fixNum varchar(15),email varchar(45),PRIMARY KEY (customerID))";
                 SqliteCommand createCustomers = new SqliteCommand(customers, db);
                 createCustomers.ExecuteReader();
-                
+
                 String treatment = "CREATE TABLE IF NOT EXISTS treatment(  treatmentID tinyint auto_increment,   treatmentName varchar(50) NOT NULL,price float,PRIMARY KEY (treatmentID))";
                 SqliteCommand createTreatment = new SqliteCommand(treatment, db);
                 createTreatment.ExecuteReader();
@@ -44,7 +44,37 @@ namespace DataAccessLibrary
             }
         }
 
-   
+
+        public static void AddNewCustomer(string id, string firstName, string surname, string dOB, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email)
+        {
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query 
+                insertCommand.CommandText = "INSERT INTO customers VALUES (@Id ,@FirstName ,@Surname,@DOB ,@Street ,@city ,@Province ,@Country ,@Postocode ,@MobileNum ,@FixNum ,@Email);";
+                insertCommand.Parameters.AddWithValue("@Id", id);
+                insertCommand.Parameters.AddWithValue("@FirstName", firstName);
+                insertCommand.Parameters.AddWithValue("@Surname", surname);
+                insertCommand.Parameters.AddWithValue("@DOB", dOB);
+                insertCommand.Parameters.AddWithValue("@Street", street);
+                insertCommand.Parameters.AddWithValue("@city", city);
+                insertCommand.Parameters.AddWithValue("@Province", province);
+                insertCommand.Parameters.AddWithValue("@Country", country);
+                insertCommand.Parameters.AddWithValue("@Postocode", postcode);
+                insertCommand.Parameters.AddWithValue("@MobileNum", mobileNum);
+                insertCommand.Parameters.AddWithValue("@FixNum", fixNum);
+                insertCommand.Parameters.AddWithValue("@Email", email);
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
+        }
 
         public static void AddData(string inputText)
         {
