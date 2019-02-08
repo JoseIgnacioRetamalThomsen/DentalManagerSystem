@@ -30,12 +30,12 @@ namespace DentalManagementSystem
 
             DAO.InitializeDatabase();
 
-
+            
 
             //add string resource
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
             TextBlock textBlock = new TextBlock();
-            Debug.Write("\n here " + resourceLoader.GetString("Title/Text"));
+          //  Debug.Write("\n here " + resourceLoader.GetString("Title/Text"));
            
 
         }
