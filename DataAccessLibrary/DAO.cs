@@ -47,7 +47,12 @@ namespace DataAccessLibrary
         /// <summary>
         /// Create a new customer in dababase
         /// </summary>
+<<<<<<< HEAD
       
+=======
+        public static void AddNewCustomer(Customer customer)
+        { }
+>>>>>>> ec7d90d95d72889a26ea2fadba74ea533272e188
 
         public static void AddData(string inputText)
         {
