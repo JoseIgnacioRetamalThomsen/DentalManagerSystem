@@ -36,7 +36,11 @@ namespace DentalManagementSystem
         {
 
         }
-
+        /// <summary>
+        /// Allow only number in Price input
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void inputTreatmentPrice_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
             sender.Text = new String(sender.Text.Where(char.IsDigit).ToArray());

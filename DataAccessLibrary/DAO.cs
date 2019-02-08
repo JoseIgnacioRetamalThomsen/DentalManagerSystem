@@ -30,6 +30,12 @@ namespace DataAccessLibrary
             }
         }
 
+        /// <summary>
+        /// Create a new customer in dababase
+        /// </summary>
+        public static void AddNewCustomer(Customer customer)
+        { }
+
         public static void AddData(string inputText)
         {
             using (SqliteConnection db =
