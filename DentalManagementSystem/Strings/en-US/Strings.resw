@@ -156,6 +156,9 @@
   <data name="NewCustomerTextBlock.Text" xml:space="preserve">
     <value>Create New Customer</value>
   </data>
+  <data name="NewTreatmentTextBlock.Text" xml:space="preserve">
+    <value>Create New Treatment</value>
+  </data>
   <data name="PostCode.PlaceholderText" xml:space="preserve">
     <value>Post Code</value>
   </data>
@@ -170,5 +173,11 @@
   </data>
   <data name="SurnameError.Text" xml:space="preserve">
     <value>Surname is required</value>
+  </data>
+  <data name="TreatmentName.PlaceholderText" xml:space="preserve">
+    <value>Treatment Name</value>
+  </data>
+  <data name="TreatmentPrice.PlaceholderText" xml:space="preserve">
+    <value>Price</value>
   </data>
 </root>

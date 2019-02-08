@@ -51,22 +51,33 @@ namespace DentalManagementSystem.Views
         }
 
 
+        /// <summary>
+        /// Get Data from view and if name, surname and id are there create new customer, if any of those values is missing prompt error message or
+        ///  if user Id is not unique will prompt error message as well.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            //check for required values
             if (inputName.Text == "")
             {
                 topTextBlock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("NameError/Text");
                 topTextBlock.Foreground = new SolidColorBrush(Colors.Red);
-            }else if(inputSurename.Text == "")
+            }
+            else if (inputSurename.Text == "")
             {
                 topTextBlock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("SurnameError/Text");
                 topTextBlock.Foreground = new SolidColorBrush(Colors.Red);
-            }else if (idInput.Text == "")
+            }
+            else if (idInput.Text == "")
             {
                 topTextBlock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("IDError/Text");
                 topTextBlock.Foreground = new SolidColorBrush(Colors.Red);
-            }else
+            }
+            else
             {
+                //create new customer 
                 ClearButton_Tapped(this, new TappedRoutedEventArgs());
             }
         }
