@@ -9,5 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <TextBlock x:Uid="/Resources/Title" ></TextBlock>
+        
     </Grid>
 </Page>
