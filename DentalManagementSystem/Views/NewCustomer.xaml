@@ -1,0 +1,79 @@
+﻿<Page
+    x:Class="DentalManagementSystem.Views.NewCustomer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DentalManagementSystem.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid x:Name="NewCustomerContainerGrid" Width="400" Height="340">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="NewCustomerDataGrid" Width="400" Height="280" Grid.Row="0" Grid.Column="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="InputName" x:Uid="/Strings/FirstName"   Grid.Row="0" Grid.Column="0" Margin="2"   ></TextBox>
+                <TextBox x:Name="InputSurename" x:Uid="/Strings/Surename"   Grid.Row="0" Grid.Column="1" Margin="2" ></TextBox>
+
+                <TextBox x:Name="IdInput" x:Uid="/Strings/Id" Grid.Row="1" Grid.Column="0"  Margin="2" ></TextBox>
+                <TextBox x:Name="EmailInput" x:Uid="/Strings/Email" Grid.Row="1" Grid.Column="1"  Margin="2" ></TextBox>
+
+                <TextBox x:Name="StreetInput" x:Uid="/Strings/Street" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="2" ></TextBox>
+
+                <TextBox x:Name="CityInput" x:Uid="/Strings/City" Grid.Row="3" Grid.Column="0" Margin="2" ></TextBox>
+                <TextBox x:Name="ProvinceInput" x:Uid="/Strings/Province" Grid.Row="3" Grid.Column="1" Margin="2" ></TextBox>
+
+                <TextBox x:Name="CountryInput" x:Uid="/Strings/Country" Grid.Row="4" Grid.Column="0" Margin="2" ></TextBox>
+                <TextBox x:Name="PostCodeInput" x:Uid="/Strings/Postcode" Grid.Row="4" Grid.Column="1" Margin="2" ></TextBox>
+
+                <TextBox x:Name="MobilNumInput" x:Uid="/Strings/MobilNum" Grid.Row="5" Grid.Column="0" Margin="2" ></TextBox>
+                <TextBox x:Name="HomeNumInput" x:Uid="/Strings/HomeNum" Grid.Row="5" Grid.Column="1" Margin="2" ></TextBox>
+
+            </Grid>
+
+            <Grid x:Name="ButtonsGrid" Grid.Row="1" Grid.Column="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                
+
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                   
+                </Grid.RowDefinitions>
+
+                <Button x:Name="ClearButton" x:Uid="/Strings/Clear" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Margin="2"></Button>
+                <Button x:Name="AddButton" x:Uid="/Strings/Add" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Margin="2"></Button>
+               
+            </Grid>
+
+        </Grid>
+        
+    </Grid>
+</Page>

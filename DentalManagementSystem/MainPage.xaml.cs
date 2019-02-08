@@ -32,6 +32,12 @@ namespace DentalManagementSystem
             List<String> li = DAO.GetData();
             Debug.Write(li[0]);
 
+            //add string resource
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
+            TextBlock textBlock = new TextBlock();
+            Debug.Write("\n here " + resourceLoader.GetString("Title/Text"));
+           
+
         }
     }
 }

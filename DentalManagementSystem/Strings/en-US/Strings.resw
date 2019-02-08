@@ -117,7 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Title.Text" xml:space="preserve">
-    <value>Dental Manager  </value>
+  <data name="Add.Content" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="City.PlaceholderText" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Clear.Content" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Country.PlaceholderText" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Email.PlaceholderText" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="FirstName.PlaceholderText" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="HomeNum.PlaceholderText" xml:space="preserve">
+    <value># Home</value>
+  </data>
+  <data name="Id.PlaceholderText" xml:space="preserve">
+    <value> ID </value>
+  </data>
+  <data name="MobilNum.PlaceholderText" xml:space="preserve">
+    <value># Mobile</value>
+  </data>
+  <data name="PostCode.PlaceholderText" xml:space="preserve">
+    <value>Post Code</value>
+  </data>
+  <data name="Province.PlaceholderText" xml:space="preserve">
+    <value>Province</value>
+  </data>
+  <data name="Street.PlaceholderText" xml:space="preserve">
+    <value>Street address</value>
+  </data>
+  <data name="Surename.PlaceholderText" xml:space="preserve">
+    <value>Surename</value>
   </data>
 </root>
