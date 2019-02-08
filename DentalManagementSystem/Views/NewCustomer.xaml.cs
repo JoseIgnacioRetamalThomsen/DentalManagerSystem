@@ -26,5 +26,15 @@ namespace DentalManagementSystem.Views
         {
             this.InitializeComponent();
         }
+
+        private void ClearButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void AddButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
     }
 }
