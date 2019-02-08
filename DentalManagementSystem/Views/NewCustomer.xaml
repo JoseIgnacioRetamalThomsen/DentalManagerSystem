@@ -12,7 +12,6 @@
         <Grid x:Name="NewCustomerContainerGrid" Width="400" Height="440">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
