@@ -10,23 +10,37 @@ using System.Collections.Generic;
 namespace DataAccessLibrary
 {
     public static class DAO
-    {
+    { 
+        /// <summary>
+        /// Create a database and tables
+        /// </summary>
         public static void InitializeDatabase()
         {
+            
             using (SqliteConnection db =
-                new SqliteConnection("Filename=sqliteSample.db"))
+                new SqliteConnection("Filename=dentalManagerDB.db"))
             {
                 db.Open();
+                
+                String customers = "CREATE TABLE IF NOT EXISTS customers(  customerID varchar(20)NOT NULL, firstName varchar(30)NOT NULL,surname varchar(30)NOT NULL,DOB varchar(12),street varchar(45),city varchar(30),province varchar(30),country varchar(15),postcode varchar(15),mobileNum varchar(15),fixNum varchar(15),email varchar(45),PRIMARY KEY (customerID))";
+                SqliteCommand createCustomers = new SqliteCommand(customers, db);
+                createCustomers.ExecuteReader();
+                
+                String treatment = "CREATE TABLE IF NOT EXISTS treatment(  treatmentID tinyint auto_increment,   treatmentName varchar(50) NOT NULL,price float,PRIMARY KEY (treatmentID))";
+                SqliteCommand createTreatment = new SqliteCommand(treatment, db);
+                createTreatment.ExecuteReader();
 
-                String tableCommand = "CREATE TABLE IF NOT EXISTS treatment(  treatmentID tinyint auto_increment,   treatmentName varchar(50) NOT NULL,price float,PRIMARY KEY (treatmentID))";
+                String treatmentPlan = "CREATE TABLE IF NOT EXISTS treatmentPlan( treatmentPlanID int auto_increment,customerID varchar(20)NOT NULL, state varchar(30)NOT NULL,creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (treatmentPlanID),FOREIGN KEY (customerID) REFERENCES customers(customerID))";
+                SqliteCommand createTreatmentPlan = new SqliteCommand(treatmentPlan, db);
+                createTreatmentPlan.ExecuteReader();
 
+                String treatmentPlanTreatments = "CREATE TABLE IF NOT EXISTS treatmentPlanTreatments( treatmentPlanTreatmentsID int auto_increment,treatmentPlanID int,treatmentID int,treatmentCompleteDate DATETIME,PRIMARY KEY (treatmentPlanTreatmentsID),FOREIGN KEY (treatmentPlanID) REFERENCES treatmentPlan(treatmentPlanID),FOREIGN KEY (treatmentID) REFERENCES treatment(treatmentID))";
+                SqliteCommand createTreatmentPlanTreatments = new SqliteCommand(treatmentPlanTreatments, db);
+                createTreatmentPlanTreatments.ExecuteReader();
 
-
-
-
-                SqliteCommand createTable = new SqliteCommand(tableCommand, db);
-
-                createTable.ExecuteReader();
+                String payments = "CREATE TABLE IF NOT EXISTS payments(paymentsID int auto_increment,treatmentPlanID int,customerID varchar(20)NOT NULL,amount float,treatmentCompleteDate DATETIME,PRIMARY KEY (paymentsID),FOREIGN KEY (treatmentPlanID) REFERENCES treatmentPlan(treatmentPlanID),FOREIGN KEY (customerID) REFERENCES customers(customerID))";
+                SqliteCommand createPayments = new SqliteCommand(payments, db);
+                createPayments.ExecuteReader();
             }
         }
 
