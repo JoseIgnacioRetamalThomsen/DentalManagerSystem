@@ -144,8 +144,17 @@
   <data name="Id.PlaceholderText" xml:space="preserve">
     <value> ID </value>
   </data>
+  <data name="IDError.Text" xml:space="preserve">
+    <value>ID is required</value>
+  </data>
   <data name="MobilNum.PlaceholderText" xml:space="preserve">
     <value># Mobile</value>
+  </data>
+  <data name="NameError.Text" xml:space="preserve">
+    <value>Name is required</value>
+  </data>
+  <data name="NewCustomerTextBlock.Text" xml:space="preserve">
+    <value>Create New Customer</value>
   </data>
   <data name="PostCode.PlaceholderText" xml:space="preserve">
     <value>Post Code</value>
@@ -158,5 +167,8 @@
   </data>
   <data name="Surename.PlaceholderText" xml:space="preserve">
     <value>Surename</value>
+  </data>
+  <data name="SurnameError.Text" xml:space="preserve">
+    <value>Surname is required</value>
   </data>
 </root>

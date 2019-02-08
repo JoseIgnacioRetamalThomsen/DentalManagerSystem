@@ -9,18 +9,21 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <Grid x:Name="NewCustomerContainerGrid" Width="400" Height="400">
+        <Grid x:Name="NewCustomerContainerGrid" Width="400" Height="440">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
 
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*" />
                 <RowDefinition Height="8*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid x:Name="NewCustomerDataGrid" Width="400" Height="370" Grid.Row="0" Grid.Column="0" >
+            <TextBlock x:Name="topTextBlock" x:Uid="/Strings/NewCustomerTextBlock" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+            
+            <Grid x:Name="NewCustomerDataGrid" Width="400" Height="370" Grid.Row="1" Grid.Column="0" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -40,7 +43,7 @@
                 <TextBox x:Name="inputSurename" x:Uid="/Strings/Surename"   Grid.Row="0" Grid.Column="1" Margin="2" ></TextBox>
 
                 <TextBox x:Name="idInput" x:Uid="/Strings/Id" Grid.Row="1" Grid.Column="0"  Margin="2" ></TextBox>
-                <TextBox x:Name="imailInput" x:Uid="/Strings/Email" Grid.Row="1" Grid.Column="1"  Margin="2" ></TextBox>
+                <TextBox x:Name="emaillInput" x:Uid="/Strings/Email" Grid.Row="1" Grid.Column="1"  Margin="2" ></TextBox>
 
                 <TextBox x:Name="streetInput" x:Uid="/Strings/Street" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="2" ></TextBox>
 
@@ -57,7 +60,7 @@
 
             </Grid>
 
-            <Grid x:Name="ButtonsGrid" Grid.Row="1" Grid.Column="0" >
+            <Grid x:Name="ButtonsGrid" Grid.Row="2" Grid.Column="0" >
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
