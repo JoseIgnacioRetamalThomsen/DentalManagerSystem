@@ -22,5 +22,7 @@ namespace DentalManagementSystem.Models
         public string homeNum { get; set; }
         public string email { get; set; }
 
+        public DateTime dOB { get; set; }
+
     }
 }

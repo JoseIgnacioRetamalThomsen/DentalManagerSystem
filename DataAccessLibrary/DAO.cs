@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 
 using System.Collections.Generic;
-
+using DentalManagementSystem.Models;
 
 namespace DataAccessLibrary
 {
@@ -213,6 +213,14 @@ namespace DataAccessLibrary
                 db.Close();
             }
 
+        }
+
+        public static List<Customer> GetAllCustomer()
+        {
+            List<Customer> customers = new List<Customer>();
+            //fill list from database
+            //
+            return customers;
         }
 
         public static List<String> GetData()
