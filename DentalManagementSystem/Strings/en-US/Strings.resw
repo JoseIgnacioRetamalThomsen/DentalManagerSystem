@@ -180,6 +180,9 @@
   <data name="TreatmentPrice.PlaceholderText" xml:space="preserve">
     <value>Price</value>
   </data>
+  <data name="TreatmentInputError.Text" xml:space="preserve">
+    <value>All fields are requerid</value>
+  </data>
   <data name="UniqueIdError.Text" xml:space="preserve">
     <value>ID must be unique</value>
   </data>
