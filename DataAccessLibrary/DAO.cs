@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
+
 using System.Collections.Generic;
 
 
@@ -17,8 +18,7 @@ namespace DataAccessLibrary
         public static void InitializeDatabase()
         {
 
-            using (SqliteConnection db =
-                new SqliteConnection("Filename=dentalManagerDB.db"))
+            using (SqliteConnection db = new SqliteConnection("Filename=dentalManagerDB.db"))
             {
                 db.Open();
 
@@ -43,38 +43,64 @@ namespace DataAccessLibrary
                 SqliteCommand createPayments = new SqliteCommand(payments, db);
                 createPayments.ExecuteReader();
             }
+
         }
 
-
-        public static void AddNewCustomer(string id, string firstName, string surname, string dOB, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email)
+        /// <summary>
+        /// Add new customer with all parameters
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="firstName"></param>
+        /// <param name="surname"></param>
+        /// <param name="dOB"></param>
+        /// <param name="street"></param>
+        /// <param name="city"></param>
+        /// <param name="province"></param>
+        /// <param name="country"></param>
+        /// <param name="postcode"></param>
+        /// <param name="mobileNum"></param>
+        /// <param name="fixNum"></param>
+        /// <param name="email"></param>
+        public static bool AddNewCustomer(string id, string firstName, string surname, string dOB, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email)
         {
-            using (SqliteConnection db =
-                new SqliteConnection("Filename=dentalManagerDB.db"))
+            try
             {
-                db.Open();
 
-                SqliteCommand insertCommand = new SqliteCommand();
-                insertCommand.Connection = db;
 
-                // Use parameterized query 
-                insertCommand.CommandText = "INSERT INTO customers VALUES (@Id ,@FirstName ,@Surname,@DOB ,@Street ,@city ,@Province ,@Country ,@Postocode ,@MobileNum ,@FixNum ,@Email);";
-                insertCommand.Parameters.AddWithValue("@Id", id);
-                insertCommand.Parameters.AddWithValue("@FirstName", firstName);
-                insertCommand.Parameters.AddWithValue("@Surname", surname);
-                insertCommand.Parameters.AddWithValue("@DOB", dOB);
-                insertCommand.Parameters.AddWithValue("@Street", street);
-                insertCommand.Parameters.AddWithValue("@city", city);
-                insertCommand.Parameters.AddWithValue("@Province", province);
-                insertCommand.Parameters.AddWithValue("@Country", country);
-                insertCommand.Parameters.AddWithValue("@Postocode", postcode);
-                insertCommand.Parameters.AddWithValue("@MobileNum", mobileNum);
-                insertCommand.Parameters.AddWithValue("@FixNum", fixNum);
-                insertCommand.Parameters.AddWithValue("@Email", email);
+                using (SqliteConnection db =
+                    new SqliteConnection("Filename=dentalManagerDB.db"))
+                {
+                    db.Open();
 
-                insertCommand.ExecuteReader();
+                    SqliteCommand insertCommand = new SqliteCommand();
+                    insertCommand.Connection = db;
 
-                db.Close();
+                    // Use parameterized query 
+                    insertCommand.CommandText = "INSERT INTO customers VALUES (@Id ,@FirstName ,@Surname,@DOB ,@Street ,@city ,@Province ,@Country ,@Postocode ,@MobileNum ,@FixNum ,@Email);";
+                    insertCommand.Parameters.AddWithValue("@Id", id);
+                    insertCommand.Parameters.AddWithValue("@FirstName", firstName);
+                    insertCommand.Parameters.AddWithValue("@Surname", surname);
+                    insertCommand.Parameters.AddWithValue("@DOB", dOB);
+                    insertCommand.Parameters.AddWithValue("@Street", street);
+                    insertCommand.Parameters.AddWithValue("@city", city);
+                    insertCommand.Parameters.AddWithValue("@Province", province);
+                    insertCommand.Parameters.AddWithValue("@Country", country);
+                    insertCommand.Parameters.AddWithValue("@Postocode", postcode);
+                    insertCommand.Parameters.AddWithValue("@MobileNum", mobileNum);
+                    insertCommand.Parameters.AddWithValue("@FixNum", fixNum);
+                    insertCommand.Parameters.AddWithValue("@Email", email);
+
+                    insertCommand.ExecuteReader();
+
+                    db.Close();
+                }
             }
+            catch (SqliteException e)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>

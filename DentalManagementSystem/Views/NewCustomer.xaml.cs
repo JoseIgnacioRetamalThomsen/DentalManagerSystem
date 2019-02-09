@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DataAccessLibrary;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -78,8 +80,42 @@ namespace DentalManagementSystem.Views
             else
             {
                 //create new customer 
-                ClearButton_Tapped(this, new TappedRoutedEventArgs());
+                Debug.WriteLine(birthDatePicker.Date.ToString("yyyy-MM-dd"));
+             
+
+                //check if added, if not unique id
+                bool temp =DAO.AddNewCustomer(
+                    idInput.Text, //id
+                    inputName.Text, //name
+                    inputSurename.Text,//surname
+                    birthDatePicker.Date.ToString("yyyy-MM-dd"), //dob
+                    streetInput.Text, //street address
+                    cityInput.Text, //city
+                    provinceInput.Text,//Province
+                    countryInput.Text, //country
+                    postCodeInput.Text,//postcode
+                    mobilNumInput.Text,//mobil number
+                    homeNumInput.Text,//home number
+                    emaillInput.Text //email
+                    );
+                Debug.Write(temp);
+                if (temp)
+                {
+                    //all good was created
+                    ClearButton_Tapped(this, new TappedRoutedEventArgs());
+                    ResetMessageText();
+                }
+                else
+                {
+                    topTextBlock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("UniqueIdError/Text");
+                    topTextBlock.Foreground = new SolidColorBrush(Colors.Red);
+                }
             }
+        }
+
+        private void ResetMessageText()
+        {
+            topTextBlock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("NewCustomerTextBlock/Text");
         }
     }
 }
