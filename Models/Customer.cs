@@ -40,11 +40,6 @@ namespace DentalManagementSystem.Models
             this.dOB = dOB;
         }
 
-     
-
-
-
-
 
     }
 }

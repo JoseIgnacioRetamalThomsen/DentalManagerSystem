@@ -285,6 +285,51 @@ namespace DataAccessLibrary
             return customers;
         }
 
+        /// <summary>
+        /// Get all customers by Surname
+        /// </summary>
+        /// <param name="Surname"></param>
+        /// <returns></returns>
+        public static List<Customer> GetAllCustomerBySurname(String Surname)
+        {
+            
+            List<Customer> customers = new List<Customer>();
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from customers where surname=@surname", db);
+                selectCommand.Parameters.AddWithValue("@surname", Surname);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    customers.Add(new Customer(
+                    query.GetString(0),
+                    query.GetString(1),
+                    query.GetString(2),
+                    query.GetString(3),
+                    query.GetString(4),
+                    query.GetString(5),
+                    query.GetString(6),
+                    query.GetString(7),
+                    query.GetString(8),
+                    query.GetString(9),
+                    query.GetString(10),
+                    new DateTime()
+                    ));
+                }
+
+                db.Close();
+            }
+
+            return customers;
+        }
+
         public static List<String> GetData()
         {
             List<String> entries = new List<string>();

@@ -30,12 +30,18 @@ namespace DentalManagementSystem
 
             DAO.InitializeDatabase();
             DAO.AddNewCustomer("G000352030", "mark", "ndipenoch","2899-23-12", "1 Dublin Road", "Galway", "Connaught", "Ireland", "HP1009", "008795623", "00000", "G00352031@GMIT.IE");
+            DAO.AddNewCustomer("G00352030", "marc", "ndipenoch", "2899-23-12", "1 Dublin Road", "Galway", "Connaught", "Ireland", "HP1009", "008795623", "00000", "G00352031@GMIT.IE");
             DAO.AddNewTreatment("Remove molar tooth",2500);
             DAO.AddNewTreatmentPlan("G000352030","OPEN", "2018-02-08", "2019-02-08");
             DAO.AddNewTreatmentPlanTreatments(1,1,2000, "2018-02-08");
-            DAO.AddNewpayment(1, "G000352030",4000, "");
+            DAO.AddNewpayment(1, "G000352030", 4000, "");
 
-            //Debug.Write(DAO.GetAllCustomer()[0].iD+ " dsadsadasdsasadsad");
+            for(int i = 0; i < 2; i++)
+            {
+                Debug.Write(DAO.GetAllCustomerBySurname("ndipenoch")[i].iD + " dsadsadasdsasadsad"+"   ");
+                Debug.Write(DAO.GetAllCustomer()[i].name + " dsadsadasdsasadsad");
+            }
+            
             //add string resource
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
             TextBlock textBlock = new TextBlock();
