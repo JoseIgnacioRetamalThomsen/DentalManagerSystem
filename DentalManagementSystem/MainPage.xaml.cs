@@ -36,11 +36,11 @@ namespace DentalManagementSystem
             DAO.AddNewTreatmentPlanTreatments(1,1,2000, "2018-02-08");
             DAO.AddNewpayment(1, "G000352030", 4000, "");
 
-            for(int i = 0; i < 2; i++)
+           /* for(int i = 0; i < 2; i++)
             {
                 Debug.Write(DAO.GetAllCustomerBySurname("ndipenoch")[i].iD + " dsadsadasdsasadsad"+"   ");
                 Debug.Write(DAO.GetAllCustomer()[i].name + " dsadsadasdsasadsad");
-            }
+            }*/
             
             //add string resource
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
