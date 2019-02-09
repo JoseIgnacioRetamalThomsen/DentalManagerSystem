@@ -243,17 +243,44 @@ namespace DataAccessLibrary
 
         }
 
+        /// <summary>
+        /// Get all customers details
+        /// </summary>
+        /// <returns></returns>
         public static List<Customer> GetAllCustomer()
         {
             List<Customer> customers = new List<Customer>();
-            //fill list from database
-            //
-            //insede loop
-            //customers.Add(new Customer(
-            //    query.GetString(0),
-            //    //the other
-            //    ));
 
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from customers", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                   customers.Add(new Customer(
+                   query.GetString(0), 
+                   query.GetString(1), 
+                   query.GetString(2), 
+                   query.GetString(3), 
+                   query.GetString(4), 
+                   query.GetString(5), 
+                   query.GetString(6), 
+                   query.GetString(7), 
+                   query.GetString(8), 
+                   query.GetString(9), 
+                   query.GetString(10),
+                   new DateTime()
+                   ));
+                }
+
+                db.Close();
+            }
 
             return customers;
         }
