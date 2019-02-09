@@ -107,6 +107,9 @@
     <Compile Include="Views\NewCustomer.xaml.cs">
       <DependentUpon>NewCustomer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewAllCustomers.xaml.cs">
+      <DependentUpon>ViewAllCustomers.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -138,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NewCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewAllCustomers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
