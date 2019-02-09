@@ -30,11 +30,12 @@ namespace DataAccessLibrary
                 SqliteCommand createTreatment = new SqliteCommand(treatment, db);
                 createTreatment.ExecuteReader();
 
-                String treatmentPlan = "CREATE TABLE IF NOT EXISTS treatmentPlan( treatmentPlanID int auto_increment,customerID varchar(20)NOT NULL, state varchar(30)NOT NULL,creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (treatmentPlanID),FOREIGN KEY (customerID) REFERENCES customers(customerID))";
+                String treatmentPlan = "CREATE TABLE IF NOT EXISTS treatmentPlan( treatmentPlanID int auto_increment,customerID varchar(20)NOT NULL, state varchar(30)NOT NULL,creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,treatmentPlanCompleteDate DATETIME,PRIMARY KEY (treatmentPlanID),FOREIGN KEY (customerID) REFERENCES customers(customerID))";
                 SqliteCommand createTreatmentPlan = new SqliteCommand(treatmentPlan, db);
                 createTreatmentPlan.ExecuteReader();
 
-                String treatmentPlanTreatments = "CREATE TABLE IF NOT EXISTS treatmentPlanTreatments( treatmentPlanTreatmentsID int auto_increment,treatmentPlanID int,treatmentID int,treatmentCompleteDate DATETIME,PRIMARY KEY (treatmentPlanTreatmentsID),FOREIGN KEY (treatmentPlanID) REFERENCES treatmentPlan(treatmentPlanID),FOREIGN KEY (treatmentID) REFERENCES treatment(treatmentID))";
+
+                String treatmentPlanTreatments = "CREATE TABLE IF NOT EXISTS treatmentPlanTreatments( treatmentPlanTreatmentsID int auto_increment,treatmentPlanID int,treatmentID int,float price,treatmentCompleteDate DATETIME,PRIMARY KEY (treatmentPlanTreatmentsID),FOREIGN KEY (treatmentPlanID) REFERENCES treatmentPlan(treatmentPlanID),FOREIGN KEY (treatmentID) REFERENCES treatment(treatmentID))";
                 SqliteCommand createTreatmentPlanTreatments = new SqliteCommand(treatmentPlanTreatments, db);
                 createTreatmentPlanTreatments.ExecuteReader();
 
@@ -69,6 +70,34 @@ namespace DataAccessLibrary
                 insertCommand.Parameters.AddWithValue("@MobileNum", mobileNum);
                 insertCommand.Parameters.AddWithValue("@FixNum", fixNum);
                 insertCommand.Parameters.AddWithValue("@Email", email);
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
+        }
+
+        /// <summary>
+        /// Insert a new treatment
+        /// </summary>
+        /// <param name="treatmentID"></param>
+        /// <param name="treatmentName"></param>
+        /// <param name="price"></param>
+        public static void AddNewTreatment(int treatmentID, string treatmentName, float price)
+        {
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query 
+                insertCommand.CommandText = "INSERT INTO treatment VALUES (@TreatmentID ,@TreatmentName ,@Price);";
+                insertCommand.Parameters.AddWithValue("@TreatmentID", treatmentID);
+                insertCommand.Parameters.AddWithValue("@TreatmentName", treatmentName);
+                insertCommand.Parameters.AddWithValue("@Price", price);
 
                 insertCommand.ExecuteReader();
 
