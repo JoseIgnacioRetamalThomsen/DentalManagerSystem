@@ -105,6 +105,38 @@ namespace DataAccessLibrary
             }
         }
 
+        /// <summary>
+        /// Insert a new treatment plan
+        /// </summary>
+        /// <param name="treatmentPlanID"></param>
+        /// <param name="customerID"></param>
+        /// <param name="state"></param>
+        /// <param name="creationDate"></param>
+        /// <param name="treatmentPlanCompleteDate"></param>
+        public static void AddNewTreatmentPlan(int treatmentPlanID, string customerID, string state, string creationDate, string treatmentPlanCompleteDate)
+        {
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query 
+                insertCommand.CommandText = "INSERT INTO treatmentPlan VALUES (@TreatmentPlanID,@CustomerID,@State,@CreationDate,@TreatmentPlanCompleteDate);";
+                insertCommand.Parameters.AddWithValue("@TreatmentPlanID", treatmentPlanID);
+                insertCommand.Parameters.AddWithValue("@CustomerID", customerID);
+                insertCommand.Parameters.AddWithValue("@State", state);
+                insertCommand.Parameters.AddWithValue("@CreationDate", creationDate);
+                insertCommand.Parameters.AddWithValue("@TreatmentPlanCompleteDate", treatmentPlanCompleteDate);
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
+        }
+
         public static void AddData(string inputText)
         {
             using (SqliteConnection db =

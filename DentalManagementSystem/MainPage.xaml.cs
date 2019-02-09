@@ -30,7 +30,8 @@ namespace DentalManagementSystem
 
             DAO.InitializeDatabase();
             //DAO.AddNewCustomer("G000352030", "mark", "ndipenoch","2899-23-12", "1 Dublin Road", "Galway", "Connaught", "Ireland", "HP1009", "008795623", "00000", "G00352031@GMIT.IE");
-            DAO.AddNewTreatment(1,"Remove molar tooth",2500);
+            //DAO.AddNewTreatment(1,"Remove molar tooth",2500);
+            DAO.AddNewTreatmentPlan(1, "G000352030","OPEN", "2018-02-08", "2019-02-08");
 
 
             //add string resource
