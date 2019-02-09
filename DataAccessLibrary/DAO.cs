@@ -248,6 +248,13 @@ namespace DataAccessLibrary
             List<Customer> customers = new List<Customer>();
             //fill list from database
             //
+            //insede loop
+            //customers.Add(new Customer(
+            //    query.GetString(0),
+            //    //the other
+            //    ));
+
+
             return customers;
         }
 
