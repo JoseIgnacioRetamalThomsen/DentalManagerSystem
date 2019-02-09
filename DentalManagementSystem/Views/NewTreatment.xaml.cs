@@ -1,10 +1,12 @@
-﻿using System;
+﻿using DataAccessLibrary;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,14 +29,37 @@ namespace DentalManagementSystem
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Clear all inputs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClearButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            inputTreatmentName.Text = "";
+            inputTreatmentPrice.Text = "";
         }
 
+        /// <summary>
+        /// Add new treatmet to DB
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+                     
         private void AddButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            //check for both inputs
+            if(inputTreatmentName.Text == "" || inputTreatmentPrice.Text =="")
+            {
+                topTextBlock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("TreatmentInputError/Text");
+                topTextBlock.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                DAO.AddNewTreatment(inputTreatmentName.Text, Convert.ToDecimal(inputTreatmentPrice.Text));
+                //clear
+                this.ClearButton_Tapped(this, new TappedRoutedEventArgs());
+            }
         }
         /// <summary>
         /// Allow only number in Price input
