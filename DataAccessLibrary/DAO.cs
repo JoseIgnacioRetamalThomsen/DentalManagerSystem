@@ -285,6 +285,47 @@ namespace DataAccessLibrary
             return customers;
         }
 
+        public static List<Customer> DeleteCustomerByID(String CustomerID)
+        {
+
+            List<Customer> customers = new List<Customer>();
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("DELETE from customers where customerID=@customerID", db);
+
+                selectCommand.Parameters.AddWithValue("@customerID", CustomerID);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    customers.Add(new Customer(
+                    query.GetString(0),
+                    query.GetString(1),
+                    query.GetString(2),
+                    query.GetString(3),
+                    query.GetString(4),
+                    query.GetString(5),
+                    query.GetString(6),
+                    query.GetString(7),
+                    query.GetString(8),
+                    query.GetString(9),
+                    query.GetString(10),
+                    new DateTime()
+                    ));
+                }
+
+                db.Close();
+            }
+
+            return customers;
+        }
+
         /// <summary>
         /// Get all customers by Surname
         /// </summary>
