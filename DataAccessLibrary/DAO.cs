@@ -30,7 +30,7 @@ namespace DataAccessLibrary
                 SqliteCommand createTreatment = new SqliteCommand(treatment, db);
                 createTreatment.ExecuteReader();
 
-                String treatmentPlan = "CREATE TABLE IF NOT EXISTS treatmentPlan( treatmentPlanID int auto_increment,customerID varchar(20)NOT NULL, state varchar(30)NOT NULL,creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,treatmentPlanCompleteDate DATETIME,PRIMARY KEY (treatmentPlanID),FOREIGN KEY (customerID) REFERENCES customers(customerID))";
+                String treatmentPlan = "CREATE TABLE IF NOT EXISTS treatmentPlan( treatmentPlanID INTEGER,customerID varchar(20)NOT NULL, state varchar(30)NOT NULL,creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,treatmentPlanCompleteDate DATETIME,PRIMARY KEY (treatmentPlanID),FOREIGN KEY (customerID) REFERENCES customers(customerID))";
                 SqliteCommand createTreatmentPlan = new SqliteCommand(treatmentPlan, db);
                 createTreatmentPlan.ExecuteReader();
 
@@ -39,7 +39,7 @@ namespace DataAccessLibrary
                 SqliteCommand createTreatmentPlanTreatments = new SqliteCommand(treatmentPlanTreatments, db);
                 createTreatmentPlanTreatments.ExecuteReader();
 
-                String payments = "CREATE TABLE IF NOT EXISTS payments(paymentsID int auto_increment,treatmentPlanID int,customerID varchar(20)NOT NULL,amount float,treatmentCompleteDate DATETIME,PRIMARY KEY (paymentsID),FOREIGN KEY (treatmentPlanID) REFERENCES treatmentPlan(treatmentPlanID),FOREIGN KEY (customerID) REFERENCES customers(customerID))";
+                String payments = "CREATE TABLE IF NOT EXISTS payments(paymentsID INTEGER,treatmentPlanID int,customerID varchar(20)NOT NULL,amount float,treatmentCompleteDate DATETIME,PRIMARY KEY (paymentsID),FOREIGN KEY (treatmentPlanID) REFERENCES treatmentPlan(treatmentPlanID),FOREIGN KEY (customerID) REFERENCES customers(customerID))";
                 SqliteCommand createPayments = new SqliteCommand(payments, db);
                 createPayments.ExecuteReader();
             }
@@ -139,7 +139,7 @@ namespace DataAccessLibrary
         /// <param name="state"></param>
         /// <param name="creationDate"></param>
         /// <param name="treatmentPlanCompleteDate"></param>
-        public static void AddNewTreatmentPlan(int treatmentPlanID, string customerID, string state, string creationDate, string treatmentPlanCompleteDate)
+        public static void AddNewTreatmentPlan( string customerID, string state, string creationDate, string treatmentPlanCompleteDate)
         {
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
@@ -150,8 +150,8 @@ namespace DataAccessLibrary
                 insertCommand.Connection = db;
 
                 // Use parameterized query 
-                insertCommand.CommandText = "INSERT INTO treatmentPlan VALUES (@TreatmentPlanID,@CustomerID,@State,@CreationDate,@TreatmentPlanCompleteDate);";
-                insertCommand.Parameters.AddWithValue("@TreatmentPlanID", treatmentPlanID);
+                insertCommand.CommandText = "INSERT INTO treatmentPlan (customerID,state,creationDate,treatmentPlanCompleteDate) VALUES (@CustomerID,@State,@CreationDate,@TreatmentPlanCompleteDate);";
+                //insertCommand.Parameters.AddWithValue("@TreatmentPlanID", treatmentPlanID);
                 insertCommand.Parameters.AddWithValue("@CustomerID", customerID);
                 insertCommand.Parameters.AddWithValue("@State", state);
                 insertCommand.Parameters.AddWithValue("@CreationDate", creationDate);
@@ -183,7 +183,6 @@ namespace DataAccessLibrary
 
                 // Use parameterized query 
                 insertCommand.CommandText = "INSERT INTO treatmentPlanTreatments (TreatmentPlanID,TreatmentID,Price,TreatmentCompleteDate) VALUES (@TreatmentPlanID,@TreatmentID,@Price,@TreatmentCompleteDate);";
-               
                 insertCommand.Parameters.AddWithValue("@TreatmentPlanID", treatmentPlanID);
                 insertCommand.Parameters.AddWithValue("@TreatmentID", treatmentID);
                 insertCommand.Parameters.AddWithValue("@Price", price);
