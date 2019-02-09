@@ -121,7 +121,6 @@ namespace DataAccessLibrary
 
                 // Use parameterized query 
                 insertCommand.CommandText = "INSERT INTO treatment (treatmentName,price) VALUES (@TreatmentName ,@Price);";
-                //insertCommand.Parameters.AddWithValue("@TreatmentID", treatmentID);
                 insertCommand.Parameters.AddWithValue("@TreatmentName", treatmentName);
                 insertCommand.Parameters.AddWithValue("@Price", price);
 
@@ -151,7 +150,6 @@ namespace DataAccessLibrary
 
                 // Use parameterized query 
                 insertCommand.CommandText = "INSERT INTO treatmentPlan (customerID,state,creationDate,treatmentPlanCompleteDate) VALUES (@CustomerID,@State,@CreationDate,@TreatmentPlanCompleteDate);";
-                //insertCommand.Parameters.AddWithValue("@TreatmentPlanID", treatmentPlanID);
                 insertCommand.Parameters.AddWithValue("@CustomerID", customerID);
                 insertCommand.Parameters.AddWithValue("@State", state);
                 insertCommand.Parameters.AddWithValue("@CreationDate", creationDate);
@@ -186,6 +184,36 @@ namespace DataAccessLibrary
                 insertCommand.Parameters.AddWithValue("@TreatmentPlanID", treatmentPlanID);
                 insertCommand.Parameters.AddWithValue("@TreatmentID", treatmentID);
                 insertCommand.Parameters.AddWithValue("@Price", price);
+                insertCommand.Parameters.AddWithValue("@TreatmentCompleteDate", treatmentCompleteDate);
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
+        }
+
+        /// <summary>
+        /// Insert a new payment
+        /// </summary>
+        /// <param name="treatmentPlanID"></param>
+        /// <param name="customerID"></param>
+        /// <param name="amount"></param>
+        /// <param name="treatmentCompleteDate"></param>
+        public static void AddNewpayment(int treatmentPlanID, string customerID, float amount, string treatmentCompleteDate)
+        {
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query 
+                insertCommand.CommandText = "INSERT INTO payments (treatmentPlanID,customerID,amount,treatmentCompleteDate) VALUES (@TreatmentPlanID,@CustomerID,@Amount,@TreatmentCompleteDate);";
+                insertCommand.Parameters.AddWithValue("@TreatmentPlanID", treatmentPlanID);
+                insertCommand.Parameters.AddWithValue("@CustomerID", customerID);
+                insertCommand.Parameters.AddWithValue("@Amount", amount);
                 insertCommand.Parameters.AddWithValue("@TreatmentCompleteDate", treatmentCompleteDate);
 
                 insertCommand.ExecuteReader();

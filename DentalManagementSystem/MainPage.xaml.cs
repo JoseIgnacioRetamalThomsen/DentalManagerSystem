@@ -33,6 +33,7 @@ namespace DentalManagementSystem
             DAO.AddNewTreatment("Remove molar tooth",2500);
             DAO.AddNewTreatmentPlan("G000352030","OPEN", "2018-02-08", "2019-02-08");
             DAO.AddNewTreatmentPlanTreatments(1,1,2000, "2018-02-08");
+            DAO.AddNewpayment(1, "G000352030",4000, "");
 
 
             //add string resource
