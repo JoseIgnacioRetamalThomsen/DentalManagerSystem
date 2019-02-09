@@ -35,7 +35,7 @@ namespace DentalManagementSystem
             DAO.AddNewTreatmentPlanTreatments(1,1,2000, "2018-02-08");
             DAO.AddNewpayment(1, "G000352030",4000, "");
 
-
+            //Debug.Write(DAO.GetAllCustomer()[0].iD+ " dsadsadasdsasadsad");
             //add string resource
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
             TextBlock textBlock = new TextBlock();
