@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace DentalManagementSystem.Models
+namespace Models
 {
-    /// <summary>
-    /// All data about customer.
-    /// </summary>
     public class Customer
     {
+
         public string iD { get; set; }
         public string name { get; set; }
         public string surname { get; set; }
@@ -22,8 +18,8 @@ namespace DentalManagementSystem.Models
         public string mobileNum { get; set; }
         public string homeNum { get; set; }
         public string email { get; set; }
-
         public DateTime dOB { get; set; }
+
         public Customer(string iD, string name, string surname, string street, string city, string province, string country, string postcode, string mobileNum, string homeNum, string email, DateTime dOB)
         {
             this.iD = iD;
