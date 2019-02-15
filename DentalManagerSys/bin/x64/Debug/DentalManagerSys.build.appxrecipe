@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+<<<<<<< HEAD
     <Machine>DESKTOP-MN1COOQ</Machine>
     <WindowsUser>Sally Dowding</WindowsUser>
+=======
+    <Machine>DESKTOP-KB10JD0</Machine>
+    <WindowsUser>pepe</WindowsUser>
+>>>>>>> 892030cc0f9594b6afd73bf3364721ea07c56c29
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -10,22 +15,37 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>5898ba0e-d98e-4e2c-bb15-40e50a125b9d</PackageIdentityName>
     <PackageIdentityPublisher>CN=G00351330</PackageIdentityPublisher>
+<<<<<<< HEAD
     <IntermediateOutputPath>C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x64\Debug\</IntermediateOutputPath>
+=======
+    <IntermediateOutputPath>C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\obj\x64\Debug\</IntermediateOutputPath>
+>>>>>>> 892030cc0f9594b6afd73bf3364721ea07c56c29
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
+<<<<<<< HEAD
     <LayoutDir>C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Core\AppxManifest.xml">
+=======
+    <LayoutDir>C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\AppX</LayoutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Core\AppxManifest.xml">
+>>>>>>> 892030cc0f9594b6afd73bf3364721ea07c56c29
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <AppxPackagedFile Include="C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\DentalManagerSys.exe">
+=======
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\DentalManagerSys.exe">
+>>>>>>> 892030cc0f9594b6afd73bf3364721ea07c56c29
       <PackagePath>entrypoint\DentalManagerSys.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Duane Mills\.nuget\packages\microsoft.data.sqlite.core\2.2.1\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
@@ -535,6 +555,7 @@
     <AppxPackagedFile Include="C:\Users\Duane Mills\.nuget\packages\sqlitepclraw.provider.winsqlite3.uwp10\1.1.13\lib\uap10.0\SQLitePCLRaw.provider.winsqlite3.dll">
       <PackagePath>SQLitePCLRaw.provider.winsqlite3.dll</PackagePath>
     </AppxPackagedFile>
+<<<<<<< HEAD
     <AppxPackagedFile Include="C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DataAccessLibrary\bin\Debug\netstandard2.0\DataAccessLibrary.dll">
       <PackagePath>DataAccessLibrary.dll</PackagePath>
     </AppxPackagedFile>
@@ -587,15 +608,76 @@
       <PackagePath>Views\NewTreatment.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Views\ViewAllCustomers.xbf">
+=======
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DataAccessLibrary\bin\Debug\netstandard2.0\DataAccessLibrary.dll">
+      <PackagePath>DataAccessLibrary.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\Models\bin\Debug\netstandard2.0\Models.dll">
+      <PackagePath>Models.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\LockScreenLogo.scale-200.png">
+      <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\SplashScreen.scale-200.png">
+      <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\Square150x150Logo.scale-200.png">
+      <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\Square44x44Logo.scale-200.png">
+      <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\Wide310x150Logo.scale-200.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\DentalManagerSys.xr.xml">
+      <PackagePath>DentalManagerSys.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Views\NewCustomer.xbf">
+      <PackagePath>Views\NewCustomer.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Views\NewTreatment.xbf">
+      <PackagePath>Views\NewTreatment.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Views\ViewAllCustomers.xbf">
+>>>>>>> 892030cc0f9594b6afd73bf3364721ea07c56c29
       <PackagePath>Views\ViewAllCustomers.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
+<<<<<<< HEAD
     <AppxPackagedFile Include="C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Core\DentalManagerSys.exe">
+=======
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Core\DentalManagerSys.exe">
+>>>>>>> 892030cc0f9594b6afd73bf3364721ea07c56c29
       <PackagePath>DentalManagerSys.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

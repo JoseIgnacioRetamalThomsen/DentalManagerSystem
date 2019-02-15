@@ -10,13 +10,20 @@
     <RootType FullName="Windows.UI.Xaml.Controls.NavigationView">
       <RootProperty Name="MenuItems" />
       <RootProperty Name="Content" />
+      <RootEvent Name="ItemInvoked" />
+      <RootEvent Name="Loaded" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.NavigationViewItem">
       <RootProperty Name="Icon" />
-      <RootProperty Name="Content" />
       <RootProperty Name="Tag" />
+      <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Frame" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Frame">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="ContentTransitions" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.NavigationThemeTransition" />
     <RootType FullName="DentalManagerSys.MainPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Children" />

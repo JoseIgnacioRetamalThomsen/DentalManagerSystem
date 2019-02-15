@@ -8,14 +8,25 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView x:ConnectionId='2' x:Name="nvSample">
+    <NavigationView x:ConnectionId='2' x:Name="NavView"
+                                                     
+                       >
         <NavigationView.MenuItems>
-            <NavigationViewItem Icon="Play" Content="Menu Item1" Tag="SamplePage1" />
+            <NavigationViewItem Icon="ContactInfo" x:Uid="/Strings/NavViewItemPatients" Tag="PatientsList_View" />
             <NavigationViewItem Icon="Save" Content="Menu Item2" Tag="SamplePage2" />
             <NavigationViewItem Icon="Refresh" Content="Menu Item3" Tag="SamplePage3" />
             <NavigationViewItem Icon="Download" Content="Menu Item4" Tag="SamplePage4" />
         </NavigationView.MenuItems>
-        <Frame x:ConnectionId='3' x:Name="contentFrame"/>
+        
+
+
+        <Frame x:ConnectionId='3' x:Name="ContentFrame" Margin="24">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition/>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
     </NavigationView>
 </Page>
 

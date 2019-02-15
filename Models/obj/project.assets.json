@@ -184,11 +184,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\Models\\Models.csproj",
       "projectName": "Models",
       "projectPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\Models\\Models.csproj",
       "packagesPath": "C:\\Users\\Duane Mills\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\Models\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\pepe\\Desktop\\DentalManagerSystem\\Models\\Models.csproj",
+      "projectName": "Models",
+      "projectPath": "C:\\Users\\pepe\\Desktop\\DentalManagerSystem\\Models\\Models.csproj",
+      "packagesPath": "C:\\Users\\pepe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pepe\\Desktop\\DentalManagerSystem\\Models\\obj\\",
+>>>>>>> 892030cc0f9594b6afd73bf3364721ea07c56c29
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

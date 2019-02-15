@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\DentalManagerSys.csproj;x64
+=======
+C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\DentalManagerSys.csproj;x64
+>>>>>>> 892030cc0f9594b6afd73bf3364721ea07c56c29

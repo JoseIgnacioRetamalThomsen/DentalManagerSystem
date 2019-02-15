@@ -67,7 +67,11 @@ namespace DentalManagerSys
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
+<<<<<<< HEAD
                     rootFrame.Navigate(typeof(NewCustomer), e.Arguments);
+=======
+                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+>>>>>>> 892030cc0f9594b6afd73bf3364721ea07c56c29
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

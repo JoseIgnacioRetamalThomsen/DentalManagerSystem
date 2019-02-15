@@ -10,5 +10,6 @@ App.xbf
 DentalManagerSys.xr.xml
 MainPage.xbf
 Views\NewCustomer.xbf
+Views\NewTreatment.xbf
 Views\ViewAllCustomers.xbf
 Properties\Default.rd.xml

@@ -64,10 +64,11 @@
   },
   "libraries": {
     "Microsoft.Data.Sqlite.Core/2.2.1": {
-      "sha512": "Hvpoyx/mJB5IKlKipG9aEdpYFSicscgTysL0127fdczliTRbRR1u7wAvtbDYOceWo+BD1wj+UZEiz5DsBg8bUw==",
+      "sha512": "90DnXfCnRT5z/9Q7gXDlHBcM6YAejlZpQ6W4WMdZWMp44GZqGW1g2VdyhFD6l1djRIyXajedEfCBTgpppssETw==",
       "type": "package",
       "path": "microsoft.data.sqlite.core/2.2.1",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Data.Sqlite.dll",
         "lib/netstandard2.0/Microsoft.Data.Sqlite.xml",
@@ -263,11 +264,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\DataAccessLibrary\\DataAccessLibrary.csproj",
       "projectName": "DataAccessLibrary",
       "projectPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\DataAccessLibrary\\DataAccessLibrary.csproj",
       "packagesPath": "C:\\Users\\Duane Mills\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\DataAccessLibrary\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\pepe\\Desktop\\DentalManagerSystem\\DataAccessLibrary\\DataAccessLibrary.csproj",
+      "projectName": "DataAccessLibrary",
+      "projectPath": "C:\\Users\\pepe\\Desktop\\DentalManagerSystem\\DataAccessLibrary\\DataAccessLibrary.csproj",
+      "packagesPath": "C:\\Users\\pepe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pepe\\Desktop\\DentalManagerSystem\\DataAccessLibrary\\obj\\",
+>>>>>>> 892030cc0f9594b6afd73bf3364721ea07c56c29
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -286,8 +295,13 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\Models\\Models.csproj": {
               "projectPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\Models\\Models.csproj"
+=======
+            "C:\\Users\\pepe\\Desktop\\DentalManagerSystem\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\pepe\\Desktop\\DentalManagerSystem\\Models\\Models.csproj"
+>>>>>>> 892030cc0f9594b6afd73bf3364721ea07c56c29
             }
           }
         }
