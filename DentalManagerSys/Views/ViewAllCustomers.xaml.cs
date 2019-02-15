@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -42,10 +43,13 @@ namespace DentalManagerSys.Views
 
         }
 
+      
 
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        private void SelectCustomer_Button(object sender, RoutedEventArgs e)
         {
-
+            Debug.WriteLine(((Customer)DataGrid.SelectedItem).iD);
+            Frame.Navigate(typeof(ViewCustomerDetails), ((Customer)DataGrid.SelectedItem).iD,
+                    new DrillInNavigationTransitionInfo());
         }
 
         private void PatientsCommandBar_Loaded(object sender, RoutedEventArgs e)

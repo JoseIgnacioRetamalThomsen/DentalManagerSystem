@@ -24,7 +24,7 @@
                 <AppBarButton 
                     x:Name="ViewCustomerButton"
                     Icon="Contact"
-                    Click="AppBarButton_Click"
+                    Click="SelectCustomer_Button"
                     x:Uid="/Strings/SelectBarButton"
                     IsEnabled="False"/>
                 <AppBarSeparator />
@@ -50,6 +50,7 @@
                   >
                 
                 <toolkit:DataGrid
+                    x:Name="DataGrid"
                     CanUserReorderColumns="False"
                     CanUserResizeColumns="False"
                     AutoGenerateColumns="False"

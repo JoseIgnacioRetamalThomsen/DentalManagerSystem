@@ -13,8 +13,8 @@
                     ItemInvoked="NavView_ItemInvoked"
 Loaded="NavView_Loaded">
         <NavigationView.MenuItems>
-            <NavigationViewItem Icon="ContactInfo" x:Uid="/Strings/NavViewItemPatients" Tag="PatientsList_View" />
-            <NavigationViewItem Icon="Save" Content="Menu Item2" Tag="SamplePage2" />
+            <NavigationViewItem Icon="ContactInfo" x:Uid="/Strings/NavViewItemPatients" Tag="PatientsList" />
+            <NavigationViewItem Icon="Save" Content="Menu Item2" Tag="ManageTreaments" />
             <NavigationViewItem Icon="Refresh" Content="Menu Item3" Tag="SamplePage3" />
             <NavigationViewItem Icon="Download" Content="Menu Item4" Tag="SamplePage4" />
         </NavigationView.MenuItems>

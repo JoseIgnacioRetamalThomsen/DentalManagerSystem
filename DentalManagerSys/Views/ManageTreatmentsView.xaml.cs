@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -21,30 +20,11 @@ namespace DentalManagerSys.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    /// 
-   
-    public sealed partial class ViewCustomerDetails : Page
+    public sealed partial class ManageTreatmentsView : Page
     {
-        private string iD;
-        public ViewCustomerDetails()
+        public ManageTreatmentsView()
         {
             this.InitializeComponent();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            if (e.Parameter == null)
-            {
-               
-            }
-            else
-            {
-               Debug.WriteLine(e.Parameter);
-                iD = e.Parameter.ToString();
-            }
-
-           
-            
         }
     }
 }

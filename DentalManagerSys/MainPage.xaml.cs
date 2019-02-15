@@ -112,19 +112,19 @@ namespace DentalManagerSys
             {
 
 
-                /*    case "newTransaction":
-                        ContentFrame.Navigate(typeof(NewTransactionPage));
+                   case "PatientsList":
+                        ContentFrame.Navigate(typeof(ViewAllCustomers));
                         break;
-                    case "ViewAccounts":
-                        ContentFrame.Navigate(typeof(ViewAccountsPage));
+                    case "ManageTreaments":
+                        ContentFrame.Navigate(typeof(ManageTreatmentsView));
                         break;
                     case "ViewAllTransactionsNV":
-                        ContentFrame.Navigate(typeof(ViewAllTransactionsPage));
+                        ContentFrame.Navigate(typeof(NewCustomer));
                         break;
                     case "content":
                         ContentFrame.Navigate(typeof(MainPage));
                         break;
-                        */
+                        
             }
 
         }// NavView_Navigate(NavigationViewItem item)
