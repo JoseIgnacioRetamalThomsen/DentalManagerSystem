@@ -11,6 +11,36 @@
 
     <Grid>
 
+        <RelativePanel>
+            <TextBlock x:Uid="/Strings/ViewAllCustomerPageTitle" x:Name="PageTitle" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+
+            <CommandBar x:Name="PatientsCommandBar"
+                        HorizontalAlignment="Stretch"
+Background="Transparent"
+                        Loaded="PatientsCommandBar_Loaded"
+                         RelativePanel.RightOf="PageTitle"
+                        RelativePanel.LeftOf="SearchBox">
+                <AppBarButton
+                    Icon="Contact"
+                    Click="AppBarButton_Click"
+                    x:Uid="/Strings/SelectBarButton"
+                                        IsEnabled="False"
+                                       />
+                <AppBarSeparator />
+                <AppBarButton
+                    Icon="Add"
+                    Click="AppBarButton_Click_1"
+                    x:Uid="/Strings/AddBarButton"
+                    />
+            </CommandBar>
+            <AutoSuggestBox 
+                x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
+                 QueryIcon="Find"
+                                Width="200"
+                x:Uid="/Strings/SearchAutoSuggestBox">
+
+            </AutoSuggestBox>
+        </RelativePanel>
 
         <ListView x:Name="CustomersListView" Height="200"
                       ScrollViewer.HorizontalScrollMode="Enabled" 
