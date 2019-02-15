@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
@@ -16,16 +17,16 @@
 
             <CommandBar x:Name="PatientsCommandBar"
                         HorizontalAlignment="Stretch"
-Background="Transparent"
+                        Background="Transparent"
                         Loaded="PatientsCommandBar_Loaded"
-                         RelativePanel.RightOf="PageTitle"
+                        RelativePanel.RightOf="PageTitle"
                         RelativePanel.LeftOf="SearchBox">
-                <AppBarButton
+                <AppBarButton 
+                    x:Name="ViewCustomerButton"
                     Icon="Contact"
                     Click="AppBarButton_Click"
                     x:Uid="/Strings/SelectBarButton"
-                                        IsEnabled="False"
-                                       />
+                    IsEnabled="False"/>
                 <AppBarSeparator />
                 <AppBarButton
                     Icon="Add"
@@ -40,6 +41,54 @@ Background="Transparent"
                 x:Uid="/Strings/SearchAutoSuggestBox">
 
             </AutoSuggestBox>
+
+            <Grid Margin="0,10,0,0"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="PageTitle"
+               
+                  >
+                
+                <toolkit:DataGrid
+                    CanUserReorderColumns="False"
+                    CanUserResizeColumns="False"
+                    AutoGenerateColumns="False"
+                    
+                    BorderThickness="0"
+                    GridLinesVisibility="None"
+                 ItemsSource="{x:Bind customerList}"
+                    IsReadOnly="True"
+                 SelectionChanged="DataGrid_SelectionChanged"
+                 >
+                    <toolkit:DataGrid.Columns>
+                        <toolkit:DataGridTextColumn
+                            Tag="FirstName"
+                            Binding="{Binding name}"
+                            x:Uid="/Strings/NameDataGrid"
+                            
+                            />
+
+                        <toolkit:DataGridTextColumn
+                            Tag="Surname"
+                            Binding="{Binding surname}"
+                            x:Uid="/Strings/SurnameDataGrid"/>
+                        <toolkit:DataGridTextColumn
+                            Tag="ID"
+                            Binding="{Binding iD}"
+                            x:Uid="/Strings/IDDataGrid"/>
+                        <toolkit:DataGridTextColumn
+                            Tag="Email"
+                            Binding="{Binding email}"
+                            x:Uid="/Strings/EmailDataGrid"/>
+                        <toolkit:DataGridTextColumn
+                            Tag="MobileNum"
+                            Binding="{Binding mobileNum}"
+                            x:Uid="/Strings/MobileDataGrid"/>
+
+
+                    </toolkit:DataGrid.Columns>
+                </toolkit:DataGrid>
+            </Grid>
         </RelativePanel>
 
         <ListView x:Name="CustomersListView" Height="200"
