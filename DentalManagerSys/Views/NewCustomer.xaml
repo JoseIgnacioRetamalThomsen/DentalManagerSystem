@@ -36,7 +36,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="1.9*" />
-
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <TextBox x:Name="inputName" x:Uid="/Strings/FirstName"   Grid.Row="0" Grid.Column="0" Margin="2"   ></TextBox>
@@ -58,6 +58,7 @@
 
                 <DatePicker x:Name="birthDatePicker" x:Uid="/Strings/DOB" Grid.Row="6" Grid.Column="0" Margin="0" Grid.ColumnSpan="2"/>
 
+                <TextBox x:Name="commentsInput" x:Uid="/Strings/Comments" Grid.Row="7"  Grid.ColumnSpan="2" Margin="2" ></TextBox>
             </Grid>
 
             <Grid x:Name="ButtonsGrid" Grid.Row="2" Grid.Column="0" >

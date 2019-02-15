@@ -30,7 +30,7 @@ namespace DentalManagerSys.Views
         {
             this.InitializeComponent();
             customerList = new ObservableCollection<Customer>();
-            customer = new Customer("G000352030", "mark", "ndipenoch", "2899-23-12", "1 Dublin Road", "Galway", "Connaught", "Ireland", "HP1009", "008795623", "00000", new DateTime());
+            customer = new Customer("G000352030", "mark", "ndipenoch", "2899-23-12", "1 Dublin Road", "Galway", "Connaught", "Ireland", "HP1009", "008795623", "00000", new DateTime(),"Is Test Marshall");
             customerList.Add(customer);
             customerList.Add(customer);
             CustomersListView.ItemsSource = customerList;

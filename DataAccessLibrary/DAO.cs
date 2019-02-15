@@ -18,7 +18,7 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                String customers = "CREATE TABLE IF NOT EXISTS customers(  customerID varchar(20)NOT NULL, firstName varchar(30)NOT NULL,surname varchar(30)NOT NULL,DOB varchar(12),street varchar(45),city varchar(30),province varchar(30),country varchar(15),postcode varchar(15),mobileNum varchar(15),fixNum varchar(15),email varchar(45),PRIMARY KEY (customerID))";
+                String customers = "CREATE TABLE IF NOT EXISTS customers(  customerID varchar(20)NOT NULL, firstName varchar(30)NOT NULL,surname varchar(30)NOT NULL,DOB varchar(12),street varchar(45),city varchar(30),province varchar(30),country varchar(15),postcode varchar(15),mobileNum varchar(15),fixNum varchar(15),email varchar(45),comments varchar(500),PRIMARY KEY (customerID))";
                 SqliteCommand createCustomers = new SqliteCommand(customers, db);
                 createCustomers.ExecuteReader();
 
@@ -57,7 +57,7 @@ namespace DataAccessLibrary
         /// <param name="mobileNum"></param>
         /// <param name="fixNum"></param>
         /// <param name="email"></param>
-        public static bool AddNewCustomer(string id, string firstName, string surname, string dOB, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email)
+        public static bool AddNewCustomer(string id, string firstName, string surname, string dOB, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email,string comments)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace DataAccessLibrary
                     insertCommand.Connection = db;
 
                     // Use parameterized query
-                    insertCommand.CommandText = "INSERT INTO customers VALUES (@Id ,@FirstName ,@Surname,@DOB ,@Street ,@city ,@Province ,@Country ,@Postocode ,@MobileNum ,@FixNum ,@Email);";
+                    insertCommand.CommandText = "INSERT INTO customers VALUES (@Id ,@FirstName ,@Surname,@DOB ,@Street ,@city ,@Province ,@Country ,@Postocode ,@MobileNum ,@FixNum ,@Email,@Comments);";
                     insertCommand.Parameters.AddWithValue("@Id", id);
                     insertCommand.Parameters.AddWithValue("@FirstName", firstName);
                     insertCommand.Parameters.AddWithValue("@Surname", surname);
@@ -85,6 +85,7 @@ namespace DataAccessLibrary
                     insertCommand.Parameters.AddWithValue("@MobileNum", mobileNum);
                     insertCommand.Parameters.AddWithValue("@FixNum", fixNum);
                     insertCommand.Parameters.AddWithValue("@Email", email);
+                    insertCommand.Parameters.AddWithValue("@Comments", comments);
 
                     insertCommand.ExecuteReader();
 
@@ -271,7 +272,8 @@ namespace DataAccessLibrary
                     query.GetString(8),
                     query.GetString(9),
                     query.GetString(10),
-                    new DateTime()
+                    new DateTime(),
+                    query.GetString(11)
                     ));
                 }
 
@@ -312,7 +314,8 @@ namespace DataAccessLibrary
                     query.GetString(8),
                     query.GetString(9),
                     query.GetString(10),
-                    new DateTime()
+                    new DateTime(),
+                    query.GetString(11)
                     ));
                 }
 
@@ -357,7 +360,8 @@ namespace DataAccessLibrary
                     query.GetString(8),
                     query.GetString(9),
                     query.GetString(10),
-                    new DateTime()
+                    new DateTime(),
+                    query.GetString(11)
                     ));
                 }
 
