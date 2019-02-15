@@ -1,4 +1,5 @@
-﻿using DentalManagerSys.Views;
+﻿using DataAccessLibrary;
+using DentalManagerSys.Views;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,6 +28,7 @@ namespace DentalManagerSys
         public MainPage()
         {
             this.InitializeComponent();
+            DAO.InitializeDatabase();
         }
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {

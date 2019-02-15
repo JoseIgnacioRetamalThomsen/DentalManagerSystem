@@ -370,6 +370,51 @@ namespace DataAccessLibrary
 
             return customers;
         }
+        /// <summary>
+        /// Get Customer by Id
+        /// </summary>
+        /// <param name="Surname"></param>
+        /// <returns></returns>
+        public static Customer GetCustomerByID(String CustomerID)
+        {
+
+            Customer customer = null;
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from customers where customerID=@customerID", db);
+                selectCommand.Parameters.AddWithValue("@customerID", CustomerID);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                   customer =new Customer(
+                    query.GetString(0),
+                    query.GetString(1),
+                    query.GetString(2),
+                    query.GetString(3),
+                    query.GetString(4),
+                    query.GetString(5),
+                    query.GetString(6),
+                    query.GetString(7),
+                    query.GetString(8),
+                    query.GetString(9),
+                    query.GetString(10),
+                    new DateTime(),
+                    query.GetString(11)
+                    );
+                }
+
+                db.Close();
+            }
+
+            return customer;
+        }
 
         public static List<String> GetData()
         {

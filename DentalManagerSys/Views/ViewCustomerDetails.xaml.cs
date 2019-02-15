@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DataAccessLibrary;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,6 +28,8 @@ namespace DentalManagerSys.Views
     public sealed partial class ViewCustomerDetails : Page
     {
         private string iD;
+   
+
         public ViewCustomerDetails()
         {
             this.InitializeComponent();
@@ -35,9 +38,19 @@ namespace DentalManagerSys.Views
 
         private void DisplayDetails()
         {
-            Customer temp = null;//get customer from database using iD
+            Customer temp = DAO.GetCustomerByID(iD);
 
-            IdTextBox.Text = "g00234232";//temp.iD
+            IdTextBox.Text = temp.iD;
+            DOBTextBox.Text = temp.dOB.ToString();
+            emailTextBox.Text = temp.email;
+            mobileTextBox.Text = temp.mobileNum;
+            fixTextBox.Text = temp.homeNum;
+            streetTextBox.Text = temp.street;
+            cityTextBox.Text = temp.city;
+            provinceTextBox.Text = temp.province;
+            postcodeTextBox.Text = temp.postcode;
+            countryTextBox.Text = temp.country;
+            commentsTextBox.Text = temp.comments;
 
         }
 

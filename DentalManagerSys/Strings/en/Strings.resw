@@ -228,4 +228,31 @@
   <data name="IdViewCustomer.Text" xml:space="preserve">
     <value>ID</value>
   </data>
+  <data name="cityViewCustomer.Text" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="comentsViewCustomer.Text" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="countryViewCustomer.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="DOBViewCustomer.Text" xml:space="preserve">
+    <value>DOB</value>
+  </data>
+  <data name="emailViewCustomer.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="fixNumViewCustomer.Text" xml:space="preserve">
+    <value>House Number</value>
+  </data>
+  <data name="mobileViewCustomer.Text" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="postcodeViewCustomer.Text" xml:space="preserve">
+    <value>Post Code</value>
+  </data>
+  <data name="streetViewCustomer.Text" xml:space="preserve">
+    <value>Street</value>
+  </data>
 </root>

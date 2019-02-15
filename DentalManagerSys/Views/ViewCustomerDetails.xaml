@@ -62,53 +62,53 @@ Background="Transparent"
                 </StackPanel>
                 
                 <StackPanel x:Name="DOB" Grid.Row="0" Grid.Column="1" Margin="5">
-                    <TextBlock Text="Date Of BIRTH"/>
-                    <TextBox Text="09/25/2000"/>
+                    <TextBlock x:Uid="/Strings/DOBViewCustomer"/>
+                    <TextBox x:Name="DOBTextBox"/>
                 </StackPanel>
 
                 <StackPanel x:Name="email" Grid.Row="0" Grid.Column="3" Margin="5">
-                    <TextBlock Text="Email"/>
-                    <TextBox Text="G00352'gmail.com"/>
+                    <TextBlock x:Uid="/Strings/emailViewCustomer"/>
+                    <TextBox x:Name="emailTextBox"/>
                 </StackPanel>
 
                 <StackPanel x:Name="mobileNum" Grid.Row="1" Grid.Column="0" Margin="5">
-                    <TextBlock Text="Mobile"/>
-                    <TextBox Text="0235468"/>
+                    <TextBlock x:Uid="/Strings/mobileViewCustomer"/>
+                    <TextBox x:Name="mobileTextBox"/>
                 </StackPanel>
 
                 <StackPanel x:Name="fixNum" Grid.Row="1" Grid.Column="1" Margin="5">
-                    <TextBlock Text="Fix Phone"/>
-                    <TextBox Text="000000"/>
+                    <TextBlock x:Uid="/Strings/fixNumViewCustomer"/>
+                    <TextBox x:Name="fixTextBox"/>
                 </StackPanel>
 
                 <StackPanel x:Name="street" Grid.Row="2" Grid.Column="0" Margin="5">
-                    <TextBlock Text="Street"/>
-                    <TextBox Text="1 Dublin Road"/>
+                    <TextBlock x:Uid="/Strings/streetViewCustomer"/>
+                    <TextBox x:Name="streetTextBox"/>
                 </StackPanel>
 
                 <StackPanel x:Name="city" Grid.Row="2" Grid.Column="1" Margin="5">
-                    <TextBlock Text="City"/>
-                    <TextBox Text="Glway"/>
+                    <TextBlock x:Uid="/Strings/cityViewCustomer"/>
+                    <TextBox x:Name="cityTextBox"/>
                 </StackPanel>
 
                 <StackPanel x:Name="province" Grid.Row="2" Grid.Column="2" Margin="5">
-                    <TextBlock Text="Province"/>
-                    <TextBox Text="Co.Glway"/>
+                    <TextBlock x:Uid="/Strings/cityViewCustomer"/>
+                    <TextBox x:Name="provinceTextBox"/>
                 </StackPanel>
 
                 <StackPanel x:Name="Postocode" Grid.Row="3" Grid.Column="0" Margin="5">
-                    <TextBlock Text="Post Code"/>
-                    <TextBox Text="HH1 258"/>
+                    <TextBlock x:Uid="/Strings/postcodeViewCustomer"/>
+                    <TextBox x:Name="postcodeTextBox"/>
                 </StackPanel>
 
                 <StackPanel x:Name="country" Grid.Row="3" Grid.Column="1" Margin="5">
-                    <TextBlock Text="Country"/>
-                    <TextBox Text="Ireland"/>
+                    <TextBlock x:Uid="/Strings/countryViewCustomer"/>
+                    <TextBox x:Name="countryTextBox"/>
                 </StackPanel>
 
                 <StackPanel x:Name="comments" Grid.Row="4" Grid.Column="0" Margin="5" Grid.ColumnSpan="4" Grid.RowSpan="3">
-                    <TextBlock Text="Comments"/>
-                    <TextBox Text="Is Test Marshal"/>
+                    <TextBlock x:Uid="/Strings/comentsViewCustomer"/>
+                    <TextBox x:Name="commentsTextBox"/>
                 </StackPanel>
 
             </Grid>
