@@ -47,6 +47,7 @@ Background="Transparent"
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -55,15 +56,59 @@ Background="Transparent"
                     <ColumnDefinition  Width="*"/>
                 </Grid.ColumnDefinitions>
 
-
-                <StackPanel x:Name="mobileNum" Grid.Row="0" Grid.Column="0" Margin="5">
-                    <TextBlock Text="Mobile: "/>
-                    <TextBox Text="000023568"/>
+                <StackPanel x:Name="id" Grid.Row="0" Grid.Column="0" Margin="5">
+                    <TextBlock Text="ID"/>
+                    <TextBox Text="G0035"/>
+                </StackPanel>
+                
+                <StackPanel x:Name="DOB" Grid.Row="0" Grid.Column="1" Margin="5">
+                    <TextBlock Text="Date Of BIRTH"/>
+                    <TextBox Text="09/25/2000"/>
                 </StackPanel>
 
-                <StackPanel x:Name="email" Grid.Row="0" Grid.Column="1" Margin="5">
-                    <TextBlock Text="Email: "/>
+                <StackPanel x:Name="email" Grid.Row="0" Grid.Column="3" Margin="5">
+                    <TextBlock Text="Email"/>
                     <TextBox Text="G00352'gmail.com"/>
+                </StackPanel>
+
+                <StackPanel x:Name="mobileNum" Grid.Row="1" Grid.Column="0" Margin="5">
+                    <TextBlock Text="Mobile"/>
+                    <TextBox Text="0235468"/>
+                </StackPanel>
+
+                <StackPanel x:Name="fixNum" Grid.Row="1" Grid.Column="1" Margin="5">
+                    <TextBlock Text="Fix Phone"/>
+                    <TextBox Text="000000"/>
+                </StackPanel>
+
+                <StackPanel x:Name="street" Grid.Row="2" Grid.Column="0" Margin="5">
+                    <TextBlock Text="Street"/>
+                    <TextBox Text="1 Dublin Road"/>
+                </StackPanel>
+
+                <StackPanel x:Name="city" Grid.Row="2" Grid.Column="1" Margin="5">
+                    <TextBlock Text="City"/>
+                    <TextBox Text="Glway"/>
+                </StackPanel>
+
+                <StackPanel x:Name="province" Grid.Row="2" Grid.Column="2" Margin="5">
+                    <TextBlock Text="Province"/>
+                    <TextBox Text="Co.Glway"/>
+                </StackPanel>
+
+                <StackPanel x:Name="Postocode" Grid.Row="3" Grid.Column="0" Margin="5">
+                    <TextBlock Text="Post Code"/>
+                    <TextBox Text="HH1 258"/>
+                </StackPanel>
+
+                <StackPanel x:Name="country" Grid.Row="3" Grid.Column="1" Margin="5">
+                    <TextBlock Text="Country"/>
+                    <TextBox Text="Ireland"/>
+                </StackPanel>
+
+                <StackPanel x:Name="comments" Grid.Row="4" Grid.Column="0" Margin="5" Grid.ColumnSpan="4" Grid.RowSpan="3">
+                    <TextBlock Text="Comments"/>
+                    <TextBox Text="Is Test Marshal"/>
                 </StackPanel>
 
             </Grid>
