@@ -1,1 +1,1 @@
-C:\Users\g00351330\Desktop\DentalManagerSys\DentalManagerSys\DentalManagerSys.csproj;x86
+C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\DentalManagerSys.csproj;x86

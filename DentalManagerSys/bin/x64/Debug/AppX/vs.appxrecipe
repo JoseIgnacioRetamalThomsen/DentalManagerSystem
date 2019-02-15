@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DESKTOP-3VK7CKB</Machine>
+    <Machine>DESKTOP-KB10JD0</Machine>
     <WindowsUser>pepe</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>5898ba0e-d98e-4e2c-bb15-40e50a125b9d</PackageIdentityName>
     <PackageIdentityPublisher>CN=G00351330</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\obj\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,8 +18,8 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>C8D93E534C267747C7C54EC05C24C4F6101BDE509676E94A264395964A22FD30</RegisteredManifestChecksum>
+    <LayoutDir>C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>ACABD3FE2F74DE87C2534E26D2162A37B61D473B4E8369CAC5E36BE38EB3DE68</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>5898ba0e-d98e-4e2c-bb15-40e50a125b9d_1.0.0.0_x64__wcp32x3hv6k2w</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>5898ba0e-d98e-4e2c-bb15-40e50a125b9d_wcp32x3hv6k2w!App</RegisteredUserModeAppID>
     <RegisteredPackageID>5898ba0e-d98e-4e2c-bb15-40e50a125b9d</RegisteredPackageID>
@@ -27,16 +27,16 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\bin\x64\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-02-09T20:43:48.068</Modified>
+      <Modified>2019-02-15T10:20:02.200</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\bin\x64\Debug\DentalManagerSys.exe">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\DentalManagerSys.exe">
       <PackagePath>entrypoint\DentalManagerSys.exe</PackagePath>
-      <Modified>2019-02-09T20:43:46.568</Modified>
+      <Modified>2019-02-15T10:20:01.178</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pepe\.nuget\packages\microsoft.data.sqlite.core\2.2.1\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
       <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
@@ -714,87 +714,87 @@
       <PackagePath>SQLitePCLRaw.provider.winsqlite3.dll</PackagePath>
       <Modified>2019-01-24T15:30:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DataAccessLibrary\bin\Debug\netstandard2.0\DataAccessLibrary.dll">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DataAccessLibrary\bin\Debug\netstandard2.0\DataAccessLibrary.dll">
       <PackagePath>DataAccessLibrary.dll</PackagePath>
-      <Modified>2019-02-09T20:41:57.093</Modified>
+      <Modified>2019-02-15T10:06:16.411</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\Models\bin\Debug\netstandard2.0\Models.dll">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\Models\bin\Debug\netstandard2.0\Models.dll">
       <PackagePath>Models.dll</PackagePath>
-      <Modified>2019-02-09T20:41:56.886</Modified>
+      <Modified>2019-02-15T10:06:14.651</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2019-02-09T20:29:31.438</Modified>
+      <Modified>2019-02-15T09:01:01.075</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2019-02-09T20:29:31.428</Modified>
+      <Modified>2019-02-15T09:01:01.059</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-02-09T20:29:31.428</Modified>
+      <Modified>2019-02-15T09:01:01.059</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-02-09T20:29:31.428</Modified>
+      <Modified>2019-02-15T09:01:01.059</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-02-09T20:29:31.428</Modified>
+      <Modified>2019-02-15T09:01:01.059</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-02-09T20:29:31.428</Modified>
+      <Modified>2019-02-15T09:01:01.059</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-02-09T20:29:31.428</Modified>
+      <Modified>2019-02-15T09:01:01.075</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-02-09T20:29:31.428</Modified>
+      <Modified>2019-02-15T09:01:01.075</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\bin\x64\Debug\DentalManagerSys.xr.xml">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\DentalManagerSys.xr.xml">
       <PackagePath>DentalManagerSys.xr.xml</PackagePath>
-      <Modified>2019-02-09T20:43:46.398</Modified>
+      <Modified>2019-02-15T10:18:14.048</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\bin\x64\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2019-02-09T20:43:46.440</Modified>
+      <Modified>2019-02-15T10:20:00.733</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\bin\x64\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2019-02-09T20:43:46.440</Modified>
+      <Modified>2019-02-15T10:20:00.736</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\bin\x64\Debug\Views\NewCustomer.xbf">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Views\NewCustomer.xbf">
       <PackagePath>Views\NewCustomer.xbf</PackagePath>
-      <Modified>2019-02-09T20:43:46.441</Modified>
+      <Modified>2019-02-15T10:20:00.738</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\bin\x64\Debug\Views\NewTreatment.xbf">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Views\NewTreatment.xbf">
       <PackagePath>Views\NewTreatment.xbf</PackagePath>
-      <Modified>2019-02-09T20:43:46.441</Modified>
+      <Modified>2019-02-15T10:20:00.740</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\bin\x64\Debug\Views\ViewAllCustomers.xbf">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Views\ViewAllCustomers.xbf">
       <PackagePath>Views\ViewAllCustomers.xbf</PackagePath>
-      <Modified>2019-02-09T20:43:46.442</Modified>
+      <Modified>2019-02-15T10:20:00.742</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
-      <Modified>2018-04-19T21:01:52.000</Modified>
+      <Modified>2018-04-19T22:01:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\bin\x64\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2019-02-09T20:43:47.738</Modified>
+      <Modified>2019-02-15T10:19:12.139</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\bin\x64\Debug\Core\DentalManagerSys.exe">
+    <AppxPackagedFile Include="C:\Users\pepe\Desktop\DentalManagerSystem\DentalManagerSys\bin\x64\Debug\Core\DentalManagerSys.exe">
       <PackagePath>DentalManagerSys.exe</PackagePath>
-      <Modified>2019-02-09T20:43:48.064</Modified>
+      <Modified>2019-02-15T10:20:02.188</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

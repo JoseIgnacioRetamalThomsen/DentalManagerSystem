@@ -189,19 +189,21 @@ namespace DentalManagerSys.DentalManagerSys_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[5];
+            _typeNameTable = new string[6];
             _typeNameTable[0] = "DentalManagerSys.MainPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
             _typeNameTable[3] = "DentalManagerSys.Views.NewCustomer";
-            _typeNameTable[4] = "DentalManagerSys.Views.ViewAllCustomers";
+            _typeNameTable[4] = "DentalManagerSys.Views.NewTreatment";
+            _typeNameTable[5] = "DentalManagerSys.Views.ViewAllCustomers";
 
-            _typeTable = new global::System.Type[5];
+            _typeTable = new global::System.Type[6];
             _typeTable[0] = typeof(global::DentalManagerSys.MainPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
             _typeTable[3] = typeof(global::DentalManagerSys.Views.NewCustomer);
-            _typeTable[4] = typeof(global::DentalManagerSys.Views.ViewAllCustomers);
+            _typeTable[4] = typeof(global::DentalManagerSys.Views.NewTreatment);
+            _typeTable[5] = typeof(global::DentalManagerSys.Views.ViewAllCustomers);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -238,7 +240,8 @@ namespace DentalManagerSys.DentalManagerSys_XamlTypeInfo
 
         private object Activate_0_MainPage() { return new global::DentalManagerSys.MainPage(); }
         private object Activate_3_NewCustomer() { return new global::DentalManagerSys.Views.NewCustomer(); }
-        private object Activate_4_ViewAllCustomers() { return new global::DentalManagerSys.Views.ViewAllCustomers(); }
+        private object Activate_4_NewTreatment() { return new global::DentalManagerSys.Views.NewTreatment(); }
+        private object Activate_5_ViewAllCustomers() { return new global::DentalManagerSys.Views.ViewAllCustomers(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -272,9 +275,16 @@ namespace DentalManagerSys.DentalManagerSys_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 4:   //  DentalManagerSys.Views.ViewAllCustomers
+            case 4:   //  DentalManagerSys.Views.NewTreatment
                 userType = new global::DentalManagerSys.DentalManagerSys_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_4_ViewAllCustomers;
+                userType.Activator = Activate_4_NewTreatment;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 5:   //  DentalManagerSys.Views.ViewAllCustomers
+                userType = new global::DentalManagerSys.DentalManagerSys_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_5_ViewAllCustomers;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

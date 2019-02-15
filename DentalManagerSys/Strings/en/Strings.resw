@@ -186,4 +186,10 @@
   <data name="UniqueIdError.Text" xml:space="preserve">
     <value>ID must be unique</value>
   </data>
+  <data name="NavViewItem_Patients.Text" xml:space="preserve">
+    <value>Patients List</value>
+  </data>
+  <data name="NavViewItemPatients.Content" xml:space="preserve">
+    <value>Patients List</value>
+  </data>
 </root>
