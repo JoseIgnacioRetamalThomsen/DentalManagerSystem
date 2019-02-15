@@ -1,4 +1,5 @@
-﻿using DentalManagerSys.Views;
+﻿using DataAccessLibrary;
+using DentalManagerSys.Views;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,6 +28,8 @@ namespace DentalManagerSys
         public MainPage()
         {
             this.InitializeComponent();
+
+            DAO.InitializeDatabase();
         }
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
@@ -59,7 +62,7 @@ namespace DentalManagerSys
             foreach (NavigationViewItemBase item in NavView.MenuItems)
             {
                 Debug.Print(item.Tag.ToString());
-                if (item is NavigationViewItem && item.Tag.ToString() == "PatientsList_View")
+                if (item is NavigationViewItem && item.Tag.ToString() == "PatientsList")
                 {
                     NavView.SelectedItem = item;
                     //dont understand just this work...

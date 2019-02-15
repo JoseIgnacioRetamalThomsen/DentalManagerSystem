@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DataAccessLibrary;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,13 +33,15 @@ namespace DentalManagerSys.Views
         public ViewAllCustomers()
         {
             this.InitializeComponent();
-            customerList = new ObservableCollection<Customer>();
+            customerList = new ObservableCollection<Customer>(DAO.GetAllCustomer());
+
+            /*
             customer = new Customer("G000352030", "markxcvxczvxczvzxcvxcz", "ndipenochvbcxzvbxcvxcxcvz", "2899-23-12", "1 Dublin Road", "Galway", "Connaught", "Ireland", "HP1009", "008795623", "00000", new DateTime(),"Is Test Marshall");
             customer1 = new Customer("G0003520302", "markxcvxczvxczvzxcvxcz", "ndipenochvbcxzvbxcvxcxcvz", "2899-23-12", "1 Dublin Road", "Galway", "Connaught", "Ireland", "HP1009", "008795623", "00000", new DateTime(),"Is Test Marshall");
 
 
             customerList.Add(customer);
-            customerList.Add(customer1);
+            customerList.Add(customer1);*/
             CustomersListView.ItemsSource = customerList;
 
         }
@@ -57,9 +60,9 @@ namespace DentalManagerSys.Views
 
         }
 
-        private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        private void AddNewCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(NewCustomer));
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

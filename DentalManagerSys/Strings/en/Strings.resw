@@ -225,7 +225,31 @@
   <data name="SurnameDataGrid.Header" xml:space="preserve">
     <value>Surname</value>
   </data>
+  <data name="AddNewCustomer.Label" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddNewCustomer.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Add patiente and go to view all customers</value>
+  </data>
+  <data name="AddNewCustomerPlus.Label" xml:space="preserve">
+    <value>Add +</value>
+  </data>
+  <data name="AddNewCustomerPlus.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Add this and another patient then</value>
+  </data>
+  <data name="Comments.PlaceholderText" xml:space="preserve">
+    <value>Comments</value>
+  </data>
   <data name="IdViewCustomer.Text" xml:space="preserve">
     <value>ID</value>
+  </data>
+  <data name="NavViewTretments.Content" xml:space="preserve">
+    <value>View Treatments</value>
+  </data>
+  <data name="RefreshAddCustomerView.Label" xml:space="preserve">
+    <value>Clear View</value>
+  </data>
+  <data name="RefreshAddCustomerView.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Remove all data from view</value>
   </data>
 </root>
