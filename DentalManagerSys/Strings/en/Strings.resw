@@ -225,4 +225,7 @@
   <data name="SurnameDataGrid.Header" xml:space="preserve">
     <value>Surname</value>
   </data>
+  <data name="IdViewCustomer.Text" xml:space="preserve">
+    <value>ID</value>
+  </data>
 </root>

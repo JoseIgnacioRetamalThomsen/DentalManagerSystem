@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -29,6 +30,15 @@ namespace DentalManagerSys.Views
         public ViewCustomerDetails()
         {
             this.InitializeComponent();
+            DisplayDetails();
+        }
+
+        private void DisplayDetails()
+        {
+            Customer temp = null;//get customer from database using iD
+
+            IdTextBox.Text = "g00234232";//temp.iD
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

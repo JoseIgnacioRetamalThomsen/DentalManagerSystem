@@ -57,8 +57,8 @@ Background="Transparent"
                 </Grid.ColumnDefinitions>
 
                 <StackPanel x:Name="id" Grid.Row="0" Grid.Column="0" Margin="5">
-                    <TextBlock Text="ID"/>
-                    <TextBox Text="G0035"/>
+                    <TextBlock x:Uid="/Strings/IdViewCustomer"/>
+                    <TextBox x:Name="IdTextBox"/>
                 </StackPanel>
                 
                 <StackPanel x:Name="DOB" Grid.Row="0" Grid.Column="1" Margin="5">
