@@ -33,11 +33,13 @@ namespace DentalManagerSys.Views
         public ViewCustomerDetails()
         {
             this.InitializeComponent();
-            DisplayDetails();
+
+            
         }
 
-        private void DisplayDetails()
+        private void DisplayDetails(string iD)
         {
+           
             Customer temp = DAO.GetCustomerByID(iD);
 
             IdTextBox.Text = temp.iD;
@@ -63,6 +65,7 @@ namespace DentalManagerSys.Views
             else
             {
                Debug.WriteLine(e.Parameter);
+                DisplayDetails(e.Parameter.ToString());
                 iD = e.Parameter.ToString();
             }
 
