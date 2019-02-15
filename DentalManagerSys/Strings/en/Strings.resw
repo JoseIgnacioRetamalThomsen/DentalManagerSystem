@@ -198,6 +198,9 @@
   <data name="NavViewItem_Patients.Text" xml:space="preserve">
     <value>Patients List</value>
   </data>
+  <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
+    <value>Search patients...</value>
+  </data>
   <data name="SelectBarButton.Label" xml:space="preserve">
     <value>Select</value>
   </data>

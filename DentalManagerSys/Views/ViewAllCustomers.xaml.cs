@@ -36,6 +36,22 @@ namespace DentalManagerSys.Views
             CustomersListView.ItemsSource = customerList;
 
         }
+
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PatientsCommandBar_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 
