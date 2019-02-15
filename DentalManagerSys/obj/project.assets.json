@@ -7728,24 +7728,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pepe\\.nuget\\packages\\": {},
+    "C:\\Users\\Duane Mills\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\DentalManagerSys\\DentalManagerSys.csproj",
+      "projectUniqueName": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\DentalManagerSys\\DentalManagerSys.csproj",
       "projectName": "DentalManagerSys",
-      "projectPath": "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\DentalManagerSys\\DentalManagerSys.csproj",
-      "packagesPath": "C:\\Users\\pepe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\DentalManagerSys\\obj\\",
+      "projectPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\DentalManagerSys\\DentalManagerSys.csproj",
+      "packagesPath": "C:\\Users\\Duane Mills\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\DentalManagerSys\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\pepe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Duane Mills\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7758,11 +7758,11 @@
       "frameworks": {
         "uap10.0.16299": {
           "projectReferences": {
-            "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\DataAccessLibrary\\DataAccessLibrary.csproj": {
-              "projectPath": "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\DataAccessLibrary\\DataAccessLibrary.csproj"
+            "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\DataAccessLibrary\\DataAccessLibrary.csproj": {
+              "projectPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\DataAccessLibrary\\DataAccessLibrary.csproj"
             },
-            "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\Models\\Models.csproj"
+            "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\Models\\Models.csproj"
             }
           }
         }

@@ -76,11 +76,12 @@
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "sha512": "a/iSwnRZb+LHFk49hQOyThh/ZNC3vsbZsF65XwQIb863qF6msmhdQtxGXFL28Ob2NsCz/drEj28BJd/YPpLRBg==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
@@ -217,11 +218,12 @@
       ]
     },
     "SQLitePCLRaw.core/1.1.11": {
-      "sha512": "QT17CyQAQIbTCu6pW5+uVA8BXqRzquiDI1tr5Un6c1YZcQydPmGPuYYng9xMs2UHUDYHbTu+JDkp55WR+qo9bQ==",
+      "sha512": "bWiOso10I1vDuc5rbzT69LQT0+oXfYnoqx8vKJ8zim/CJ4ytSd20QNTE/FE0dvWEgXGnvDp7gGJFu6PeWnhx9g==",
       "type": "package",
       "path": "sqlitepclraw.core/1.1.11",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "lib/MonoAndroid/SQLitePCLRaw.core.dll",
         "lib/Xamarin.Mac20/SQLitePCLRaw.core.dll",
         "lib/Xamarin.iOS10/SQLitePCLRaw.core.dll",
@@ -255,23 +257,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pepe\\.nuget\\packages\\": {},
+    "C:\\Users\\Duane Mills\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\DataAccessLibrary\\DataAccessLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\DataAccessLibrary\\DataAccessLibrary.csproj",
       "projectName": "DataAccessLibrary",
-      "projectPath": "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\DataAccessLibrary\\DataAccessLibrary.csproj",
-      "packagesPath": "C:\\Users\\pepe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\DataAccessLibrary\\obj\\",
+      "projectPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\DataAccessLibrary\\DataAccessLibrary.csproj",
+      "packagesPath": "C:\\Users\\Duane Mills\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\DataAccessLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\pepe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Duane Mills\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -284,8 +286,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\Models\\Models.csproj"
+            "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\Models\\Models.csproj"
             }
           }
         }

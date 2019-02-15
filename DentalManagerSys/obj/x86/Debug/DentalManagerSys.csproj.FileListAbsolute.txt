@@ -310,3 +310,26 @@ C:\Users\g00351330\Desktop\DentalManagerSys\DentalManagerSys\obj\x86\Debug\Views
 C:\Users\g00351330\Desktop\DentalManagerSys\DentalManagerSys\obj\x86\Debug\Views\ViewAllCustomers.xaml
 C:\Users\g00351330\Desktop\DentalManagerSys\DentalManagerSys\obj\x86\Debug\Views\ViewAllCustomers.xbf
 C:\Users\g00351330\Desktop\DentalManagerSys\DentalManagerSys\bin\x86\Debug\Views\ViewAllCustomers.xbf
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\DentalManagerSys.csprojAssemblyReference.cache
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\App.g.i.cs
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\App.g.cs
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\App.xaml
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\MainPage.xaml
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\Views\NewCustomer.xaml
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\Views\NewTreatment.xaml
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\Views\ViewAllCustomers.xaml
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\App.xbf
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\MainPage.xbf
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\Views\NewCustomer.xbf
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\Views\NewTreatment.xbf
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\Views\ViewAllCustomers.xbf
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\XamlSaveStateFile.xml
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\MainPage.g.i.cs
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\MainPage.g.cs
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\Views\NewCustomer.g.i.cs
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\Views\NewCustomer.g.cs
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\Views\NewTreatment.g.i.cs
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\Views\NewTreatment.g.cs
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\Views\ViewAllCustomers.g.i.cs
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\Views\ViewAllCustomers.g.cs
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\obj\x86\Debug\XamlTypeInfo.g.cs

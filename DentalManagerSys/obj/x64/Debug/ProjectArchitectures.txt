@@ -1,1 +1,1 @@
-C:\Users\pepe\Desktop\DentalTemp\DentTemporal2017\DentalManagerSys\DentalManagerSys.csproj;x64
+C:\Users\Duane Mills\Desktop\3rd year\PP-IT\DentalManagerSystem\DentalManagerSys\DentalManagerSys.csproj;x64

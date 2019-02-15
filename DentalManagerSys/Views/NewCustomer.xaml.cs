@@ -50,6 +50,7 @@ namespace DentalManagerSys.Views
             mobilNumInput.Text = "";
             homeNumInput.Text = "";
             birthDatePicker.Date = new DateTime();
+            CommentsInput.Text = "";
 
         }
 
@@ -97,7 +98,8 @@ namespace DentalManagerSys.Views
                     postCodeInput.Text,//postcode
                     mobilNumInput.Text,//mobil number
                     homeNumInput.Text,//home number
-                    emaillInput.Text //email
+                    emaillInput.Text, //email
+                    CommentsInput.Text//comments
                     );
                 Debug.Write(temp);
                 if (temp)

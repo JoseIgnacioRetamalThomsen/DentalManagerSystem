@@ -18,9 +18,10 @@ namespace Models
         public string mobileNum { get; set; }
         public string homeNum { get; set; }
         public string email { get; set; }
+        public string comments { get; set; }
         public DateTime dOB { get; set; }
 
-        public Customer(string iD, string name, string surname, string street, string city, string province, string country, string postcode, string mobileNum, string homeNum, string email, DateTime dOB)
+        public Customer(string iD, string name, string surname, string street, string city, string province, string country, string postcode, string mobileNum, string homeNum, string email, DateTime dOB,string comments)
         {
             this.iD = iD;
             this.name = name;
@@ -34,6 +35,7 @@ namespace Models
             this.homeNum = homeNum;
             this.email = email;
             this.dOB = dOB;
+            this.comments = comments;
         }
 
 

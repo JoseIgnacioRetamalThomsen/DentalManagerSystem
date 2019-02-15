@@ -186,4 +186,7 @@
   <data name="UniqueIdError.Text" xml:space="preserve">
     <value>ID must be unique</value>
   </data>
+  <data name="Comments.PlaceholderText" xml:space="preserve">
+    <value>Comments</value>
+  </data>
 </root>
