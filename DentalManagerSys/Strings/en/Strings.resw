@@ -186,4 +186,25 @@
   <data name="UniqueIdError.Text" xml:space="preserve">
     <value>ID must be unique</value>
   </data>
+  <data name="NavViewItem_Patients.Text" xml:space="preserve">
+    <value>Patients List</value>
+  </data>
+  <data name="AddBarButton.Label" xml:space="preserve">
+    <value>New Patient</value>
+  </data>
+  <data name="AddBarButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create a new patient</value>
+  </data>
+  <data name="NavViewItemPatients.Content" xml:space="preserve">
+    <value>Patients List</value>
+  </data>
+  <data name="SelectBarButton.Label" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SelectBarButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Select patient for view details and add treatments plans</value>
+  </data>
+  <data name="ViewAllCustomerPageTitle.Text" xml:space="preserve">
+    <value>Patients</value>
+  </data>
 </root>

@@ -30,11 +30,12 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "sha512": "a/iSwnRZb+LHFk49hQOyThh/ZNC3vsbZsF65XwQIb863qF6msmhdQtxGXFL28Ob2NsCz/drEj28BJd/YPpLRBg==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
@@ -177,23 +178,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pepe\\.nuget\\packages\\": {},
+    "C:\\Users\\Duane Mills\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\Models\\Models.csproj",
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\Models\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\Models\\Models.csproj",
+      "projectPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\Models\\Models.csproj",
+      "packagesPath": "C:\\Users\\Duane Mills\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Duane Mills\\Desktop\\3rd year\\PP-IT\\DentalManagerSystem\\Models\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\pepe\\Desktop\\DentalManagerSystem\\Models\\Models.csproj",
+      "projectName": "Models",
+      "projectPath": "C:\\Users\\pepe\\Desktop\\DentalManagerSystem\\Models\\Models.csproj",
       "packagesPath": "C:\\Users\\pepe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pepe\\Desktop\\DentalTemp\\DentTemporal2017\\Models\\obj\\",
+      "outputPath": "C:\\Users\\pepe\\Desktop\\DentalManagerSystem\\Models\\obj\\",
+>>>>>>> 892030cc0f9594b6afd73bf3364721ea07c56c29
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\pepe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Duane Mills\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
