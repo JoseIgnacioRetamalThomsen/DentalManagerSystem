@@ -30,7 +30,7 @@
                 <AppBarSeparator />
                 <AppBarButton
                     Icon="Add"
-                    Click="AppBarButton_Click_1"
+                    Click="AddNewCustomerButton_Click"
                     x:Uid="/Strings/AddBarButton"
                     />
             </CommandBar>

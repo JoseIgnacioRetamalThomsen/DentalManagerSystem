@@ -28,6 +28,7 @@ namespace DentalManagerSys
         public MainPage()
         {
             this.InitializeComponent();
+
             DAO.InitializeDatabase();
         }
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -57,11 +58,11 @@ namespace DentalManagerSys
             //    Tag = "content"
             //});
 
-            // set the initial SelectedItem 
+            // set the initial SelectedItem
             foreach (NavigationViewItemBase item in NavView.MenuItems)
             {
                 Debug.Print(item.Tag.ToString());
-                if (item is NavigationViewItem && item.Tag.ToString() == "PatientsList_View")
+                if (item is NavigationViewItem && item.Tag.ToString() == "PatientsList")
                 {
                     NavView.SelectedItem = item;
                     //dont understand just this work...
@@ -94,7 +95,7 @@ namespace DentalManagerSys
 
                 String stringTag = lookup[ContentFrame.SourcePageType];
                 //Debug.Write(stringTag);
-                // set the new SelectedItem  
+                // set the new SelectedItem
                 foreach (NavigationViewItemBase item in NavView.MenuItems)
                 {
                     if (item is NavigationViewItem && item.Tag.Equals(stringTag))
@@ -126,7 +127,7 @@ namespace DentalManagerSys
                     case "content":
                         ContentFrame.Navigate(typeof(MainPage));
                         break;
-                        
+
             }
 
         }// NavView_Navigate(NavigationViewItem item)
