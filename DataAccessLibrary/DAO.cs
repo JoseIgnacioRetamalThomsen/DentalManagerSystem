@@ -163,6 +163,46 @@ namespace DataAccessLibrary
 
         }
 
+        /// <summary>
+        /// Get a treatement by treatement id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+
+        public static Treatment GetTreatmentByID(String id)
+        {
+
+            Treatment treatment = null;
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from treatment where treatmentID=@treatmentID", db);
+                selectCommand.Parameters.AddWithValue("@TreatmentID", id);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+
+                    treatment = new Treatment(
+                    query.GetString(0),
+                    query.GetString(1),
+                    query.GetDecimal(2)
+
+
+                 );
+                    //treatment.Print();
+                }
+
+                db.Close();
+            }
+
+            return treatment;
+        }
 
         /// <summary>
         /// Insert a new treatment plan

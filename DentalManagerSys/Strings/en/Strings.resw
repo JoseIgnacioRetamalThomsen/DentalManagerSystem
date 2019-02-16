@@ -321,4 +321,10 @@
   <data name="EditBarButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Edit patient data</value>
   </data>
+  <data name="ViewTreatmentName.Text" xml:space="preserve">
+    <value>Treatment Name</value>
+  </data>
+  <data name="ViewTreatmentPrice.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
 </root>

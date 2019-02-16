@@ -26,7 +26,7 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class EditCustomerDetails : Page
     {
-        private string iD="Y";
+        private string iD;
         public EditCustomerDetails()
         {
             this.InitializeComponent();
