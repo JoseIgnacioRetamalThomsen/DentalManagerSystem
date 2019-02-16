@@ -2,7 +2,6 @@
 using Models;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -14,7 +13,6 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -24,26 +22,20 @@ namespace DentalManagerSys.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    /// 
-   
-    public sealed partial class ViewCustomerDetails : Page
+    public sealed partial class EditCustomerDetails : Page
     {
         private string iD;
-     
-        public ViewCustomerDetails()
+        public EditCustomerDetails()
         {
             this.InitializeComponent();
-
-            
         }
 
         private void DisplayDetails(string iD)
         {
-           
+
             Customer temp = DAO.GetCustomerByID(iD);
 
             PageTitle.Text = temp.name + " " + temp.surname;
-            IdTextBox.Text = temp.iD;
             DOBTextBox.Text = temp.dOB.ToString();
             streetTextBox.Text = temp.street;
             cityTextBox.Text = temp.city;
@@ -60,23 +52,21 @@ namespace DentalManagerSys.Views
         {
             if (e.Parameter == null)
             {
-               
+
             }
             else
             {
-               Debug.WriteLine(e.Parameter);
                 DisplayDetails(e.Parameter.ToString());
-                iD = e.Parameter.ToString();
             }
 
-           
-            
         }
+
 
         private void CreateTreatmentPlan_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(NewTreatmentPlanView), iD,
-                   new DrillInNavigationTransitionInfo());
+     
+           
         }
+
     }
 }
