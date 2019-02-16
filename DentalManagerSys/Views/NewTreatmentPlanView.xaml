@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
@@ -34,9 +35,10 @@
                     x:Uid="/Strings/AddBarButton"/>
 
             </CommandBar>
-            
 
-            <Grid
+
+            <Grid 
+                x:Name="TopGrid"
                 RelativePanel.Below="PageTitle">
 
                 <Grid.RowDefinitions>
@@ -57,10 +59,47 @@
                     <TextBlock   Text="Create Treatment Plan" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
                 </StackPanel>
 
-                <ComboBox x:Name="TreatmentsCB" Grid.Column="0" Grid.Row="1"></ComboBox>
-
+                <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal"  Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="5">
+                    <StackPanel>
+                        <TextBlock Text="Select Treatment"></TextBlock>
+                        <ComboBox x:Name="TreatmentsCB" MinWidth="200" SelectionChanged="TreatmentsCB_SelectionChanged" PlaceholderText="Add Treament to plan"></ComboBox>
+                    </StackPanel>
+                    <Button Content="Add" Margin="5"></Button>
+                </StackPanel>
             </Grid>
 
+            <Grid Margin="0,10,0,0"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="TopGrid"
+               
+                  >
+
+                <toolkit:DataGrid
+                    x:Name="DataGrid"
+                    CanUserReorderColumns="False"
+                    CanUserResizeColumns="False"
+                    AutoGenerateColumns="False"
+                    ItemsSource="{x:Bind treatmentsOnPlan}"
+                    BorderThickness="0"
+                    GridLinesVisibility="None"
+                
+                    IsReadOnly="True"
+                 
+                 >
+                    <toolkit:DataGrid.Columns>
+
+
+                        <toolkit:DataGridTextColumn
+                            Tag="TreatmentName"
+                            Header="Name"
+                            Binding="{Binding name}"
+                            />
+
+
+                    </toolkit:DataGrid.Columns>
+                </toolkit:DataGrid>
+            </Grid>
         </RelativePanel>
 
     </Grid>

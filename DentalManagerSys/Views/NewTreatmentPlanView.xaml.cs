@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DataAccessLibrary;
+using Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -23,9 +26,23 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class NewTreatmentPlanView : Page
     {
+
+        ObservableCollection<Treatment> treatments = null;
+        ObservableCollection<Treatment> treatmentsOnPlan = new ObservableCollection<Treatment>();
+        
+
         public NewTreatmentPlanView()
         {
             this.InitializeComponent();
+
+            InitTreamentsCB();
+        }
+
+        private void InitTreamentsCB()
+        {
+            treatments = new ObservableCollection<Treatment>(DAO.GetAllTreatment());
+            TreatmentsCB.ItemsSource = treatments;
+            //TreatmentsCB.SelectedIndex = 0;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -44,7 +61,12 @@ namespace DentalManagerSys.Views
             
         }
 
-
+        private void TreatmentsCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox temp = (ComboBox)sender;
+            treatmentsOnPlan.Add(treatments[temp.SelectedIndex]);
+            
+        }
     }
 
 
