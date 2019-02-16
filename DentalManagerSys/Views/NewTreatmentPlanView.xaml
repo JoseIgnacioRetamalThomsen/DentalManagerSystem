@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:local1="using:Models"
      xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -75,6 +76,11 @@
                
                   >
 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                
+                </Grid.RowDefinitions>
                 <toolkit:DataGrid
                     x:Name="DataGrid"
                     CanUserReorderColumns="False"
@@ -83,8 +89,10 @@
                     ItemsSource="{x:Bind treatmentsOnPlan}"
                     BorderThickness="0"
                     GridLinesVisibility="None"
+                    SelectionChanged="DataGrid_SelectionChanged"
+                    Grid.Row="0"
                 
-                    IsReadOnly="True"
+                    
                  
                  >
                     <toolkit:DataGrid.Columns>
@@ -94,11 +102,55 @@
                             Tag="TreatmentName"
                             Header="Name"
                             Binding="{Binding name}"
+                            
+                            
+                            IsReadOnly="True"
+                            />
+                        <toolkit:DataGridTextColumn
+                            Tag="TreatmentName"
+                            Header="Cost"
+                            Binding="{Binding price, Mode=TwoWay}"
+                            IsReadOnly="False"
+                            
                             />
 
 
                     </toolkit:DataGrid.Columns>
                 </toolkit:DataGrid>
+
+                <ListView x:Name="TreatmentsDoneListView" Height="200"
+                      ScrollViewer.HorizontalScrollMode="Enabled" 
+                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                      ScrollViewer.VerticalScrollMode="Enabled"
+                       ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          SelectionMode="Single"
+                          IsItemClickEnabled="True"
+            
+                         
+                          Grid.Row="1">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate  x:DataType="local1:Treatment">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="350" />
+                                    <ColumnDefinition  Width="150"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="{x:Bind iD}" Grid.Column="0" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind name}" Grid.Column="1" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind price}" Grid.Column="2" Grid.Row="0"/>
+
+                            </Grid>
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
         </RelativePanel>
 

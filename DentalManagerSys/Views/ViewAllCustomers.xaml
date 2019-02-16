@@ -98,9 +98,9 @@
                       ScrollViewer.VerticalScrollMode="Enabled"
                        ScrollViewer.VerticalScrollBarVisibility="Auto"
                           SelectionMode="Single"
-                          IsItemClickEnabled="True">
-            --><!--ItemClick="AccountsListView_ItemClick"
-                          SelectionChanged="AccountsListView_SelectionChanged"--><!--
+                          IsItemClickEnabled="True"
+            ItemClick="AccountsListView_ItemClick"
+                          SelectionChanged="AccountsListView_SelectionChanged">
 
             <ListView.ItemTemplate>
                 <DataTemplate  x:DataType="local1:Customer">

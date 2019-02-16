@@ -36,6 +36,8 @@ namespace DentalManagerSys.Views
             this.InitializeComponent();
 
             InitTreamentsCB();
+
+            TreatmentsDoneListView.ItemsSource = treatmentsOnPlan;
         }
 
         private void InitTreamentsCB()
@@ -66,6 +68,11 @@ namespace DentalManagerSys.Views
             ComboBox temp = (ComboBox)sender;
             treatmentsOnPlan.Add(treatments[temp.SelectedIndex]);
             
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 
