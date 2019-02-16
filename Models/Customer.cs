@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Models
@@ -38,6 +39,27 @@ namespace Models
             this.comments = comments;
         }
 
+        public void Print()
+        {
+            Debug.WriteLine("id" + this.iD);
+            Debug.WriteLine("name" + this.name);
+            Debug.WriteLine("surname" + this.surname);
+            Debug.WriteLine("street" + this.street);
+            Debug.WriteLine("city" + this.city);
+            Debug.WriteLine("province" + this.province);
+            Debug.WriteLine("country" + this.country);
+            Debug.WriteLine("postcode" + this.postcode);
+            Debug.WriteLine("mobilNum" + this.mobileNum);
+            Debug.WriteLine("homeNum" + this.homeNum);
+            Debug.WriteLine("email" + this.email);
+            Debug.WriteLine("dob" + this.dOB);
+            Debug.WriteLine("dob" + this.dOB);
+            Debug.WriteLine("comment" + this.comments);
+
+
+
+
+        }
 
     }
 }

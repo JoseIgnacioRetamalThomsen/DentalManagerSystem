@@ -10,52 +10,103 @@
 
     <Grid>
 
-        <Grid x:Name="NewTreatmentContainerGrid" Width="400" Height="170" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <RelativePanel>
+            <TextBlock 
+                x:Uid="/Strings/TretmentsListTitle" 
+                x:Name="PageTitle" 
+                Style="{StaticResource TitleTextBlockStyle}">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="1.5*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+            </TextBlock>
 
-            <TextBlock x:Name="topTextBlock" x:Uid="/Strings/NewTreatmentTextBlock" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+            <CommandBar 
+                x:Name="PatientsCommandBar"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                RelativePanel.RightOf="PageTitle"
+                RelativePanel.LeftOf="SearchBox">
 
-            <Grid x:Name="TreatmentsInputGrid" Width="400" Height="50" Grid.Row="1" Grid.Column="0">
+                <AppBarButton 
+                    x:Name="AddTreatmentButton"
+                    Icon="Add"
+                    
+                    x:Uid="/Strings/AddTreatmentButton"
+                    IsEnabled="True"/>
+                <AppBarSeparator />
+
+                <AppBarButton
+                    Icon="Add"
+             
+                    x:Uid="/Strings/AddBarButton"
+                    />
+            </CommandBar>
+            <AutoSuggestBox 
+                x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
+                 QueryIcon="Find"
+                                Width="200"
+                x:Uid="/Strings/SearchAutoSuggestBox">
+
+            </AutoSuggestBox>
+
+            <Grid 
+                x:Name="NewTreatmentContainerGrid" 
+                Width="400" 
+                Height="170"
+                RelativePanel.Below="PageTitle">
+
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <TextBox x:Name="inputTreatmentName" x:Uid="/Strings/TreatmentName"   Grid.Row="0" Grid.Column="0" Margin="2"   ></TextBox>
-                <TextBox x:Name="inputTreatmentPrice" x:Uid="/Strings/TreatmentPrice"   Grid.Row="0" Grid.Column="1" Margin="2" TextChanging="inputTreatmentPrice_TextChanging"></TextBox>
-
-            </Grid>
-            <Grid x:Name="ButtonsGrid" Grid.Row="2" Grid.Column="0" >
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="3*" />
-
-
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*" />
                     <RowDefinition Height="*" />
-
                 </Grid.RowDefinitions>
 
-                <Button x:Name="ClearButton" x:Uid="/Strings/Clear" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Margin="2" Tapped="ClearButton_Tapped"></Button>
-                <Button x:Name="AddButton" x:Uid="/Strings/Add" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Margin="2" Tapped="AddButton_Tapped"></Button>
+                <TextBlock 
+                x:Name="topTextBlock" 
+                Grid.Row="0" Grid.Column="0" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Center" 
+                TextAlignment="Center" 
+                Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+
+                <Grid x:Name="TreatmentsInputGrid" Width="400" Height="50" Grid.Row="1" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBox x:Name="inputTreatmentName" x:Uid="/Strings/TreatmentName"   Grid.Row="0" Grid.Column="0" Margin="2"   ></TextBox>
+                    <TextBox x:Name="inputTreatmentPrice" x:Uid="/Strings/TreatmentPrice"   Grid.Row="0" Grid.Column="1" Margin="2" TextChanging="inputTreatmentPrice_TextChanging"></TextBox>
+
+                </Grid>
+                <Grid x:Name="ButtonsGrid" Grid.Row="2" Grid.Column="0" >
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="3*" />
+
+
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+
+                    </Grid.RowDefinitions>
+
+                    <Button x:Name="ClearButton" x:Uid="/Strings/Clear" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Margin="2" Tapped="ClearButton_Tapped"></Button>
+                    <Button x:Name="AddButton" x:Uid="/Strings/Add" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Margin="2" Tapped="AddButton_Tapped"></Button>
+
+                </Grid>
 
             </Grid>
 
-        </Grid>
+        </RelativePanel>
+
     </Grid>
 </Page>

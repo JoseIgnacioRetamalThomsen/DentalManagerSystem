@@ -6,9 +6,80 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <RelativePanel>
+            <TextBlock 
+                x:Uid="/Strings/TretmentsListTitle" 
+                x:Name="PageTitle" 
+                Style="{StaticResource TitleTextBlockStyle}">
+                
+            </TextBlock>
 
+            <CommandBar 
+                x:Name="PatientsCommandBar"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                RelativePanel.RightOf="PageTitle"
+                RelativePanel.LeftOf="SearchBox">
+                
+                <AppBarButton 
+                    x:Name="AddTreatmentButton"
+                    Icon="Add"
+                    Click="ViewCustomerButton_Click"
+                    x:Uid="/Strings/AddTreatmentButton"
+                    IsEnabled="True"/>
+                <AppBarSeparator />
+                
+                <AppBarButton
+                    Icon="Add"
+             
+                    x:Uid="/Strings/AddBarButton"
+                    />
+            </CommandBar>
+            <AutoSuggestBox 
+                x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
+                 QueryIcon="Find"
+                                Width="200"
+                x:Uid="/Strings/SearchAutoSuggestBox">
+
+            </AutoSuggestBox>
+
+            <Grid Margin="0,10,0,0"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="PageTitle"
+               
+                  >
+
+                <toolkit:DataGrid
+                    x:Name="DataGrid"
+                    CanUserReorderColumns="False"
+                    CanUserResizeColumns="False"
+                    AutoGenerateColumns="False"
+                    BorderThickness="0"
+                    GridLinesVisibility="None"
+                    ItemsSource="{x:Bind treatmentsList}"
+                    IsReadOnly="True"
+                    >
+                    
+                    <toolkit:DataGrid.Columns>
+                        <toolkit:DataGridTextColumn
+                            Tag="TreatmentName"
+                            Binding="{Binding name}"
+                            x:Uid="/Strings/TreatmentNameDataGrid"/>
+
+                        <toolkit:DataGridTextColumn
+                            Tag="Surname"
+                            Binding="{Binding price}"
+                            x:Uid="/Strings/TreatmentPriceDataGrid"/>
+                                               
+
+                    </toolkit:DataGrid.Columns>
+                </toolkit:DataGrid>
+            </Grid>
+        </RelativePanel>
     </Grid>
 </Page>
