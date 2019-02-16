@@ -27,23 +27,14 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class ViewAllCustomers : Page
     {
-        Customer customer;
-        Customer customer1;
+        
         ObservableCollection<Customer> customerList = null;
         public ViewAllCustomers()
         {
             this.InitializeComponent();
             customerList = new ObservableCollection<Customer>(DAO.GetAllCustomer());
 
-            /*
-            customer = new Customer("G000352030", "markxcvxczvxczvzxcvxcz", "ndipenochvbcxzvbxcvxcxcvz", "2899-23-12", "1 Dublin Road", "Galway", "Connaught", "Ireland", "HP1009", "008795623", "00000", new DateTime(),"Is Test Marshall");
-            customer1 = new Customer("G0003520302", "markxcvxczvxczvzxcvxcz", "ndipenochvbcxzvbxcvxcxcvz", "2899-23-12", "1 Dublin Road", "Galway", "Connaught", "Ireland", "HP1009", "008795623", "00000", new DateTime(),"Is Test Marshall");
-
-
-            customerList.Add(customer);
-            customerList.Add(customer1);*/
-            CustomersListView.ItemsSource = customerList;
-
+           
         }
 
       

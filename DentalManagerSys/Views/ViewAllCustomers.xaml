@@ -92,15 +92,15 @@
             </Grid>
         </RelativePanel>
 
-        <ListView x:Name="CustomersListView" Height="200"
+        <!--<ListView x:Name="CustomersListView" Height="200"
                       ScrollViewer.HorizontalScrollMode="Enabled" 
                        ScrollViewer.HorizontalScrollBarVisibility="Auto"
                       ScrollViewer.VerticalScrollMode="Enabled"
                        ScrollViewer.VerticalScrollBarVisibility="Auto"
                           SelectionMode="Single"
                           IsItemClickEnabled="True">
-            <!--ItemClick="AccountsListView_ItemClick"
-                          SelectionChanged="AccountsListView_SelectionChanged"-->
+            --><!--ItemClick="AccountsListView_ItemClick"
+                          SelectionChanged="AccountsListView_SelectionChanged"--><!--
 
             <ListView.ItemTemplate>
                 <DataTemplate  x:DataType="local1:Customer">
@@ -123,7 +123,7 @@
                 </DataTemplate>
 
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
 
     </Grid>
 </Page>
