@@ -28,8 +28,7 @@ namespace DentalManagerSys.Views
     public sealed partial class ViewCustomerDetails : Page
     {
         private string iD;
-   
-
+     
         public ViewCustomerDetails()
         {
             this.InitializeComponent();
@@ -41,19 +40,19 @@ namespace DentalManagerSys.Views
         {
            
             Customer temp = DAO.GetCustomerByID(iD);
-
+            firstnameTextBox.Text = temp.name;
+            surnameTextBox.Text = temp.surname;
             IdTextBox.Text = temp.iD;
             DOBTextBox.Text = temp.dOB.ToString();
-            emailTextBox.Text = temp.email;
-            mobileTextBox.Text = temp.mobileNum;
-            fixTextBox.Text = temp.homeNum;
             streetTextBox.Text = temp.street;
             cityTextBox.Text = temp.city;
             provinceTextBox.Text = temp.province;
-            postcodeTextBox.Text = temp.postcode;
             countryTextBox.Text = temp.country;
+            postcodeTextBox.Text = temp.postcode;
+            mobileTextBox.Text = temp.mobileNum;
+            fixTextBox.Text = temp.homeNum;
+            emailTextBox.Text = temp.email;
             commentsTextBox.Text = temp.comments;
-
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
