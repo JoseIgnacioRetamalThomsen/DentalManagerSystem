@@ -65,14 +65,36 @@ namespace DentalManagerSys.Views
 
         private void TreatmentsCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox temp = (ComboBox)sender;
-            treatmentsOnPlan.Add(treatments[temp.SelectedIndex]);
+            
             
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void TreatmentsDoneListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+           
+        }
+
+        private void TreatmentsDoneListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Debug.WriteLine("willThis" + ((ListView)sender).SelectedIndex);
+            EditPriceTB.Text = treatmentsOnPlan[((ListView)sender).SelectedIndex].price.ToString();
+        }
+
+        private void TreatmentsCB_DropDownClosed(object sender, object e)
+        {
+            ComboBox temp = (ComboBox)sender;
+            Treatment t = treatments[temp.SelectedIndex];
+            treatmentsOnPlan.Add(new Treatment(t.iD, t.name, t.price));
+        }
+
+        private void EditPriceTB_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            sender.Text = new String(sender.Text.Where(char.IsDigit).ToArray());
         }
     }
 
