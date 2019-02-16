@@ -62,8 +62,7 @@
                     BorderThickness="0"
                     GridLinesVisibility="None"
                     ItemsSource="{x:Bind treatmentsList}"
-                    IsReadOnly="True"
-                    >
+                    IsReadOnly="True">
                     
                     <toolkit:DataGrid.Columns>
                         <toolkit:DataGridTextColumn

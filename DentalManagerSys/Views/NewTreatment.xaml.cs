@@ -48,6 +48,20 @@ namespace DentalManagerSys.Views
 
         private void AddButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            AddTreatment();
+        }
+        /// <summary>
+        /// Allow only number in Price input
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void inputTreatmentPrice_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            sender.Text = new String(sender.Text.Where(char.IsDigit).ToArray());
+        }
+
+        private void AddTreatment()
+        {
             //check for both inputs
             if (inputTreatmentName.Text == "" || inputTreatmentPrice.Text == "")
             {
@@ -61,14 +75,25 @@ namespace DentalManagerSys.Views
                 this.ClearButton_Tapped(this, new TappedRoutedEventArgs());
             }
         }
-        /// <summary>
-        /// Allow only number in Price input
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void inputTreatmentPrice_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        private void ClearInputs()
         {
-            sender.Text = new String(sender.Text.Where(char.IsDigit).ToArray());
+            inputTreatmentName.Text = "";
+            inputTreatmentPrice.Text = "";
+        }
+        private void AddTreatmentButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddTreatment();
+            Frame.GoBack();
+        }
+
+        private void AddTreatmentPlusButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddTreatment();
+        }
+
+        private void RefreshTreatmentsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClearInputs();
         }
     }
 }
