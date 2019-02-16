@@ -22,30 +22,32 @@
                 x:Name="PatientsCommandBar"
                 HorizontalAlignment="Stretch"
                 Background="Transparent"
-                RelativePanel.RightOf="PageTitle"
-                RelativePanel.LeftOf="SearchBox">
+                RelativePanel.RightOf="PageTitle">
 
                 <AppBarButton 
                     x:Name="AddTreatmentButton"
                     Icon="Add"
-                    
                     x:Uid="/Strings/AddTreatmentButton"
+                    Click="AddTreatmentButton_Click"
                     IsEnabled="True"/>
+                <AppBarButton 
+                    x:Name="AddTreatmentPlusButton"
+                    Icon="AddFriend"
+                    x:Uid="/Strings/AddTreatmentPlusButton"
+                    Click="AddTreatmentPlusButton_Click"
+                    IsEnabled="True"/>
+                <AppBarButton 
+                    x:Name="RefreshTreatmentsButton"
+                    Icon="Refresh"
+                    x:Uid="/Strings/RefrshTreatmentsButton"
+                    Click="RefreshTreatmentsButton_Click"
+                    IsEnabled="True"/>
+
                 <AppBarSeparator />
 
-                <AppBarButton
-                    Icon="Add"
-             
-                    x:Uid="/Strings/AddBarButton"
-                    />
+                
             </CommandBar>
-            <AutoSuggestBox 
-                x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
-                 QueryIcon="Find"
-                                Width="200"
-                x:Uid="/Strings/SearchAutoSuggestBox">
-
-            </AutoSuggestBox>
+           
 
             <Grid 
                 x:Name="NewTreatmentContainerGrid" 

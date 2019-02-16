@@ -431,21 +431,22 @@ namespace DataAccessLibrary
                 {
 
                     customer = new Customer(
-                    query.GetString(0),
-                    query.GetString(1),
-                    query.GetString(2),
-                    query.GetString(4),
-                    query.GetString(5),
-                    query.GetString(6),
-                    query.GetString(7),
-                    query.GetString(8),
-                    query.GetString(9),
-                    query.GetString(10),
-                    query.GetString(11),
-                    new DateTime(),//datequery.GetString(3)
-                    query.GetString(12)
-                    
-                    );
+                        query.GetString(0),
+                        query.GetString(1),
+                        query.GetString(2),
+                        query.GetString(4),
+                        query.GetString(5),
+                        query.GetString(6),
+                        query.GetString(7),
+                        query.GetString(8),
+                        query.GetString(9),
+                        query.GetString(10),
+                        query.GetString(11),
+                        Convert.ToDateTime(query.GetString(3)),
+                        query.GetString(12)
+
+                     );
+                    customer.Print();
                 }
 
                 db.Close();
