@@ -393,6 +393,7 @@ namespace DataAccessLibrary
 
                 while (query.Read())
                 {
+                   
                    customer =new Customer(
                     query.GetString(0),
                     query.GetString(1),
@@ -406,8 +407,9 @@ namespace DataAccessLibrary
                     query.GetString(9),
                     query.GetString(10),
                     new DateTime(),
-                    query.GetString(11)
+                    query.GetString(12)
                     );
+                    customer.Print();
                 }
 
                 db.Close();

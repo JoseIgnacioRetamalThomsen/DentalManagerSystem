@@ -53,7 +53,6 @@ namespace Models
             Debug.WriteLine("homeNum" + this.homeNum);
             Debug.WriteLine("email" + this.email);
             Debug.WriteLine("dob" + this.dOB);
-            Debug.WriteLine("dob" + this.dOB);
             Debug.WriteLine("comment" + this.comments);
 
 
