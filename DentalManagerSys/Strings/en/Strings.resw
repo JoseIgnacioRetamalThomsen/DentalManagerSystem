@@ -300,6 +300,12 @@
   <data name="AddTreatmentPlusButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Add this treatment and then another</value>
   </data>
+  <data name="CreateTreatmentPlanButton.Label" xml:space="preserve">
+    <value>Treatment plan</value>
+  </data>
+  <data name="CreateTreatmentPlanButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create a new Treatment plan</value>
+  </data>
   <data name="RefrshTreatmentsButton.Label" xml:space="preserve">
     <value>Clear</value>
   </data>

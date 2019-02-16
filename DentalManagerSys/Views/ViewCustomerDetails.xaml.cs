@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -40,8 +41,8 @@ namespace DentalManagerSys.Views
         {
            
             Customer temp = DAO.GetCustomerByID(iD);
-            firstnameTextBox.Text = temp.name;
-            surnameTextBox.Text = temp.surname;
+           
+            PageTitle.Text = temp.name + " " + temp.surname;
             IdTextBox.Text = temp.iD;
             DOBTextBox.Text = temp.dOB.ToString();
             streetTextBox.Text = temp.street;
@@ -70,6 +71,12 @@ namespace DentalManagerSys.Views
 
            
             
+        }
+
+        private void CreateTreatmentPlan_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(NewTreatmentPlanView), iD,
+                   new DrillInNavigationTransitionInfo());
         }
     }
 }

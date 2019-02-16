@@ -10,45 +10,30 @@
 
     <Grid>
         <RelativePanel>
-            <TextBlock   x:Name="PageTitle" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <StackPanel x:Name="firstname" Grid.Row="0" Grid.Column="0" Margin="5">
-                    <TextBlock x:Name="firstnameTextBox"/>
-                </StackPanel>
-
-                <StackPanel x:Name="surname" Grid.Row="0" Grid.Column="1" Margin="5">
-                    <TextBlock x:Name="surnameTextBox"/>
-                </StackPanel>
-
-            </Grid>
-            <CommandBar x:Name="PatientsCommandBar"
-                        HorizontalAlignment="Stretch"
-Background="Transparent"
-                      
-                         RelativePanel.RightOf="PageTitle"
-                        RelativePanel.LeftOf="SearchBox">
+            <TextBlock   
+                x:Name="PageTitle" 
+                Style="{StaticResource TitleTextBlockStyle}">
+             </TextBlock>
+            
+            <CommandBar 
+                x:Name="PatientsCommandBar"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                RelativePanel.RightOf="PageTitle"
+                RelativePanel.LeftOf="SearchBox">
+                
                 <AppBarButton
-                    Icon="Contact"
-                   
-                    x:Uid="/Strings/SelectBarButton"
-                                        IsEnabled="False"
-                                       />
-                <AppBarSeparator />
+                    Tag="CreateTreatmentPlanButton"
+                    Icon="Add"
+                    x:Uid="/Strings/CreateTreatmentPlanButton"
+                    Click="CreateTreatmentPlan_Click"
+                    IsEnabled="True"/>
+                
+                <AppBarSeparator/>
                 <AppBarButton
                     Icon="Add"
+                    x:Uid="/Strings/AddBarButton"/>
                 
-                    x:Uid="/Strings/AddBarButton"
-                    />
             </CommandBar>
             <AutoSuggestBox 
                 x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"

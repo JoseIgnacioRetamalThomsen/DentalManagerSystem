@@ -87,7 +87,7 @@
                     <TextBox x:Name="inputTreatmentPrice" x:Uid="/Strings/TreatmentPrice"   Grid.Row="0" Grid.Column="1" Margin="2" TextChanging="inputTreatmentPrice_TextChanging"></TextBox>
 
                 </Grid>
-                <Grid x:Name="ButtonsGrid" Grid.Row="2" Grid.Column="0" >
+                <!--<Grid x:Name="ButtonsGrid" Grid.Row="2" Grid.Column="0" >
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -104,7 +104,7 @@
                     <Button x:Name="ClearButton" x:Uid="/Strings/Clear" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Margin="2" Tapped="ClearButton_Tapped"></Button>
                     <Button x:Name="AddButton" x:Uid="/Strings/Add" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Margin="2" Tapped="AddButton_Tapped"></Button>
 
-                </Grid>
+                </Grid>-->
 
             </Grid>
 

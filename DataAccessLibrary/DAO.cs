@@ -70,6 +70,7 @@ namespace DataAccessLibrary
                     db.Open();
 
                     SqliteCommand insertCommand = new SqliteCommand();
+                    
                     insertCommand.Connection = db;
 
                     // Use parameterized query
@@ -89,6 +90,7 @@ namespace DataAccessLibrary
                     insertCommand.Parameters.AddWithValue("@Comments", comments);
 
                     insertCommand.ExecuteReader();
+                    
 
                     db.Close();
                 }
@@ -480,6 +482,27 @@ namespace DataAccessLibrary
             }
 
             return entries;
+        }
+        public static void UpdateTreatment(Treatment treatment)
+        {
+            using (SqliteConnection db =
+               new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query to prevent SQL injection attacks
+                insertCommand.CommandText = "UPDATE treatment set treatmentName = @Name, price = @Price where treatmentID = @Id;";
+                insertCommand.Parameters.AddWithValue("@Name", treatment.name);
+                insertCommand.Parameters.AddWithValue("@Price", treatment.price);
+                insertCommand.Parameters.AddWithValue("@Id", treatment.iD);
+
+                insertCommand.ExecuteNonQuery();
+
+                db.Close();
+            }
         }
     }
 }

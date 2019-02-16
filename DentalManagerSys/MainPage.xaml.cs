@@ -1,5 +1,6 @@
 ﻿using DataAccessLibrary;
 using DentalManagerSys.Views;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,7 +31,7 @@ namespace DentalManagerSys
             this.InitializeComponent();
 
             DAO.InitializeDatabase();
-          
+            DAO.UpdateTreatment(new Treatment("1","text",7));
         }
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {

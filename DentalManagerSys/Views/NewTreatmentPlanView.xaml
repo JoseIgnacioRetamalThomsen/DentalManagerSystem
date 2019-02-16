@@ -1,0 +1,106 @@
+﻿<Page
+    x:Class="DentalManagerSys.Views.NewTreatmentPlanView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DentalManagerSys.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <RelativePanel>
+            <TextBlock   
+                x:Name="PageTitle"
+                Text="Marco Gonzalez"
+                Style="{StaticResource TitleTextBlockStyle}">
+            </TextBlock>
+
+            <CommandBar 
+                x:Name="PatientsCommandBar"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                RelativePanel.RightOf="PageTitle"
+               >
+
+                <AppBarButton
+                    Icon="Contact"
+                    x:Uid="/Strings/SelectBarButton"
+                    IsEnabled="False"/>
+
+                <AppBarSeparator/>
+                <AppBarButton
+                    Icon="Add"
+                    x:Uid="/Strings/AddBarButton"/>
+
+            </CommandBar>
+
+
+            <Grid 
+                x:Name="TopGrid"
+                RelativePanel.Below="PageTitle">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition  Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock   Text="Create Treatment Plan" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal"  Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="5">
+                    <StackPanel>
+                        <TextBlock Text="Select Treatment"></TextBlock>
+                        <ComboBox x:Name="TreatmentsCB" MinWidth="200" SelectionChanged="TreatmentsCB_SelectionChanged" PlaceholderText="Add Treament to plan"></ComboBox>
+                    </StackPanel>
+                    <Button Content="Add" Margin="5"></Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid Margin="0,10,0,0"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="TopGrid"
+               
+                  >
+
+                <toolkit:DataGrid
+                    x:Name="DataGrid"
+                    CanUserReorderColumns="False"
+                    CanUserResizeColumns="False"
+                    AutoGenerateColumns="False"
+                    ItemsSource="{x:Bind treatmentsOnPlan}"
+                    BorderThickness="0"
+                    GridLinesVisibility="None"
+                
+                    IsReadOnly="True"
+                 
+                 >
+                    <toolkit:DataGrid.Columns>
+
+
+                        <toolkit:DataGridTextColumn
+                            Tag="TreatmentName"
+                            Header="Name"
+                            Binding="{Binding name}"
+                            />
+
+
+                    </toolkit:DataGrid.Columns>
+                </toolkit:DataGrid>
+            </Grid>
+        </RelativePanel>
+
+    </Grid>
+</Page>
