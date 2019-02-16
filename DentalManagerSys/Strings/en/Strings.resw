@@ -312,4 +312,7 @@
   <data name="RefrshTreatmentsButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Clear all inputs</value>
   </data>
+  <data name="provinceViewCustomer.Text" xml:space="preserve">
+    <value>Province</value>
+  </data>
 </root>

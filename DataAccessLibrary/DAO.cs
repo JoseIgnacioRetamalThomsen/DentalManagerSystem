@@ -321,6 +321,8 @@ namespace DataAccessLibrary
             return customers;
         }
 
+       
+
         public static List<Customer> DeleteCustomerByID(String CustomerID)
         {
 
@@ -455,6 +457,54 @@ namespace DataAccessLibrary
             }
 
             return customer;
+        }
+
+        /// <summary>
+        /// Update or edit customer.
+        /// </summary>
+        /// <param name="customerID"></param>
+        /// <param name="firstName"></param>
+        /// <param name="surname"></param>
+        /// <param name="dOB"></param>
+        /// <param name="street"></param>
+        /// <param name="city"></param>
+        /// <param name="province"></param>
+        /// <param name="country"></param>
+        /// <param name="postcode"></param>
+        /// <param name="mobileNum"></param>
+        /// <param name="fixNum"></param>
+        /// <param name="email"></param>
+        /// <param name="comments"></param>
+        public static void UpdateCustomer(string customerID, string firstName, string surname, string dOB, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email, string comments)
+        {
+            using (SqliteConnection db =
+               new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query to prevent SQL injection attacks
+                insertCommand.CommandText = "UPDATE customers SET firstName =@FirstName, surname =@Surname, dOB =@DOB, street =@Street, city =@City,province =@Province,country =@Country, postcode =@Postcode, mobileNum =@MobileNum,fixNum =@FixNum, email =@Email, comments =@Comments   where customerID=@CustomerID;";
+                insertCommand.Parameters.AddWithValue("@CustomerID", customerID);
+                insertCommand.Parameters.AddWithValue("@FirstName", firstName);
+                insertCommand.Parameters.AddWithValue("@Surname", surname);
+                insertCommand.Parameters.AddWithValue("@DOB", dOB);
+                insertCommand.Parameters.AddWithValue("@Street", street);
+                insertCommand.Parameters.AddWithValue("@City", city);
+                insertCommand.Parameters.AddWithValue("@Province", province);
+                insertCommand.Parameters.AddWithValue("@Country", country);
+                insertCommand.Parameters.AddWithValue("@Postcode", postcode);
+                insertCommand.Parameters.AddWithValue("@MobileNum", mobileNum);
+                insertCommand.Parameters.AddWithValue("@FixNum", fixNum);
+                insertCommand.Parameters.AddWithValue("@Email", email);
+                insertCommand.Parameters.AddWithValue("@Comments", comments);
+
+                insertCommand.ExecuteNonQuery();
+
+                db.Close();
+            }
         }
 
         public static List<String> GetData()
