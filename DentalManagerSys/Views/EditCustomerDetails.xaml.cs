@@ -2,6 +2,7 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -13,6 +14,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -24,17 +26,18 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class EditCustomerDetails : Page
     {
-        private string iD;
+        private string iD="Y";
         public EditCustomerDetails()
         {
             this.InitializeComponent();
+            DisplayDetails("G0035");
         }
 
         private void DisplayDetails(string iD)
         {
-
+            
             Customer temp = DAO.GetCustomerByID(iD);
-
+            
             PageTitle.Text = temp.name + " " + temp.surname;
             DOBTextBox.Text = temp.dOB.ToString();
             streetTextBox.Text = temp.street;
@@ -56,7 +59,7 @@ namespace DentalManagerSys.Views
             }
             else
             {
-                DisplayDetails(e.Parameter.ToString());
+              
             }
 
         }
@@ -64,8 +67,9 @@ namespace DentalManagerSys.Views
 
         private void CreateTreatmentPlan_Click(object sender, RoutedEventArgs e)
         {
-     
-           
+
+            Frame.Navigate(typeof(NewTreatmentPlanView), iD,
+            new DrillInNavigationTransitionInfo());
         }
 
     }
