@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Models
 {
-    public class Treatment
+    public class Treatment 
     {
         public string iD { get; set; }
+
+
         public string name { get; set; }
         public decimal price { get; set; }
+
+
+        
 
         public Treatment(string iD, string name, decimal price)
         {
@@ -22,5 +28,10 @@ namespace Models
         {
             return this.name;
         }
+
+       
+
+      
+
     }
 }
