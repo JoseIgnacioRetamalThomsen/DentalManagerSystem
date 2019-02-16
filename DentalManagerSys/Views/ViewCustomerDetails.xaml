@@ -10,8 +10,27 @@
 
     <Grid>
         <RelativePanel>
-            <TextBlock Text="First Name + Surename" x:Name="PageTitle" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+            <TextBlock   x:Name="PageTitle" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel x:Name="firstname" Grid.Row="0" Grid.Column="0" Margin="5">
+                    <TextBlock x:Name="firstnameTextBox"/>
+                </StackPanel>
+
+                <StackPanel x:Name="surname" Grid.Row="0" Grid.Column="1" Margin="5">
+                    <TextBlock x:Name="surnameTextBox"/>
+                </StackPanel>
+
+            </Grid>
             <CommandBar x:Name="PatientsCommandBar"
                         HorizontalAlignment="Stretch"
 Background="Transparent"
@@ -92,7 +111,7 @@ Background="Transparent"
                 </StackPanel>
 
                 <StackPanel x:Name="province" Grid.Row="2" Grid.Column="2" Margin="5">
-                    <TextBlock x:Uid="/Strings/cityViewCustomer"/>
+                    <TextBlock x:Uid="/Strings/provinceViewCustomer"/>
                     <TextBox x:Name="provinceTextBox"/>
                 </StackPanel>
 
