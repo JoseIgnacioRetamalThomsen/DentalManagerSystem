@@ -1,0 +1,119 @@
+﻿<Page
+    x:Class="DentalManagerSys.Views.EditCustomerDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DentalManagerSys.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <RelativePanel>
+            <TextBlock   
+                x:Name="PageTitle" 
+                Style="{StaticResource TitleTextBlockStyle}">
+            </TextBlock>
+
+            <CommandBar 
+                x:Name="PatientsCommandBar"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                RelativePanel.RightOf="PageTitle"
+                RelativePanel.LeftOf="SearchBox">
+
+                <AppBarButton
+                    Tag="CreateTreatmentPlanButton"
+                    Icon="Add"
+                    x:Uid="/Strings/CreateTreatmentPlanButton"
+                    Click="CreateTreatmentPlan_Click"
+                    IsEnabled="True"/>
+
+                <AppBarSeparator/>
+                <AppBarButton
+                    Icon="Add"
+                    x:Uid="/Strings/AddBarButton"/>
+
+            </CommandBar>
+            <AutoSuggestBox 
+                x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
+                 QueryIcon="Find"
+                                Width="200"
+                x:Uid="/Strings/SearchAutoSuggestBox">
+
+            </AutoSuggestBox>
+
+            <Grid
+                RelativePanel.Below="PageTitle">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition  Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                
+                <StackPanel x:Name="DOB" Grid.Row="0" Grid.Column="0" Margin="5">
+                    <TextBlock x:Uid="/Strings/DOBViewCustomer"/>
+                    <TextBox x:Name="DOBTextBox"/>
+                </StackPanel>
+
+                <StackPanel x:Name="email" Grid.Row="0" Grid.Column="1" Margin="5">
+                    <TextBlock x:Uid="/Strings/emailViewCustomer"/>
+                    <TextBox x:Name="emailTextBox"/>
+                </StackPanel>
+
+                <StackPanel x:Name="mobileNum" Grid.Row="1" Grid.Column="0" Margin="5">
+                    <TextBlock x:Uid="/Strings/mobileViewCustomer"/>
+                    <TextBox x:Name="mobileTextBox"/>
+                </StackPanel>
+
+                <StackPanel x:Name="fixNum" Grid.Row="1" Grid.Column="1" Margin="5">
+                    <TextBlock x:Uid="/Strings/fixNumViewCustomer"/>
+                    <TextBox x:Name="fixTextBox"/>
+                </StackPanel>
+
+                <StackPanel x:Name="street" Grid.Row="2" Grid.Column="0" Margin="5">
+                    <TextBlock x:Uid="/Strings/streetViewCustomer"/>
+                    <TextBox x:Name="streetTextBox"/>
+                </StackPanel>
+
+                <StackPanel x:Name="city" Grid.Row="2" Grid.Column="1" Margin="5">
+                    <TextBlock x:Uid="/Strings/cityViewCustomer"/>
+                    <TextBox x:Name="cityTextBox"/>
+                </StackPanel>
+
+                <StackPanel x:Name="province" Grid.Row="2" Grid.Column="2" Margin="5">
+                    <TextBlock x:Uid="/Strings/provinceViewCustomer"/>
+                    <TextBox x:Name="provinceTextBox"/>
+                </StackPanel>
+
+                <StackPanel x:Name="Postocode" Grid.Row="3" Grid.Column="0" Margin="5">
+                    <TextBlock x:Uid="/Strings/postcodeViewCustomer"/>
+                    <TextBox x:Name="postcodeTextBox"/>
+                </StackPanel>
+
+                <StackPanel x:Name="country" Grid.Row="3" Grid.Column="1" Margin="5">
+                    <TextBlock x:Uid="/Strings/countryViewCustomer"/>
+                    <TextBox x:Name="countryTextBox"/>
+                </StackPanel>
+
+                <StackPanel x:Name="comments" Grid.Row="4" Grid.Column="0" Margin="5" Grid.ColumnSpan="4" Grid.RowSpan="3">
+                    <TextBlock x:Uid="/Strings/comentsViewCustomer"/>
+                    <TextBox x:Name="commentsTextBox"/>
+                </StackPanel>
+
+            </Grid>
+
+        </RelativePanel>
+
+    </Grid>
+
+</Page>
