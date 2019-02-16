@@ -128,6 +128,41 @@ namespace DataAccessLibrary
         }
 
         /// <summary>
+        /// Get all treatment form the database
+        /// </summary>
+        /// <returns></returns>
+        public static List<Treatment> GetAllTreatment()
+        {
+            List<Treatment> treatments = new List<Treatment>();
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from treatment", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    treatments.Add(new Treatment(
+                    query.GetString(0),
+                    query.GetString(1),
+                    query.GetDecimal(2)
+                    ));
+                }
+
+                db.Close();
+            }
+
+            return treatments;
+
+        }
+
+
+        /// <summary>
         /// Insert a new treatment plan
         /// </summary>
         /// <param name="treatmentPlanID"></param>
@@ -395,14 +430,10 @@ namespace DataAccessLibrary
                 while (query.Read())
                 {
 
-
-
-
-
                     customer = new Customer(
                     query.GetString(0),
                     query.GetString(1),
-                   query.GetString(2),
+                    query.GetString(2),
                     query.GetString(4),
                     query.GetString(5),
                     query.GetString(6),

@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DataAccessLibrary;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,9 +32,10 @@ namespace DentalManagerSys.Views
         public ManageTreatmentsView()
         {
             this.InitializeComponent();
-            treatmentsList = new ObservableCollection<Treatment>();
-            treatmentsList.Add(new Treatment("00", "T1", 45000));
-            treatmentsList.Add(new Treatment("00", "T2", 43000));
+            treatmentsList = new ObservableCollection<Treatment>(DAO.GetAllTreatment());
+
+           // treatmentsList.Add(new Treatment("00", "T1", 45000));
+           // treatmentsList.Add(new Treatment("00", "T2", 43000));
         }
 
         private void ViewCustomerButton_Click(object sender, RoutedEventArgs e)
