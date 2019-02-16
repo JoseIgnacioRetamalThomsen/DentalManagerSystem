@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using Models;
 using Microsoft.Data.Sqlite;
+using System.Diagnostics;
 
 namespace DataAccessLibrary
 {
-   public static class DAO
+    public static class DAO
     {
         /// <summary>
         /// Create a database and tables
@@ -57,7 +58,7 @@ namespace DataAccessLibrary
         /// <param name="mobileNum"></param>
         /// <param name="fixNum"></param>
         /// <param name="email"></param>
-        public static bool AddNewCustomer(string id, string firstName, string surname, string dOB, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email,string comments)
+        public static bool AddNewCustomer(string id, string firstName, string surname, string dOB, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email, string comments)
         {
             try
             {
@@ -393,11 +394,15 @@ namespace DataAccessLibrary
 
                 while (query.Read())
                 {
-                   customer =new Customer(
+
+
+
+
+
+                    customer = new Customer(
                     query.GetString(0),
                     query.GetString(1),
-                    query.GetString(2),
-                    query.GetString(3),
+                   query.GetString(2),
                     query.GetString(4),
                     query.GetString(5),
                     query.GetString(6),
@@ -405,8 +410,10 @@ namespace DataAccessLibrary
                     query.GetString(8),
                     query.GetString(9),
                     query.GetString(10),
-                    new DateTime(),
-                    query.GetString(11)
+                    query.GetString(11),
+                    new DateTime(),//datequery.GetString(3)
+                    query.GetString(12)
+                    
                     );
                 }
 
