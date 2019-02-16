@@ -61,6 +61,11 @@ namespace DentalManagerSys.Views
             ViewCustomerButton.IsEnabled = true;
             Debug.WriteLine("change");
         }
+
+        private void EditCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(EditCustomerDetails));
+        }
     }
 }
 

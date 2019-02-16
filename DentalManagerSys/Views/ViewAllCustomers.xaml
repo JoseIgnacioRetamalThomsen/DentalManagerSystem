@@ -33,6 +33,11 @@
                     Click="AddNewCustomerButton_Click"
                     x:Uid="/Strings/AddBarButton"
                     />
+                <AppBarButton
+                    Icon="Edit"
+                    Click="EditCustomer_Click"
+                    x:Uid="/Strings/EditBarButton"
+                    />
             </CommandBar>
             <AutoSuggestBox 
                 x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"

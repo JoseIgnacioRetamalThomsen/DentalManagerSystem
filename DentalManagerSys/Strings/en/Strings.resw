@@ -315,4 +315,10 @@
   <data name="provinceViewCustomer.Text" xml:space="preserve">
     <value>Province</value>
   </data>
+  <data name="EditBarButton.Label" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditBarButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Edit patient data</value>
+  </data>
 </root>
