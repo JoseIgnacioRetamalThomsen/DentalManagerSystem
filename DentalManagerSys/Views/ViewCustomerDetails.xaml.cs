@@ -43,13 +43,17 @@ namespace DentalManagerSys.Views
             Customer temp = DAO.GetCustomerByID(iD);
 
             PageTitle.Text = temp.name + " " + temp.surname;
+            AdressDetails.Text = temp.street + ", " + temp.city+", "+ temp.province + ", "+ temp.postcode + ", " + temp.country;
+
             IdTextBox.Text = temp.iD;
             DOBTextBox.Text = temp.dOB.ToString();
-            streetTextBox.Text = temp.street;
+
+           /* streetTextBox.Text = temp.street;
             cityTextBox.Text = temp.city;
             provinceTextBox.Text = temp.province;
             countryTextBox.Text = temp.country;
-            postcodeTextBox.Text = temp.postcode;
+            postcodeTextBox.Text = temp.postcode;*/
+
             mobileTextBox.Text = temp.mobileNum;
             fixTextBox.Text = temp.homeNum;
             emailTextBox.Text = temp.email;

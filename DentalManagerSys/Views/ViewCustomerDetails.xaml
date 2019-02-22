@@ -52,67 +52,45 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition  Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition  Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel x:Name="id" Grid.Row="0" Grid.Column="0" Margin="5">
-                    <TextBlock x:Uid="/Strings/IdViewCustomer"/>
-                    <TextBox x:Name="IdTextBox"/>
+                <StackPanel x:Name="id" Grid.Row="0" Grid.Column="0" Margin="2" Grid.ColumnSpan="2">
+                    <TextBlock x:Name="IdTextBox"/>
+                </StackPanel>
+
+                <StackPanel x:Name="email" Grid.Row="0" Grid.Column="2" Margin="2" Grid.ColumnSpan="3">
+                    <TextBlock x:Name="emailTextBox"/>
                 </StackPanel>
                 
-                <StackPanel x:Name="DOB" Grid.Row="0" Grid.Column="1" Margin="5">
-                    <TextBlock x:Uid="/Strings/DOBViewCustomer"/>
-                    <TextBox x:Name="DOBTextBox"/>
+                <StackPanel x:Name="DOB" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="2">
+                    <TextBlock x:Name="DOBTextBox"/>
                 </StackPanel>
 
-                <StackPanel x:Name="email" Grid.Row="0" Grid.Column="3" Margin="5">
-                    <TextBlock x:Uid="/Strings/emailViewCustomer"/>
-                    <TextBox x:Name="emailTextBox"/>
+                <StackPanel x:Name="mobileNum" Grid.Row="2" Grid.Column="0" Margin="2" Grid.ColumnSpan="2">
+                    <TextBlock x:Name="mobileTextBox"/>
                 </StackPanel>
 
-                <StackPanel x:Name="mobileNum" Grid.Row="1" Grid.Column="0" Margin="5">
-                    <TextBlock x:Uid="/Strings/mobileViewCustomer"/>
-                    <TextBox x:Name="mobileTextBox"/>
+                <StackPanel x:Name="fixNum" Grid.Row="2" Grid.Column="2" Margin="2" Grid.ColumnSpan="3">
+                    <TextBlock x:Name="fixTextBox"/>
                 </StackPanel>
 
-                <StackPanel x:Name="fixNum" Grid.Row="1" Grid.Column="1" Margin="5">
-                    <TextBlock x:Uid="/Strings/fixNumViewCustomer"/>
-                    <TextBox x:Name="fixTextBox"/>
+                <StackPanel x:Name="address" Grid.Row="3"  Grid.ColumnSpan="6" Margin="5" HorizontalAlignment="Left" >
+                    <TextBlock x:Name="AdressDetails"/>
                 </StackPanel>
 
-                <StackPanel x:Name="street" Grid.Row="2" Grid.Column="0" Margin="5">
-                    <TextBlock x:Uid="/Strings/streetViewCustomer"/>
-                    <TextBox x:Name="streetTextBox"/>
-                </StackPanel>
-
-                <StackPanel x:Name="city" Grid.Row="2" Grid.Column="1" Margin="5">
-                    <TextBlock x:Uid="/Strings/cityViewCustomer"/>
-                    <TextBox x:Name="cityTextBox"/>
-                </StackPanel>
-
-                <StackPanel x:Name="province" Grid.Row="2" Grid.Column="2" Margin="5">
-                    <TextBlock x:Uid="/Strings/provinceViewCustomer"/>
-                    <TextBox x:Name="provinceTextBox"/>
-                </StackPanel>
-
-                <StackPanel x:Name="Postocode" Grid.Row="3" Grid.Column="0" Margin="5">
-                    <TextBlock x:Uid="/Strings/postcodeViewCustomer"/>
-                    <TextBox x:Name="postcodeTextBox"/>
-                </StackPanel>
-
-                <StackPanel x:Name="country" Grid.Row="3" Grid.Column="1" Margin="5">
-                    <TextBlock x:Uid="/Strings/countryViewCustomer"/>
-                    <TextBox x:Name="countryTextBox"/>
-                </StackPanel>
-
-                <StackPanel x:Name="comments" Grid.Row="4" Grid.Column="0" Margin="5" Grid.ColumnSpan="4" Grid.RowSpan="3">
-                    <TextBlock x:Uid="/Strings/comentsViewCustomer"/>
-                    <TextBox x:Name="commentsTextBox"/>
+                <StackPanel x:Name="comments" Grid.Row="5" Grid.Column="0"  Margin="2" Grid.ColumnSpan="6" Grid.RowSpan="3">
+                    <TextBlock x:Name="commentsTextBox"/>
                 </StackPanel>
 
             </Grid>
