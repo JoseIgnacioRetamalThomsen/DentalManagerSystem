@@ -50,6 +50,8 @@ namespace DentalManagerSys.Views
             string Home = resourceLoader.GetString("/Strings/Home");
             string Mobile = resourceLoader.GetString("/Strings/Mobile");
 
+   
+
             Customer temp = DAO.GetCustomerByID(iD);
 
             PageTitle.Text = temp.name + " " + temp.surname;

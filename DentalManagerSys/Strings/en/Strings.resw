@@ -348,4 +348,13 @@
   <data name="Mobile" xml:space="preserve">
     <value>Mobile</value>
   </data>
+  <data name="ActiveTreatmentsTextBox.Text" xml:space="preserve">
+    <value>Active Treatment Plan</value>
+  </data>
+  <data name="CreateTreatmentsTextBox.Text" xml:space="preserve">
+    <value>Create Treatment Plan</value>
+  </data>
+  <data name="DoneTreatmentsTextBox.Text" xml:space="preserve">
+    <value>Complete Treatment Plan</value>
+  </data>
 </root>
