@@ -39,14 +39,16 @@ namespace DentalManagerSys.Views
 
         private void DisplayDetails(string iD)
         {
-           
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
+            string home = resourceLoader.GetString("/Strings/home");
+
             Customer temp = DAO.GetCustomerByID(iD);
 
             PageTitle.Text = temp.name + " " + temp.surname;
             AdressDetails.Text = temp.street + ", " + temp.city+", "+ temp.province + ", "+ temp.postcode + ", " + temp.country;
 
             IdTextBox.Text = temp.iD;
-            DOBTextBox.Text = temp.dOB.ToString();
+            DOBTextBox.Text = temp.dOB.ToString("dd/MM/yyyy");
 
            /* streetTextBox.Text = temp.street;
             cityTextBox.Text = temp.city;
