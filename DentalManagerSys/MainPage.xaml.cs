@@ -70,7 +70,7 @@ namespace DentalManagerSys
                 {
                     NavView.SelectedItem = item;
                     //dont understand just this work...
-                    ContentFrame.Navigate(typeof(ViewAllCustomers));
+                    ContentFrame.Navigate(typeof(ViewPaymentDetails));
 
                     break;
                 }
