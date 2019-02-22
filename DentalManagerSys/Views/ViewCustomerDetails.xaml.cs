@@ -86,5 +86,10 @@ namespace DentalManagerSys.Views
             Frame.Navigate(typeof(NewTreatmentPlanView), iD,
                    new DrillInNavigationTransitionInfo());
         }
+
+        private void CreatedTPListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Debug.WriteLine("working");
+        }
     }
 }
