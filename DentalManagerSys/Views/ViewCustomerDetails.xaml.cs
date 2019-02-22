@@ -98,7 +98,22 @@ namespace DentalManagerSys.Views
 
         private void CreatedTPListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Debug.WriteLine("working777777777777777777777777777777777777777777777777777777777777777777777777777777");
+            ListView lv = (ListView)sender;
+            int id = lv.SelectedIndex;
+            string name = lv.Name;
+
+            TreatmentPlan tp = null;
+            switch (name)
+            {
+                case "AcceptedTPListView":
+                     tp = ViewModel.acceptedTreatmentPlans[id];
+                    break;
+                
+            }
+
+            Frame.Navigate(typeof(TreatmentPlanView), tp,
+                  new DrillInNavigationTransitionInfo());
+            Debug.WriteLine("working777777777777777777777777777777777777777777777777777777777777777777777777777777" + name);
         }
     }
 }
