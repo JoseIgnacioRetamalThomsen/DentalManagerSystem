@@ -34,8 +34,6 @@ namespace DentalManagerSys.Views
             this.InitializeComponent();
             treatmentsList = new ObservableCollection<Treatment>(DAO.GetAllTreatment());
 
-           // treatmentsList.Add(new Treatment("00", "T1", 45000));
-           // treatmentsList.Add(new Treatment("00", "T2", 43000));
         }
 
         private void ViewCustomerButton_Click(object sender, RoutedEventArgs e)

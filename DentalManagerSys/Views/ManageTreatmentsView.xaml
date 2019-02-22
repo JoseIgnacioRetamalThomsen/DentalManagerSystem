@@ -72,7 +72,7 @@
 
                         <toolkit:DataGridTextColumn
                             Tag="Surname"
-                            Binding="{Binding price}"
+                            Binding="{Binding Price}"
                             x:Uid="/Strings/TreatmentPriceDataGrid"/>
                                                
 
