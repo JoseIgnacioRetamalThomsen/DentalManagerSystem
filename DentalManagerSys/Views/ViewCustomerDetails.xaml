@@ -109,7 +109,7 @@
                 <toolkit:Expander.Header>
                     <Grid>
                         <TextBlock 
-                                    Text="Active Treatments Plans"
+                                    x:Uid="/Strings/ActiveTreatmentsTextBox"
                                     Style="{StaticResource TitleTextBlockStyle}"/>
                         <!--<TextBlock
                                     Text="Yes" 
@@ -157,7 +157,7 @@
                 <toolkit:Expander.Header>
                     <Grid>
                         <TextBlock 
-                                    Text="Active Treatments Plans"
+                                    x:Uid="/Strings/CreateTreatmentsTextBox"
                                     Style="{StaticResource TitleTextBlockStyle}"/>
                         <!--<TextBlock
                                     Text="Yes" 
@@ -201,7 +201,7 @@
                 <toolkit:Expander.Header>
                     <Grid>
                         <TextBlock 
-                                    Text="Active Treatments Plans"
+                                    x:Uid="/Strings/DoneTreatmentsTextBox"
                                     Style="{StaticResource TitleTextBlockStyle}"/>
                         <!--<TextBlock
                                     Text="Yes" 
