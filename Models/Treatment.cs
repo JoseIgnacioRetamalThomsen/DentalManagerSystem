@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Models
 {
-    public class Treatment : INotifyPropertyChanged
+    public class Treatment //: INotifyPropertyChanged
     {
         public string iD { get; set; }
 
@@ -15,7 +15,7 @@ namespace Models
 
         public decimal price;
 
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        //public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
 
         public Treatment(string iD, string name, decimal price)
@@ -31,7 +31,7 @@ namespace Models
             set
             {
                 price = value;
-                OnPropertyChanged();
+               // OnPropertyChanged();
             }
         }
 
@@ -42,11 +42,11 @@ namespace Models
         }
 
 
-        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            // Raise the PropertyChanged event, passing the name of the property whose value has changed.
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //public void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        //{
+        //    // Raise the PropertyChanged event, passing the name of the property whose value has changed.
+        //    PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //}
 
 
     }

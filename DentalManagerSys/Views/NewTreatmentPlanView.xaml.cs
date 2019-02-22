@@ -119,6 +119,27 @@ namespace DentalManagerSys.Views
         {
             ViewModel.CreateNewTreatmentPlan();
         }
+
+        private void SaveChangedPriceButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            decimal NewPrice = Convert.ToDecimal(EditPriceTB.Text);
+            int ItemIndex = TreatmentsDoneListView.SelectedIndex;
+
+            //edit value
+            ViewModel.TreatmentsOnPlan[ItemIndex].Price = NewPrice;
+            ViewModel.RecalculateTotal();
+            ReloadTretmentsListView();
+        }
+
+        private void ReloadTretmentsListView()
+        {
+            TreatmentsDoneListView.SelectionChanged -= TreatmentsDoneListView_SelectionChanged;
+            TreatmentsDoneListView.ItemsSource = null;
+            TreatmentsDoneListView.ItemsSource = ViewModel.TreatmentsOnPlan;
+            TreatmentsDoneListView.SelectionChanged += TreatmentsDoneListView_SelectionChanged;
+        }
+
+        
     }
 
 
