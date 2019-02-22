@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DentalManagerSys.ViewModel
 {
-    public class TreammentPlanViewModel : ViewModelBase
+    public class TreatmentPlanViewModel : ViewModelBase
     {
 
         public TreatmentPlaneState treatmentPlanState;

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DentalManagerSys.ViewModel;
+using Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,9 +25,31 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class TreatmentPlanView : Page
     {
+        TreatmentPlanViewModel ViewModel { get; set; }
+
         public TreatmentPlanView()
         {
             this.InitializeComponent();
         }
+
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+
+
+            ViewModel = new TreatmentPlanViewModel();
+
+            if (e.Parameter == null)
+            {
+
+            }
+            else
+            {
+                ViewModel.ActualTreatmentPlan = (TreatmentPlan)e.Parameter;
+            }
+
+            Debug.WriteLine(ViewModel.ActualTreatmentPlan.CustomerID);
+        }
+
     }
 }

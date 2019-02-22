@@ -10,18 +10,27 @@ namespace Models
     }
     public class TreatmentPlan
     {
+        public int TreatmentPLanID { get; set; }
         public string CustomerID { get; set; }
         public TreatmentPlaneState State { get; set; }
-        public DateTime creationDate { get; set; }
-        public DateTime treatmentPlanCompleteDate { get; set; }
+        public DateTime CreationDate { get; set; }
+        public DateTime TreatmentPlanCompleteDate { get; set; }
 
         public TreatmentPlan(string customerID, TreatmentPlaneState state, DateTime creationDate, DateTime treatmentPlanCompleteDate)
         {
             CustomerID = customerID;
             State = state;
-            this.creationDate = creationDate;
-            this.treatmentPlanCompleteDate = treatmentPlanCompleteDate;
+            this.CreationDate = creationDate;
+            this.TreatmentPlanCompleteDate = treatmentPlanCompleteDate;
         }
 
+        public TreatmentPlan(int treatementPLanID,string customerID, TreatmentPlaneState state, DateTime creationDate, DateTime treatmentPlanCompleteDate)
+        {
+            this.TreatmentPLanID =treatementPLanID;
+            CustomerID = customerID;
+            State = state;
+            this.CreationDate = creationDate;
+            this.TreatmentPlanCompleteDate = treatmentPlanCompleteDate;
+        }
     }
 }
