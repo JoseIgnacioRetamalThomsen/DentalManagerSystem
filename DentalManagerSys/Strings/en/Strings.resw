@@ -333,4 +333,7 @@
   <data name="CreateNewTreatmentPlanButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Create this treatment plan</value>
   </data>
+  <data name="TotalTB.Text" xml:space="preserve">
+    <value>Total : </value>
+  </data>
 </root>

@@ -3,6 +3,7 @@ using Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,11 +63,12 @@ namespace DentalManagerSys.ViewModel
             
         public void CreateNewTreatmentPlan()
         {
-            DAO.AddNewTreatmentPlan(ActualCustomer.iD,"Created",DateTime.Now.ToString(), DateTime.Now.ToString());
+            int id = (int)DAO.AddNewTreatmentPlan(ActualCustomer.iD,"Created",DateTime.Now.ToString(), "0");
+          
             foreach(Treatment t in treatmentsOnPlan)
             {
 
-                DAO.AddNewTreatmentPlanTreatments(2,Convert.ToInt32(t.iD),t.price, DateTime.Now.ToString());
+               DAO.AddNewTreatmentPlanTreatments(id,Convert.ToInt32(t.iD),t.price, "0");
             }
         }
     }

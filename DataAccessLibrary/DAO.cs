@@ -212,8 +212,9 @@ namespace DataAccessLibrary
         /// <param name="state"></param>
         /// <param name="creationDate"></param>
         /// <param name="treatmentPlanCompleteDate"></param>
-        public static void AddNewTreatmentPlan(string customerID, string state, string creationDate, string treatmentPlanCompleteDate)
+        public static long AddNewTreatmentPlan(string customerID, string state, string creationDate, string treatmentPlanCompleteDate)
         {
+            long id = 0;
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -231,8 +232,19 @@ namespace DataAccessLibrary
 
                 insertCommand.ExecuteReader();
 
+                //insertCommand.Connection.Close();
+                //insertCommand.Connection = db;
+                SqliteCommand insertCommand1 = new SqliteCommand();
+                insertCommand1.Connection = db;
+
+                string sql = @"select last_insert_rowid()";
+                insertCommand1.CommandText = sql;
+                id = (long)insertCommand1.ExecuteScalar();
+
+
                 db.Close();
             }
+            return id;
         }
 
         /// <summary>
