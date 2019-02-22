@@ -28,7 +28,8 @@ namespace DentalManagerSys.ViewModel
         {
             treatmentPlans = new ObservableCollection<TreatmentPlan>()
             {
-                new TreatmentPlan("ID",TreatmentPlaneState.Created,DateTime.Now,DateTime.Now)
+                new TreatmentPlan("ID",TreatmentPlaneState.Created,DateTime.Now,DateTime.Now),
+                new TreatmentPlan("ID2",TreatmentPlaneState.Created,DateTime.Now,DateTime.Now)
             };
         }
     }

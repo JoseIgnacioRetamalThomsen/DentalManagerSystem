@@ -7,9 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:local1="using:Models"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+ 
+
     <Grid>
+        
         <RelativePanel>
             <TextBlock   
                 x:Name="PageTitle" 
@@ -113,7 +117,32 @@
                     </Grid>
                 </toolkit:Expander.Header>
 
-                <TextBlock>Hello Wordl</TextBlock>
+                <ListView
+                    x:Name="ActiveTPListView">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate   x:DataType="local1:TreatmentPlan">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="350" />
+                                    <ColumnDefinition  Width="150"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+
+                                <TextBlock Text="{x:Bind creationDate}" Grid.Column="1" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
+
+                            </Grid>
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+                </ListView>
+                
             </toolkit:Expander>
         </RelativePanel>
       
