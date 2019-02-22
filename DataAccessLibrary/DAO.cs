@@ -267,22 +267,33 @@ namespace DataAccessLibrary
 
                 while (query.Read())
                 {
-                    string first = query.GetString(0);
-                    int state = query.GetInt32(1);
+                    string first = query.GetString(1);
+                    Debug.WriteLine("Test----------  :" + first);
+                    int state = query.GetInt32(2);
                     TreatmentPlaneState temp = (TreatmentPlaneState)state;
+                    //string date1 = query.GetString(3);
+                    string date2 = query.GetString(4);
+                    DateTime datetime2 = Convert.ToDateTime("01/01/0001 00:00:00");
+                    if(!date2.Equals("0"))
+                    {
+                        datetime2 = Convert.ToDateTime(date2);
+                    }
+                  //  Debug.WriteLine("Test----------  :" + date1);
+                    Debug.WriteLine("Test----------  :" + date2);
+
 
                     treatmentPlans.Add(new TreatmentPlan(
                     first,
                     temp,
-                    new DateTime(),
-                    new DateTime()
+                    Convert.ToDateTime(query.GetString(3)),
+                    datetime2
                     ));
                 }
 
                 db.Close();
             }
 
-            Debug.WriteLine("Test----------  :" + treatmentPlans);
+            
             return treatmentPlans;
          
 

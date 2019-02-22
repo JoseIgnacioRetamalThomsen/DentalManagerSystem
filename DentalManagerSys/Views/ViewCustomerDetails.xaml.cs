@@ -38,7 +38,10 @@ namespace DentalManagerSys.Views
             this.InitializeComponent();
 
             ViewModel = new CustomerDetailsViewModel();
-            ActiveTPListView.ItemsSource = ViewModel.TreatmentPlans;
+            ActiveTPListView.ItemsSource = ViewModel.AcceptedTreatmentPlans;
+            CreatedTPListView.ItemsSource = ViewModel.CreatedTreatmentPlans;
+            FinishTPListView.ItemsSource = ViewModel.FinishedTreatmentPlans;
+
         }
 
         private void DisplayDetails(string iD)

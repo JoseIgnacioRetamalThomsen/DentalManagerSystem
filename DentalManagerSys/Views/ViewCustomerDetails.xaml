@@ -102,7 +102,52 @@
             </Grid>
 
             <toolkit:Expander 
+                x:Name="ActiveTreatmentsLV"
                 RelativePanel.Below="DetailsGrid"
+                IsExpanded="True"
+                HorizontalContentAlignment="Left">
+                <toolkit:Expander.Header>
+                    <Grid>
+                        <TextBlock 
+                                    Text="Active Treatments Plans"
+                                    Style="{StaticResource TitleTextBlockStyle}"/>
+                        <!--<TextBlock
+                                    Text="Yes" 
+                                   
+                                    HorizontalAlignment="Right"/>-->
+                    </Grid>
+                </toolkit:Expander.Header>
+
+                <ListView
+                    x:Name="CreatedTPListView">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate   x:DataType="local1:TreatmentPlan">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="350" />
+                                    <ColumnDefinition  Width="150"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+
+                                <TextBlock Text="{x:Bind creationDate}" Grid.Column="1" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
+
+                            </Grid>
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </toolkit:Expander>
+            <toolkit:Expander 
+                x:Name="CreatedTreatmentsLV"
+                RelativePanel.Below="ActiveTreatmentsLV"
                 IsExpanded="True"
                 HorizontalContentAlignment="Left">
                 <toolkit:Expander.Header>
@@ -142,7 +187,51 @@
 
                     </ListView.ItemTemplate>
                 </ListView>
-                
+
+            </toolkit:Expander>
+            <toolkit:Expander 
+                x:Name="FinishTreatmentsLV"
+                RelativePanel.Below="CreatedTreatmentsLV"
+                IsExpanded="True"
+                HorizontalContentAlignment="Left">
+                <toolkit:Expander.Header>
+                    <Grid>
+                        <TextBlock 
+                                    Text="Active Treatments Plans"
+                                    Style="{StaticResource TitleTextBlockStyle}"/>
+                        <!--<TextBlock
+                                    Text="Yes" 
+                                   
+                                    HorizontalAlignment="Right"/>-->
+                    </Grid>
+                </toolkit:Expander.Header>
+
+                <ListView
+                    x:Name="FinishTPListView">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate   x:DataType="local1:TreatmentPlan">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="350" />
+                                    <ColumnDefinition  Width="150"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+
+                                <TextBlock Text="{x:Bind creationDate}" Grid.Column="1" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
+
+                            </Grid>
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+                </ListView>
+
             </toolkit:Expander>
         </RelativePanel>
       
