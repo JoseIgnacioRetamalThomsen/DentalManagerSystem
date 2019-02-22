@@ -61,9 +61,6 @@ namespace Models
             Debug.WriteLine("dob" + this.dOB);
             Debug.WriteLine("comment" + this.comments);
 
-
-
-
         }
 
     }
