@@ -63,7 +63,7 @@ namespace DentalManagerSys.ViewModel
             
         public void CreateNewTreatmentPlan()
         {
-            int id = (int)DAO.AddNewTreatmentPlan(ActualCustomer.iD,"Created",DateTime.Now.ToString(), "0");
+            int id = (int)DAO.AddNewTreatmentPlan(ActualCustomer.iD,(int)TreatmentPlaneState.Created,DateTime.Now.ToString(), "0");
           
             foreach(Treatment t in treatmentsOnPlan)
             {

@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
@@ -44,6 +45,7 @@
             </AutoSuggestBox>
 
             <Grid
+                x:Name="DetailsGrid"
                 RelativePanel.Below="PageTitle">
 
                 <Grid.RowDefinitions>
@@ -94,7 +96,25 @@
                 </StackPanel>
 
             </Grid>
-            
+
+            <toolkit:Expander 
+                RelativePanel.Below="DetailsGrid"
+                IsExpanded="True"
+                HorizontalContentAlignment="Left">
+                <toolkit:Expander.Header>
+                    <Grid>
+                        <TextBlock 
+                                    Text="Active Treatments Plans"
+                                    Style="{StaticResource TitleTextBlockStyle}"/>
+                        <!--<TextBlock
+                                    Text="Yes" 
+                                   
+                                    HorizontalAlignment="Right"/>-->
+                    </Grid>
+                </toolkit:Expander.Header>
+
+                <TextBlock>Hello Wordl</TextBlock>
+            </toolkit:Expander>
         </RelativePanel>
       
     </Grid>
