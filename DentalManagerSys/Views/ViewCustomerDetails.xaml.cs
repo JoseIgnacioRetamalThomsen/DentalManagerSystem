@@ -1,4 +1,5 @@
 ﻿using DataAccessLibrary;
+using DentalManagerSys.ViewModel;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -29,12 +30,18 @@ namespace DentalManagerSys.Views
     public sealed partial class ViewCustomerDetails : Page
     {
         private string iD;
-     
+
+        public CustomerDetailsViewModel ViewModel { get; set; }
+
         public ViewCustomerDetails()
         {
             this.InitializeComponent();
 
-            
+            ViewModel = new CustomerDetailsViewModel();
+            ActiveTPListView.ItemsSource = ViewModel.AcceptedTreatmentPlans;
+            CreatedTPListView.ItemsSource = ViewModel.CreatedTreatmentPlans;
+            FinishTPListView.ItemsSource = ViewModel.FinishedTreatmentPlans;
+
         }
 
         private void DisplayDetails(string iD)

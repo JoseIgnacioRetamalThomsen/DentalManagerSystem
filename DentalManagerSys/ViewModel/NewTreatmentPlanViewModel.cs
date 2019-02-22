@@ -70,6 +70,21 @@ namespace DentalManagerSys.ViewModel
 
                DAO.AddNewTreatmentPlanTreatments(id,Convert.ToInt32(t.iD),t.price, "0");
             }
+
+            int id1 = (int)DAO.AddNewTreatmentPlan(ActualCustomer.iD, (int)TreatmentPlaneState.Finish, DateTime.Now.ToString(), "0");
+
+            foreach (Treatment t in treatmentsOnPlan)
+            {
+
+                DAO.AddNewTreatmentPlanTreatments(id1, Convert.ToInt32(t.iD), t.price, "0");
+            }
+            int id2 = (int)DAO.AddNewTreatmentPlan(ActualCustomer.iD, (int)TreatmentPlaneState.Accepted, DateTime.Now.ToString(), "0");
+
+            foreach (Treatment t in treatmentsOnPlan)
+            {
+
+                DAO.AddNewTreatmentPlanTreatments(id2, Convert.ToInt32(t.iD), t.price, "0");
+            }
         }
 
         public void RecalculateTotal()
