@@ -70,7 +70,7 @@ namespace DataAccessLibrary
                     db.Open();
 
                     SqliteCommand insertCommand = new SqliteCommand();
-                    
+
                     insertCommand.Connection = db;
 
                     // Use parameterized query
@@ -90,7 +90,7 @@ namespace DataAccessLibrary
                     insertCommand.Parameters.AddWithValue("@Comments", comments);
 
                     insertCommand.ExecuteReader();
-                    
+
 
                     db.Close();
                 }
@@ -292,11 +292,85 @@ namespace DataAccessLibrary
 
                 db.Close();
             }
-
-            
             return treatmentPlans;
-         
 
+        }
+
+        /// <summary>
+        /// Get Get all treatement plans by Customer ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static List<TreatmentPlan> GetAllTreatmentPlansByID(string id)
+        {
+            List<TreatmentPlan> treatmentPlans = new List<TreatmentPlan>();
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from treatmentPlan where customerID=@CustomerID", db);
+                    selectCommand.Parameters.AddWithValue("@CustomerID", id);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    string first = query.GetString(1);
+                    Debug.WriteLine("Test----------  :" + first);
+                    int state = query.GetInt32(2);
+                    TreatmentPlaneState temp = (TreatmentPlaneState)state;
+                   
+                    string date2 = query.GetString(4);
+                    DateTime datetime2 = Convert.ToDateTime("01/01/0001 00:00:00");
+                    if (!date2.Equals("0"))
+                    {
+                        datetime2 = Convert.ToDateTime(date2);
+                    }
+     
+                    treatmentPlans.Add(new TreatmentPlan(
+                    first,
+                    temp,
+                    Convert.ToDateTime(query.GetString(3)),
+                    datetime2
+                    ));
+                }
+
+                db.Close();
+            }
+            return treatmentPlans;
+
+        }
+
+
+        /// <summary>
+        /// Get Sum price of all treatment plans by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static decimal GetSumTreatmentPlanByID(int id)
+        {
+
+            decimal sumPrice = 0;
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT sum(price) from treatmentPlanTreatments where treatmentPlanID=@TreatmentPlanID", db);
+                selectCommand.Parameters.AddWithValue("@TreatmentPlanID", id);
+
+                sumPrice = selectCommand.ExecuteNonQuery();
+
+
+                db.Close();
+            }
+
+            return sumPrice;
         }
 
 
@@ -426,7 +500,7 @@ namespace DataAccessLibrary
             return customers;
         }
 
-       
+
 
         public static List<Customer> DeleteCustomerByID(String CustomerID)
         {

@@ -58,8 +58,8 @@ namespace DentalManagerSys.Views
             IdTextBox.Text = temp.iD;
             DOBTextBox.Text = temp.dOB.ToString("dd/MM/yyyy");
 
-            mobileTextBox.Text = Mobile + temp.mobileNum;
-            fixTextBox.Text = Home + temp.homeNum;
+            mobileTextBox.Text = Mobile +": "+ temp.mobileNum;
+            fixTextBox.Text = Home +": " +temp.homeNum;
             emailTextBox.Text = temp.email;
             commentsTextBox.Text = temp.comments;
         }
