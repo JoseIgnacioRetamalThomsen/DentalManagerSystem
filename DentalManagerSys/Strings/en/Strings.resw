@@ -327,4 +327,10 @@
   <data name="ViewTreatmentPrice.Text" xml:space="preserve">
     <value>Price</value>
   </data>
+  <data name="CreateNewTreatmentPlanButton.Label" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="CreateNewTreatmentPlanButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create this treatment plan</value>
+  </data>
 </root>

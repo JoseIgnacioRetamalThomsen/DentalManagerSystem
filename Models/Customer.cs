@@ -7,6 +7,7 @@ namespace Models
 {
     public class Customer
     {
+        private string v;
 
         public string iD { get; set; }
         public string name { get; set; }
@@ -37,6 +38,11 @@ namespace Models
             this.email = email;
             this.dOB = dOB;
             this.comments = comments;
+        }
+
+        public Customer(string v)
+        {
+            this.v = v;
         }
 
         public void Print()

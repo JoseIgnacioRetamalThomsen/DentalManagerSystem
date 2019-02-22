@@ -14,7 +14,7 @@
         <RelativePanel>
             <TextBlock   
                 x:Name="PageTitle"
-                Text="Marco Gonzalez"
+                Text=""
                 Style="{StaticResource TitleTextBlockStyle}">
             </TextBlock>
 
@@ -26,9 +26,12 @@
                >
 
                 <AppBarButton
-                    Icon="Contact"
-                    x:Uid="/Strings/SelectBarButton"
-                    IsEnabled="False"/>
+                    x:Name="CreateTreatmentPlanButton"
+                    Icon="Add"
+                    x:Uid="/Strings/CreateNewTreatmentPlanButton"
+                    IsEnabled="True"
+                    Tapped="CreateTreatmentPlanButton_Tapped"
+                    />
 
                 <AppBarSeparator/>
                 <AppBarButton
@@ -76,6 +79,7 @@
             </Grid>
 
             <Grid Margin="0,10,0,0"
+                  x:Name="TreatmentsGrip"
                 RelativePanel.AlignLeftWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
                 RelativePanel.Below="TopGrid"
@@ -188,7 +192,16 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </Grid>
+            <StackPanel 
+            x:Name="TotalSP"
+            RelativePanel.Below="TreatmentsGrip">
+                <TextBox 
+                x:Name="TotalTB"
+                Text="{x:Bind Path=ViewModel.Total, Mode=TwoWay}"/>
+            </StackPanel>
         </RelativePanel>
 
+     
+            
     </Grid>
 </Page>
