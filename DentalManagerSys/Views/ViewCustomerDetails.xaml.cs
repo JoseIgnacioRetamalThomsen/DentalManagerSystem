@@ -44,7 +44,8 @@ namespace DentalManagerSys.Views
         private void DisplayDetails(string iD)
         {
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
-            string home = resourceLoader.GetString("/Strings/home");
+            string Home = resourceLoader.GetString("/Strings/Home");
+            string Mobile = resourceLoader.GetString("/Strings/Mobile");
 
             Customer temp = DAO.GetCustomerByID(iD);
 
@@ -54,14 +55,8 @@ namespace DentalManagerSys.Views
             IdTextBox.Text = temp.iD;
             DOBTextBox.Text = temp.dOB.ToString("dd/MM/yyyy");
 
-           /* streetTextBox.Text = temp.street;
-            cityTextBox.Text = temp.city;
-            provinceTextBox.Text = temp.province;
-            countryTextBox.Text = temp.country;
-            postcodeTextBox.Text = temp.postcode;*/
-
-            mobileTextBox.Text = temp.mobileNum;
-            fixTextBox.Text = temp.homeNum;
+            mobileTextBox.Text = Mobile + temp.mobileNum;
+            fixTextBox.Text = Home + temp.homeNum;
             emailTextBox.Text = temp.email;
             commentsTextBox.Text = temp.comments;
         }

@@ -22,5 +22,6 @@ namespace Models
             this.creationDate = creationDate;
             this.treatmentPlanCompleteDate = treatmentPlanCompleteDate;
         }
+
     }
 }

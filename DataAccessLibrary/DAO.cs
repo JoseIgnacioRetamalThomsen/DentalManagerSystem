@@ -248,6 +248,48 @@ namespace DataAccessLibrary
         }
 
         /// <summary>
+        /// Get all treatement plans
+        /// </summary>
+        /// <returns></returns>
+        public static List<TreatmentPlan> GetAllTreatmentPlans()
+        {
+            List<TreatmentPlan> treatmentPlans = new List<TreatmentPlan>();
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from treatmentPlan", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    string first = query.GetString(0);
+                    int state = query.GetInt32(1);
+                    TreatmentPlaneState temp = (TreatmentPlaneState)state;
+
+                    treatmentPlans.Add(new TreatmentPlan(
+                    first,
+                    temp,
+                    new DateTime(),
+                    new DateTime()
+                    ));
+                }
+
+                db.Close();
+            }
+
+            Debug.WriteLine("Test----------  :" + treatmentPlans);
+            return treatmentPlans;
+         
+
+        }
+
+
+        /// <summary>
         /// Insert a new treatment plan treatments
         /// </summary>
         /// <param name="treatmentPlanTreatmentsID"></param>
