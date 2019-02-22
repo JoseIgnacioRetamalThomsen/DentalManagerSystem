@@ -71,5 +71,14 @@ namespace DentalManagerSys.ViewModel
                DAO.AddNewTreatmentPlanTreatments(id,Convert.ToInt32(t.iD),t.price, "0");
             }
         }
+
+        public void RecalculateTotal()
+        {
+            Total = 0;
+            foreach(Treatment t in TreatmentsOnPlan)
+            {
+                Total += t.Price;
+            }
+        }
     }
 }
