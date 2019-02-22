@@ -79,11 +79,11 @@
                     <TextBlock x:Name="DOBTextBox"/>
                 </StackPanel>
 
-                <StackPanel x:Name="mobileNum" Grid.Row="2" Grid.Column="0" Margin="2" Grid.ColumnSpan="2">
+                <StackPanel x:Name="mobileNum" Grid.Row="2" Grid.Column="0" Margin="2" Grid.ColumnSpan="3">
                     <TextBlock x:Name="mobileTextBox"/>
                 </StackPanel>
 
-                <StackPanel x:Name="fixNum" Grid.Row="2" Grid.Column="2" Margin="2" Grid.ColumnSpan="3">
+                <StackPanel x:Name="fixNum" Grid.Row="2" Grid.Column="3" Margin="2" Grid.ColumnSpan="3">
                     <TextBlock x:Name="fixTextBox"/>
                 </StackPanel>
 

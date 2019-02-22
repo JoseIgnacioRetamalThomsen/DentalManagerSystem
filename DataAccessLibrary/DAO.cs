@@ -281,11 +281,37 @@ namespace DataAccessLibrary
 
                 db.Close();
             }
-
-            Debug.WriteLine("Test----------  :" + treatmentPlans);
             return treatmentPlans;
-         
 
+        }
+
+
+        /// <summary>
+        /// Get Sum price of all treatment plans by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static decimal GetSumTreatmentPlanByID(int id)
+        {
+
+            decimal sumPrice = 0;
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT sum(price) from treatmentPlanTreatments where treatmentPlanID=@TreatmentPlanID", db);
+                selectCommand.Parameters.AddWithValue("@TreatmentPlanID", id);
+
+                sumPrice = selectCommand.ExecuteNonQuery();
+
+              
+                db.Close();
+            }
+
+            return sumPrice;
         }
 
 
