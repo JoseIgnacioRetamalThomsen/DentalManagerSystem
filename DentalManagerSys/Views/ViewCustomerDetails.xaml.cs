@@ -56,8 +56,8 @@ namespace DentalManagerSys.Views
             countryTextBox.Text = temp.country;
             postcodeTextBox.Text = temp.postcode;*/
 
-            mobileTextBox.Text = temp.mobileNum;
-            fixTextBox.Text = temp.homeNum;
+            mobileTextBox.Text = "Mobile: "+temp.mobileNum;
+            fixTextBox.Text = "Home: "+temp.homeNum;
             emailTextBox.Text = temp.email;
             commentsTextBox.Text = temp.comments;
         }
