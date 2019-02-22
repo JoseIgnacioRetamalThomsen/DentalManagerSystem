@@ -102,7 +102,7 @@
             </Grid>
 
             <toolkit:Expander 
-                x:Name="AcceptedTPListView"
+                x:Name="AcceptedTPExpander"
                 RelativePanel.Below="DetailsGrid"
                 IsExpanded="True"
                 HorizontalContentAlignment="Left">
@@ -119,10 +119,11 @@
                 </toolkit:Expander.Header>
 
                 <ListView
-                    x:Name="CreatedTPListView"
+                    x:Name="AcceptedTPListView"
                     SelectionMode="Single"
                     IsItemClickEnabled="True"
-                    ItemClick="CreatedTPListView_ItemClick">
+                   
+                    SelectionChanged="AcceptedTPListView_SelectionChanged">
 
                     <ListView.ItemTemplate>
                         <DataTemplate   x:DataType="local1:TreatmentPlan">
@@ -152,7 +153,7 @@
             
             <toolkit:Expander 
                 x:Name="CreatedTreatmentsLV"
-                RelativePanel.Below="AcceptedTPListView"
+                RelativePanel.Below="AcceptedTPExpander"
                 IsExpanded="True"
                 HorizontalContentAlignment="Left">
                 <toolkit:Expander.Header>
@@ -168,7 +169,7 @@
                 </toolkit:Expander.Header>
 
                 <ListView
-                    x:Name="ActiveTPListView">
+                    x:Name="CreatedTPListView">
 
                     <ListView.ItemTemplate>
                         <DataTemplate   x:DataType="local1:TreatmentPlan">

@@ -15,7 +15,8 @@
     <RelativePanel>
         <TextBlock   
                 x:Name="PageTitle" 
-                Style="{StaticResource TitleTextBlockStyle}">
+                Style="{StaticResource TitleTextBlockStyle}"
+            Text="{x:Bind Path=ViewModel.CustomerName , Mode=OneTime}">
         </TextBlock>
 
         <CommandBar 
@@ -45,6 +46,16 @@
                 x:Uid="/Strings/SearchAutoSuggestBox">
 
         </AutoSuggestBox>
-    </RelativePanel>
+            <StackPanel
+            x:Name="treatmentStateCB"
+            RelativePanel.Below="PageTitle">
+                <ComboBox
+                    x:Name="TreatmentStateCB"
+                    
+                    SelectionChanged="TreatmentStateCB_SelectionChanged"></ComboBox>
+            </StackPanel>
+        </RelativePanel>
+        
     </Grid>
 </Page>
+<!--SelectedItem="{x:Bind Path=ViewModel.ActualTreatmentPlanState}"-->

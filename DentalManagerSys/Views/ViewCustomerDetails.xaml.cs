@@ -84,7 +84,7 @@ namespace DentalManagerSys.Views
             }
 
             ViewModel.SetTreatmentsPlan();
-            ActiveTPListView.ItemsSource = ViewModel.AcceptedTreatmentPlans;
+            AcceptedTPListView.ItemsSource = ViewModel.AcceptedTreatmentPlans;
             CreatedTPListView.ItemsSource = ViewModel.CreatedTreatmentPlans;
             FinishTPListView.ItemsSource = ViewModel.FinishedTreatmentPlans;
 
@@ -96,24 +96,30 @@ namespace DentalManagerSys.Views
                    new DrillInNavigationTransitionInfo());
         }
 
-        private void CreatedTPListView_ItemClick(object sender, ItemClickEventArgs e)
+       
+        
+
+        private void AcceptedTPListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListView lv = (ListView)sender;
+                ListView lv = (ListView)sender;
             int id = lv.SelectedIndex;
             string name = lv.Name;
+
+           Debug.WriteLine("working777777777777777777777777777777777777777777777777777777777777777777777777777777" + id);
 
             TreatmentPlan tp = null;
             switch (name)
             {
                 case "AcceptedTPListView":
-                     tp = ViewModel.acceptedTreatmentPlans[id];
+                    tp = ViewModel.AcceptedTreatmentPlans[id];
+                    Debug.WriteLine("working777777777777777777777777777777777777777777777777777777777777777777777777777777" + name);
                     break;
-                
+
             }
 
             Frame.Navigate(typeof(TreatmentPlanView), tp,
                   new DrillInNavigationTransitionInfo());
-            Debug.WriteLine("working777777777777777777777777777777777777777777777777777777777777777777777777777777" + name);
+            Debug.WriteLine("working777777777777777777777777777777777777777777777777777777777777777777777777777777" + name); 
         }
     }
 }

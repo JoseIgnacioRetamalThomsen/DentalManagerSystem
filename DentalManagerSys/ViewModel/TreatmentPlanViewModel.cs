@@ -1,6 +1,9 @@
-﻿using Models;
+﻿using DataAccessLibrary;
+using Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,15 +13,38 @@ namespace DentalManagerSys.ViewModel
     public class TreatmentPlanViewModel : ViewModelBase
     {
 
-        public TreatmentPlaneState treatmentPlanState;
+        public ObservableCollection<Treatment> treatmentsOnPlan;
 
-        public TreatmentPlaneState TreatmentPLanState
+
+        public string CustomerName { get; set; }
+
+        public Customer Customer { get; set; }
+        public TreatmentPlaneState actualTreatmentPlanState;
+
+        public ObservableCollection<TreatmentPlaneState> treatmentsPlans = new ObservableCollection<TreatmentPlaneState>()
         {
-            get => treatmentPlanState;
+            TreatmentPlaneState.Accepted,TreatmentPlaneState.Created,TreatmentPlaneState.Finish
+        };
+
+        public ObservableCollection<TreatmentPlaneState> TreatmentsPlans
+        {
+            get => treatmentsPlans;
             set
             {
-                treatmentPlanState = value;
+                treatmentsPlans = value;
+                OnPropertyChanged("TreatmentsPlans");
+            }
+        }
+        
+
+        public TreatmentPlaneState ActualTreatmentPlanState
+        {
+            get => actualTreatmentPlanState;
+            set
+            {
+                actualTreatmentPlanState = value;
                 OnPropertyChanged("TreatmentPLanState");
+                Debug.WriteLine("sdsfasdafasdfdsa6666666666666666"+actualTreatmentPlanState);
             }
         }
 
@@ -33,6 +59,9 @@ namespace DentalManagerSys.ViewModel
             {
                 actualTreatmentPlan = value;
                 OnPropertyChanged("ActualTreatmentPlan");
+                Customer = DAO.GetCustomerByID(actualTreatmentPlan.CustomerID);
+                CustomerName = Customer.name + " " + Customer.surname;
+                actualTreatmentPlanState = actualTreatmentPlan.State;
             }
         }
     }

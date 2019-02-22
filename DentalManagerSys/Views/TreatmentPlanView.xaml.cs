@@ -49,7 +49,14 @@ namespace DentalManagerSys.Views
             }
 
             Debug.WriteLine(ViewModel.ActualTreatmentPlan.CustomerID);
+
+            TreatmentStateCB.ItemsSource = ViewModel.TreatmentsPlans;
+            TreatmentStateCB.SelectedItem = ViewModel.ActualTreatmentPlanState;
         }
 
+        private void TreatmentStateCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ViewModel.ActualTreatmentPlanState = (TreatmentPlaneState)((ComboBox)sender).SelectedItem;
+        }
     }
 }
