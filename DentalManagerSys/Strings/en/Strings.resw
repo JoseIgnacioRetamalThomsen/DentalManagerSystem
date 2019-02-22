@@ -342,4 +342,10 @@
   <data name="TotalTB.Text" xml:space="preserve">
     <value>Total : </value>
   </data>
+  <data name="Home.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Mobile.Text" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
 </root>
