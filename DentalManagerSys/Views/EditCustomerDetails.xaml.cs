@@ -30,12 +30,12 @@ namespace DentalManagerSys.Views
         public EditCustomerDetails()
         {
             this.InitializeComponent();
-            DisplayDetails("G0035");
+            
         }
 
         private void DisplayDetails(string iD)
         {
-            
+            Debug.WriteLine("id");
             Customer temp = DAO.GetCustomerByID(iD);
             
             PageTitle.Text = temp.name + " " + temp.surname;
@@ -59,7 +59,7 @@ namespace DentalManagerSys.Views
             }
             else
             {
-              
+                DisplayDetails(e.Parameter.ToString());
             }
 
         }

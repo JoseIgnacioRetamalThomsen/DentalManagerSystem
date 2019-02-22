@@ -64,7 +64,9 @@ namespace DentalManagerSys.Views
 
         private void EditCustomer_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(EditCustomerDetails));
+            
+            Frame.Navigate(typeof(EditCustomerDetails), ((Customer)DataGrid.SelectedItem).iD,
+                    new DrillInNavigationTransitionInfo());
         }
     }
 }
