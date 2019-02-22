@@ -22,9 +22,17 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class ViewPaymentDetails : Page
     {
+        private string iD;
+
+
         public ViewPaymentDetails()
         {
             this.InitializeComponent();
+        }
+
+        private void DisplayPyamentDetails(string iD)
+        {
+         
         }
     }
 }

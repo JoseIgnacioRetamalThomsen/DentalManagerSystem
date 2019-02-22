@@ -318,8 +318,8 @@ namespace DataAccessLibrary
 
                 while (query.Read())
                 {
-                    string first = query.GetString(1);
-                    Debug.WriteLine("Test----------  :" + first);
+                    int treatementPlanID = query.GetInt32(0);
+                    string customerId = query.GetString(1);
                     int state = query.GetInt32(2);
                     TreatmentPlaneState temp = (TreatmentPlaneState)state;
                    
@@ -331,7 +331,8 @@ namespace DataAccessLibrary
                     }
      
                     treatmentPlans.Add(new TreatmentPlan(
-                    first,
+                    treatementPlanID,
+                    customerId,
                     temp,
                     Convert.ToDateTime(query.GetString(3)),
                     datetime2
@@ -435,6 +436,49 @@ namespace DataAccessLibrary
                 db.Close();
             }
         }
+
+        /// <summary>
+        /// Get payment by customer Id
+        /// </summary>
+        /// <param name="CustomerID"></param>
+        /// <returns></returns>
+        public static Payments GetPaymenyByCustomerID(String CustomerID)
+        {
+
+            Payments payment = null;
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from payments where customerID=@customerID", db);
+                selectCommand.Parameters.AddWithValue("@customerID", CustomerID);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+
+                    payment = new Payments(
+                        query.GetInt32(0),
+                        query.GetInt32(1),
+                        query.GetString(2),
+                        query.GetFloat(3),
+                        Convert.ToDateTime(query.GetString(4))
+
+                     );
+
+                }
+
+                db.Close();
+            }
+
+            return payment;
+        }
+
+
 
         public static void AddData(string inputText)
         {
