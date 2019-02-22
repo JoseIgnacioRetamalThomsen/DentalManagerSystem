@@ -37,10 +37,7 @@ namespace DentalManagerSys.Views
         {
             this.InitializeComponent();
 
-            ViewModel = new CustomerDetailsViewModel();
-            ActiveTPListView.ItemsSource = ViewModel.AcceptedTreatmentPlans;
-            CreatedTPListView.ItemsSource = ViewModel.CreatedTreatmentPlans;
-            FinishTPListView.ItemsSource = ViewModel.FinishedTreatmentPlans;
+            
 
         }
 
@@ -53,6 +50,9 @@ namespace DentalManagerSys.Views
    
 
             Customer temp = DAO.GetCustomerByID(iD);
+
+            //set customer on view model
+            ViewModel.Customer = temp;
 
             PageTitle.Text = temp.name + " " + temp.surname;
             AdressDetails.Text = temp.street + ", " + temp.city+", "+ temp.province + ", "+ temp.postcode + ", " + temp.country;
@@ -68,6 +68,10 @@ namespace DentalManagerSys.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+
+            ViewModel = new CustomerDetailsViewModel();
+          
+
             if (e.Parameter == null)
             {
                
@@ -79,14 +83,22 @@ namespace DentalManagerSys.Views
                 iD = e.Parameter.ToString();
             }
 
-           
-            
+            ViewModel.SetTreatmentsPlan();
+            ActiveTPListView.ItemsSource = ViewModel.AcceptedTreatmentPlans;
+            CreatedTPListView.ItemsSource = ViewModel.CreatedTreatmentPlans;
+            FinishTPListView.ItemsSource = ViewModel.FinishedTreatmentPlans;
+
         }
 
         private void CreateTreatmentPlan_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(NewTreatmentPlanView), iD,
                    new DrillInNavigationTransitionInfo());
+        }
+
+        private void CreatedTPListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Debug.WriteLine("working777777777777777777777777777777777777777777777777777777777777777777777777777777");
         }
     }
 }
