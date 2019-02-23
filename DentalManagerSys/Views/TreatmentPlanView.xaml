@@ -105,7 +105,7 @@
                     >
 
                     <ListView.ItemTemplate>
-                        <DataTemplate   x:DataType="local1:TreatmentOnPlan">
+                        <DataTemplate   x:DataType="local1:TreatmentOnPlanShow">
                             <Grid >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="150"/>
@@ -118,9 +118,10 @@
                                 </Grid.RowDefinitions>
 
 
-                                <TextBlock Text="{x:Bind IsDone,Mode=TwoWay}" Grid.Column="0" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind TreatmentPlanID}" Grid.Column="1" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind Price}" Grid.Column="2" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind treatmentName}" Grid.Column="0" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Treatment.IsDoneString,Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Treatment.Price}" Grid.Column="2" Grid.Row="0"/>
+                                
                                 
 
 

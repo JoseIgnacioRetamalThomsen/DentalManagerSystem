@@ -150,7 +150,7 @@ namespace DataAccessLibrary
                 while (query.Read())
                 {
                     treatments.Add(new Treatment(
-                    query.GetString(0),
+                    query.GetInt32(0),
                     query.GetString(1),
                     query.GetDecimal(2)
                     ));
@@ -189,7 +189,7 @@ namespace DataAccessLibrary
                 {
 
                     treatment = new Treatment(
-                    query.GetString(0),
+                    query.GetInt32(0),
                     query.GetString(1),
                     query.GetDecimal(2)
 

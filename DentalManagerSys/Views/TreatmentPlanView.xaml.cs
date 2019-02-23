@@ -1,4 +1,5 @@
-﻿using DentalManagerSys.ViewModel;
+﻿using DataAccessLibrary;
+using DentalManagerSys.ViewModel;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -72,10 +73,10 @@ namespace DentalManagerSys.Views
             int index = TreatmentsOnPlanLV.SelectedIndex;
 
             //get treatement on plan
-            TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
+            TreatmentOnPlanShow top = ViewModel.TreatmentsOnPlan[index];
 
             //activate button for mark as done if is not done
-            if(!top.IsDone)
+            if(!top.Treatment.IsDone)
             {
                 CreateTreatmentPlanCompletedB.IsEnabled = true;
                 CreateTreatmentPlanNotCopletedB.IsEnabled = false;
@@ -91,7 +92,9 @@ namespace DentalManagerSys.Views
         private void CreateTreatmentPlanNotCopletedB_Click(object sender, RoutedEventArgs e)
         {
             int index = TreatmentsOnPlanLV.SelectedIndex;
-            ViewModel.TreatmentsOnPlan[index].CompletedDate = Convert.ToDateTime("01/01/0001 00:00:00");
+            TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index].Treatment;
+            top.CompletedDate = Convert.ToDateTime("01/01/0001 00:00:00");
+            DAO.UpdateTreatmentOnPlan(top.TreatmentPlanTreatmentsID,top.TreatmentPlanID,top.TreatmentID,top.Price,top.CompletedDate);
             ReloadListView();
         }
 
@@ -108,7 +111,9 @@ namespace DentalManagerSys.Views
             Debug.WriteLine("click");
             //get selected item index
             int index = TreatmentsOnPlanLV.SelectedIndex;
-            ViewModel.TreatmentsOnPlan[index].CompletedDate = DateTime.Now;
+            TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index].Treatment;
+            top.CompletedDate = DateTime.Now;
+            DAO.UpdateTreatmentOnPlan(top.TreatmentPlanTreatmentsID, top.TreatmentPlanID, top.TreatmentID, top.Price, top.CompletedDate);
             ReloadListView();
 
           

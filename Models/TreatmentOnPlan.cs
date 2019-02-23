@@ -13,6 +13,20 @@ namespace Models
         public DateTime CompletedDate { get; set; }
 
 
+        public String IsDoneString
+        {
+            get
+            {
+                if (CompletedDate.ToString().Equals("01/01/0001 00:00:00"))
+                    return "Not Completed";
+                return CompletedDate.ToString("dd/MM/yyyy");
+            }
+            set
+            {
+                ;
+            }
+        }
+
         public bool IsDone
         {
             get
@@ -26,7 +40,6 @@ namespace Models
                 ;
             }
         }
-
         public TreatmentOnPlan(int treatmentPlanTreatmentsID, int treatmentPlanID, int treatmentID, decimal price, DateTime completedDate)
         {
             TreatmentPlanTreatmentsID = treatmentPlanTreatmentsID;

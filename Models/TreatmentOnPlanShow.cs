@@ -4,7 +4,15 @@ using System.Text;
 
 namespace Models
 {
-    class TreatmentOnPlanShow
+    public class TreatmentOnPlanShow
     {
+        public TreatmentOnPlan Treatment { get; set; }
+        public string treatmentName { get; set; }
+
+        public TreatmentOnPlanShow(TreatmentOnPlan treatment, string treatmentName)
+        {
+            Treatment = treatment;
+            this.treatmentName = treatmentName;
+        }
     }
 }

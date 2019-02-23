@@ -8,7 +8,7 @@ namespace Models
 {
     public class Treatment //: INotifyPropertyChanged
     {
-        public string iD { get; set; }
+        public int iD { get; set; }
 
 
         public string name { get; set; }
@@ -18,7 +18,7 @@ namespace Models
         //public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
 
-        public Treatment(string iD, string name, decimal price)
+        public Treatment(int iD, string name, decimal price)
         {
             this.iD = iD;
             this.name = name;
