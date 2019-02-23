@@ -836,7 +836,7 @@ namespace DataAccessLibrary
                 insertCommand.Connection = db;
 
                 // Use parameterized query to prevent SQL injection attacks
-                insertCommand.CommandText = "UPDATE treatmentPlanTreatments SET treatmentPlanID =@TreatmentPlanID, treatmentID =@TreatmentID, price =@Price, completedDate =@CompletedDate  where treatmentPlanTreatmentsID=@TreatmentPlanTreatmentsID;";
+                insertCommand.CommandText = "UPDATE treatmentPlanTreatments SET treatmentPlanID =@TreatmentPlanID, treatmentID =@TreatmentID, price =@Price, treatmentCompleteDate =@CompletedDate  where treatmentPlanTreatmentsID=@TreatmentPlanTreatmentsID;";
                 insertCommand.Parameters.AddWithValue("@TreatmentPlanTreatmentsID", t.TreatmentPlanTreatmentsID);
                 insertCommand.Parameters.AddWithValue("@TreatmentPlanID", t.TreatmentPlanID);
                 insertCommand.Parameters.AddWithValue("@TreatmentID", t.TreatmentID);
