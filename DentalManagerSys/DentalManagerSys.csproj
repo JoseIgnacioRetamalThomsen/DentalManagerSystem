@@ -121,6 +121,9 @@
     <Compile Include="Views\NewTreatmentPlanView.xaml.cs">
       <DependentUpon>NewTreatmentPlanView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PrinterView.xaml.cs">
+      <DependentUpon>PrinterView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TreatmentPlanView.xaml.cs">
       <DependentUpon>TreatmentPlanView.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NewTreatmentPlanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PrinterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -46,7 +46,6 @@ namespace DentalManagerSys.Views
             string Mobile = resourceLoader.GetString("/Strings/Mobile");
 
             Customer temp = DAO.GetCustomerByID(iD);
-
             //set customer on view model
             ViewModel.Customer = temp;
 
