@@ -34,11 +34,7 @@ namespace DentalManagerSys.Views
         private void DisplayTreatmentDetails(string id)
         {
 
-           /* Treatment temp = DAO.GetTreatmentByID(string id);
-
-
-            TreatmentNameTextBox.Text = temp.treatmentName;
-            TreatmentPriceTextBox.Text = temp.price;*/
+          
  
         }
     }

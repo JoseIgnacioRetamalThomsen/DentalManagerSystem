@@ -11,7 +11,8 @@
         <RelativePanel>
             <TextBlock   
                 x:Name="PageTitle" 
-                Style="{StaticResource TitleTextBlockStyle}">
+                Style="{StaticResource TitleTextBlockStyle}"
+                MinWidth="400">
             </TextBlock>
 
             <CommandBar 
@@ -19,28 +20,26 @@
                 HorizontalAlignment="Stretch"
                 Background="Transparent"
                 RelativePanel.RightOf="PageTitle"
-                RelativePanel.LeftOf="SearchBox">
+                DefaultLabelPosition="Right">
 
                 <AppBarButton
-                    Tag="CreateTreatmentPlanButton"
-                    Icon="Add"
-                    x:Uid="/Strings/CreateTreatmentPlanButton"
-                    Click="CreateTreatmentPlan_Click"
+                x:Name="SaveCustomerDetails"
+                Icon="Save"
+                x:Uid="/Strings/SaveCustomerDetails"
+                Click="SaveCustomerDetails_Click"
+                IsEnabled="True"/>
+
+                <AppBarButton
+                    x:Name="CancelEditCustomer"
+                    Icon="Cancel"
+                    x:Uid="/Strings/CancelEditCustomer"
+                    Click="CancelEditCustomer_Click"
                     IsEnabled="True"/>
 
                 <AppBarSeparator/>
-                <AppBarButton
-                    Icon="Add"
-                    x:Uid="/Strings/AddBarButton"/>
-
+                
             </CommandBar>
-            <AutoSuggestBox 
-                x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
-                 QueryIcon="Find"
-                                Width="200"
-                x:Uid="/Strings/SearchAutoSuggestBox">
-
-            </AutoSuggestBox>
+          
 
             <Grid
                 RelativePanel.Below="PageTitle">

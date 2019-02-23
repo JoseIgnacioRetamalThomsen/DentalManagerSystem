@@ -1,0 +1,152 @@
+﻿<Page
+    x:Class="DentalManagerSys.Views.TreatmentPlanView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DentalManagerSys.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:local1="using:Models">
+
+    <Grid>
+
+    
+
+    <RelativePanel>
+        <TextBlock   
+                x:Name="PageTitle" 
+                Style="{StaticResource TitleTextBlockStyle}"
+                Text="{x:Bind Path=ViewModel.CustomerName , Mode=OneTime}">
+        </TextBlock>
+
+        <CommandBar 
+                x:Name="PatientsCommandBar"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                RelativePanel.RightOf="PageTitle"
+                RelativePanel.LeftOf="SearchBox"
+                DefaultLabelPosition="Right">
+
+            <AppBarButton
+                    x:Name="EditPlanDone"
+                    Icon="Add"
+                    x:Uid="/Strings/EditPlanDone"
+                Click="EditPlanDone_Click"
+                    IsEnabled="True"/>
+
+            <AppBarSeparator/>
+           
+
+        </CommandBar>
+        
+        <AutoSuggestBox 
+                x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
+                 QueryIcon="Find"
+                                Width="200"
+                x:Uid="/Strings/SearchAutoSuggestBox">
+
+        </AutoSuggestBox>
+            <StackPanel
+            x:Name="treatmentStateCB"
+            RelativePanel.Below="PageTitle">
+                <ComboBox
+                    x:Name="TreatmentStateCB"
+                    
+                    SelectionChanged="TreatmentStateCB_SelectionChanged"></ComboBox>
+            </StackPanel>
+
+            <RelativePanel
+                x:Name="ListViewRP"
+                RelativePanel.Below="treatmentStateCB">
+
+                <TextBlock   
+                x:Name="TreatmentsLVTitleTB" 
+                Style="{StaticResource TitleTextBlockStyle}"
+                x:Uid="/Strings/TreatmentsLVTitleTB">
+                    
+                </TextBlock>
+                
+                <CommandBar 
+                x:Name="TreatementsCommanBar"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                RelativePanel.RightOf="TreatmentsLVTitleTB">
+
+
+                    <AppBarButton
+                        x:Name="CreateTreatmentPlanCompletedB"
+                        Tag="CreateTreatmentPlanButton"
+                        Icon="Accept"
+                        x:Uid="/Strings/CreateTreatmentPlanCompletedB"
+                        Click="CreateTreatmentPlanCompletedB_Click" 
+                        IsEnabled="false"/>
+
+                    <AppBarButton
+                        x:Name="CreateTreatmentPlanNotCopletedB"
+                        Tag="CreateTreatmentPlanButton"
+                        Icon="Remove"
+                        x:Uid="/Strings/CreateTreatmentPlanNotCopleted"
+                        Click="CreateTreatmentPlanNotCopletedB_Click"
+                        IsEnabled="false"/>
+
+                    <AppBarSeparator/>
+                  
+
+                </CommandBar>
+
+                <ListView
+                    x:Name="TreatmentsOnPlanLV"
+                    SelectionMode="Single"
+                    IsItemClickEnabled="True"
+                    RelativePanel.Below="TreatmentsLVTitleTB"
+                    SelectionChanged="TreatmentsOnPlanLV_SelectionChanged"
+                   
+                    >
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate   x:DataType="local1:TreatmentOnPlanShow">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="350" />
+                                    <ColumnDefinition  Width="150"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+
+                                <TextBlock Text="{x:Bind treatmentName}" Grid.Column="0" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Treatment.IsDoneString,Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Treatment.Price}" Grid.Column="2" Grid.Row="0"/>
+                                
+                                
+
+
+                            </Grid>
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </RelativePanel>
+
+            <StackPanel
+                x:Name="TotalsSP"
+                RelativePanel.Below="ListViewRP">
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Total"></TextBlock>
+                    <TextBox Text="{x:Bind Path=ViewModel.Total ,Mode=OneWay}"></TextBox> <!--Bind on two ways will throww exception!!!!!!!-->
+                    
+                </StackPanel>
+                
+            </StackPanel>
+
+        </RelativePanel>
+        
+    </Grid>
+</Page>
+<!--SelectedItem="{x:Bind Path=ViewModel.ActualTreatmentPlanState}"-->

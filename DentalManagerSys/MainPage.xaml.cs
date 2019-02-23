@@ -31,9 +31,10 @@ namespace DentalManagerSys
             this.InitializeComponent();
 
             DAO.InitializeDatabase();
-            DAO.UpdateTreatment(new Treatment("1","text",7));
-            //DAO.UpdateCustomer("Y","Peter","oBREINS", "16/02/2019 00:00:00", "y", "y", "y", "y", "y", "y", "y", "y", "y");
-           
+           // DAO.UpdateTreatmentOnPlan(new TreatmentOnPlan(1, "text", 7));
+            DAO.UpdateTreatment(new Treatment(1,"text",7));
+          
+
         }
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {

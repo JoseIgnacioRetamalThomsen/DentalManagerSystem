@@ -27,7 +27,7 @@ namespace DataAccessLibrary
                 SqliteCommand createTreatment = new SqliteCommand(treatment, db);
                 createTreatment.ExecuteReader();
 
-                String treatmentPlan = "CREATE TABLE IF NOT EXISTS treatmentPlan( treatmentPlanID INTEGER,customerID varchar(20)NOT NULL, state varchar(30)NOT NULL,creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,treatmentPlanCompleteDate DATETIME,PRIMARY KEY (treatmentPlanID),FOREIGN KEY (customerID) REFERENCES customers(customerID))";
+                String treatmentPlan = "CREATE TABLE IF NOT EXISTS treatmentPlan( treatmentPlanID INTEGER,customerID varchar(20)NOT NULL, state INTEGER NOT NULL,creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,treatmentPlanCompleteDate DATETIME,PRIMARY KEY (treatmentPlanID),FOREIGN KEY (customerID) REFERENCES customers(customerID))";
                 SqliteCommand createTreatmentPlan = new SqliteCommand(treatmentPlan, db);
                 createTreatmentPlan.ExecuteReader();
 
@@ -70,7 +70,7 @@ namespace DataAccessLibrary
                     db.Open();
 
                     SqliteCommand insertCommand = new SqliteCommand();
-                    
+
                     insertCommand.Connection = db;
 
                     // Use parameterized query
@@ -90,7 +90,7 @@ namespace DataAccessLibrary
                     insertCommand.Parameters.AddWithValue("@Comments", comments);
 
                     insertCommand.ExecuteReader();
-                    
+
 
                     db.Close();
                 }
@@ -150,7 +150,7 @@ namespace DataAccessLibrary
                 while (query.Read())
                 {
                     treatments.Add(new Treatment(
-                    query.GetString(0),
+                    query.GetInt32(0),
                     query.GetString(1),
                     query.GetDecimal(2)
                     ));
@@ -189,7 +189,7 @@ namespace DataAccessLibrary
                 {
 
                     treatment = new Treatment(
-                    query.GetString(0),
+                    query.GetInt32(0),
                     query.GetString(1),
                     query.GetDecimal(2)
 
@@ -212,8 +212,9 @@ namespace DataAccessLibrary
         /// <param name="state"></param>
         /// <param name="creationDate"></param>
         /// <param name="treatmentPlanCompleteDate"></param>
-        public static void AddNewTreatmentPlan(string customerID, string state, string creationDate, string treatmentPlanCompleteDate)
+        public static long AddNewTreatmentPlan(string customerID, int state, string creationDate, string treatmentPlanCompleteDate)
         {
+            long id = 0;
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -231,9 +232,143 @@ namespace DataAccessLibrary
 
                 insertCommand.ExecuteReader();
 
+                //insertCommand.Connection.Close();
+                //insertCommand.Connection = db;
+                SqliteCommand insertCommand1 = new SqliteCommand();
+                insertCommand1.Connection = db;
+
+                string sql = @"select last_insert_rowid()";
+                insertCommand1.CommandText = sql;
+                id = (long)insertCommand1.ExecuteScalar();
+
+
                 db.Close();
             }
+            return id;
         }
+
+        /// <summary>
+        /// Get all treatement plans
+        /// </summary>
+        /// <returns></returns>
+        public static List<TreatmentPlan> GetAllTreatmentPlans()
+        {
+            List<TreatmentPlan> treatmentPlans = new List<TreatmentPlan>();
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from treatmentPlan", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    string first = query.GetString(1);
+                    int state = query.GetInt32(2);
+                    TreatmentPlaneState temp = (TreatmentPlaneState)state;
+                    string date2 = query.GetString(4);
+                    DateTime datetime2 = Convert.ToDateTime("01/01/0001 00:00:00");
+                    if(!date2.Equals("0"))
+                    {
+                        datetime2 = Convert.ToDateTime(date2);
+                    }
+
+                    treatmentPlans.Add(new TreatmentPlan(
+                    first,
+                    temp,
+                    Convert.ToDateTime(query.GetString(3)),
+                    datetime2
+                    ));
+                }
+
+                db.Close();
+            }
+            return treatmentPlans;
+
+        }
+
+        /// <summary>
+        /// Get Get all treatement plans by Customer ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static List<TreatmentPlan> GetAllTreatmentPlansByID(string id)
+        {
+            List<TreatmentPlan> treatmentPlans = new List<TreatmentPlan>();
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from treatmentPlan where customerID=@CustomerID", db);
+                    selectCommand.Parameters.AddWithValue("@CustomerID", id);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    int treatementPlanID = query.GetInt32(0);
+                    string customerId = query.GetString(1);
+                    int state = query.GetInt32(2);
+                    TreatmentPlaneState temp = (TreatmentPlaneState)state;
+                   
+                    string date2 = query.GetString(4);
+                    DateTime datetime2 = Convert.ToDateTime("01/01/0001 00:00:00");
+                    if (!date2.Equals("0"))
+                    {
+                        datetime2 = Convert.ToDateTime(date2);
+                    }
+     
+                    treatmentPlans.Add(new TreatmentPlan(
+                    treatementPlanID,
+                    customerId,
+                    temp,
+                    Convert.ToDateTime(query.GetString(3)),
+                    datetime2
+                    ));
+                }
+
+                db.Close();
+            }
+            return treatmentPlans;
+
+        }
+
+
+        /// <summary>
+        /// Get Sum price of all treatment plans by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static decimal GetSumTreatmentPlanByID(int id)
+        {
+
+            decimal sumPrice = 0;
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT sum(price) from treatmentPlanTreatments where treatmentPlanID=@TreatmentPlanID", db);
+                selectCommand.Parameters.AddWithValue("@TreatmentPlanID", id);
+
+                sumPrice = selectCommand.ExecuteNonQuery();
+
+
+                db.Close();
+            }
+
+            return sumPrice;
+        }
+
 
         /// <summary>
         /// Insert a new treatment plan treatments
@@ -274,7 +409,7 @@ namespace DataAccessLibrary
         /// <param name="customerID"></param>
         /// <param name="amount"></param>
         /// <param name="treatmentCompleteDate"></param>
-        public static void AddNewpayment(int treatmentPlanID, string customerID, float amount, string treatmentCompleteDate)
+        public static void AddNewpayment(int treatmentPlanID, string customerID, decimal amount, string treatmentCompleteDate)
         {
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
@@ -296,6 +431,89 @@ namespace DataAccessLibrary
                 db.Close();
             }
         }
+
+        /// <summary>
+        /// Get payment by customer Id
+        /// </summary>
+        /// <param name="CustomerID"></param>
+        /// <returns></returns>
+        public static Payments GetPaymenyByCustomerID(String CustomerID)
+        {
+
+            Payments payment = null;
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from payments where customerID=@customerID", db);
+                selectCommand.Parameters.AddWithValue("@customerID", CustomerID);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+
+                    payment = new Payments(
+                        query.GetInt32(0),
+                        query.GetInt32(1),
+                        query.GetString(2),
+                        query.GetFloat(3),
+                        Convert.ToDateTime(query.GetString(4))
+
+                     );
+
+                }
+
+                db.Close();
+            }
+
+            return payment;
+        }
+
+        /// <summary>
+        /// Get a list of payments by customer id
+        /// </summary>
+        /// <param name="CustomerID"></param>
+        /// <returns></returns>
+        public static List<Payments> GetAllPaymenyByCustomerID(string CustomerID)
+        {
+
+            List<Payments> payment = new List<Payments>();
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from payments where customerID=@customerID", db);
+                selectCommand.Parameters.AddWithValue("@customerID", CustomerID);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+
+                        payment.Add(new Payments(
+                        query.GetInt32(0),
+                        query.GetInt32(1),
+                        query.GetString(2),
+                        query.GetFloat(3),
+                        Convert.ToDateTime(query.GetString(4))
+                   ));
+
+                }
+
+                db.Close();
+            }
+
+            return payment;
+        }
+
+
 
         public static void AddData(string inputText)
         {
@@ -361,7 +579,7 @@ namespace DataAccessLibrary
             return customers;
         }
 
-       
+
 
         public static List<Customer> DeleteCustomerByID(String CustomerID)
         {
@@ -571,6 +789,8 @@ namespace DataAccessLibrary
 
             return entries;
         }
+
+
         public static void UpdateTreatment(Treatment treatment)
         {
             using (SqliteConnection db =
@@ -586,6 +806,82 @@ namespace DataAccessLibrary
                 insertCommand.Parameters.AddWithValue("@Name", treatment.name);
                 insertCommand.Parameters.AddWithValue("@Price", treatment.price);
                 insertCommand.Parameters.AddWithValue("@Id", treatment.iD);
+
+                insertCommand.ExecuteNonQuery();
+
+                db.Close();
+            }
+        }
+
+
+        /// <summary>
+        /// Get all treatment by treatement ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static List<TreatmentOnPlan> GetTreatmentOnPlansByID(int id)
+        {
+            List<TreatmentOnPlan> treatmentList = new List<TreatmentOnPlan>();
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from treatmentPlanTreatments where treatmentPlanID=@TreatmentPlanID", db);
+                selectCommand.Parameters.AddWithValue("@TreatmentPlanID", id);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    int TreatmentPlanTreatmentsID = query.GetInt32(0);
+                    int TreatmentPlanID = query.GetInt32(1);
+                    int TreatmentID = query.GetInt32(2);
+                    decimal price = query.GetDecimal(2);
+
+                    treatmentList.Add(new TreatmentOnPlan(
+                    TreatmentPlanTreatmentsID,
+                    TreatmentPlanID,
+                    TreatmentID,
+                    price,
+                    new DateTime()
+                    ));
+                }
+
+                db.Close();
+            }
+
+            return treatmentList;
+ 
+        }
+
+        /// <summary>
+        /// Update treatmentPlanTreatments
+        /// </summary>
+        /// <param name="treatmentPlanTreatmentsID"></param>
+        /// <param name="treatmentPlanID"></param>
+        /// <param name="treatmentID"></param>
+        /// <param name="price"></param>
+        /// <param name="completedDate"></param>
+        public static void UpdateTreatmentOnPlan(TreatmentOnPlan t)
+        {
+            using (SqliteConnection db =
+               new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query to prevent SQL injection attacks
+                insertCommand.CommandText = "UPDATE treatmentPlanTreatments SET treatmentPlanID =@TreatmentPlanID, treatmentID =@TreatmentID, price =@Price, treatmentCompleteDate =@CompletedDate  where treatmentPlanTreatmentsID=@TreatmentPlanTreatmentsID;";
+                insertCommand.Parameters.AddWithValue("@TreatmentPlanTreatmentsID", t.TreatmentPlanTreatmentsID);
+                insertCommand.Parameters.AddWithValue("@TreatmentPlanID", t.TreatmentPlanID);
+                insertCommand.Parameters.AddWithValue("@TreatmentID", t.TreatmentID);
+                insertCommand.Parameters.AddWithValue("@Price", t.Price);
+                insertCommand.Parameters.AddWithValue("@CompletedDate", t.CompletedDate);
 
                 insertCommand.ExecuteNonQuery();
 

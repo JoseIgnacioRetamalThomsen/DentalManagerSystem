@@ -29,6 +29,7 @@ namespace DentalManagerSys.Views
     {
         
         ObservableCollection<Customer> customerList = null;
+        
         public ViewAllCustomers()
         {
             this.InitializeComponent();
@@ -59,12 +60,21 @@ namespace DentalManagerSys.Views
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ViewCustomerButton.IsEnabled = true;
-            Debug.WriteLine("change");
+            NewPaymentButton.IsEnabled = true;
+            EditBarButton.IsEnabled = true;
         }
 
         private void EditCustomer_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(EditCustomerDetails));
+            
+            Frame.Navigate(typeof(EditCustomerDetails), ((Customer)DataGrid.SelectedItem).iD,
+                    new DrillInNavigationTransitionInfo());
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(NewPaymentView), ((Customer)DataGrid.SelectedItem).iD,
+                 new DrillInNavigationTransitionInfo());
         }
     }
 }

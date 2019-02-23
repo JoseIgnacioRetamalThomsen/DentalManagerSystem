@@ -11,33 +11,33 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <RelativePanel>
+        <RelativePanel >
             <TextBlock   
                 x:Name="PageTitle"
-                Text="Marco Gonzalez"
-                Style="{StaticResource TitleTextBlockStyle}">
-            </TextBlock>
+                Text=""
+                Style="{StaticResource TitleTextBlockStyle}"
+                MinWidth="300"/>
+
 
             <CommandBar 
                 x:Name="PatientsCommandBar"
                 HorizontalAlignment="Stretch"
                 Background="Transparent"
                 RelativePanel.RightOf="PageTitle"
-               >
+                DefaultLabelPosition="Right">
 
                 <AppBarButton
-                    Icon="Contact"
-                    x:Uid="/Strings/SelectBarButton"
-                    IsEnabled="False"/>
+                    x:Name="CreateTreatmentPlanButton"
+                    Icon="Add"
+                    x:Uid="/Strings/CreateNewTreatmentPlanButton"
+                    IsEnabled="True"
+                    Tapped="CreateTreatmentPlanButton_Tapped"/>
 
                 <AppBarSeparator/>
-                <AppBarButton
-                    Icon="Add"
-                    x:Uid="/Strings/AddBarButton"/>
-
+                
             </CommandBar>
 
-            
+
 
             <Grid 
                 x:Name="TopGrid"
@@ -69,13 +69,15 @@
                             MinWidth="200" 
                             SelectionChanged="TreatmentsCB_SelectionChanged"
                             DropDownClosed="TreatmentsCB_DropDownClosed"
-                            PlaceholderText="Add Treament to plan"></ComboBox>
+                           
+                            x:Uid="/Strings/TreatmentsCB"></ComboBox>
                     </StackPanel>
-                    <Button Content="Add" Margin="5"></Button>
+
                 </StackPanel>
             </Grid>
 
             <Grid Margin="0,10,0,0"
+                  x:Name="TreatmentsGrip"
                 RelativePanel.AlignLeftWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
                 RelativePanel.Below="TopGrid"
@@ -85,71 +87,36 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
-                
+
                 </Grid.RowDefinitions>
-                
-                <!--<toolkit:DataGrid
-                    x:Name="DataGrid"
-                    CanUserReorderColumns="False"
-                    CanUserResizeColumns="False"
-                    AutoGenerateColumns="False"
-                    ItemsSource="{x:Bind treatmentsOnPlan}"
-                    BorderThickness="0"
-                    GridLinesVisibility="None"
-                    SelectionChanged="DataGrid_SelectionChanged"
-                    Grid.Row="0"
-                
-                    
-                 
-                 >
-                    <toolkit:DataGrid.Columns>
 
 
-                        <toolkit:DataGridTextColumn
-                            Tag="TreatmentName"
-                            Header="Name"
-                            Binding="{Binding name}"
-                            
-                            
-                            IsReadOnly="True"
-                            />
-                        <toolkit:DataGridTextColumn
-                            Tag="TreatmentName"
-                            Header="Cost"
-                            Binding="{Binding price}"
-                            IsReadOnly="False"
-                            
-                            />
-
-
-                    </toolkit:DataGrid.Columns>
-                </toolkit:DataGrid>-->
                 <RelativePanel Grid.Row="0" Background="{StaticResource AppBarBackgroundThemeBrush}">
                     <TextBox 
                         x:Name="EditPriceTB"
                         Margin="10"
                         TextChanging="EditPriceTB_TextChanging">
-                        
+
                     </TextBox>
 
                     <CommandBar 
-                x:Name="EditTreatmentPriceCommandBar"
-                HorizontalAlignment="Stretch"
-                Background="Transparent"
-                RelativePanel.RightOf="EditPriceTB"
-               >
+                        x:Name="EditTreatmentPriceCommandBar"
+                        HorizontalAlignment="Stretch"
+                        Background="Transparent"
+                        RelativePanel.RightOf="EditPriceTB"
+                        DefaultLabelPosition="Right">
 
                         <AppBarButton
-                    Icon="Contact"
-                    x:Uid="/Strings/SelectBarButton"
-                    IsEnabled="False"/>
+                            x:Name="SaveChangedPriceButton"
+                            Icon="Accept"
+                            x:Uid="/Strings/SaveChangedPriceButton"
+                            IsEnabled="True"
+                            Tapped="SaveChangedPriceButton_Tapped"/>
 
                         <AppBarSeparator/>
-                        <AppBarButton
-                    Icon="Add"
-                    x:Uid="/Strings/AddBarButton"/>
-
+                    
                     </CommandBar>
+                    
                 </RelativePanel>
 
                 <ListView x:Name="TreatmentsDoneListView" Height="200"
@@ -178,7 +145,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                               
+
                                 <TextBlock Text="{x:Bind name}" Grid.Column="1" Grid.Row="0"/>
                                 <TextBlock Text="{x:Bind price}" Grid.Column="2" Grid.Row="0"/>
 
@@ -188,7 +155,23 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </Grid>
+            <StackPanel
+                RelativePanel.Below="TreatmentsGrip">
+                <StackPanel
+                    
+                    Orientation="Horizontal"
+            x:Name="TotalSP"
+            >
+                    <TextBlock 
+                        x:Uid="/Strings/TotalTB"/>
+                    <TextBox 
+                x:Name="TotalTB"
+                Text="{x:Bind Path=ViewModel.Total, Mode=TwoWay}"/>
+                </StackPanel>
+            </StackPanel>
         </RelativePanel>
+
+
 
     </Grid>
 </Page>

@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="DentalManagerSys.Views.NewPaymentView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DentalManagerSys.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <RelativePanel>
+            <TextBlock   
+                x:Name="PageTitle" 
+                Style="{StaticResource TitleTextBlockStyle}"
+            Text="{x:Bind Path=ViewModel.CustomerName , Mode=OneTime}">
+            </TextBlock>
+
+            <CommandBar 
+                x:Name="PatientsCommandBar"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                RelativePanel.RightOf="PageTitle"
+                >
+
+                <AppBarButton
+                    Tag="CreatePaymentBarButton"
+                    Icon="Add"
+                    x:Uid="/Strings/CreatePaymentBarButton"
+                    Click="AppBarButton_Click"
+                    IsEnabled="True"/>
+
+                <AppBarSeparator/>
+                <AppBarButton
+                    Icon="Add"
+                    x:Uid="/Strings/AddBarButton"/>
+
+            </CommandBar>
+
+
+
+
+            <StackPanel 
+                x:Name="TreatmentPlanDBSP"
+                RelativePanel.Below="PageTitle">
+                <StackPanel>
+                    <TextBlock 
+                        Text="Payment for treatment plan:"></TextBlock>
+                <ComboBox
+                    x:Name="TreatmentPlanDB"
+                    MinWidth="400" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel
+                x:Name="AmoutInputSP"
+                RelativePanel.Below="TreatmentPlanDBSP">
+
+                <TextBox
+                    x:Name="Amount"
+                  
+                    x:Uid="/Strings/AmountTB"
+                    TextChanging="Amount_TextChanging"/>
+            </StackPanel>
+           
+
+        </RelativePanel>
+    </Grid>
+</Page>

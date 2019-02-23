@@ -30,12 +30,12 @@ namespace DentalManagerSys.Views
         public EditCustomerDetails()
         {
             this.InitializeComponent();
-            DisplayDetails("G0035");
+            
         }
 
         private void DisplayDetails(string iD)
         {
-            
+            Debug.WriteLine("id");
             Customer temp = DAO.GetCustomerByID(iD);
             
             PageTitle.Text = temp.name + " " + temp.surname;
@@ -59,18 +59,20 @@ namespace DentalManagerSys.Views
             }
             else
             {
-              
+                DisplayDetails(e.Parameter.ToString());
             }
 
         }
 
-
-        private void CreateTreatmentPlan_Click(object sender, RoutedEventArgs e)
+        
+        private void SaveCustomerDetails_Click(object sender, RoutedEventArgs e)
         {
-
-            Frame.Navigate(typeof(NewTreatmentPlanView), iD,
-            new DrillInNavigationTransitionInfo());
+            Frame.GoBack();
         }
 
+        private void CancelEditCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
+        }
     }
 }

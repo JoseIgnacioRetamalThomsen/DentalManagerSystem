@@ -1,4 +1,5 @@
 ﻿using DataAccessLibrary;
+using DentalManagerSys.ViewModel;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -28,16 +29,19 @@ namespace DentalManagerSys.Views
     {
 
         ObservableCollection<Treatment> treatments = null;
-        ObservableCollection<Treatment> treatmentsOnPlan = new ObservableCollection<Treatment>();
-        
+        //ObservableCollection<Treatment> treatmentsOnPlan = new ObservableCollection<Treatment>();
 
+        public NewTreatmentPlanViewModel ViewModel { get; set; }
         public NewTreatmentPlanView()
         {
             this.InitializeComponent();
 
             InitTreamentsCB();
 
-            TreatmentsDoneListView.ItemsSource = treatmentsOnPlan;
+            ViewModel = new NewTreatmentPlanViewModel();
+
+           TreatmentsDoneListView.ItemsSource = ViewModel.TreatmentsOnPlan;
+            ViewModel.Total = 0;
         }
 
         private void InitTreamentsCB()
@@ -58,6 +62,10 @@ namespace DentalManagerSys.Views
                 Debug.WriteLine(e.Parameter);
                 //DisplayDetails(e.Parameter.ToString());
                 //iD = e.Parameter.ToString();
+                ViewModel.ActualCustomer = DAO.GetCustomerByID(e.Parameter.ToString());
+                PageTitle.Text = ViewModel.ActualCustomer.name + " " + ViewModel.ActualCustomer.surname;
+
+
             }
 
             
@@ -82,20 +90,56 @@ namespace DentalManagerSys.Views
         private void TreatmentsDoneListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Debug.WriteLine("willThis" + ((ListView)sender).SelectedIndex);
-            EditPriceTB.Text = treatmentsOnPlan[((ListView)sender).SelectedIndex].price.ToString();
+            Debug.WriteLine("willThis" + ViewModel.TreatmentsOnPlan[((ListView)sender).SelectedIndex].price.ToString());
+
+            //set value of treament on edit box for editing
+            EditPriceTB.Text = ((int)ViewModel.TreatmentsOnPlan[((ListView)sender).SelectedIndex].price).ToString();
+            
         }
 
         private void TreatmentsCB_DropDownClosed(object sender, object e)
         {
             ComboBox temp = (ComboBox)sender;
             Treatment t = treatments[temp.SelectedIndex];
-            treatmentsOnPlan.Add(new Treatment(t.iD, t.name, t.price));
+            //add adddes treatments to list of all treatements in plan
+            ViewModel.TreatmentsOnPlan.Add(new Treatment(t.iD, t.name, t.price));
+            //add price of treatment to total
+            ViewModel.Total += t.Price;
+
         }
 
         private void EditPriceTB_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
             sender.Text = new String(sender.Text.Where(char.IsDigit).ToArray());
         }
+
+      
+
+        private void CreateTreatmentPlanButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ViewModel.CreateNewTreatmentPlan();
+        }
+
+        private void SaveChangedPriceButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            decimal NewPrice = Convert.ToDecimal(EditPriceTB.Text);
+            int ItemIndex = TreatmentsDoneListView.SelectedIndex;
+
+            //edit value
+            ViewModel.TreatmentsOnPlan[ItemIndex].Price = NewPrice;
+            ViewModel.RecalculateTotal();
+            ReloadTretmentsListView();
+        }
+
+        private void ReloadTretmentsListView()
+        {
+            TreatmentsDoneListView.SelectionChanged -= TreatmentsDoneListView_SelectionChanged;
+            TreatmentsDoneListView.ItemsSource = null;
+            TreatmentsDoneListView.ItemsSource = ViewModel.TreatmentsOnPlan;
+            TreatmentsDoneListView.SelectionChanged += TreatmentsDoneListView_SelectionChanged;
+        }
+
+        
     }
 
 
