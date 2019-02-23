@@ -473,6 +473,46 @@ namespace DataAccessLibrary
             return payment;
         }
 
+        /// <summary>
+        /// Get a list of payments by customer id
+        /// </summary>
+        /// <param name="CustomerID"></param>
+        /// <returns></returns>
+        public static List<Payments> GetAllPaymenyByCustomerID(string CustomerID)
+        {
+
+            List<Payments> payment = new List<Payments>();
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from payments where customerID=@customerID", db);
+                selectCommand.Parameters.AddWithValue("@customerID", CustomerID);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+
+                        payment.Add(new Payments(
+                        query.GetInt32(0),
+                        query.GetInt32(1),
+                        query.GetString(2),
+                        query.GetFloat(3),
+                        Convert.ToDateTime(query.GetString(4))
+                   ));
+
+                }
+
+                db.Close();
+            }
+
+            return payment;
+        }
+
 
 
         public static void AddData(string inputText)

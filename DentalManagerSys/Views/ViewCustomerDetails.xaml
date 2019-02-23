@@ -70,6 +70,7 @@
                 <StackPanel x:Name="id" Grid.Row="0" Grid.Column="0" Margin="2" Grid.ColumnSpan="2">
                     <TextBlock x:Name="IdTextBox"/>
                 </StackPanel>
+                
 
                 <StackPanel x:Name="email" Grid.Row="0" Grid.Column="2" Margin="2" Grid.ColumnSpan="3">
                     <TextBlock x:Name="emailTextBox"/>
