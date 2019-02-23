@@ -6,7 +6,8 @@ namespace Models
 {
    public  class TreatmentOnPlan
     {
-        public int TreatmentPlanId { get; set; }
+        public int TreatmentPlanTreatmentsID { get; set; }
+        public int TreatmentPlanID { get; set; }
         public int TreatmentID { get; set; }
         public decimal Price { get; set; }
         public DateTime CompletedDate { get; set; }
@@ -26,10 +27,11 @@ namespace Models
             }
         }
 
-        public TreatmentOnPlan(int treatmentPlanId, int treatnentID, decimal price, DateTime completedDate)
+        public TreatmentOnPlan(int treatmentPlanTreatmentsID, int treatmentPlanID, int treatmentID, decimal price, DateTime completedDate)
         {
-            TreatmentPlanId = treatmentPlanId;
-            TreatmentID = treatnentID;
+            TreatmentPlanTreatmentsID = treatmentPlanTreatmentsID;
+            TreatmentPlanID = treatmentPlanID;
+            TreatmentID = treatmentID;
             Price = price;
             CompletedDate = completedDate;
         }
