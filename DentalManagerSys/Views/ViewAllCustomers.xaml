@@ -27,6 +27,13 @@
                     Click="SelectCustomer_Button"
                     x:Uid="/Strings/SelectBarButton"
                     IsEnabled="False"/>
+                <AppBarButton
+                    Tag="NewPaymentButton"
+                    Icon="Caption"
+                    x:Uid="/Strings/NewPaymentButton"
+                Click="AppBarButton_Click"
+                    IsEnabled="True"/>
+                
                 <AppBarSeparator />
                 <AppBarButton
                     Icon="Add"

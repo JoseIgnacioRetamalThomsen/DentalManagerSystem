@@ -369,6 +369,12 @@
   <data name="CreateTreatmentPlanNotCopleted.ToolTipService.ToolTip" xml:space="preserve">
     <value>Mark this treatment as not completed</value>
   </data>
+  <data name="NewPaymentButton.Label" xml:space="preserve">
+    <value>New Payment</value>
+  </data>
+  <data name="NewPaymentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Add new payment for selected customer</value>
+  </data>
   <data name="TreatmentsLVTitleTB.Text" xml:space="preserve">
     <value>Treatments in plan</value>
   </data>
