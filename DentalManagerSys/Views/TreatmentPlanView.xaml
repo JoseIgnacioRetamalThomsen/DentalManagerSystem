@@ -73,17 +73,25 @@
                 RelativePanel.RightOf="TreatmentsLVTitleTB"
                >
 
+
                     <AppBarButton
+                        x:Name="CreateTreatmentPlanCompletedB"
                     Tag="CreateTreatmentPlanButton"
-                    Icon="Add"
-                    x:Uid="/Strings/CreateTreatmentPlanButton"
-                    
-                    IsEnabled="True"/>
+                    Icon="Accept"
+                    x:Uid="/Strings/CreateTreatmentPlanCompletedB"
+                                       
+                    IsEnabled="false"/>
+
+                    <AppBarButton
+                        x:Name="CreateTreatmentPlanNotCopleted"
+                    Tag="CreateTreatmentPlanButton"
+                    Icon="Remove"
+                    x:Uid="/Strings/CreateTreatmentPlanNotCopleted"
+                                       
+                    IsEnabled="false"/>
 
                     <AppBarSeparator/>
-                    <AppBarButton
-                    Icon="Add"
-                    x:Uid="/Strings/AddBarButton"/>
+                  
 
                 </CommandBar>
 
@@ -92,6 +100,7 @@
                     SelectionMode="Single"
                     IsItemClickEnabled="True"
                     RelativePanel.Below="TreatmentsLVTitleTB"
+                    SelectionChanged="TreatmentsOnPlanLV_SelectionChanged"
                    
                     >
 
@@ -112,6 +121,7 @@
                                 <TextBlock Text="{x:Bind IsDone}" Grid.Column="0" Grid.Row="0"/>
                                 <TextBlock Text="{x:Bind TreatmentPlanId}" Grid.Column="1" Grid.Row="0"/>
                                 <TextBlock Text="{x:Bind Price}" Grid.Column="2" Grid.Row="0"/>
+                                
 
 
                             </Grid>

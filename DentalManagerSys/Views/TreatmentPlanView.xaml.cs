@@ -65,5 +65,24 @@ namespace DentalManagerSys.Views
         {
             ViewModel.ActualTreatmentPlanState = (TreatmentPlaneState)((ComboBox)sender).SelectedItem;
         }
+
+        private void TreatmentsOnPlanLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //get selected item index
+            int index = TreatmentsOnPlanLV.SelectedIndex;
+
+            //get treatement on plan
+            TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
+
+            //activate button for mark as done if is not done
+            if(!top.IsDone)
+            {
+                CreateTreatmentPlanCompletedB.IsEnabled = true;
+            }else
+            {
+                CreateTreatmentPlanCompletedB.IsEnabled = false;
+            }
+
+        }
     }
 }

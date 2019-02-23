@@ -357,6 +357,18 @@
   <data name="DoneTreatmentsTextBox.Text" xml:space="preserve">
     <value>Complete Treatment Plan</value>
   </data>
+  <data name="CreateTreatmentPlanCompletedB.Label" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="CreateTreatmentPlanCompletedB.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Mark this treatments as completed</value>
+  </data>
+  <data name="CreateTreatmentPlanNotCopleted.Label" xml:space="preserve">
+    <value>Not Completed</value>
+  </data>
+  <data name="CreateTreatmentPlanNotCopleted.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Mark this treatment as not completed</value>
+  </data>
   <data name="TreatmentsLVTitleTB.Text" xml:space="preserve">
     <value>Treatments in plan</value>
   </data>
