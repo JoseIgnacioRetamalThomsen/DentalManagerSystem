@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="es" original="DENTALMANAGERSYS/STRINGS/EN/STRINGS.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="DENTALMANAGERSYS/STRINGS/EN/STRINGS.RESW" datatype="resx">
+        <trans-unit id="Add.Content" translate="yes" xml:space="preserve">
+          <source>Add</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Agregar</target>
+        </trans-unit>
+        <trans-unit id="City.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Ciudad</target>
+        </trans-unit>
+        <trans-unit id="Clear.Content" translate="yes" xml:space="preserve">
+          <source>Clear</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Borrar</target>
+        </trans-unit>
+        <trans-unit id="Country.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Country</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">País</target>
+        </trans-unit>
+        <trans-unit id="DOB.Header" translate="yes" xml:space="preserve">
+          <source>Date of birth</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Fecha de nacimiento</target>
+        </trans-unit>
+        <trans-unit id="Email.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">correo electrónico</target>
+        </trans-unit>
+        <trans-unit id="FirstName.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>First Name</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Nombre</target>
+        </trans-unit>
+        <trans-unit id="HomeNum.PlaceholderText" translate="yes" xml:space="preserve">
+          <source># Home</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion"># Inicio</target>
+        </trans-unit>
+        <trans-unit id="Id.PlaceholderText" translate="yes" xml:space="preserve">
+          <source> ID </source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion"> ID </target>
+        </trans-unit>
+        <trans-unit id="IDError.Text" translate="yes" xml:space="preserve">
+          <source>ID is required</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">ID se requiere</target>
+        </trans-unit>
+        <trans-unit id="MobilNum.PlaceholderText" translate="yes" xml:space="preserve">
+          <source># Mobile</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion"># Móvil</target>
+        </trans-unit>
+        <trans-unit id="NameError.Text" translate="yes" xml:space="preserve">
+          <source>Name is required</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">El nombre es obligatorio</target>
+        </trans-unit>
+        <trans-unit id="NewCustomerTextBlock.Text" translate="yes" xml:space="preserve">
+          <source>Create New Customer</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Crear nuevo cliente</target>
+        </trans-unit>
+        <trans-unit id="NewTreatmentTextBlock.Text" translate="yes" xml:space="preserve">
+          <source>Create Treatment</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Crear tratamiento</target>
+        </trans-unit>
+        <trans-unit id="PostCode.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Post Code</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Código postal</target>
+        </trans-unit>
+        <trans-unit id="Province.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Province</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Provincia</target>
+        </trans-unit>
+        <trans-unit id="Street.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Street address</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Dirección</target>
+        </trans-unit>
+        <trans-unit id="Surename.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Surename</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Apellido</target>
+        </trans-unit>
+        <trans-unit id="SurnameError.Text" translate="yes" xml:space="preserve">
+          <source>Surname is required</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Apellido es requerido</target>
+        </trans-unit>
+        <trans-unit id="TreatmentName.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Treatment Name</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Nombre del tratamiento</target>
+        </trans-unit>
+        <trans-unit id="TreatmentPrice.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Price</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Precio</target>
+        </trans-unit>
+        <trans-unit id="TreatmentInputError.Text" translate="yes" xml:space="preserve">
+          <source>All fields are requerid</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Todos los campos están requerido</target>
+        </trans-unit>
+        <trans-unit id="UniqueIdError.Text" translate="yes" xml:space="preserve">
+          <source>ID must be unique</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">ID debe ser único</target>
+        </trans-unit>
+        <trans-unit id="AddBarButton.Label" translate="yes" xml:space="preserve">
+          <source>New Patient</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Nuevo paciente</target>
+        </trans-unit>
+        <trans-unit id="AddBarButton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Create a new patient</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Crear un nuevo paciente</target>
+        </trans-unit>
+        <trans-unit id="NavViewItemPatients.Content" translate="yes" xml:space="preserve">
+          <source>Patients List</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Lista de pacientes</target>
+        </trans-unit>
+        <trans-unit id="NavViewItem_Patients.Text" translate="yes" xml:space="preserve">
+          <source>Patients List</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Lista de pacientes</target>
+        </trans-unit>
+        <trans-unit id="SearchAutoSuggestBox.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Search patients...</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Pacientes de búsqueda...</target>
+        </trans-unit>
+        <trans-unit id="SelectBarButton.Label" translate="yes" xml:space="preserve">
+          <source>Select</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Seleccionar</target>
+        </trans-unit>
+        <trans-unit id="SelectBarButton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Select patient for view details and add treatments plans</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Seleccione el paciente para ver más detalles y planes de tratamientos</target>
+        </trans-unit>
+        <trans-unit id="ViewAllCustomerPageTitle.Text" translate="yes" xml:space="preserve">
+          <source>Patients</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Pacientes</target>
+        </trans-unit>
+        <trans-unit id="EmailDataGrid.Header" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">correo electrónico</target>
+        </trans-unit>
+        <trans-unit id="IDDataGrid.Header" translate="yes" xml:space="preserve">
+          <source>ID</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">id.</target>
+        </trans-unit>
+        <trans-unit id="MobileDataGrid.Header" translate="yes" xml:space="preserve">
+          <source>Mobile #</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion"># Móvil</target>
+        </trans-unit>
+        <trans-unit id="NameDataGrid.Header" translate="yes" xml:space="preserve">
+          <source>First Name</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Nombre</target>
+        </trans-unit>
+        <trans-unit id="SurnameDataGrid.Header" translate="yes" xml:space="preserve">
+          <source>Surname</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Apellido</target>
+        </trans-unit>
+        <trans-unit id="AddNewCustomer.Label" translate="yes" xml:space="preserve">
+          <source>Add</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Agregar</target>
+        </trans-unit>
+        <trans-unit id="AddNewCustomer.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Add patiente and go to view all customers</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Añadir el patiente y vaya a ver a todos los clientes</target>
+        </trans-unit>
+        <trans-unit id="AddNewCustomerPlus.Label" translate="yes" xml:space="preserve">
+          <source>Add +</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Añadir +</target>
+        </trans-unit>
+        <trans-unit id="AddNewCustomerPlus.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Add this and another patient then</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Añadir a este y otro paciente a continuación</target>
+        </trans-unit>
+        <trans-unit id="Comments.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Comments</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Comentarios</target>
+        </trans-unit>
+        <trans-unit id="IdViewCustomer.Text" translate="yes" xml:space="preserve">
+          <source>ID</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">id.</target>
+        </trans-unit>
+        <trans-unit id="cityViewCustomer.Text" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Ciudad</target>
+        </trans-unit>
+        <trans-unit id="comentsViewCustomer.Text" translate="yes" xml:space="preserve">
+          <source>Comments</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Comentarios</target>
+        </trans-unit>
+        <trans-unit id="countryViewCustomer.Text" translate="yes" xml:space="preserve">
+          <source>Country</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">País</target>
+        </trans-unit>
+        <trans-unit id="DOBViewCustomer.Text" translate="yes" xml:space="preserve">
+          <source>DOB</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">FECHA DE NACIMIENTO</target>
+        </trans-unit>
+        <trans-unit id="emailViewCustomer.Text" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">correo electrónico</target>
+        </trans-unit>
+        <trans-unit id="fixNumViewCustomer.Text" translate="yes" xml:space="preserve">
+          <source>House Number</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Número de casa</target>
+        </trans-unit>
+        <trans-unit id="mobileViewCustomer.Text" translate="yes" xml:space="preserve">
+          <source>Mobile</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Móvil</target>
+        </trans-unit>
+        <trans-unit id="postcodeViewCustomer.Text" translate="yes" xml:space="preserve">
+          <source>Post Code</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Código postal</target>
+        </trans-unit>
+        <trans-unit id="streetViewCustomer.Text" translate="yes" xml:space="preserve">
+          <source>Street</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Calle</target>
+        </trans-unit>
+        <trans-unit id="AddTreatmentButton.Label" translate="yes" xml:space="preserve">
+          <source>Add new</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Agregar nuevo</target>
+        </trans-unit>
+        <trans-unit id="AddTreatmentButton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Create new Treatment</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Crear nuevo tratamiento</target>
+        </trans-unit>
+        <trans-unit id="NavViewTretments.Content" translate="yes" xml:space="preserve">
+          <source>Treatments list</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Lista de tratamientos</target>
+        </trans-unit>
+        <trans-unit id="RefreshAddCustomerView.Label" translate="yes" xml:space="preserve">
+          <source>Clear all</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Borrar todo</target>
+        </trans-unit>
+        <trans-unit id="RefreshAddCustomerView.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Clear all input box</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Desactive casilla de entrada todos</target>
+        </trans-unit>
+        <trans-unit id="TreatmentNameDataGrid.Header" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Nombre</target>
+        </trans-unit>
+        <trans-unit id="TreatmentPriceDataGrid.Header" translate="yes" xml:space="preserve">
+          <source>Price</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Precio</target>
+        </trans-unit>
+        <trans-unit id="TretmentsListTitle.Text" translate="yes" xml:space="preserve">
+          <source>Treatments</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Tratamientos</target>
+        </trans-unit>
+        <trans-unit id="AddTreatmentPlusButton.Label" translate="yes" xml:space="preserve">
+          <source>Add +</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Añadir +</target>
+        </trans-unit>
+        <trans-unit id="AddTreatmentPlusButton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Add this treatment and then another</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Añadir este tratamiento y luego otro</target>
+        </trans-unit>
+        <trans-unit id="CreateTreatmentPlanButton.Label" translate="yes" xml:space="preserve">
+          <source>Treatment plan</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Plan de tratamiento</target>
+        </trans-unit>
+        <trans-unit id="CreateTreatmentPlanButton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Create a new Treatment plan</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Crear un nuevo plan de tratamiento</target>
+        </trans-unit>
+        <trans-unit id="RefrshTreatmentsButton.Label" translate="yes" xml:space="preserve">
+          <source>Clear</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Borrar</target>
+        </trans-unit>
+        <trans-unit id="RefrshTreatmentsButton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Clear all inputs</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Borrar todas las entradas</target>
+        </trans-unit>
+        <trans-unit id="provinceViewCustomer.Text" translate="yes" xml:space="preserve">
+          <source>Province</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Provincia</target>
+        </trans-unit>
+        <trans-unit id="EditBarButton.Label" translate="yes" xml:space="preserve">
+          <source>Edit</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Editar</target>
+        </trans-unit>
+        <trans-unit id="EditBarButton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Edit patient data</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Editar datos del paciente</target>
+        </trans-unit>
+        <trans-unit id="ViewTreatmentName.Text" translate="yes" xml:space="preserve">
+          <source>Treatment Name</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Nombre del tratamiento</target>
+        </trans-unit>
+        <trans-unit id="ViewTreatmentPrice.Text" translate="yes" xml:space="preserve">
+          <source>Price</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Precio</target>
+        </trans-unit>
+        <trans-unit id="CreateNewTreatmentPlanButton.Label" translate="yes" xml:space="preserve">
+          <source>Create</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Creación</target>
+        </trans-unit>
+        <trans-unit id="CreateNewTreatmentPlanButton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Create this treatment plan</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Crear este plan de tratamiento</target>
+        </trans-unit>
+        <trans-unit id="SaveChangedPriceButton.Label" translate="yes" xml:space="preserve">
+          <source>Change</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Modificación</target>
+        </trans-unit>
+        <trans-unit id="SaveChangedPriceButton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Update selected treatment price</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Precio de actualización tratamiento seleccionado</target>
+        </trans-unit>
+        <trans-unit id="TotalTB.Text" translate="yes" xml:space="preserve">
+          <source>Total : </source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Total: </target>
+        </trans-unit>
+        <trans-unit id="Home" translate="yes" xml:space="preserve">
+          <source>Home</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Inicio</target>
+        </trans-unit>
+        <trans-unit id="Mobile" translate="yes" xml:space="preserve">
+          <source>Mobile</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Móvil</target>
+        </trans-unit>
+        <trans-unit id="ActiveTreatmentsTextBox.Text" translate="yes" xml:space="preserve">
+          <source>Active Treatment Plan</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Plan de tratamiento activo</target>
+        </trans-unit>
+        <trans-unit id="CreateTreatmentsTextBox.Text" translate="yes" xml:space="preserve">
+          <source>Create Treatment Plan</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Crear Plan de tratamiento</target>
+        </trans-unit>
+        <trans-unit id="DoneTreatmentsTextBox.Text" translate="yes" xml:space="preserve">
+          <source>Complete Treatment Plan</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Plan de tratamiento completo</target>
+        </trans-unit>
+        <trans-unit id="CreateTreatmentPlanCompletedB.Label" translate="yes" xml:space="preserve">
+          <source>Completed</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Completado</target>
+        </trans-unit>
+        <trans-unit id="CreateTreatmentPlanCompletedB.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Mark this treatments as completed</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Marcar este tratamientos como completada</target>
+        </trans-unit>
+        <trans-unit id="CreateTreatmentPlanNotCopleted.Label" translate="yes" xml:space="preserve">
+          <source>Not Completed</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Sin completar</target>
+        </trans-unit>
+        <trans-unit id="CreateTreatmentPlanNotCopleted.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Mark this treatment as not completed</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Marca este tratamiento como no terminado</target>
+        </trans-unit>
+        <trans-unit id="NewPaymentButton.Label" translate="yes" xml:space="preserve">
+          <source>New Payment</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Nuevo pago</target>
+        </trans-unit>
+        <trans-unit id="NewPaymentButton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Add new payment for selected customer</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Añadir nuevo pago para el cliente seleccionado</target>
+        </trans-unit>
+        <trans-unit id="TreatmentsLVTitleTB.Text" translate="yes" xml:space="preserve">
+          <source>Treatments in plan</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Tratamientos en plan</target>
+        </trans-unit>
+        <trans-unit id="CreatePaymentBarButton.Label" translate="yes" xml:space="preserve">
+          <source>Add</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Agregar</target>
+        </trans-unit>
+        <trans-unit id="CreatePaymentBarButton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Create this new payment</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Crear este nuevo pago</target>
+        </trans-unit>
+        <trans-unit id="TreatmentsCB.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Add Treament to plan</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Agregar tratamiento para planificar</target>
+        </trans-unit>
+        <trans-unit id="AllPaymerExpander.Text" translate="yes" xml:space="preserve">
+          <source>All Payments</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Todos los pagos</target>
+        </trans-unit>
+        <trans-unit id="AmountTB.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Importe</target>
+        </trans-unit>
+        <trans-unit id="CancelEditCustomer.Label" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Cancelar</target>
+        </trans-unit>
+        <trans-unit id="CancelEditCustomer.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Delete changes and go back</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Eliminar cambios y volver</target>
+        </trans-unit>
+        <trans-unit id="EditPlanDone.Label" translate="yes" xml:space="preserve">
+          <source>Done</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Listo</target>
+        </trans-unit>
+        <trans-unit id="EditPlanDone.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Go back</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Volver</target>
+        </trans-unit>
+        <trans-unit id="SaveCustomerDetails.Label" translate="yes" xml:space="preserve">
+          <source>Save</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Guardar</target>
+        </trans-unit>
+        <trans-unit id="SaveCustomerDetails.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Save Changes</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Guardar cambios</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

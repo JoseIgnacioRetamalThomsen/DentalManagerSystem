@@ -31,8 +31,11 @@ namespace DentalManagerSys
             this.InitializeComponent();
 
             DAO.InitializeDatabase();
-           // DAO.UpdateTreatmentOnPlan(new TreatmentOnPlan(1, "text", 7));
-            DAO.UpdateTreatment(new Treatment(1,"text",7));
+           
+            if(DAO.GetAllCustomer().Count==0)
+            {
+                DAO.AddMockData();
+            }
           
 
         }

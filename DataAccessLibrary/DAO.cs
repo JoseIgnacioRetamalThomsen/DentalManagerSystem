@@ -11,6 +11,7 @@ namespace DataAccessLibrary
     {
         /// <summary>
         /// Create a database and tables
+        /// SQLitePCLRaw.bundle_winsqlite3
         /// </summary>
         public static void InitializeDatabase()
         {
@@ -43,6 +44,19 @@ namespace DataAccessLibrary
 
         }
 
+
+        public static void AddMockData()
+        {
+            DAO.AddNewCustomer("12234543-k","Marco Antonio","Perez Gonzales","03/03/1978 00:00:00","Los leons 29","Valpariso","Valparaiso","Chile","gh567","0983442233","02122222","marco@email.com","Sin alergias");
+            DAO.AddNewTreatment("Composite Compuesto", 24000);
+            DAO.AddNewTreatment("Incrustacion", 30000);
+            AddNewTreatmentPlan("12234543-k", (int)TreatmentPlaneState.Created, DateTime.Now.ToString(), "0");
+            AddNewTreatmentPlanTreatments(1, 1, 24000, "0");
+            AddNewTreatmentPlanTreatments(1, 2, 30000, "0");
+            AddNewTreatmentPlanTreatments(1, 2, 25000, "0");
+
+
+        }
         /// <summary>
         /// Add new customer with all parameters
         /// </summary>
