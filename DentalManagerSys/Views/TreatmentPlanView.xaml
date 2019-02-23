@@ -76,19 +76,19 @@
 
                     <AppBarButton
                         x:Name="CreateTreatmentPlanCompletedB"
-                    Tag="CreateTreatmentPlanButton"
-                    Icon="Accept"
-                    x:Uid="/Strings/CreateTreatmentPlanCompletedB"
-                                       
-                    IsEnabled="false"/>
+                        Tag="CreateTreatmentPlanButton"
+                        Icon="Accept"
+                        x:Uid="/Strings/CreateTreatmentPlanCompletedB"
+                        Click="CreateTreatmentPlanCompletedB_Click" 
+                        IsEnabled="false"/>
 
                     <AppBarButton
-                        x:Name="CreateTreatmentPlanNotCopleted"
-                    Tag="CreateTreatmentPlanButton"
-                    Icon="Remove"
-                    x:Uid="/Strings/CreateTreatmentPlanNotCopleted"
-                                       
-                    IsEnabled="false"/>
+                        x:Name="CreateTreatmentPlanNotCopletedB"
+                        Tag="CreateTreatmentPlanButton"
+                        Icon="Remove"
+                        x:Uid="/Strings/CreateTreatmentPlanNotCopleted"
+                        Click="CreateTreatmentPlanNotCopletedB_Click"
+                        IsEnabled="false"/>
 
                     <AppBarSeparator/>
                   
@@ -118,8 +118,8 @@
                                 </Grid.RowDefinitions>
 
 
-                                <TextBlock Text="{x:Bind IsDone}" Grid.Column="0" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind TreatmentPlanId}" Grid.Column="1" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind IsDone,Mode=TwoWay}" Grid.Column="0" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind TreatmentPlanID}" Grid.Column="1" Grid.Row="0"/>
                                 <TextBlock Text="{x:Bind Price}" Grid.Column="2" Grid.Row="0"/>
                                 
 

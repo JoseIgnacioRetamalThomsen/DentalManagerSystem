@@ -46,7 +46,7 @@ namespace DentalManagerSys.ViewModel
                 OnPropertyChanged("TreatmentsPlans");
             }
         }
-        
+
 
         public TreatmentPlaneState ActualTreatmentPlanState
         {
@@ -78,13 +78,13 @@ namespace DentalManagerSys.ViewModel
 
         public void LoadTreatments(int planID)
         {
-            TreatmentsOnPlan = //new ObservableCollection<TreatmentOnPlan>(DAO.GetTreatmentOnPlansByID(planID));
-                new ObservableCollection<TreatmentOnPlan>()
-            {
-               //new TreatmentOnPlan(1,2,200,Convert.ToDateTime("01/01/0001 00:00:00")),
-               //new TreatmentOnPlan(2,4,250,Convert.ToDateTime("01/01/0001 00:00:00")),
-               //new TreatmentOnPlan(3,6,200,Convert.ToDateTime("01/01/0001 00:00:00")),
-            };
+            TreatmentsOnPlan = new ObservableCollection<TreatmentOnPlan>(DAO.GetTreatmentOnPlansByID(planID));
+            //    new ObservableCollection<TreatmentOnPlan>()
+            //{
+            //   new TreatmentOnPlan(1,2,200,Convert.ToDateTime("01/01/0001 00:00:00")),
+            //   new TreatmentOnPlan(2,4,250,Convert.ToDateTime("01/01/0001 00:00:00")),
+            //   new TreatmentOnPlan(3,6,200,Convert.ToDateTime("01/01/0001 00:00:00")),
+            //};
         }
     }
 }

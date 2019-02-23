@@ -78,11 +78,40 @@ namespace DentalManagerSys.Views
             if(!top.IsDone)
             {
                 CreateTreatmentPlanCompletedB.IsEnabled = true;
-            }else
+                CreateTreatmentPlanNotCopletedB.IsEnabled = false;
+            }
+            else
             {
                 CreateTreatmentPlanCompletedB.IsEnabled = false;
+                CreateTreatmentPlanNotCopletedB.IsEnabled = true;
             }
 
+        }
+
+        private void CreateTreatmentPlanNotCopletedB_Click(object sender, RoutedEventArgs e)
+        {
+            int index = TreatmentsOnPlanLV.SelectedIndex;
+            ViewModel.TreatmentsOnPlan[index].CompletedDate = Convert.ToDateTime("01/01/0001 00:00:00");
+            ReloadListView();
+        }
+
+        private void ReloadListView()
+        {
+            TreatmentsOnPlanLV.SelectionChanged -= TreatmentsOnPlanLV_SelectionChanged;
+            TreatmentsOnPlanLV.ItemsSource = null;
+           TreatmentsOnPlanLV.ItemsSource = ViewModel.TreatmentsOnPlan;
+            TreatmentsOnPlanLV.SelectionChanged += TreatmentsOnPlanLV_SelectionChanged;
+        }
+
+        private void CreateTreatmentPlanCompletedB_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("click");
+            //get selected item index
+            int index = TreatmentsOnPlanLV.SelectedIndex;
+            ViewModel.TreatmentsOnPlan[index].CompletedDate = DateTime.Now;
+            ReloadListView();
+
+          
         }
     }
 }
