@@ -12,6 +12,16 @@ namespace DentalManagerSys.ViewModel
 {
     public class TreatmentPlanViewModel : ViewModelBase
     {
+        public decimal total;
+        public decimal Total
+        {
+            get => total;
+            set
+            {
+                total = value;
+                OnPropertyChanged("Total");
+            }
+        }
 
         public ObservableCollection<TreatmentOnPlanShow> TreatmentsOnPlan { get; set; }
 
@@ -86,6 +96,8 @@ namespace DentalManagerSys.ViewModel
             TreatmentPlanForView = new TreatmentPlanShow(ActualTreatmentPlan, Customer, top,treatments);
             TreatmentPlanForView.PrintConsole();
             TreatmentsOnPlan = new ObservableCollection<TreatmentOnPlanShow>(TreatmentPlanForView.Treatments);
+
+            Total = TreatmentPlanForView.GetTotal();
            
         }
     }

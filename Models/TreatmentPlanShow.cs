@@ -41,5 +41,15 @@ namespace Models
             }
           
         }
+
+        public decimal GetTotal()
+        {
+            decimal total = 0;
+            foreach(var tos in Treatments)
+            {
+                total += tos.Treatment.Price;
+            }
+            return total;
+        }
     }
 }

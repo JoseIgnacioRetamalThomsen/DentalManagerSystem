@@ -57,7 +57,7 @@
             </StackPanel>
 
             <RelativePanel
-                x:Name="LisvViewSP"
+                x:Name="ListViewRP"
                 RelativePanel.Below="treatmentStateCB">
 
                 <TextBlock   
@@ -133,6 +133,17 @@
 
             </RelativePanel>
 
+            <StackPanel
+                x:Name="TotalsSP"
+                RelativePanel.Below="ListViewRP">
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Total"></TextBlock>
+                    <TextBox Text="{x:Bind Path=ViewModel.Total ,Mode=OneWay}"></TextBox> <!--Bind on two ways will throww exception!!!!!!!-->
+                    
+                </StackPanel>
+                
+            </StackPanel>
 
         </RelativePanel>
         
