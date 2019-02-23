@@ -268,19 +268,14 @@ namespace DataAccessLibrary
                 while (query.Read())
                 {
                     string first = query.GetString(1);
-                    Debug.WriteLine("Test----------  :" + first);
                     int state = query.GetInt32(2);
                     TreatmentPlaneState temp = (TreatmentPlaneState)state;
-                    //string date1 = query.GetString(3);
                     string date2 = query.GetString(4);
                     DateTime datetime2 = Convert.ToDateTime("01/01/0001 00:00:00");
                     if(!date2.Equals("0"))
                     {
                         datetime2 = Convert.ToDateTime(date2);
                     }
-                  //  Debug.WriteLine("Test----------  :" + date1);
-                    Debug.WriteLine("Test----------  :" + date2);
-
 
                     treatmentPlans.Add(new TreatmentPlan(
                     first,
@@ -818,6 +813,38 @@ namespace DataAccessLibrary
 
             return treatmentList;
  
+        }
+
+        /// <summary>
+        /// Update treatmentPlanTreatments
+        /// </summary>
+        /// <param name="treatmentPlanTreatmentsID"></param>
+        /// <param name="treatmentPlanID"></param>
+        /// <param name="treatmentID"></param>
+        /// <param name="price"></param>
+        /// <param name="completedDate"></param>
+        public static void UpdateTreatmentOnPlan(int treatmentPlanTreatmentsID, int treatmentPlanID, int treatmentID, decimal price, DateTime completedDate)
+        {
+            using (SqliteConnection db =
+               new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query to prevent SQL injection attacks
+                insertCommand.CommandText = "UPDATE treatmentPlanTreatments SET treatmentPlanID =@TreatmentPlanID, treatmentID =@TreatmentID, price =@Price, completedDate =@CompletedDate  where treatmentPlanTreatmentsID=@TreatmentPlanTreatmentsID;";
+                insertCommand.Parameters.AddWithValue("@TreatmentPlanTreatmentsID", treatmentPlanTreatmentsID);
+                insertCommand.Parameters.AddWithValue("@TreatmentPlanID", treatmentPlanID);
+                insertCommand.Parameters.AddWithValue("@TreatmentID", treatmentID);
+                insertCommand.Parameters.AddWithValue("@Price", price);
+                insertCommand.Parameters.AddWithValue("@CompletedDate", completedDate);
+
+                insertCommand.ExecuteNonQuery();
+
+                db.Close();
+            }
         }
     }
 }
