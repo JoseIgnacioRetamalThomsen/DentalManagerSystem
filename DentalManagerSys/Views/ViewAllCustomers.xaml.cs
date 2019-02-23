@@ -60,7 +60,8 @@ namespace DentalManagerSys.Views
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ViewCustomerButton.IsEnabled = true;
-            Debug.WriteLine("change");
+            NewPaymentButton.IsEnabled = true;
+            EditBarButton.IsEnabled = true;
         }
 
         private void EditCustomer_Click(object sender, RoutedEventArgs e)

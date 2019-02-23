@@ -103,21 +103,26 @@ namespace DentalManagerSys.Views
             int id = lv.SelectedIndex;
             string name = lv.Name;
 
-           Debug.WriteLine("working777777777777777777777777777777777777777777777777777777777777777777777777777777" + id);
+         
 
             TreatmentPlan tp = null;
             switch (name)
             {
                 case "AcceptedTPListView":
                     tp = ViewModel.AcceptedTreatmentPlans[id];
-                    Debug.WriteLine("working777777777777777777777777777777777777777777777777777777777777777777777777777777" + name);
+                
                     break;
-
+                case "CreatedTPListView":
+                    tp = ViewModel.CreatedTreatmentPlans[id];
+                    break;
+                case "FinishTPListView":
+                    tp = ViewModel.FinishedTreatmentPlans[id];
+                    break;
             }
 
             Frame.Navigate(typeof(TreatmentPlanView), tp,
                   new DrillInNavigationTransitionInfo());
-            Debug.WriteLine("working777777777777777777777777777777777777777777777777777777777777777777777777777777" + name); 
+           
         }
     }
 }

@@ -17,7 +17,7 @@
         <TextBlock   
                 x:Name="PageTitle" 
                 Style="{StaticResource TitleTextBlockStyle}"
-            Text="{x:Bind Path=ViewModel.CustomerName , Mode=OneTime}">
+                Text="{x:Bind Path=ViewModel.CustomerName , Mode=OneTime}">
         </TextBlock>
 
         <CommandBar 
@@ -25,21 +25,21 @@
                 HorizontalAlignment="Stretch"
                 Background="Transparent"
                 RelativePanel.RightOf="PageTitle"
-                RelativePanel.LeftOf="SearchBox">
+                RelativePanel.LeftOf="SearchBox"
+                DefaultLabelPosition="Right">
 
             <AppBarButton
-                    Tag="CreateTreatmentPlanButton"
+                    x:Name="EditPlanDone"
                     Icon="Add"
-                    x:Uid="/Strings/CreateTreatmentPlanButton"
-                    
+                    x:Uid="/Strings/EditPlanDone"
+                Click="EditPlanDone_Click"
                     IsEnabled="True"/>
 
             <AppBarSeparator/>
-            <AppBarButton
-                    Icon="Add"
-                    x:Uid="/Strings/AddBarButton"/>
+           
 
         </CommandBar>
+        
         <AutoSuggestBox 
                 x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
                  QueryIcon="Find"
@@ -66,12 +66,12 @@
                 x:Uid="/Strings/TreatmentsLVTitleTB">
                     
                 </TextBlock>
+                
                 <CommandBar 
                 x:Name="TreatementsCommanBar"
                 HorizontalAlignment="Stretch"
                 Background="Transparent"
-                RelativePanel.RightOf="TreatmentsLVTitleTB"
-               >
+                RelativePanel.RightOf="TreatmentsLVTitleTB">
 
 
                     <AppBarButton

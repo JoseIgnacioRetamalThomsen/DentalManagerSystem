@@ -16,6 +16,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
+
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace DentalManagerSys.Views
@@ -26,6 +29,7 @@ namespace DentalManagerSys.Views
     public sealed partial class PrinterView : Page
     {
         private string iD;
+     
 
         public CustomerDetailsViewModel ViewModel { get; set; }
 
@@ -45,15 +49,21 @@ namespace DentalManagerSys.Views
             //set customer on view model
             ViewModel.Customer = temp;
 
-         
+
 
             //PageTitle.Text = temp.name + " " + temp.surname;
             AdressDetails.Text = temp.street + ", " + temp.city + ", " + temp.province + ", " + temp.postcode + ", " + temp.country;
 
             //mobileTextBox.Text = Mobile + ": " + temp.mobileNum;
             fixTextBox.Text = Home + ": " + temp.homeNum;
-     
+
             commentsTextBox.Text = temp.comments;
         }
+
+       
     }
+
+
+
+
 }

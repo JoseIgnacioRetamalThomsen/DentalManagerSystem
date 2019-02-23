@@ -10,43 +10,41 @@
     xmlns:local1="using:Models"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
- 
+
 
     <Grid>
-        
+
         <RelativePanel>
             <TextBlock   
                 x:Name="PageTitle" 
-                Style="{StaticResource TitleTextBlockStyle}">
-             </TextBlock>
-            
+                Style="{StaticResource TitleTextBlockStyle}"
+                MinWidth="300">
+            </TextBlock>
+
             <CommandBar 
                 x:Name="PatientsCommandBar"
                 HorizontalAlignment="Stretch"
                 Background="Transparent"
                 RelativePanel.RightOf="PageTitle"
-               >
-                
+                DefaultLabelPosition="Right">
+
                 <AppBarButton
                     Tag="CreateTreatmentPlanButton"
                     Icon="Add"
                     x:Uid="/Strings/CreateTreatmentPlanButton"
                     Click="CreateTreatmentPlan_Click"
-                    IsEnabled="True"/>
+                    IsEnabled="True"
+                    Margin="20,0,0,0"/>
 
                 
 
-                <AppBarSeparator/>
-                <AppBarButton
-                    Icon="Add"
-                    x:Uid="/Strings/AddBarButton"/>
-                
             </CommandBar>
-       
+
 
             <Grid
                 x:Name="DetailsGrid"
-                RelativePanel.Below="PageTitle">
+                RelativePanel.Below="PageTitle"
+                Margin="20">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -70,12 +68,12 @@
                 <StackPanel x:Name="id" Grid.Row="0" Grid.Column="0" Margin="2" Grid.ColumnSpan="2">
                     <TextBlock x:Name="IdTextBox"/>
                 </StackPanel>
-                
+
 
                 <StackPanel x:Name="email" Grid.Row="0" Grid.Column="2" Margin="2" Grid.ColumnSpan="3">
                     <TextBlock x:Name="emailTextBox"/>
                 </StackPanel>
-                
+
                 <StackPanel x:Name="DOB" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="2">
                     <TextBlock x:Name="DOBTextBox"/>
                 </StackPanel>
@@ -138,16 +136,16 @@
                                 <TextBlock Text="{x:Bind TreatmentPLanID }" Grid.Column="0" Grid.Row="0"/>
                                 <TextBlock Text="{x:Bind CreationDate}" Grid.Column="1" Grid.Row="0"/>
                                 <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
-                               
+
 
                             </Grid>
                         </DataTemplate>
 
                     </ListView.ItemTemplate>
                 </ListView>
-                
+
             </toolkit:Expander>
-            
+
             <toolkit:Expander 
                 x:Name="CreatedTreatmentsLV"
                 RelativePanel.Below="AcceptedTPExpander"
@@ -166,7 +164,8 @@
                 </toolkit:Expander.Header>
 
                 <ListView
-                    x:Name="CreatedTPListView">
+                    x:Name="CreatedTPListView"
+                    SelectionChanged="AcceptedTPListView_SelectionChanged">
 
                     <ListView.ItemTemplate>
                         <DataTemplate   x:DataType="local1:TreatmentPlan">
@@ -192,7 +191,7 @@
                 </ListView>
 
             </toolkit:Expander>
-            
+
             <toolkit:Expander 
                 x:Name="FinishTreatmentsLV"
                 RelativePanel.Below="CreatedTreatmentsLV"
@@ -211,7 +210,8 @@
                 </toolkit:Expander.Header>
 
                 <ListView
-                    x:Name="FinishTPListView">
+                    x:Name="FinishTPListView"
+                    SelectionChanged="AcceptedTPListView_SelectionChanged">
 
                     <ListView.ItemTemplate>
                         <DataTemplate   x:DataType="local1:TreatmentPlan">
@@ -289,13 +289,13 @@
                 </ListView>
 
             </toolkit:Expander>
-           
+
         </RelativePanel>
-      
+
     </Grid>
 
 
-    
+
 
 
 </Page>

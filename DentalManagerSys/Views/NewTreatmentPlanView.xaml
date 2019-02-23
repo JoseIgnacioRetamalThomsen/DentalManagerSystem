@@ -15,29 +15,26 @@
             <TextBlock   
                 x:Name="PageTitle"
                 Text=""
-                Style="{StaticResource TitleTextBlockStyle}">
-            </TextBlock>
+                Style="{StaticResource TitleTextBlockStyle}"
+                MinWidth="300"/>
+
 
             <CommandBar 
                 x:Name="PatientsCommandBar"
                 HorizontalAlignment="Stretch"
                 Background="Transparent"
                 RelativePanel.RightOf="PageTitle"
-               >
+                DefaultLabelPosition="Right">
 
                 <AppBarButton
                     x:Name="CreateTreatmentPlanButton"
                     Icon="Add"
                     x:Uid="/Strings/CreateNewTreatmentPlanButton"
                     IsEnabled="True"
-                    Tapped="CreateTreatmentPlanButton_Tapped"
-                    />
+                    Tapped="CreateTreatmentPlanButton_Tapped"/>
 
                 <AppBarSeparator/>
-                <AppBarButton
-                    Icon="Add"
-                    x:Uid="/Strings/AddBarButton"/>
-
+                
             </CommandBar>
 
 
@@ -106,7 +103,8 @@
                         x:Name="EditTreatmentPriceCommandBar"
                         HorizontalAlignment="Stretch"
                         Background="Transparent"
-                        RelativePanel.RightOf="EditPriceTB">
+                        RelativePanel.RightOf="EditPriceTB"
+                        DefaultLabelPosition="Right">
 
                         <AppBarButton
                             x:Name="SaveChangedPriceButton"
@@ -116,11 +114,9 @@
                             Tapped="SaveChangedPriceButton_Tapped"/>
 
                         <AppBarSeparator/>
-                        <AppBarButton
-                    Icon="Add"
-                    x:Uid="/Strings/AddBarButton"/>
-
+                    
                     </CommandBar>
+                    
                 </RelativePanel>
 
                 <ListView x:Name="TreatmentsDoneListView" Height="200"

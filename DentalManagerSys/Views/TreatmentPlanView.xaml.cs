@@ -119,5 +119,11 @@ namespace DentalManagerSys.Views
 
           
         }
+
+        private void EditPlanDone_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
+
+        }
     }
 }

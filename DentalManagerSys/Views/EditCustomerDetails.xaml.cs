@@ -64,13 +64,15 @@ namespace DentalManagerSys.Views
 
         }
 
-
-        private void CreateTreatmentPlan_Click(object sender, RoutedEventArgs e)
+        
+        private void SaveCustomerDetails_Click(object sender, RoutedEventArgs e)
         {
-
-            Frame.Navigate(typeof(NewTreatmentPlanView), iD,
-            new DrillInNavigationTransitionInfo());
+            Frame.GoBack();
         }
 
+        private void CancelEditCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
+        }
     }
 }

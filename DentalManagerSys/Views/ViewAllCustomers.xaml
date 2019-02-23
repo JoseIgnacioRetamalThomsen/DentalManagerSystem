@@ -13,43 +13,57 @@
     <Grid>
 
         <RelativePanel>
-            <TextBlock x:Uid="/Strings/ViewAllCustomerPageTitle" x:Name="PageTitle" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+            <TextBlock 
+                x:Uid="/Strings/ViewAllCustomerPageTitle" 
+                x:Name="PageTitle" 
+                Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
 
             <CommandBar x:Name="PatientsCommandBar"
                         HorizontalAlignment="Stretch"
                         Background="Transparent"
                         Loaded="PatientsCommandBar_Loaded"
+                        DefaultLabelPosition="Right"
+                        VerticalAlignment="Center"
                         RelativePanel.RightOf="PageTitle"
                         RelativePanel.LeftOf="SearchBox">
+                
                 <AppBarButton 
                     x:Name="ViewCustomerButton"
                     Icon="Contact"
                     Click="SelectCustomer_Button"
                     x:Uid="/Strings/SelectBarButton"
                     IsEnabled="False"/>
-                <AppBarButton
-                    Tag="NewPaymentButton"
-                    Icon="Caption"
-                    x:Uid="/Strings/NewPaymentButton"
-                Click="AppBarButton_Click"
-                    IsEnabled="True"/>
                 
-                <AppBarSeparator />
                 <AppBarButton
+                    x:Name="NewPaymentButton"
                     Icon="Add"
-                    Click="AddNewCustomerButton_Click"
-                    x:Uid="/Strings/AddBarButton"
-                    />
+                    x:Uid="/Strings/NewPaymentButton"
+                    Click="AppBarButton_Click"
+                    IsEnabled="False"/>
+
                 <AppBarButton
+                     x:Name="EditBarButton"
                     Icon="Edit"
                     Click="EditCustomer_Click"
                     x:Uid="/Strings/EditBarButton"
-                    />
+                    IsEnabled="False"/>
+
+                <AppBarSeparator />
+                
+                <AppBarButton
+                    Icon="Add"
+                    Click="AddNewCustomerButton_Click"
+                    x:Uid="/Strings/AddBarButton"/>
+                
+               
+                
             </CommandBar>
+            
             <AutoSuggestBox 
-                x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
-                 QueryIcon="Find"
-                                Width="200"
+                x:Name="SearchBox" 
+                RelativePanel.AlignRightWithPanel="True"
+                QueryIcon="Find"
+                Width="300"
                 x:Uid="/Strings/SearchAutoSuggestBox">
 
             </AutoSuggestBox>

@@ -393,4 +393,22 @@
   <data name="AmountTB.PlaceholderText" xml:space="preserve">
     <value>Amount</value>
   </data>
+  <data name="CancelEditCustomer.Label" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CancelEditCustomer.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Delete changes and go back</value>
+  </data>
+  <data name="EditPlanDone.Label" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="EditPlanDone.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Go back</value>
+  </data>
+  <data name="SaveCustomerDetails.Label" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveCustomerDetails.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Save Changes</value>
+  </data>
 </root>

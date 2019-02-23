@@ -10,12 +10,45 @@
 
     <Grid>
         <RelativePanel>
-            <TextBlock x:Uid="/Strings/NewCustomerTextBlock" x:Name="PageTitle" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+            <TextBlock 
+                x:Uid="/Strings/NewCustomerTextBlock" 
+                x:Name="PageTitle" 
+                Style="{StaticResource TitleTextBlockStyle}"/>
             
+            <CommandBar 
+                x:Name="NewCustomerCommandBar"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                Loaded="PatientsCommandBar_Loaded"
+                RelativePanel.RightOf="PageTitle"
+                DefaultLabelPosition="Right">
+
+                <AppBarButton 
+                    x:Name="AddCustomerAndMoveOne"
+                    Icon="Add"
+                    Click="AddCustomerAndMoveOn_Clicked"
+                    x:Uid="/Strings/AddNewCustomer"
+                    IsEnabled="True"/>
+
+                <AppBarButton 
+                    x:Name="AddCustomerAndStay"
+                    Icon="AddFriend"
+                    Click="AddCustomerAndStay_Click"
+                    x:Uid="/Strings/AddNewCustomerPlus"
+                    IsEnabled="True"/>
+                <AppBarButton 
+                    x:Name="RefreashView"
+                    Icon="Refresh"
+                    Click="RefreashView_Click"
+                    x:Uid="/Strings/RefreshAddCustomerView"
+                    IsEnabled="True"/>
+            </CommandBar>
+
             <Grid 
                 x:Name="NewCustomerContainerGrid"
                 Width="400" Height="440"
                 RelativePanel.Below="PageTitle">
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
@@ -87,33 +120,7 @@
 
             </Grid>
 
-            <CommandBar x:Name="NewCustomerCommandBar"
-                        HorizontalAlignment="Stretch"
-                        Background="Transparent"
-                        Loaded="PatientsCommandBar_Loaded"
-                        RelativePanel.RightOf="PageTitle"
-                        >
-
-                <AppBarButton 
-                    x:Name="AddCustomerAndMoveOne"
-                    Icon="Add"
-                    Click="AddCustomerAndMoveOn_Clicked"
-                    x:Uid="/Strings/AddNewCustomer"
-                    IsEnabled="True"/>
-
-                <AppBarButton 
-                    x:Name="AddCustomerAndStay"
-                    Icon="AddFriend"
-                    Click="AddCustomerAndStay_Click"
-                    x:Uid="/Strings/AddNewCustomerPlus"
-                    IsEnabled="True"/>
-                <AppBarButton 
-                    x:Name="RefreashView"
-                    Icon="Refresh"
-                    Click="RefreashView_Click"
-                    x:Uid="/Strings/RefreshAddCustomerView"
-                    IsEnabled="True"/>
-            </CommandBar>
+           
 
         </RelativePanel>
     </Grid>

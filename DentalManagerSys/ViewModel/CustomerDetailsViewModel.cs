@@ -106,12 +106,13 @@ namespace DentalManagerSys.ViewModel
         }
         public void SetPayments()
         {
-            PaymentsOC = new ObservableCollection<Payments>()
-            {
-                new Payments(1,1,"1",12321,DateTime.Now),
-                new Payments(2,2,"2",2132131,DateTime.Now)
-            };
-                //new ObservableCollection<Payments>(DAO.GetPaymenyByCustomerID(Customer.iD));
+            PaymentsOC = new ObservableCollection<Payments>(DAO.GetAllPaymenyByCustomerID(Customer.iD));
+            //    new ObservableCollection<Payments>()
+            //{
+            //    new Payments(1,1,"1",12321,DateTime.Now),
+            //    new Payments(2,2,"2",2132131,DateTime.Now)
+            //};
+            //new ObservableCollection<Payments>(DAO.GetPaymenyByCustomerID(Customer.iD));
         }
     }
 }

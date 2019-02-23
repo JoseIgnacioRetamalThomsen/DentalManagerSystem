@@ -33,7 +33,7 @@ namespace DentalManagerSys
             DAO.InitializeDatabase();
            // DAO.UpdateTreatmentOnPlan(new TreatmentOnPlan(1, "text", 7));
             DAO.UpdateTreatment(new Treatment(1,"text",7));
-            //DAO.UpdateCustomer("Y","Peter","oBREINS", "16/02/2019 00:00:00", "y", "y", "y", "y", "y", "y", "y", "y", "y");
+          
 
         }
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -71,7 +71,7 @@ namespace DentalManagerSys
                 {
                     NavView.SelectedItem = item;
                     //dont understand just this work...
-                    ContentFrame.Navigate(typeof(PrinterView));
+                    ContentFrame.Navigate(typeof(ViewAllCustomers));
 
                     break;
                 }
