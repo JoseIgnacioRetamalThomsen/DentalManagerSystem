@@ -57,7 +57,7 @@ namespace DentalManagerSys.ViewModel
                 OnPropertyChanged("TreatmentsPlans");
             }
         }
-        
+
 
         public TreatmentPlaneState ActualTreatmentPlanState
         {
