@@ -775,5 +775,46 @@ namespace DataAccessLibrary
                 db.Close();
             }
         }
+
+
+        /// <summary>
+        /// Get all treatment by treatement ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static List<TreatmentOnPlan> GetTreatmentOnPlansByID(int id)
+        {
+            List<TreatmentOnPlan> treatmentList = new List<TreatmentOnPlan>();
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from treatment where treatmentID=@TreatmentID", db);
+                selectCommand.Parameters.AddWithValue("@TreatmentID", id);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    int treatmentID = query.GetInt32(0);
+                    string treatmentName = query.GetString(1);
+                    decimal price = query.GetDecimal(2);
+
+                    treatmentList.Add(new TreatmentOnPlan(
+                    treatmentID,
+                    treatmentName,
+                    price
+                    ));
+                }
+
+                db.Close();
+            }
+
+            return treatmentList;
+ 
+        }
     }
 }

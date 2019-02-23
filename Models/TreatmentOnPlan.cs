@@ -9,8 +9,8 @@ namespace Models
         public int TreatmentPlanId { get; set; }
         public int TreatmentID { get; set; }
         public decimal Price { get; set; }
-        public DateTime CompletedDate { get; set; } 
-       
+        public DateTime CompletedDate { get; set; }
+
 
         public bool IsDone
         {
@@ -34,6 +34,6 @@ namespace Models
             CompletedDate = completedDate;
         }
 
-      
+
     }
 }
