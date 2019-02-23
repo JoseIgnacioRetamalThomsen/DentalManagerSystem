@@ -792,24 +792,26 @@ namespace DataAccessLibrary
                 db.Open();
 
                 SqliteCommand selectCommand = new SqliteCommand
-                    ("SELECT * from treatment where treatmentID=@TreatmentID", db);
-                selectCommand.Parameters.AddWithValue("@TreatmentID", id);
+                    ("SELECT * from treatmentPlanTreatments where treatmentPlanID=@TreatmentPlanID", db);
+                selectCommand.Parameters.AddWithValue("@TreatmentPlanID", id);
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
-                //while (query.Read())
-                //{
-                //    int treatmentID = query.GetInt32(0);
-                //    string treatmentName = query.GetString(1);
-                //    decimal price = query.GetDecimal(2);
+                while (query.Read())
+                {
+                    int TreatmentPlanTreatmentsID = query.GetInt32(0);
+                    int TreatmentPlanID = query.GetInt32(1);
+                    int TreatmentID = query.GetInt32(2);
+                    decimal price = query.GetDecimal(2);
 
-                //    treatmentList.Add(new TreatmentOnPlan(
-                //    treatmentID,
-                //    treatmentName,
-                //    price,
-                //    new DateTime
-                //    ));
-                //}
+                    treatmentList.Add(new TreatmentOnPlan(
+                    TreatmentPlanTreatmentsID,
+                    TreatmentPlanID,
+                    TreatmentID,
+                    price,
+                    new DateTime()
+                    ));
+                }
 
                 db.Close();
             }
