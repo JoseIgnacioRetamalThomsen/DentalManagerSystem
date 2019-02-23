@@ -68,6 +68,12 @@ namespace DentalManagerSys.Views
             Frame.Navigate(typeof(EditCustomerDetails), ((Customer)DataGrid.SelectedItem).iD,
                     new DrillInNavigationTransitionInfo());
         }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(NewPaymentView), ((Customer)DataGrid.SelectedItem).iD,
+                 new DrillInNavigationTransitionInfo());
+        }
     }
 }
 

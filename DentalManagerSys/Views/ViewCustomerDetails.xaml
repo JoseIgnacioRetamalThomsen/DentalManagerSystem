@@ -33,7 +33,9 @@
                     x:Uid="/Strings/CreateTreatmentPlanButton"
                     Click="CreateTreatmentPlan_Click"
                     IsEnabled="True"/>
+
                 
+
                 <AppBarSeparator/>
                 <AppBarButton
                     Icon="Add"
