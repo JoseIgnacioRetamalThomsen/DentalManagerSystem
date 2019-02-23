@@ -13,8 +13,19 @@ namespace DentalManagerSys.ViewModel
     public class TreatmentPlanViewModel : ViewModelBase
     {
 
-        public ObservableCollection<Treatment> treatmentsOnPlan;
+        public ObservableCollection<TreatmentOnPlan> TreatmentsOnPlan { get; set; }
 
+
+        public DateTime completedTreatmentDate;
+        public DateTime CompletedTreatmentDate
+        {
+            get => completedTreatmentDate;
+            set
+            {
+                completedTreatmentDate = value;
+                OnPropertyChanged("CompletedTreatmentDate");
+            }
+        }
 
         public string CustomerName { get; set; }
 
@@ -63,6 +74,16 @@ namespace DentalManagerSys.ViewModel
                 CustomerName = Customer.name + " " + Customer.surname;
                 actualTreatmentPlanState = actualTreatmentPlan.State;
             }
+        }
+
+        public void LoadTreatments(int planID)
+        {
+            TreatmentsOnPlan = new ObservableCollection<TreatmentOnPlan>()
+            {
+               new TreatmentOnPlan(1,2,200,Convert.ToDateTime("01/01/0001 00:00:00")),
+               new TreatmentOnPlan(2,4,250,Convert.ToDateTime("01/01/0001 00:00:00")),
+               new TreatmentOnPlan(3,6,200,Convert.ToDateTime("01/01/0001 00:00:00")),
+            };
         }
     }
 }

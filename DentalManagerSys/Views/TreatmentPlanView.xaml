@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:local1="using:Models">
 
     <Grid>
 
@@ -54,6 +55,74 @@
                     
                     SelectionChanged="TreatmentStateCB_SelectionChanged"></ComboBox>
             </StackPanel>
+
+            <RelativePanel
+                x:Name="LisvViewSP"
+                RelativePanel.Below="treatmentStateCB">
+
+                <TextBlock   
+                x:Name="TreatmentsLVTitleTB" 
+                Style="{StaticResource TitleTextBlockStyle}"
+                x:Uid="/Strings/TreatmentsLVTitleTB">
+                    
+                </TextBlock>
+                <CommandBar 
+                x:Name="TreatementsCommanBar"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                RelativePanel.RightOf="TreatmentsLVTitleTB"
+               >
+
+                    <AppBarButton
+                    Tag="CreateTreatmentPlanButton"
+                    Icon="Add"
+                    x:Uid="/Strings/CreateTreatmentPlanButton"
+                    
+                    IsEnabled="True"/>
+
+                    <AppBarSeparator/>
+                    <AppBarButton
+                    Icon="Add"
+                    x:Uid="/Strings/AddBarButton"/>
+
+                </CommandBar>
+
+                <ListView
+                    x:Name="TreatmentsOnPlanLV"
+                    SelectionMode="Single"
+                    IsItemClickEnabled="True"
+                    RelativePanel.Below="TreatmentsLVTitleTB"
+                   
+                    >
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate   x:DataType="local1:TreatmentOnPlan">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="350" />
+                                    <ColumnDefinition  Width="150"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+
+                                <TextBlock Text="{x:Bind IsDone}" Grid.Column="0" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind TreatmentPlanId}" Grid.Column="1" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Price}" Grid.Column="2" Grid.Row="0"/>
+
+
+                            </Grid>
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </RelativePanel>
+
+
         </RelativePanel>
         
     </Grid>

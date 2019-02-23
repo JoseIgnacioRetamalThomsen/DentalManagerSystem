@@ -357,4 +357,7 @@
   <data name="DoneTreatmentsTextBox.Text" xml:space="preserve">
     <value>Complete Treatment Plan</value>
   </data>
+  <data name="TreatmentsLVTitleTB.Text" xml:space="preserve">
+    <value>Treatments in plan</value>
+  </data>
 </root>

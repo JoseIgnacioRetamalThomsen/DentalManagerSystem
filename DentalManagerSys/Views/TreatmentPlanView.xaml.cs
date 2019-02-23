@@ -38,6 +38,7 @@ namespace DentalManagerSys.Views
 
 
             ViewModel = new TreatmentPlanViewModel();
+            
 
             if (e.Parameter == null)
             {
@@ -50,8 +51,14 @@ namespace DentalManagerSys.Views
 
             Debug.WriteLine(ViewModel.ActualTreatmentPlan.CustomerID);
 
+            //load treatments on plan
+            ViewModel.LoadTreatments(ViewModel.ActualTreatmentPlan.TreatmentPLanID);
+            //treatment state combo box
             TreatmentStateCB.ItemsSource = ViewModel.TreatmentsPlans;
             TreatmentStateCB.SelectedItem = ViewModel.ActualTreatmentPlanState;
+
+            //treatments lv
+            TreatmentsOnPlanLV.ItemsSource = ViewModel.TreatmentsOnPlan;
         }
 
         private void TreatmentStateCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
