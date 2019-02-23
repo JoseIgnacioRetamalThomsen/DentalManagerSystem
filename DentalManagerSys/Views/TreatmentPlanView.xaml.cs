@@ -94,7 +94,7 @@ namespace DentalManagerSys.Views
             int index = TreatmentsOnPlanLV.SelectedIndex;
             TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index].Treatment;
             top.CompletedDate = Convert.ToDateTime("01/01/0001 00:00:00");
-            //DAO.UpdateTreatmentOnPlan(top);
+            DAO.UpdateTreatmentOnPlan(top);
             ReloadListView();
         }
 
@@ -113,7 +113,8 @@ namespace DentalManagerSys.Views
             int index = TreatmentsOnPlanLV.SelectedIndex;
             TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index].Treatment;
             top.CompletedDate = DateTime.Now;
-           // DAO.UpdateTreatmentOnPlan(top);
+            Debug.WriteLine(top.CompletedDate + " " + top.TreatmentPlanTreatmentsID);
+            DAO.UpdateTreatmentOnPlan(top);
             ReloadListView();
 
           

@@ -9,6 +9,60 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <RelativePanel>
+            <TextBlock   
+                x:Name="PageTitle" 
+                Style="{StaticResource TitleTextBlockStyle}"
+            Text="{x:Bind Path=ViewModel.CustomerName , Mode=OneTime}">
+            </TextBlock>
 
+            <CommandBar 
+                x:Name="PatientsCommandBar"
+                HorizontalAlignment="Stretch"
+                Background="Transparent"
+                RelativePanel.RightOf="PageTitle"
+                >
+
+                <AppBarButton
+                    Tag="CreatePaymentBarButton"
+                    Icon="Add"
+                    x:Uid="/Strings/CreatePaymentBarButton"
+                    Click="AppBarButton_Click"
+                    IsEnabled="True"/>
+
+                <AppBarSeparator/>
+                <AppBarButton
+                    Icon="Add"
+                    x:Uid="/Strings/AddBarButton"/>
+
+            </CommandBar>
+
+
+
+
+            <StackPanel 
+                x:Name="TreatmentPlanDBSP"
+                RelativePanel.Below="PageTitle">
+                <StackPanel>
+                    <TextBlock 
+                        Text="Payment for treatment plan:"></TextBlock>
+                <ComboBox
+                    x:Name="TreatmentPlanDB"
+                    MinWidth="400" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel
+                x:Name="AmoutInputSP"
+                RelativePanel.Below="TreatmentPlanDBSP">
+
+                <TextBox
+                    x:Name="Amount"
+                    Text="{x:Bind Path=ViewModel.Amount,Mode=OneWay}"
+                    TextChanging="Amount_TextChanging"/>
+            </StackPanel>
+           
+
+        </RelativePanel>
     </Grid>
 </Page>

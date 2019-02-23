@@ -32,5 +32,10 @@ namespace Models
             this.CreationDate = creationDate;
             this.TreatmentPlanCompleteDate = treatmentPlanCompleteDate;
         }
+
+        public override string ToString()
+        {
+            return "ID= "+ TreatmentPLanID + " " + CreationDate.ToString("dd/MM/yyyy") ;
+        }
     }
 }

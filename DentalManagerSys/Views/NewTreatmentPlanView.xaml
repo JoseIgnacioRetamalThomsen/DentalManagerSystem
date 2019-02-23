@@ -72,7 +72,8 @@
                             MinWidth="200" 
                             SelectionChanged="TreatmentsCB_SelectionChanged"
                             DropDownClosed="TreatmentsCB_DropDownClosed"
-                            PlaceholderText="Add Treament to plan"></ComboBox>
+                           
+                            x:Uid="/Strings/TreatmentsCB"></ComboBox>
                     </StackPanel>
 
                 </StackPanel>

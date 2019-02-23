@@ -378,4 +378,13 @@
   <data name="TreatmentsLVTitleTB.Text" xml:space="preserve">
     <value>Treatments in plan</value>
   </data>
+  <data name="CreatePaymentBarButton.Label" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="CreatePaymentBarButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create this new payment</value>
+  </data>
+  <data name="TreatmentsCB.PlaceholderText" xml:space="preserve">
+    <value>Add Treament to plan</value>
+  </data>
 </root>

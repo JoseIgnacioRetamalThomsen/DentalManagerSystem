@@ -1,5 +1,9 @@
-﻿using System;
+﻿using DataAccessLibrary;
+using DentalManagerSys.ViewModel;
+using Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,9 +26,44 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class NewPaymentView : Page
     {
+        public NewPaymentViewModel ViewModel;
         public NewPaymentView()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+
+
+            
+
+
+            if (e.Parameter == null)
+            {
+
+            }
+            else
+            {
+                ViewModel = new NewPaymentViewModel(e.Parameter.ToString());
+            }
+
+            TreatmentPlanDB.ItemsSource = ViewModel.TreatmentPlans;
+            TreatmentPlanDB.SelectedItem = ViewModel.GetMostRecent();
+
+
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("working");
+            decimal amount = Convert.ToDecimal(Amount.Text);
+            DAO.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID,ViewModel.Customer.iD,amount,DateTime.Now.ToString());
+        }
+
+        private void Amount_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            sender.Text = new String(sender.Text.Where(char.IsDigit).ToArray());
         }
     }
 }
