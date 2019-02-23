@@ -797,18 +797,19 @@ namespace DataAccessLibrary
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
-                while (query.Read())
-                {
-                    int treatmentID = query.GetInt32(0);
-                    string treatmentName = query.GetString(1);
-                    decimal price = query.GetDecimal(2);
+                //while (query.Read())
+                //{
+                //    int treatmentID = query.GetInt32(0);
+                //    string treatmentName = query.GetString(1);
+                //    decimal price = query.GetDecimal(2);
 
-                    treatmentList.Add(new TreatmentOnPlan(
-                    treatmentID,
-                    treatmentName,
-                    price
-                    ));
-                }
+                //    treatmentList.Add(new TreatmentOnPlan(
+                //    treatmentID,
+                //    treatmentName,
+                //    price,
+                //    new DateTime
+                //    ));
+                //}
 
                 db.Close();
             }
