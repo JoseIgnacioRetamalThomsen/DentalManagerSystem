@@ -387,4 +387,10 @@
   <data name="TreatmentsCB.PlaceholderText" xml:space="preserve">
     <value>Add Treament to plan</value>
   </data>
+  <data name="AllPaymerExpander.Text" xml:space="preserve">
+    <value>All Payments</value>
+  </data>
+  <data name="AmountTB.PlaceholderText" xml:space="preserve">
+    <value>Amount</value>
+  </data>
 </root>

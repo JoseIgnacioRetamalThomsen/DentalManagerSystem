@@ -10,7 +10,7 @@ namespace Models
         public int treatmentPlanID { get; set; }
         public string customerID { get; set; }
         public float amount { get; set; }
-        public DateTime treatmentCompleteDate { get; set; }
+        public DateTime completedDate { get; set; }
 
         public Payments(int paymentsID, int treatmentPlanID,string customerID, float amount, DateTime treatmentCompleteDate)
         {
@@ -18,7 +18,7 @@ namespace Models
             this.treatmentPlanID = treatmentPlanID;
             this.customerID = customerID;
             this.amount = amount;
-            this.treatmentCompleteDate = treatmentCompleteDate;
+            this.completedDate = treatmentCompleteDate;
 
         }
     }

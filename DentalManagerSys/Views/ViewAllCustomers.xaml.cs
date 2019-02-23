@@ -29,6 +29,7 @@ namespace DentalManagerSys.Views
     {
         
         ObservableCollection<Customer> customerList = null;
+        
         public ViewAllCustomers()
         {
             this.InitializeComponent();

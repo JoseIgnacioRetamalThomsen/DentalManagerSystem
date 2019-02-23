@@ -59,6 +59,7 @@ namespace DentalManagerSys.Views
             Debug.WriteLine("working");
             decimal amount = Convert.ToDecimal(Amount.Text);
             DAO.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID,ViewModel.Customer.iD,amount,DateTime.Now.ToString());
+            Frame.GoBack();
         }
 
         private void Amount_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)

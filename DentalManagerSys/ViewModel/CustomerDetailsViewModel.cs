@@ -12,6 +12,8 @@ namespace DentalManagerSys.ViewModel
 {
     public class CustomerDetailsViewModel : ViewModelBase
     {
+      public   ObservableCollection<Payments> PaymentsOC { get; set; }
+
       public  Customer Customer { get; set; }
 
         public ObservableCollection<TreatmentPlan> treatmentPlans;
@@ -83,8 +85,7 @@ namespace DentalManagerSys.ViewModel
             acceptedTreatmentPlans = new ObservableCollection<TreatmentPlan>();
             finishedTreatmentPlans = new ObservableCollection<TreatmentPlan>();
 
-            Debug.WriteLine("sdfasdffdsfd     " + Customer.iD);
-            Debug.WriteLine("sdfasdffdsfd     " + treatmentPlans.Count);
+         
 
             foreach (TreatmentPlan tp in treatmentPlans)
             {
@@ -102,6 +103,15 @@ namespace DentalManagerSys.ViewModel
 
                 }
             }
+        }
+        public void SetPayments()
+        {
+            PaymentsOC = new ObservableCollection<Payments>()
+            {
+                new Payments(1,1,"1",12321,DateTime.Now),
+                new Payments(2,2,"2",2132131,DateTime.Now)
+            };
+                //new ObservableCollection<Payments>(DAO.GetPaymenyByCustomerID(Customer.iD));
         }
     }
 }

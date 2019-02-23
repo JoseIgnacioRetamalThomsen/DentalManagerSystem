@@ -58,7 +58,8 @@
 
                 <TextBox
                     x:Name="Amount"
-                    Text="{x:Bind Path=ViewModel.Amount,Mode=OneWay}"
+                  
+                    x:Uid="/Strings/AmountTB"
                     TextChanging="Amount_TextChanging"/>
             </StackPanel>
            

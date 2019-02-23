@@ -84,6 +84,9 @@ namespace DentalManagerSys.Views
             CreatedTPListView.ItemsSource = ViewModel.CreatedTreatmentPlans;
             FinishTPListView.ItemsSource = ViewModel.FinishedTreatmentPlans;
 
+            ViewModel.SetPayments();
+            AllPaymentsLV.ItemsSource = ViewModel.PaymentsOC;
+
         }
 
         private void CreateTreatmentPlan_Click(object sender, RoutedEventArgs e)
