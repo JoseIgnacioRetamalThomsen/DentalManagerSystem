@@ -749,6 +749,8 @@ namespace DataAccessLibrary
 
             return entries;
         }
+
+
         public static void UpdateTreatment(Treatment treatment)
         {
             using (SqliteConnection db =
@@ -823,7 +825,7 @@ namespace DataAccessLibrary
         /// <param name="treatmentID"></param>
         /// <param name="price"></param>
         /// <param name="completedDate"></param>
-        public static void UpdateTreatmentOnPlan(int treatmentPlanTreatmentsID, int treatmentPlanID, int treatmentID, decimal price, DateTime completedDate)
+        public static void UpdateTreatmentOnPlan(TreatmentOnPlan t)
         {
             using (SqliteConnection db =
                new SqliteConnection("Filename=dentalManagerDB.db"))
@@ -835,11 +837,11 @@ namespace DataAccessLibrary
 
                 // Use parameterized query to prevent SQL injection attacks
                 insertCommand.CommandText = "UPDATE treatmentPlanTreatments SET treatmentPlanID =@TreatmentPlanID, treatmentID =@TreatmentID, price =@Price, completedDate =@CompletedDate  where treatmentPlanTreatmentsID=@TreatmentPlanTreatmentsID;";
-                insertCommand.Parameters.AddWithValue("@TreatmentPlanTreatmentsID", treatmentPlanTreatmentsID);
-                insertCommand.Parameters.AddWithValue("@TreatmentPlanID", treatmentPlanID);
-                insertCommand.Parameters.AddWithValue("@TreatmentID", treatmentID);
-                insertCommand.Parameters.AddWithValue("@Price", price);
-                insertCommand.Parameters.AddWithValue("@CompletedDate", completedDate);
+                insertCommand.Parameters.AddWithValue("@TreatmentPlanTreatmentsID", t.TreatmentPlanTreatmentsID);
+                insertCommand.Parameters.AddWithValue("@TreatmentPlanID", t.TreatmentPlanID);
+                insertCommand.Parameters.AddWithValue("@TreatmentID", t.TreatmentID);
+                insertCommand.Parameters.AddWithValue("@Price", t.Price);
+                insertCommand.Parameters.AddWithValue("@CompletedDate", t.CompletedDate);
 
                 insertCommand.ExecuteNonQuery();
 

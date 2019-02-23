@@ -12,11 +12,9 @@ namespace Models
 
 
         public string name { get; set; }
-
         public decimal price;
 
         //public event PropertyChangedEventHandler PropertyChanged = delegate { };
-
 
         public Treatment(string iD, string name, decimal price)
         {
@@ -40,7 +38,6 @@ namespace Models
         {
             return this.name;
         }
-
 
         //public void OnPropertyChanged([CallerMemberName] string propertyName = null)
         //{

@@ -37,8 +37,6 @@ namespace DentalManagerSys.Views
         {
             this.InitializeComponent();
 
-            
-
         }
 
         private void DisplayDetails(string iD)
@@ -46,8 +44,6 @@ namespace DentalManagerSys.Views
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
             string Home = resourceLoader.GetString("/Strings/Home");
             string Mobile = resourceLoader.GetString("/Strings/Mobile");
-
-   
 
             Customer temp = DAO.GetCustomerByID(iD);
 

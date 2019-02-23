@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccessLibrary;
+using Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,9 +32,13 @@ namespace DentalManagerSys.Views
             this.InitializeComponent();
         }
 
-        private void DisplayPyamentDetails(string iD)
+        private void DisplayPyamentDetails(string id)
         {
-         
+
+            Payments temp = DAO.GetPaymenyByCustomerID(id);
+
+            customerID.Text = temp.customerID;
+
         }
     }
 }

@@ -15,19 +15,6 @@
                 Style="{StaticResource TitleTextBlockStyle}">
             </TextBlock>
 
-            <CommandBar 
-                x:Name="PaymentCommandBar"
-                HorizontalAlignment="Stretch"
-                Background="Transparent"
-                RelativePanel.RightOf="PageTitle"
-                RelativePanel.LeftOf="SearchBox">
-
-                <AppBarSeparator/>
-                <AppBarButton
-                    Icon="Add"
-                    x:Uid="/Strings/AddBarButton"/>
-
-            </CommandBar>
             <AutoSuggestBox 
                 x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
                  QueryIcon="Find"
@@ -57,7 +44,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel x:Name="id" Grid.Row="0" Grid.Column="0" Margin="2" Grid.ColumnSpan="2">
-                    <TextBlock x:Name="IdTextBox"/>
+                    <TextBlock x:Name="customerID"/>
                 </StackPanel>
 
 
