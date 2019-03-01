@@ -25,6 +25,8 @@ namespace DentalManagerSys.ViewModel
 
         public ObservableCollection<TreatmentOnPlanShow> TreatmentsOnPlan { get; set; }
 
+        
+
         public TreatmentPlanShow TreatmentPlanForView { get; set; }
 
         public DateTime completedTreatmentDate;
@@ -66,7 +68,7 @@ namespace DentalManagerSys.ViewModel
             {
                 actualTreatmentPlanState = value;
                 OnPropertyChanged("TreatmentPLanState");
-                
+
             }
         }
 
@@ -87,18 +89,23 @@ namespace DentalManagerSys.ViewModel
             }
         }
 
+        public TreatmentPlanViewModel()
+        {
+            
+        }
+
         public void LoadTreatments(int planID)
         {
             List<TreatmentOnPlan> top = DAO.GetTreatmentOnPlansByID(planID);
-            
+
 
             List<Treatment> treatments = DAO.GetAllTreatment();
-            TreatmentPlanForView = new TreatmentPlanShow(ActualTreatmentPlan, Customer, top,treatments);
+            TreatmentPlanForView = new TreatmentPlanShow(ActualTreatmentPlan, Customer, top, treatments);
             TreatmentPlanForView.PrintConsole();
             TreatmentsOnPlan = new ObservableCollection<TreatmentOnPlanShow>(TreatmentPlanForView.Treatments);
 
             Total = TreatmentPlanForView.GetTotal();
-           
+
         }
     }
 }

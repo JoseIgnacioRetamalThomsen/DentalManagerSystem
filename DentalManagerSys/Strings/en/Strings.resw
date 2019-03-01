@@ -411,4 +411,25 @@
   <data name="SaveCustomerDetails.ToolTipService.ToolTip" xml:space="preserve">
     <value>Save Changes</value>
   </data>
+  <data name="AddButton.Content" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddTreatment.Text" xml:space="preserve">
+    <value>Add Treatment</value>
+  </data>
+  <data name="CommentTB.PlaceholderText" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="CreateTreatmentPlanText.Text" xml:space="preserve">
+    <value>Create Treatment Plan</value>
+  </data>
+  <data name="PriceTBox.PlaceholderText" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="SelectTooth.Text" xml:space="preserve">
+    <value>Select tooth</value>
+  </data>
+  <data name="TreatmentPriceTB.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
 </root>

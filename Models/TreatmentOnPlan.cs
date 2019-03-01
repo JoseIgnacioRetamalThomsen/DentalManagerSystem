@@ -12,6 +12,10 @@ namespace Models
         public decimal Price { get; set; }
         public DateTime CompletedDate { get; set; }
 
+        public int Tooth { get; set; }
+        public string Comment { get; set; }
+        public bool isDone { get; set; }
+        public string Name { get; set; }
 
         public String IsDoneString
         {
@@ -49,6 +53,12 @@ namespace Models
             CompletedDate = completedDate;
         }
 
-
+        public TreatmentOnPlan(int treatmentPlanTreatmentsID, int treatmentPlanID, int treatmentID, decimal price, DateTime completedDate, int tooth, string comment, bool isDone,string name) : this(treatmentPlanTreatmentsID, treatmentPlanID, treatmentID, price, completedDate)
+        {
+            Tooth = tooth;
+            Comment = comment;
+            IsDone = isDone;
+            Name = name;
+        }
     }
 }

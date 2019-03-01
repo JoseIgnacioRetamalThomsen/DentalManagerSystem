@@ -32,7 +32,7 @@ namespace DataAccessLibrary
                 createTreatmentPlan.ExecuteReader();
 
 
-                String treatmentPlanTreatments = "CREATE TABLE IF NOT EXISTS treatmentPlanTreatments( treatmentPlanTreatmentsID INTEGER,treatmentPlanID int,treatmentID int, price float,treatmentCompleteDate DATETIME,PRIMARY KEY (treatmentPlanTreatmentsID),FOREIGN KEY (treatmentPlanID) REFERENCES treatmentPlan(treatmentPlanID),FOREIGN KEY (treatmentID) REFERENCES treatment(treatmentID))";
+                String treatmentPlanTreatments = "CREATE TABLE IF NOT EXISTS treatmentPlanTreatments( treatmentPlanTreatmentsID INTEGER,treatmentPlanID int,treatmentID int, price float,treatmentCompleteDate DATETIME,tooth INT,comment VARCHAR(2000),isdone INT,PRIMARY KEY (treatmentPlanTreatmentsID),FOREIGN KEY (treatmentPlanID) REFERENCES treatmentPlan(treatmentPlanID),FOREIGN KEY (treatmentID) REFERENCES treatment(treatmentID))";
                 SqliteCommand createTreatmentPlanTreatments = new SqliteCommand(treatmentPlanTreatments, db);
                 createTreatmentPlanTreatments.ExecuteReader();
 
@@ -40,6 +40,24 @@ namespace DataAccessLibrary
                 SqliteCommand createPayments = new SqliteCommand(payments, db);
                 createPayments.ExecuteReader();
             }
+
+        }
+
+        public static void AddNewTreatmentPlanTreatments(object top)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void AddMockData()
+        {
+            DAO.AddNewCustomer("12234543-k", "Marco Antonio", "Perez Gonzales", "03/03/1978 00:00:00", "Los leons 29", "Valpariso", "Valparaiso", "Chile", "gh567", "0983442233", "02122222", "marco@email.com", "Sin alergias");
+            DAO.AddNewTreatment("Composite Compuesto", 24000);
+            DAO.AddNewTreatment("Incrustacion", 30000);
+            AddNewTreatmentPlan("12234543-k", (int)TreatmentPlaneState.Created, DateTime.Now.ToString(), "0");
+            //AddNewTreatmentPlanTreatments(1, 1, 24000, "0");
+            //AddNewTreatmentPlanTreatments(1, 2, 30000, "0");
+            //AddNewTreatmentPlanTreatments(1, 2, 25000, "0");
+
 
         }
 
@@ -378,8 +396,10 @@ namespace DataAccessLibrary
         /// <param name="treatmentID"></param>
         /// <param name="price"></param>
         /// <param name="treatmentCompleteDate"></param>
-        public static void AddNewTreatmentPlanTreatments(int treatmentPlanID, int treatmentID, Decimal price, string treatmentCompleteDate)
+        public static void AddNewTreatmentPlanTreatments(int treatmentPlanID, int treatmentID, Decimal price, string treatmentCompleteDate,int tooth,string comment,bool isDone)
         {
+
+            int _isDone = (isDone) ? 1 : 0;
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -389,18 +409,50 @@ namespace DataAccessLibrary
                 insertCommand.Connection = db;
 
                 // Use parameterized query
-                insertCommand.CommandText = "INSERT INTO treatmentPlanTreatments (TreatmentPlanID,TreatmentID,Price,TreatmentCompleteDate) VALUES (@TreatmentPlanID,@TreatmentID,@Price,@TreatmentCompleteDate);";
+                insertCommand.CommandText = "INSERT INTO treatmentPlanTreatments (TreatmentPlanID,TreatmentID,Price,TreatmentCompleteDate, tooth, comment, isdone) VALUES (@TreatmentPlanID,@TreatmentID,@Price,@TreatmentCompleteDate,@Tooth,@Comment,@IsDone);";
 
                 insertCommand.Parameters.AddWithValue("@TreatmentPlanID", treatmentPlanID);
                 insertCommand.Parameters.AddWithValue("@TreatmentID", treatmentID);
                 insertCommand.Parameters.AddWithValue("@Price", price);
                 insertCommand.Parameters.AddWithValue("@TreatmentCompleteDate", treatmentCompleteDate);
+                insertCommand.Parameters.AddWithValue("@Tooth", tooth);
+                insertCommand.Parameters.AddWithValue("@Comment", comment);
+                insertCommand.Parameters.AddWithValue("@IsDone", _isDone);
 
                 insertCommand.ExecuteReader();
 
                 db.Close();
             }
         }
+        public static void AddNewTreatmentPlanTreatments(TreatmentOnPlan t)
+        {
+
+            int _isDone = (t.isDone) ? 1 : 0;
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query
+                insertCommand.CommandText = "INSERT INTO treatmentPlanTreatments (TreatmentPlanID,TreatmentID,Price,TreatmentCompleteDate, tooth, comment, isdone) VALUES (@TreatmentPlanID,@TreatmentID,@Price,@TreatmentCompleteDate,@Tooth,@Comment,@IsDone);";
+
+                insertCommand.Parameters.AddWithValue("@TreatmentPlanID", t.TreatmentPlanID);
+                insertCommand.Parameters.AddWithValue("@TreatmentID", t.TreatmentID);
+                insertCommand.Parameters.AddWithValue("@Price", t.Price);
+                insertCommand.Parameters.AddWithValue("@TreatmentCompleteDate", t.CompletedDate);
+                insertCommand.Parameters.AddWithValue("@Tooth", t.Tooth);
+                insertCommand.Parameters.AddWithValue("@Comment", t.Comment);
+                insertCommand.Parameters.AddWithValue("@IsDone", _isDone);
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
+        }
+
 
         /// <summary>
         /// Insert a new payment
