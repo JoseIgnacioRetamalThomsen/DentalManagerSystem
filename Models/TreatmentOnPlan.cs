@@ -21,7 +21,7 @@ namespace Models
         {
             get
             {
-                if (CompletedDate.ToString().Equals("01/01/0001 00:00:00"))
+                if (!isDone)
                     return "Not Completed";
                 return CompletedDate.ToString("dd/MM/yyyy");
             }

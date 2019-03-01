@@ -73,29 +73,29 @@ namespace DentalManagerSys.Views
             int index = TreatmentsOnPlanLV.SelectedIndex;
 
             //get treatement on plan
-            TreatmentOnPlanShow top = ViewModel.TreatmentsOnPlan[index];
+            TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
 
             //activate button for mark as done if is not done
-            if(!top.Treatment.IsDone)
-            {
-                CreateTreatmentPlanCompletedB.IsEnabled = true;
-                CreateTreatmentPlanNotCopletedB.IsEnabled = false;
-            }
-            else
-            {
-                CreateTreatmentPlanCompletedB.IsEnabled = false;
-                CreateTreatmentPlanNotCopletedB.IsEnabled = true;
-            }
+            //if(!top.Treatment.IsDone)
+            //{
+            //    CreateTreatmentPlanCompletedB.IsEnabled = true;
+            //    CreateTreatmentPlanNotCopletedB.IsEnabled = false;
+            //}
+            //else
+            //{
+            //    CreateTreatmentPlanCompletedB.IsEnabled = false;
+            //    CreateTreatmentPlanNotCopletedB.IsEnabled = true;
+            //}
 
         }
 
         private void CreateTreatmentPlanNotCopletedB_Click(object sender, RoutedEventArgs e)
         {
             int index = TreatmentsOnPlanLV.SelectedIndex;
-            TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index].Treatment;
-            top.CompletedDate = Convert.ToDateTime("01/01/0001 00:00:00");
-            DAO.UpdateTreatmentOnPlan(top);
-            ReloadListView();
+           // TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index].Treatment;
+            //top.CompletedDate = Convert.ToDateTime("01/01/0001 00:00:00");
+            //DAO.UpdateTreatmentOnPlan(top);
+            //ReloadListView();
         }
 
         private void ReloadListView()
@@ -110,12 +110,12 @@ namespace DentalManagerSys.Views
         {
             Debug.WriteLine("click");
             //get selected item index
-            int index = TreatmentsOnPlanLV.SelectedIndex;
-            TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index].Treatment;
-            top.CompletedDate = DateTime.Now;
-            Debug.WriteLine(top.CompletedDate + " " + top.TreatmentPlanTreatmentsID);
-            DAO.UpdateTreatmentOnPlan(top);
-            ReloadListView();
+            //int index = TreatmentsOnPlanLV.SelectedIndex;
+            //TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index].Treatment;
+            //top.CompletedDate = DateTime.Now;
+            //Debug.WriteLine(top.CompletedDate + " " + top.TreatmentPlanTreatmentsID);
+            //DAO.UpdateTreatmentOnPlan(top);
+            //ReloadListView();
 
           
         }

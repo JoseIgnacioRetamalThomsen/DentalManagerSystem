@@ -25,7 +25,7 @@
                 HorizontalAlignment="Stretch"
                 Background="Transparent"
                 RelativePanel.RightOf="PageTitle"
-                RelativePanel.LeftOf="SearchBox"
+        
                 DefaultLabelPosition="Right">
 
             <AppBarButton
@@ -40,13 +40,13 @@
 
         </CommandBar>
         
-        <AutoSuggestBox 
+        <!--<AutoSuggestBox 
                 x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
                  QueryIcon="Find"
                                 Width="200"
                 x:Uid="/Strings/SearchAutoSuggestBox">
 
-        </AutoSuggestBox>
+        </AutoSuggestBox>-->
             <StackPanel
             x:Name="treatmentStateCB"
             RelativePanel.Below="PageTitle">
@@ -105,11 +105,13 @@
                     >
 
                     <ListView.ItemTemplate>
-                        <DataTemplate   x:DataType="local1:TreatmentOnPlanShow">
+                        <DataTemplate   x:DataType="local1:TreatmentOnPlan">
                             <Grid >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="350" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition  Width="150"/>
+                                    <ColumnDefinition  Width="150"/>
                                     <ColumnDefinition  Width="150"/>
 
                                 </Grid.ColumnDefinitions>
@@ -118,9 +120,11 @@
                                 </Grid.RowDefinitions>
 
 
-                                <TextBlock Text="{x:Bind treatmentName}" Grid.Column="0" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind Treatment.IsDoneString,Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind Treatment.Price}" Grid.Column="2" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Name}" Grid.Column="0" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Tooth,Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Comment}" Grid.Column="2" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind IsDoneString,Mode=TwoWay}" Grid.Column="3" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Price}" Grid.Column="4" Grid.Row="0"/>
                                 
                                 
 

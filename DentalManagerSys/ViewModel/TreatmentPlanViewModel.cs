@@ -23,7 +23,7 @@ namespace DentalManagerSys.ViewModel
             }
         }
 
-        public ObservableCollection<TreatmentOnPlanShow> TreatmentsOnPlan { get; set; }
+        public ObservableCollection<TreatmentOnPlan> TreatmentsOnPlan { get; set; }
 
         
 
@@ -102,7 +102,7 @@ namespace DentalManagerSys.ViewModel
             List<Treatment> treatments = DAO.GetAllTreatment();
             TreatmentPlanForView = new TreatmentPlanShow(ActualTreatmentPlan, Customer, top, treatments);
             TreatmentPlanForView.PrintConsole();
-            TreatmentsOnPlan = new ObservableCollection<TreatmentOnPlanShow>(TreatmentPlanForView.Treatments);
+            TreatmentsOnPlan = new ObservableCollection<TreatmentOnPlan>(top);
 
             Total = TreatmentPlanForView.GetTotal();
 
