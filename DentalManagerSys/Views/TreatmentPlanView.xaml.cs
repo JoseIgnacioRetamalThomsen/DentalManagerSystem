@@ -39,7 +39,7 @@ namespace DentalManagerSys.Views
 
 
             ViewModel = new TreatmentPlanViewModel();
-            
+
 
             if (e.Parameter == null)
             {
@@ -65,6 +65,8 @@ namespace DentalManagerSys.Views
         private void TreatmentStateCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ViewModel.ActualTreatmentPlanState = (TreatmentPlaneState)((ComboBox)sender).SelectedItem;
+
+            ViewModel.ChangeState((TreatmentPlaneState)((ComboBox)sender).SelectedItem);
         }
 
         private void TreatmentsOnPlanLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -76,33 +78,33 @@ namespace DentalManagerSys.Views
             TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
 
             //activate button for mark as done if is not done
-            //if(!top.Treatment.IsDone)
-            //{
-            //    CreateTreatmentPlanCompletedB.IsEnabled = true;
-            //    CreateTreatmentPlanNotCopletedB.IsEnabled = false;
-            //}
-            //else
-            //{
-            //    CreateTreatmentPlanCompletedB.IsEnabled = false;
-            //    CreateTreatmentPlanNotCopletedB.IsEnabled = true;
-            //}
+            if (!top.IsDone)
+            {
+                CreateTreatmentPlanCompletedB.IsEnabled = true;
+                CreateTreatmentPlanNotCopletedB.IsEnabled = false;
+            }
+            else
+            {
+                CreateTreatmentPlanCompletedB.IsEnabled = false;
+                CreateTreatmentPlanNotCopletedB.IsEnabled = true;
+            }
 
         }
 
         private void CreateTreatmentPlanNotCopletedB_Click(object sender, RoutedEventArgs e)
         {
             int index = TreatmentsOnPlanLV.SelectedIndex;
-           // TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index].Treatment;
-            //top.CompletedDate = Convert.ToDateTime("01/01/0001 00:00:00");
-            //DAO.UpdateTreatmentOnPlan(top);
-            //ReloadListView();
+            TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
+            top.IsDone = false;
+            DAO.UpdateTreatmentOnPlan(top);
+            ReloadListView();
         }
 
         private void ReloadListView()
         {
             TreatmentsOnPlanLV.SelectionChanged -= TreatmentsOnPlanLV_SelectionChanged;
             TreatmentsOnPlanLV.ItemsSource = null;
-           TreatmentsOnPlanLV.ItemsSource = ViewModel.TreatmentsOnPlan;
+            TreatmentsOnPlanLV.ItemsSource = ViewModel.TreatmentsOnPlan;
             TreatmentsOnPlanLV.SelectionChanged += TreatmentsOnPlanLV_SelectionChanged;
         }
 
@@ -110,14 +112,15 @@ namespace DentalManagerSys.Views
         {
             Debug.WriteLine("click");
             //get selected item index
-            //int index = TreatmentsOnPlanLV.SelectedIndex;
-            //TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index].Treatment;
-            //top.CompletedDate = DateTime.Now;
+            int index = TreatmentsOnPlanLV.SelectedIndex;
+            TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
+            top.CompletedDate = DateTime.Now;
+            top.IsDone = true;
             //Debug.WriteLine(top.CompletedDate + " " + top.TreatmentPlanTreatmentsID);
-            //DAO.UpdateTreatmentOnPlan(top);
-            //ReloadListView();
+            DAO.UpdateTreatmentOnPlan(top);
+            ReloadListView();
 
-          
+
         }
 
         private void EditPlanDone_Click(object sender, RoutedEventArgs e)

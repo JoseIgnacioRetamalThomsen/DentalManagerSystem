@@ -31,11 +31,12 @@ namespace DentalManagerSys
             this.InitializeComponent();
 
             DAO.InitializeDatabase();
-            // DAO.AddMockData();
+            //DAO.AddMockData();
             // DAO.UpdateTreatmentOnPlan(new TreatmentOnPlan(1, "text", 7));
             //  DAO.UpdateTreatment(new Treatment(1,"text",7));
-            DAO.AddNewTreatmentPlanTreatments(1, 1, 2000, "01/01/2019", 1, "hello", false);
-          
+            //DAO.AddNewTreatmentPlanTreatments(1, 1, 2000, "01/01/2019", 1, "hello", false);
+            //DAO.UpdateTreatmentPlanState(TreatmentPlaneState.Finish, 1);
+
 
         }
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Models
@@ -9,19 +10,32 @@ namespace Models
         public int TreatmentPlanTreatmentsID { get; set; }
         public int TreatmentPlanID { get; set; }
         public int TreatmentID { get; set; }
+       
         public decimal Price { get; set; }
+
+        public string ShowPrice
+        {
+            get
+            {
+                return Price.ToString("C", CultureInfo.CurrentCulture);
+            }
+            set
+            {
+                ;
+            }
+        }
         public DateTime CompletedDate { get; set; }
 
         public int Tooth { get; set; }
         public string Comment { get; set; }
-        public bool isDone { get; set; }
+       // public bool _IsDone { get; set; }
         public string Name { get; set; }
 
         public String IsDoneString
         {
             get
             {
-                if (!isDone)
+                if (!IsDone)
                     return "Not Completed";
                 return CompletedDate.ToString("dd/MM/yyyy");
             }
@@ -31,19 +45,8 @@ namespace Models
             }
         }
 
-        public bool IsDone
-        {
-            get
-            {
-                if (CompletedDate.ToString().Equals("01/01/0001 00:00:00"))
-                    return false;
-                return true;
-            }
-            set
-            {
-                ;
-            }
-        }
+        public bool IsDone { get; set; }
+     
         public TreatmentOnPlan(int treatmentPlanTreatmentsID, int treatmentPlanID, int treatmentID, decimal price, DateTime completedDate)
         {
             TreatmentPlanTreatmentsID = treatmentPlanTreatmentsID;

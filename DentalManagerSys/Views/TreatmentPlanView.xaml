@@ -124,7 +124,7 @@
                                 <TextBlock Text="{x:Bind Tooth,Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
                                 <TextBlock Text="{x:Bind Comment}" Grid.Column="2" Grid.Row="0"/>
                                 <TextBlock Text="{x:Bind IsDoneString,Mode=TwoWay}" Grid.Column="3" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind Price}" Grid.Column="4" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind ShowPrice}" Grid.Column="4" Grid.Row="0"/>
                                 
                                 
 
@@ -143,7 +143,7 @@
 
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="Total"></TextBlock>
-                    <TextBox Text="{x:Bind Path=ViewModel.Total ,Mode=OneWay}"></TextBox> <!--Bind on two ways will throww exception!!!!!!!-->
+                    <TextBox Text="{x:Bind Path=ViewModel.ShowTotal ,Mode=OneWay}"></TextBox> <!--Bind on two ways will throww exception!!!!!!!-->
                     
                 </StackPanel>
                 

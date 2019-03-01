@@ -1,5 +1,6 @@
 ﻿using DataAccessLibrary;
 using DentalManagerSys.ViewModel;
+using Microsoft.Toolkit.Uwp.UI.Controls;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -123,6 +124,12 @@ namespace DentalManagerSys.Views
             Frame.Navigate(typeof(TreatmentPlanView), tp,
                   new DrillInNavigationTransitionInfo());
            
+        }
+
+        private void NewPaymentButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(NewPaymentView), ViewModel.Customer.iD,
+                 new DrillInNavigationTransitionInfo());
         }
     }
 }

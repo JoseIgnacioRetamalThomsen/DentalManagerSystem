@@ -180,7 +180,7 @@
                                 <TextBlock Text="{x:Bind Name}" Grid.Column="0" Grid.Row="0"/>
                                 <TextBlock Text="{x:Bind Tooth}" Grid.Column="1" Grid.Row="0"/>
                                 <TextBlock Text="{x:Bind Comment}" Grid.Column="2" Grid.Row="0"  MaxWidth="120"/>
-                                <TextBlock Text="{x:Bind Price}" Grid.Column="3" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind ShowPrice}" Grid.Column="3" Grid.Row="0"/>
 
                             </Grid>
                         </DataTemplate>
@@ -199,7 +199,8 @@
                         x:Uid="/Strings/TotalTB"/>
                     <TextBox 
                 x:Name="TotalTB"
-                Text="{x:Bind Path=ViewModel.Total, Mode=TwoWay}"/>
+                Text="{x:Bind Path=ViewModel.ShowTotal, Mode=OneWay}"
+                       IsReadOnly="True"/>
                 </StackPanel>
             </StackPanel>
         </RelativePanel>

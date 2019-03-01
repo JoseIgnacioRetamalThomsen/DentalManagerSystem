@@ -38,32 +38,42 @@
             </CommandBar>
 
 
-
-
-            <StackPanel 
+            <Grid RelativePanel.Below="PageTitle"
+                Margin="0,20,0,0"
+                  VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel 
                 x:Name="TreatmentPlanDBSP"
-                RelativePanel.Below="PageTitle">
-                <StackPanel>
+               Grid.Column="0">
+                
+                
                     <TextBlock 
                         Text="Payment for treatment plan:"></TextBlock>
+                    
+               
                 <ComboBox
                     x:Name="TreatmentPlanDB"
                     MinWidth="400" />
                 </StackPanel>
-            </StackPanel>
+           
 
-            <StackPanel
+            <StackPanel Grid.Column="1"
                 x:Name="AmoutInputSP"
-                RelativePanel.Below="TreatmentPlanDBSP">
+                VerticalAlignment="Bottom"
+                        Margin="5,0,0,0">
 
                 <TextBox
                     x:Name="Amount"
-                  
+                    MinWidth="120"
                     x:Uid="/Strings/AmountTB"
                     TextChanging="Amount_TextChanging"/>
             </StackPanel>
-           
 
+            </Grid>
         </RelativePanel>
     </Grid>
 </Page>

@@ -61,6 +61,27 @@ namespace DataAccessLibrary
 
         }
 
+        public static void UpdateTreatmentPlanState(TreatmentPlaneState state,int iD)
+        {
+            using (SqliteConnection db =
+               new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query to prevent SQL injection attacks
+                insertCommand.CommandText = "UPDATE treatmentPlan SET state =@State where treatmentPlanID=@ID;";
+                insertCommand.Parameters.AddWithValue("@State", (int)state);
+                insertCommand.Parameters.AddWithValue("@ID", iD);
+          
+                insertCommand.ExecuteNonQuery();
+
+                db.Close();
+            }
+        }
+
         /// <summary>
         /// Add new customer with all parameters
         /// </summary>
@@ -427,7 +448,7 @@ namespace DataAccessLibrary
         public static void AddNewTreatmentPlanTreatments(TreatmentOnPlan t)
         {
 
-            int _isDone = (t.isDone) ? 1 : 0;
+            int _isDone = (t.IsDone) ? 1 : 0;
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -899,6 +920,7 @@ namespace DataAccessLibrary
                     string comments = query.GetString(6);
                     bool isDone = query.GetInt32(7) == 0 ? false : true;
                     string name = query.GetString(9);
+
                     treatmentList.Add(new TreatmentOnPlan(
                     TreatmentPlanTreatmentsID,
                     TreatmentPlanID,
@@ -930,6 +952,7 @@ namespace DataAccessLibrary
         /// <param name="completedDate"></param>
         public static void UpdateTreatmentOnPlan(TreatmentOnPlan t)
         {
+            int isDone = (t.IsDone) ? 1 : 0;
             using (SqliteConnection db =
                new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -939,12 +962,15 @@ namespace DataAccessLibrary
                 insertCommand.Connection = db;
 
                 // Use parameterized query to prevent SQL injection attacks
-                insertCommand.CommandText = "UPDATE treatmentPlanTreatments SET treatmentPlanID =@TreatmentPlanID, treatmentID =@TreatmentID, price =@Price, treatmentCompleteDate =@CompletedDate  where treatmentPlanTreatmentsID=@TreatmentPlanTreatmentsID;";
+                insertCommand.CommandText = "UPDATE treatmentPlanTreatments SET treatmentPlanID =@TreatmentPlanID, treatmentID =@TreatmentID, price =@Price, treatmentCompleteDate =@CompletedDate,tooth = @Tooth,comment = @Comment, isdone =@IsDone  where treatmentPlanTreatmentsID=@TreatmentPlanTreatmentsID;";
                 insertCommand.Parameters.AddWithValue("@TreatmentPlanTreatmentsID", t.TreatmentPlanTreatmentsID);
                 insertCommand.Parameters.AddWithValue("@TreatmentPlanID", t.TreatmentPlanID);
                 insertCommand.Parameters.AddWithValue("@TreatmentID", t.TreatmentID);
                 insertCommand.Parameters.AddWithValue("@Price", t.Price);
                 insertCommand.Parameters.AddWithValue("@CompletedDate", t.CompletedDate);
+                insertCommand.Parameters.AddWithValue("@Tooth", t.Tooth);
+                insertCommand.Parameters.AddWithValue("@Comment", t.Comment);
+                insertCommand.Parameters.AddWithValue("@IsDone", isDone);
 
                 insertCommand.ExecuteNonQuery();
 

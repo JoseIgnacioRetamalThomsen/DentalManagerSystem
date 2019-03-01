@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,6 +42,18 @@ namespace DentalManagerSys.ViewModel
             {
                 total = value;
                 OnPropertyChanged("Total");
+                OnPropertyChanged("ShowTotal");
+            }
+        }
+        public string ShowTotal
+        {
+            get
+            {
+                return total.ToString("C", CultureInfo.CurrentCulture);
+            }
+            set
+            {
+                ;
             }
         }
 
