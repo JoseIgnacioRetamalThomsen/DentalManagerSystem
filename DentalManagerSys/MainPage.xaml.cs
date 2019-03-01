@@ -31,7 +31,8 @@ namespace DentalManagerSys
             this.InitializeComponent();
 
             DAO.InitializeDatabase();
-           // FireBaseDAO.AddNewTreatment("Ndip", 2000);
+            FireBaseDAO.AddNewTreatment("Ndip", 2000);
+            FireBaseDAO.AddNewCustomer("g00352031", "Joe", "", "Cole", "1 Dublin", "Galway", "g00352031", "g00352031", "g00352031", "g00352031", "g00352031", "g00352031", "Is Test Marshall");
             // DAO.UpdateTreatmentOnPlan(new TreatmentOnPlan(1, "text", 7));
             DAO.UpdateTreatment(new Treatment(1,"text",7));
           
