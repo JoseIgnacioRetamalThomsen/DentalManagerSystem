@@ -338,7 +338,7 @@ namespace DataAccessLibrary
         public static List<TreatmentPlan> GetAllTreatmentPlansByID(string id)
         {
             List<TreatmentPlan> treatmentPlans = new List<TreatmentPlan>();
-
+            int IdForCustomer = 1;
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -350,6 +350,7 @@ namespace DataAccessLibrary
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
+               
                 while (query.Read())
                 {
                     int treatementPlanID = query.GetInt32(0);
@@ -363,13 +364,14 @@ namespace DataAccessLibrary
                     {
                         datetime2 = Convert.ToDateTime(date2);
                     }
-     
+
                     treatmentPlans.Add(new TreatmentPlan(
                     treatementPlanID,
                     customerId,
                     temp,
                     Convert.ToDateTime(query.GetString(3)),
-                    datetime2
+                    datetime2,
+                    IdForCustomer++
                     ));
                 }
 

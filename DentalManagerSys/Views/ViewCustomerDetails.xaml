@@ -100,13 +100,12 @@
                 </StackPanel>
 
             </Grid>
-            <ScrollViewer MaxHeight="100">
+            <ScrollViewer MaxHeight="400" RelativePanel.Below="DetailsGrid" HorizontalAlignment="Stretch" Width="600">
                 <StackPanel>
                     <toolkit:Expander 
-                x:Name="AcceptedTPExpander"
-                RelativePanel.Below="DetailsGrid"
-                IsExpanded="True"
-                HorizontalContentAlignment="Left">
+                        x:Name="AcceptedTPExpander"
+                        Style="{StaticResource ExpanderStyle}"
+                        IsExpanded="True">
                         <toolkit:Expander.Header>
                             <Grid>
                                 <TextBlock 
@@ -139,7 +138,7 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Text="{x:Bind TreatmentPLanID }" Grid.Column="0" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind IDForCustomer }" Grid.Column="0" Grid.Row="0"/>
                                         <TextBlock Text="{x:Bind CreationDate}" Grid.Column="1" Grid.Row="0"/>
                                         <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
 
@@ -153,10 +152,10 @@
                     </toolkit:Expander>
 
                     <toolkit:Expander 
-                x:Name="CreatedTreatmentsLV"
-                RelativePanel.Below="AcceptedTPExpander"
-                IsExpanded="False"
-                HorizontalContentAlignment="Left">
+                        x:Name="CreatedTreatmentsLV"
+                        RelativePanel.Below="AcceptedTPExpander"
+                        IsExpanded="False"
+                        HorizontalContentAlignment="Left">
                         <toolkit:Expander.Header>
                             <Grid>
                                 <TextBlock 
@@ -170,8 +169,8 @@
                         </toolkit:Expander.Header>
 
                         <ListView
-                    x:Name="CreatedTPListView"
-                    SelectionChanged="AcceptedTPListView_SelectionChanged">
+                            x:Name="CreatedTPListView"
+                            SelectionChanged="AcceptedTPListView_SelectionChanged">
 
                             <ListView.ItemTemplate>
                                 <DataTemplate   x:DataType="local1:TreatmentPlan">
@@ -186,7 +185,7 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Text="{x:Bind TreatmentPLanID }" Grid.Column="0" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind IDForCustomer }" Grid.Column="0" Grid.Row="0"/>
                                         <TextBlock Text="{x:Bind CreationDate}" Grid.Column="1" Grid.Row="0"/>
                                         <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
 
@@ -199,19 +198,16 @@
                     </toolkit:Expander>
 
                     <toolkit:Expander 
-                x:Name="FinishTreatmentsLV"
-                RelativePanel.Below="CreatedTreatmentsLV"
-                IsExpanded="False"
-                HorizontalContentAlignment="Left">
+                        x:Name="FinishTreatmentsLV"
+                        RelativePanel.Below="CreatedTreatmentsLV"
+                        IsExpanded="False"
+                        HorizontalContentAlignment="Left">
                         <toolkit:Expander.Header>
                             <Grid>
                                 <TextBlock 
                                     x:Uid="/Strings/DoneTreatmentsTextBox"
                                     Style="{StaticResource TitleTextBlockStyle}"/>
-                                <!--<TextBlock
-                                    Text="Yes" 
-                                   
-                                    HorizontalAlignment="Right"/>-->
+                              
                             </Grid>
                         </toolkit:Expander.Header>
 
@@ -232,7 +228,7 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Text="{x:Bind TreatmentPLanID }" Grid.Column="0" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind IDForCustomer }" Grid.Column="0" Grid.Row="0"/>
                                         <TextBlock Text="{x:Bind CreationDate}" Grid.Column="1" Grid.Row="0"/>
                                         <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
 
@@ -243,7 +239,6 @@
                         </ListView>
 
                     </toolkit:Expander>
-
 
                     <toolkit:Expander 
                 x:Name="AllPaymerExpander"

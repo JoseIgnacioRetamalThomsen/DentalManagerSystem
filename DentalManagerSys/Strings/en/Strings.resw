@@ -459,4 +459,10 @@
   <data name="SurnameTextBox.Text" xml:space="preserve">
     <value>Surname</value>
   </data>
+  <data name="CancelButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Cancel and go back</value>
+  </data>
+  <data name="CancelButton.Label" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

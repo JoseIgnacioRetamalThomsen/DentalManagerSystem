@@ -4,7 +4,7 @@
 ///  Profesional Practice in IT project
 ///  GMIT 2019
 ///  
-///  Markm Ndpenoch
+///  Markm Ndipenoch
 ///  Jose I. Retamal
 ///------------------------------------------
 ///
@@ -26,6 +26,7 @@ namespace Models
         public TreatmentPlaneState State { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime TreatmentPlanCompleteDate { get; set; }
+        public int IDForCustomer { get; set; }
 
         public TreatmentPlan(string customerID, TreatmentPlaneState state, DateTime creationDate, DateTime treatmentPlanCompleteDate)
         {
@@ -44,9 +45,14 @@ namespace Models
             this.TreatmentPlanCompleteDate = treatmentPlanCompleteDate;
         }
 
+        public TreatmentPlan(int treatmentPLanID, string customerID, TreatmentPlaneState state, DateTime creationDate, DateTime treatmentPlanCompleteDate, int iDForCustomer) : this(treatmentPLanID, customerID, state, creationDate, treatmentPlanCompleteDate)
+        {
+            IDForCustomer = iDForCustomer;
+        }
+
         public override string ToString()
         {
-            return "ID= "+ TreatmentPLanID + " " + CreationDate.ToString("dd/MM/yyyy") ;
+            return "ID= "+ IDForCustomer + " " + CreationDate.ToString("dd/MM/yyyy") ;
         }
     }
 }

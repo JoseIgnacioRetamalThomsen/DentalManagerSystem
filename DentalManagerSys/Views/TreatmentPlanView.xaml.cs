@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -127,6 +128,12 @@ namespace DentalManagerSys.Views
         {
             Frame.GoBack();
 
+        }
+
+        private void NewPaymentButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(NewPaymentView), new NewPaymentData(ViewModel.Customer.iD,ViewModel.ActualTreatmentPlan.TreatmentPLanID,true),
+                new DrillInNavigationTransitionInfo());
         }
     }
 }

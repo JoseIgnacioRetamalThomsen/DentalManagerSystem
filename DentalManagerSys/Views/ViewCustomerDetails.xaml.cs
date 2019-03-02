@@ -155,7 +155,7 @@ namespace DentalManagerSys.Views
         /// <param name="e"></param>
         private void NewPaymentButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(NewPaymentView), ViewModel.Customer.iD,
+            Frame.Navigate(typeof(NewPaymentView), new NewPaymentData( ViewModel.Customer.iD,0,false),
                  new DrillInNavigationTransitionInfo());
         }
     }

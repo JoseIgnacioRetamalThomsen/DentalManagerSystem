@@ -15,14 +15,13 @@
             <TextBlock   
                 x:Name="PageTitle"
                 Text=""
-                Style="{StaticResource TitleTextBlockStyle}"
+                Style="{StaticResource PageTitleTextBlock}"
                 MinWidth="300"/>
 
 
             <CommandBar 
                 x:Name="PatientsCommandBar"
-                HorizontalAlignment="Stretch"
-                Background="Transparent"
+                Style="{StaticResource CommandBarStyle}"
                 RelativePanel.RightOf="PageTitle"
                 DefaultLabelPosition="Right">
 
@@ -32,9 +31,10 @@
                     x:Uid="/Strings/CreateNewTreatmentPlanButton"
                     IsEnabled="True"
                     Tapped="CreateTreatmentPlanButton_Tapped"/>
-
                 <AppBarSeparator/>
+
                 
+
             </CommandBar>
 
 

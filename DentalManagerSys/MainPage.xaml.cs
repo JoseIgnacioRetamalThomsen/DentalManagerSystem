@@ -43,7 +43,7 @@ namespace DentalManagerSys
         {
             if (args.IsSettingsInvoked)
             {
-                // ContentFrame.Navigate(typeof(SettingsPage));
+                 ContentFrame.Navigate(typeof(SettingsView));
             }
             else
             {
@@ -84,9 +84,9 @@ namespace DentalManagerSys
 
         private void On_Navigated(object sender, NavigationEventArgs e)
         {
-            // NavView.IsBackEnabled = ContentFrame.CanGoBack;
+             NavView.IsBackEnabled = ContentFrame.CanGoBack;
 
-            if (false)//ContentFrame.SourcePageType == typeof(SettingsPage))
+            if (ContentFrame.SourcePageType == typeof(SettingsView))
             {
                 NavView.SelectedItem = NavView.SettingsItem as NavigationViewItem;
             }
@@ -94,7 +94,7 @@ namespace DentalManagerSys
             {
                 Dictionary<Type, string> lookup = new Dictionary<Type, string>()
                 {
-                  //  {typeof(HomePage), "home"},
+                   {typeof(NewPaymentView), "NewPaymentView"},
                     {typeof(NewCustomer), "newCustomer"}//,
                   //  {typeof(GamesPage), "games"},
                   //  {typeof(MusicPage), "music"},
@@ -129,8 +129,8 @@ namespace DentalManagerSys
                     case "ManageTreaments":
                         ContentFrame.Navigate(typeof(ManageTreatmentsView));
                         break;
-                    case "ViewAllTransactionsNV":
-                        ContentFrame.Navigate(typeof(NewCustomer));
+                    case "settings":
+                        ContentFrame.Navigate(typeof(SettingsView));
                         break;
                     case "content":
                         ContentFrame.Navigate(typeof(MainPage));
@@ -139,5 +139,25 @@ namespace DentalManagerSys
             }
 
         }// NavView_Navigate(NavigationViewItem item)
+
+        private bool On_BackRequested()
+        {
+            if (!ContentFrame.CanGoBack)
+                return false;
+
+            //// Don't go back if the nav pane is overlayed.
+            //if (NavView.IsPaneOpen &&
+            //    (NavView.DisplayMode == muxc.NavigationViewDisplayMode.Compact ||
+            //     NavView.DisplayMode == muxc.NavigationViewDisplayMode.Minimal))
+            //    return false;
+
+            ContentFrame.GoBack();
+            return true;
+        }
+
+        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        {
+            On_BackRequested();
+        }
     }
 }

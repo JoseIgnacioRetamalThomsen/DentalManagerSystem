@@ -58,7 +58,7 @@ namespace DentalManagerSys.Views
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(NewPaymentView), ((Customer)DataGrid.SelectedItem).iD,
+            Frame.Navigate(typeof(NewPaymentView), new NewPaymentData(((Customer)DataGrid.SelectedItem).iD,0,false) ,
                  new DrillInNavigationTransitionInfo());
         }
     }

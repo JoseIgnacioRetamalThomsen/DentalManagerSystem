@@ -11,29 +11,30 @@
     <Grid>
         <RelativePanel>
             <TextBlock   
-                x:Name="PageTitle" 
-                Style="{StaticResource TitleTextBlockStyle}"
+            x:Name="PageTitle" 
+            Style="{StaticResource PageTitleTextBlock}"
             Text="{x:Bind Path=ViewModel.CustomerName , Mode=OneTime}">
             </TextBlock>
 
             <CommandBar 
                 x:Name="PatientsCommandBar"
-                HorizontalAlignment="Stretch"
-                Background="Transparent"
-                RelativePanel.RightOf="PageTitle"
-                >
+                Style="{StaticResource CommandBarStyle}"
+                RelativePanel.RightOf="PageTitle">
 
                 <AppBarButton
                     Tag="CreatePaymentBarButton"
                     Icon="Add"
                     x:Uid="/Strings/CreatePaymentBarButton"
-                    Click="AppBarButton_Click"
+                    Click="AddPayment_Click"
                     IsEnabled="True"/>
 
                 <AppBarSeparator/>
+                
                 <AppBarButton
-                    Icon="Add"
-                    x:Uid="/Strings/AddBarButton"/>
+                    x:Name="CancelButton"
+                    Icon="Cancel"
+                    x:Uid="/Strings/CancelButton"
+                    Click="CancelButton_Click"/>
 
             </CommandBar>
 

@@ -16,19 +16,17 @@
     <RelativePanel>
         <TextBlock   
                 x:Name="PageTitle" 
-                Style="{StaticResource TitleTextBlockStyle}"
+                Style="{StaticResource PageTitleTextBlock}"
                 Text="{x:Bind Path=ViewModel.CustomerName , Mode=OneTime}">
         </TextBlock>
 
-        <CommandBar 
+            <CommandBar 
                 x:Name="PatientsCommandBar"
-                HorizontalAlignment="Stretch"
-                Background="Transparent"
-                RelativePanel.RightOf="PageTitle"
-        
-                DefaultLabelPosition="Right">
+                Style="{StaticResource CommandBarStyle}"
+                RelativePanel.RightOf="PageTitle">
 
-            <AppBarButton
+
+                <AppBarButton
                     x:Name="EditPlanDone"
                     Icon="Add"
                     x:Uid="/Strings/EditPlanDone"
@@ -36,17 +34,15 @@
                     IsEnabled="True"/>
 
             <AppBarSeparator/>
-           
 
-        </CommandBar>
-        
-        <!--<AutoSuggestBox 
-                x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
-                 QueryIcon="Find"
-                                Width="200"
-                x:Uid="/Strings/SearchAutoSuggestBox">
-
-        </AutoSuggestBox>-->
+                <AppBarButton
+                    x:Name="NewPaymentButton"
+                    Icon="Add"
+                    x:Uid="/Strings/NewPaymentButton"
+                    Click="NewPaymentButton_Click"
+                    IsEnabled="True"/>
+            </CommandBar>
+     
             <StackPanel
             x:Name="treatmentStateCB"
             RelativePanel.Below="PageTitle">
