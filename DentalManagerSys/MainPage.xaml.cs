@@ -31,12 +31,18 @@ namespace DentalManagerSys
             this.InitializeComponent();
 
             DAO.InitializeDatabase();
-            FireBaseDAO.AddNewTreatment("Ndip", 2000);
-            FireBaseDAO.AddNewCustomer("g00352031", "Joe", "", "Cole", "1 Dublin", "Galway", "g00352031", "g00352031", "g00352031", "g00352031", "g00352031", "g00352031", "Is Test Marshall");
+            FireBaseDAO f = new FireBaseDAO();
+            // f.AddNewTreatment("Cannines", 2000);
+            //f.UpdateCustomer("g00352031", "Bean", "", "Mash", "1 Dublin", "Galway", "g00352031", "g00352031", "g00352031", "g00352031", "g00352031", "g00352031", "Is Test Marshall");
             // DAO.UpdateTreatmentOnPlan(new TreatmentOnPlan(1, "text", 7));
-            DAO.UpdateTreatment(new Treatment(1,"text",7));
-          
-
+            //f.UpdateTreatmentOnPlan(new TreatmentOnPlan(2, 4,2,40,02/03/2018));
+           // f.AddNewpayment(1,"G0035241",8000,"25/08/2014");
+            // f.UpdateTreatment(new Treatment(1,"Test 6",60000));
+            //f.UpdateTreatment(new Treatment(4, "Test 6", 60000));
+            //f.UpdateTreatment(new Treatment(6, "Test 8", 80000));
+           // f.UpdateTreatment(new Treatment(10, "Test 6", 60000));
+           //  f.UpdateTreatment(new Treatment(3, "Test 8", 8000));
+       
         }
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {

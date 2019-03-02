@@ -1,6 +1,10 @@
-﻿namespace DataAccessLibrary
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DataAccessLibrary
 {
-    internal class Data
+    class TreatmentData
     {
         public object iD { get; set; }
         public string name { get; set; }
