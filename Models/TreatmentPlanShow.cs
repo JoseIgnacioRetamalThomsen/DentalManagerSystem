@@ -22,9 +22,9 @@ namespace Models
                
                 foreach(Treatment treatment in treatmentList)
                 {
-                    if(treatment.iD == top.TreatmentID)
+                    if(treatment.ID == top.TreatmentID)
                     {
-                        Treatments.Add(new TreatmentOnPlanShow(top, treatment.name));
+                        Treatments.Add(new TreatmentOnPlanShow(top, treatment.Name));
                     }
                 }
                 

@@ -4,4 +4,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:DentalManagerSys">
 
+    <Application.Resources>
+        <Style x:Key="CommandBarStyle" TargetType="CommandBar">
+            <Setter Property="DefaultLabelPosition" Value="Right"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="DefaultLabelPosition" Value="Right"/>
+        </Style>
+
+        <Style x:Key="PageTitleTextBlock" TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+
+        </Style>
+    </Application.Resources>
+
 </Application>
+
+
+

@@ -35,7 +35,7 @@ namespace DentalManagerSys.Views
 
         private void DisplayDetails(string iD)
         {
-            Debug.WriteLine("id");
+           
             Customer temp = DAO.GetCustomerByID(iD);
             
             PageTitle.Text = temp.name + " " + temp.surname;

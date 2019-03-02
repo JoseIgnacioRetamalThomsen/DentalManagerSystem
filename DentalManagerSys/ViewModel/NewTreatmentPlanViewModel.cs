@@ -155,8 +155,8 @@ namespace DentalManagerSys.ViewModel
 
         internal void AddTreatment()
         {
-            TreatmentsOnPlan.Add(new TreatmentOnPlan(0,0,BeforeTreatment.iD,
-                PriceBefore,DateTime.Now,Tooth, Comments, false,BeforeTreatment.name));
+            TreatmentsOnPlan.Add(new TreatmentOnPlan(0,0,BeforeTreatment.ID,
+                PriceBefore,DateTime.Now,Tooth, Comments, false,BeforeTreatment.Name));
             RecalculateTotal();
         }
     }

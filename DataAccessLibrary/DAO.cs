@@ -876,9 +876,9 @@ namespace DataAccessLibrary
 
                 // Use parameterized query to prevent SQL injection attacks
                 insertCommand.CommandText = "UPDATE treatment set treatmentName = @Name, price = @Price where treatmentID = @Id;";
-                insertCommand.Parameters.AddWithValue("@Name", treatment.name);
-                insertCommand.Parameters.AddWithValue("@Price", treatment.price);
-                insertCommand.Parameters.AddWithValue("@Id", treatment.iD);
+                insertCommand.Parameters.AddWithValue("@Name", treatment.Name);
+                insertCommand.Parameters.AddWithValue("@Price", treatment._Price);
+                insertCommand.Parameters.AddWithValue("@Id", treatment.ID);
 
                 insertCommand.ExecuteNonQuery();
 

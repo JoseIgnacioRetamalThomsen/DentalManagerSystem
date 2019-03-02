@@ -107,7 +107,7 @@ namespace DentalManagerSys.Views
             //add adddes treatments to list of all treatements in plan
             //ViewModel.TreatmentsOnPlan.Add(new Treatment(t.iD, t.name, t.price));
 
-            ViewModel.PriceBefore = t.price;
+            ViewModel.PriceBefore = t._Price;
             ViewModel.BeforeTreatment = t;
             isPrice = true;
             EnableAddButton();

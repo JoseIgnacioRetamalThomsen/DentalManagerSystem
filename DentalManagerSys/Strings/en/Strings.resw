@@ -432,4 +432,22 @@
   <data name="TreatmentPriceTB.Text" xml:space="preserve">
     <value>Price</value>
   </data>
+  <data name="EditTreatmentButton.Label" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditTreatmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Edit selected treatment</value>
+  </data>
+  <data name="CancelTreatmentChangesButton.Label" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CancelTreatmentChangesButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Cancel changes</value>
+  </data>
+  <data name="SaveTreatmentButton.Label" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveTreatmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
 </root>
