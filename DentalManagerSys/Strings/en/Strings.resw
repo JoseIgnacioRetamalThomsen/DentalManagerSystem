@@ -450,4 +450,13 @@
   <data name="SaveTreatmentButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Save changes</value>
   </data>
+  <data name="EditCustomerPageTitle.Text" xml:space="preserve">
+    <value> Edit Patient Details</value>
+  </data>
+  <data name="NameTextBox.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="SurnameTextBox.Text" xml:space="preserve">
+    <value>Surname</value>
+  </data>
 </root>

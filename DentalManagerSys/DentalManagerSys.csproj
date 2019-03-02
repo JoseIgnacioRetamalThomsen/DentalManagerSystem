@@ -109,9 +109,6 @@
     <Compile Include="Views\EditCustomerDetails.xaml.cs">
       <DependentUpon>EditCustomerDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditTreatment.xaml.cs">
-      <DependentUpon>EditTreatment.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\EditTreatmentView.xaml.cs">
       <DependentUpon>EditTreatmentView.xaml</DependentUpon>
     </Compile>
@@ -173,10 +170,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\EditCustomerDetails.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\EditTreatment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
