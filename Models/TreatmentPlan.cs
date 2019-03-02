@@ -1,4 +1,15 @@
-﻿using System;
+﻿///------------------------------------------
+///
+///  Dental Manager System
+///  Profesional Practice in IT project
+///  GMIT 2019
+///  
+///  Markm Ndpenoch
+///  Jose I. Retamal
+///------------------------------------------
+///
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 

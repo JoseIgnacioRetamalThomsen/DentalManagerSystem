@@ -100,200 +100,202 @@
                 </StackPanel>
 
             </Grid>
-
-            <toolkit:Expander 
+            <ScrollViewer MaxHeight="100">
+                <StackPanel>
+                    <toolkit:Expander 
                 x:Name="AcceptedTPExpander"
                 RelativePanel.Below="DetailsGrid"
                 IsExpanded="True"
                 HorizontalContentAlignment="Left">
-                <toolkit:Expander.Header>
-                    <Grid>
-                        <TextBlock 
+                        <toolkit:Expander.Header>
+                            <Grid>
+                                <TextBlock 
                                     x:Uid="/Strings/ActiveTreatmentsTextBox"
                                     Style="{StaticResource TitleTextBlockStyle}"/>
-                        <!--<TextBlock
+                                <!--<TextBlock
                                     Text="Yes" 
                                    
                                     HorizontalAlignment="Right"/>-->
-                    </Grid>
-                </toolkit:Expander.Header>
+                            </Grid>
+                        </toolkit:Expander.Header>
 
-                <ListView
+                        <ListView
                     x:Name="AcceptedTPListView"
                     SelectionMode="Single"
                     IsItemClickEnabled="True"
                    
                     SelectionChanged="AcceptedTPListView_SelectionChanged">
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate   x:DataType="local1:TreatmentPlan">
-                            <Grid >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="350" />
-                                    <ColumnDefinition  Width="150"/>
+                            <ListView.ItemTemplate>
+                                <DataTemplate   x:DataType="local1:TreatmentPlan">
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="350" />
+                                            <ColumnDefinition  Width="150"/>
 
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
 
-                                <TextBlock Text="{x:Bind TreatmentPLanID }" Grid.Column="0" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind CreationDate}" Grid.Column="1" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind TreatmentPLanID }" Grid.Column="0" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind CreationDate}" Grid.Column="1" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
 
 
-                            </Grid>
-                        </DataTemplate>
+                                    </Grid>
+                                </DataTemplate>
 
-                    </ListView.ItemTemplate>
-                </ListView>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-            </toolkit:Expander>
+                    </toolkit:Expander>
 
-            <toolkit:Expander 
+                    <toolkit:Expander 
                 x:Name="CreatedTreatmentsLV"
                 RelativePanel.Below="AcceptedTPExpander"
                 IsExpanded="False"
                 HorizontalContentAlignment="Left">
-                <toolkit:Expander.Header>
-                    <Grid>
-                        <TextBlock 
+                        <toolkit:Expander.Header>
+                            <Grid>
+                                <TextBlock 
                                     x:Uid="/Strings/CreateTreatmentsTextBox"
                                     Style="{StaticResource TitleTextBlockStyle}"/>
-                        <!--<TextBlock
+                                <!--<TextBlock
                                     Text="Yes" 
                                    
                                     HorizontalAlignment="Right"/>-->
-                    </Grid>
-                </toolkit:Expander.Header>
+                            </Grid>
+                        </toolkit:Expander.Header>
 
-                <ListView
+                        <ListView
                     x:Name="CreatedTPListView"
                     SelectionChanged="AcceptedTPListView_SelectionChanged">
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate   x:DataType="local1:TreatmentPlan">
-                            <Grid >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="350" />
-                                    <ColumnDefinition  Width="150"/>
+                            <ListView.ItemTemplate>
+                                <DataTemplate   x:DataType="local1:TreatmentPlan">
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="350" />
+                                            <ColumnDefinition  Width="150"/>
 
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
 
-                                <TextBlock Text="{x:Bind TreatmentPLanID }" Grid.Column="0" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind CreationDate}" Grid.Column="1" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind TreatmentPLanID }" Grid.Column="0" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind CreationDate}" Grid.Column="1" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
 
-                            </Grid>
-                        </DataTemplate>
+                                    </Grid>
+                                </DataTemplate>
 
-                    </ListView.ItemTemplate>
-                </ListView>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-            </toolkit:Expander>
+                    </toolkit:Expander>
 
-            <toolkit:Expander 
+                    <toolkit:Expander 
                 x:Name="FinishTreatmentsLV"
                 RelativePanel.Below="CreatedTreatmentsLV"
                 IsExpanded="False"
                 HorizontalContentAlignment="Left">
-                <toolkit:Expander.Header>
-                    <Grid>
-                        <TextBlock 
+                        <toolkit:Expander.Header>
+                            <Grid>
+                                <TextBlock 
                                     x:Uid="/Strings/DoneTreatmentsTextBox"
                                     Style="{StaticResource TitleTextBlockStyle}"/>
-                        <!--<TextBlock
+                                <!--<TextBlock
                                     Text="Yes" 
                                    
                                     HorizontalAlignment="Right"/>-->
-                    </Grid>
-                </toolkit:Expander.Header>
+                            </Grid>
+                        </toolkit:Expander.Header>
 
-                <ListView
+                        <ListView
                     x:Name="FinishTPListView"
                     SelectionChanged="AcceptedTPListView_SelectionChanged">
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate   x:DataType="local1:TreatmentPlan">
-                            <Grid >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="350" />
-                                    <ColumnDefinition  Width="150"/>
+                            <ListView.ItemTemplate>
+                                <DataTemplate   x:DataType="local1:TreatmentPlan">
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="350" />
+                                            <ColumnDefinition  Width="150"/>
 
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
 
-                                <TextBlock Text="{x:Bind TreatmentPLanID }" Grid.Column="0" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind CreationDate}" Grid.Column="1" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind TreatmentPLanID }" Grid.Column="0" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind CreationDate}" Grid.Column="1" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind State}" Grid.Column="2" Grid.Row="0"/>
 
-                            </Grid>
-                        </DataTemplate>
+                                    </Grid>
+                                </DataTemplate>
 
-                    </ListView.ItemTemplate>
-                </ListView>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-            </toolkit:Expander>
+                    </toolkit:Expander>
 
 
-            <toolkit:Expander 
+                    <toolkit:Expander 
                 x:Name="AllPaymerExpander"
                    RelativePanel.Below="FinishTreatmentsLV"
                
                 IsExpanded="True"
                 HorizontalContentAlignment="Left">
-                <toolkit:Expander.Header>
-                    <Grid>
-                        <TextBlock 
+                        <toolkit:Expander.Header>
+                            <Grid>
+                                <TextBlock 
                                     x:Uid="/Strings/AllPaymerExpander"
                                     Style="{StaticResource TitleTextBlockStyle}"/>
-                        <!--<TextBlock
+                                <!--<TextBlock
                                     Text="Yes" 
                                    
                                     HorizontalAlignment="Right"/>-->
-                    </Grid>
-                </toolkit:Expander.Header>
+                            </Grid>
+                        </toolkit:Expander.Header>
 
-                <ListView
+                        <ListView
                 x:Name="AllPaymentsLV"
                 RelativePanel.Below="DetailsGrid"
                 RelativePanel.RightOf="AcceptedTPExpander">
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate   x:DataType="local1:Payments">
-                            <Grid >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50"/>
-                                    <ColumnDefinition Width="100" />
-                                    <ColumnDefinition  Width="300"/>
+                            <ListView.ItemTemplate>
+                                <DataTemplate   x:DataType="local1:Payments">
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition  Width="300"/>
 
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
 
-                                <TextBlock Text="{x:Bind treatmentPlanID }" Grid.Column="0" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind completedDate}" Grid.Column="1" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind ShowAmount}" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" TextAlignment="Right"/>
+                                        <TextBlock Text="{x:Bind treatmentPlanID }" Grid.Column="0" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind completedDate}" Grid.Column="1" Grid.Row="0"/>
+                                        <TextBlock Text="{x:Bind ShowAmount}" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" TextAlignment="Right"/>
 
-                            </Grid>
-                        </DataTemplate>
+                                    </Grid>
+                                </DataTemplate>
 
-                    </ListView.ItemTemplate>
+                            </ListView.ItemTemplate>
 
 
-                </ListView>
+                        </ListView>
 
-            </toolkit:Expander>
-
+                    </toolkit:Expander>
+                </StackPanel>
+            </ScrollViewer>
         </RelativePanel>
 
     </Grid>
