@@ -24,6 +24,11 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             
         </Style>
+        <Style x:Key="LoginText" TargetType="TextBlock">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+
+        </Style>
     </Application.Resources>
 
 </Application>
