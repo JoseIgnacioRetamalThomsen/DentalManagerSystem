@@ -15,14 +15,13 @@
             <TextBlock   
                 x:Name="PageTitle"
                 Text=""
-                Style="{StaticResource TitleTextBlockStyle}"
+                Style="{StaticResource PageTitleTextBlock}"
                 MinWidth="300"/>
 
 
             <CommandBar 
                 x:Name="PatientsCommandBar"
-                HorizontalAlignment="Stretch"
-                Background="Transparent"
+                Style="{StaticResource CommandBarStyle}"
                 RelativePanel.RightOf="PageTitle"
                 DefaultLabelPosition="Right">
 
@@ -32,9 +31,10 @@
                     x:Uid="/Strings/CreateNewTreatmentPlanButton"
                     IsEnabled="True"
                     Tapped="CreateTreatmentPlanButton_Tapped"/>
-
                 <AppBarSeparator/>
+
                 
+
             </CommandBar>
 
 
@@ -53,17 +53,17 @@
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition  Width="*"/>
+                    <!--<ColumnDefinition Width="*" />
+                    <ColumnDefinition  Width="*"/>-->
                 </Grid.ColumnDefinitions>
 
                 <StackPanel>
-                    <TextBlock   Text="Create Treatment Plan" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+                    <TextBlock   x:Uid="/Strings/CreateTreatmentPlanText" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
                 </StackPanel>
 
                 <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal"  Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="5">
-                    <StackPanel>
-                        <TextBlock Text="Select Treatment"></TextBlock>
+                    <StackPanel Margin="2">
+                        <TextBlock x:Uid="/Strings/AddTreatment" ></TextBlock>
                         <ComboBox 
                             x:Name="TreatmentsCB" 
                             MinWidth="200" 
@@ -71,6 +71,36 @@
                             DropDownClosed="TreatmentsCB_DropDownClosed"
                            
                             x:Uid="/Strings/TreatmentsCB"></ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Margin="2">
+                        <TextBlock x:Uid="/Strings/SelectTooth"/>
+                        <ComboBox
+                            x:Name="SelectToothCB"
+                            DropDownClosed="SelectToothCB_DropDownClosed"/>
+                    </StackPanel>
+                    <StackPanel Margin="2" >
+                        <TextBlock x:Uid="/Strings/TreatmentPriceTB"/>
+                        <TextBox
+                            x:Name="PriceTB"
+                            MinWidth="100"
+                             x:Uid="/Strings/PriceTBox"
+                            Text="{x:Bind ViewModel.PriceBefore, Mode=OneWay}"
+                            TextChanging="EditPriceTB_TextChanging"/>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" Margin="2">
+                        <TextBox 
+                            x:Name="CommentTB"
+                            x:Uid="/Strings/CommentTB"
+                            MinWidth="120"
+                            MaxWidth="120"/>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" Margin="2">
+                        <Button
+                            x:Name="AddButon"
+                            Click="AddButon_Click"
+                            x:Uid="/Strings/AddButton"
+                            IsEnabled="False"/>
                     </StackPanel>
 
                 </StackPanel>
@@ -110,7 +140,7 @@
                             x:Name="SaveChangedPriceButton"
                             Icon="Accept"
                             x:Uid="/Strings/SaveChangedPriceButton"
-                            IsEnabled="True"
+                            IsEnabled="false"
                             Tapped="SaveChangedPriceButton_Tapped"/>
 
                         <AppBarSeparator/>
@@ -133,11 +163,12 @@
                           Grid.Row="1">
 
                     <ListView.ItemTemplate>
-                        <DataTemplate  x:DataType="local1:Treatment">
+                        <DataTemplate  x:DataType="local1:TreatmentOnPlan">
                             <Grid >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="350" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition  Width="150"/>
                                     <ColumnDefinition  Width="150"/>
 
                                 </Grid.ColumnDefinitions>
@@ -146,8 +177,10 @@
                                 </Grid.RowDefinitions>
 
 
-                                <TextBlock Text="{x:Bind name}" Grid.Column="1" Grid.Row="0"/>
-                                <TextBlock Text="{x:Bind price}" Grid.Column="2" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Name}" Grid.Column="0" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Tooth}" Grid.Column="1" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Comment}" Grid.Column="2" Grid.Row="0"  MaxWidth="120"/>
+                                <TextBlock Text="{x:Bind ShowPrice}" Grid.Column="3" Grid.Row="0"/>
 
                             </Grid>
                         </DataTemplate>
@@ -166,7 +199,8 @@
                         x:Uid="/Strings/TotalTB"/>
                     <TextBox 
                 x:Name="TotalTB"
-                Text="{x:Bind Path=ViewModel.Total, Mode=TwoWay}"/>
+                Text="{x:Bind Path=ViewModel.ShowTotal, Mode=OneWay}"
+                       IsReadOnly="True"/>
                 </StackPanel>
             </StackPanel>
         </RelativePanel>

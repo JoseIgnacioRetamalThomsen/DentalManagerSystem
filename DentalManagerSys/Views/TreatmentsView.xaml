@@ -14,16 +14,12 @@
             <TextBlock 
                 x:Uid="/Strings/TretmentsListTitle" 
                 x:Name="PageTitle" 
-                Style="{StaticResource TitleTextBlockStyle}">
-                
-            </TextBlock>
+                Style="{StaticResource PageTitleTextBlock}"/>
 
             <CommandBar 
                 x:Name="PatientsCommandBar"
-                HorizontalAlignment="Stretch"
-                Background="Transparent"
-                RelativePanel.RightOf="PageTitle"
-                RelativePanel.LeftOf="SearchBox">
+                Style="{StaticResource CommandBarStyle}"
+                RelativePanel.RightOf="PageTitle">
                 
                 <AppBarButton 
                     x:Name="AddTreatmentButton"
@@ -34,25 +30,19 @@
                 <AppBarSeparator />
                 
                 <AppBarButton
-                    Icon="Add"
-             
-                    x:Uid="/Strings/AddBarButton"
-                    />
+                    x:Name="EditTreatmentButton"
+                    Icon="Edit"
+                    Click="EditTreatmentButton_Click"
+                    x:Uid="/Strings/EditTreatmentButton"
+                    IsEnabled="False"/>
+                
             </CommandBar>
-            <AutoSuggestBox 
-                x:Name="SearchBox" RelativePanel.AlignRightWithPanel="True"
-                 QueryIcon="Find"
-                                Width="200"
-                x:Uid="/Strings/SearchAutoSuggestBox">
-
-            </AutoSuggestBox>
-
+          
             <Grid Margin="0,10,0,0"
                 RelativePanel.AlignLeftWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
                 RelativePanel.Below="PageTitle"
-               
-                  >
+>
 
                 <toolkit:DataGrid
                     x:Name="DataGrid"
@@ -61,18 +51,19 @@
                     AutoGenerateColumns="False"
                     BorderThickness="0"
                     GridLinesVisibility="None"
-                    ItemsSource="{x:Bind treatmentsList}"
-                    IsReadOnly="True">
+                    ItemsSource="{x:Bind ViewModel.TreatmentsList}"
+                    IsReadOnly="True"
+                    SelectionChanged="DataGrid_SelectionChanged">
                     
                     <toolkit:DataGrid.Columns>
                         <toolkit:DataGridTextColumn
                             Tag="TreatmentName"
-                            Binding="{Binding name}"
+                            Binding="{Binding Name}"
                             x:Uid="/Strings/TreatmentNameDataGrid"/>
 
                         <toolkit:DataGridTextColumn
                             Tag="Surname"
-                            Binding="{Binding Price}"
+                            Binding="{Binding ShowPrice}"
                             x:Uid="/Strings/TreatmentPriceDataGrid"/>
                                                
 

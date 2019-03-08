@@ -1,8 +1,5 @@
-﻿using DataAccessLibrary;
-using Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,22 +20,11 @@ namespace DentalManagerSys.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ManageTreatmentsView : Page
+    public sealed partial class SettingsView : Page
     {
-
-
-        ObservableCollection<Treatment> treatmentsList = null;
-
-        public ManageTreatmentsView()
+        public SettingsView()
         {
             this.InitializeComponent();
-            treatmentsList = new ObservableCollection<Treatment>(DAO.GetAllTreatment());
-
-        }
-
-        private void ViewCustomerButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(NewTreatment));
         }
     }
 }

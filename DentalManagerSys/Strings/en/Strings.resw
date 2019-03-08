@@ -411,4 +411,58 @@
   <data name="SaveCustomerDetails.ToolTipService.ToolTip" xml:space="preserve">
     <value>Save Changes</value>
   </data>
+  <data name="AddButton.Content" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddTreatment.Text" xml:space="preserve">
+    <value>Add Treatment</value>
+  </data>
+  <data name="CommentTB.PlaceholderText" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="CreateTreatmentPlanText.Text" xml:space="preserve">
+    <value>Create Treatment Plan</value>
+  </data>
+  <data name="PriceTBox.PlaceholderText" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="SelectTooth.Text" xml:space="preserve">
+    <value>Select tooth</value>
+  </data>
+  <data name="TreatmentPriceTB.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="EditTreatmentButton.Label" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditTreatmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Edit selected treatment</value>
+  </data>
+  <data name="CancelTreatmentChangesButton.Label" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CancelTreatmentChangesButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Cancel changes</value>
+  </data>
+  <data name="SaveTreatmentButton.Label" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveTreatmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="EditCustomerPageTitle.Text" xml:space="preserve">
+    <value> Edit Patient Details</value>
+  </data>
+  <data name="NameTextBox.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="SurnameTextBox.Text" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="CancelButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Cancel and go back</value>
+  </data>
+  <data name="CancelButton.Label" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

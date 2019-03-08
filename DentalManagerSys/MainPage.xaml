@@ -6,12 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:Windows10version1803="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 6)"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <NavigationView x:Name="NavView"
                     ItemInvoked="NavView_ItemInvoked"
-Loaded="NavView_Loaded">
+                    Loaded="NavView_Loaded"
+                    Windows10version1803:BackRequested="NavView_BackRequested">
         <NavigationView.MenuItems>
             <NavigationViewItem Icon="ContactInfo" x:Uid="/Strings/NavViewItemPatients" Tag="PatientsList" />
             <NavigationViewItem Icon="List"  x:Uid="/Strings/NavViewTretments" Tag="ManageTreaments" />
