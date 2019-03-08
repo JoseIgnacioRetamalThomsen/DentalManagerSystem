@@ -38,7 +38,20 @@ namespace DataAccessLibrary
 
                 String payments = "CREATE TABLE IF NOT EXISTS payments(paymentsID INTEGER,treatmentPlanID int,customerID varchar(20)NOT NULL,amount float,treatmentCompleteDate DATETIME,PRIMARY KEY (paymentsID),FOREIGN KEY (treatmentPlanID) REFERENCES treatmentPlan(treatmentPlanID),FOREIGN KEY (customerID) REFERENCES customers(customerID))";
                 SqliteCommand createPayments = new SqliteCommand(payments, db);
+
                 createPayments.ExecuteReader();
+
+                //users tables
+                String users = "CREATE TABLE IF NOT EXISTS users(userID INTEGER,name varchar(32)NOT NULL,password varchar(16)NOT NULL,PRIMARY KEY (userID) )";
+                SqliteCommand createUsers = new SqliteCommand(users, db);
+
+                createUsers.ExecuteReader();
+
+                String address = "CREATE TABLE IF NOT EXISTS address(addressID INTEGER,userID INTEGER NOT NULL,street varchar(32),city varchar(20),province" +
+                    " varchar(20),country varchar(20), postcode varchar(20),PRIMARY KEY (addressID), FOREIGN KEY (userID) REFERENCES users(userID)  )";
+                SqliteCommand createAddress = new SqliteCommand(address, db);
+
+                createAddress.ExecuteReader();
             }
 
         }
@@ -61,7 +74,7 @@ namespace DataAccessLibrary
 
         }
 
-        public static void UpdateTreatmentPlanState(TreatmentPlaneState state,int iD)
+        public static void UpdateTreatmentPlanState(TreatmentPlaneState state, int iD)
         {
             using (SqliteConnection db =
                new SqliteConnection("Filename=dentalManagerDB.db"))
@@ -75,7 +88,7 @@ namespace DataAccessLibrary
                 insertCommand.CommandText = "UPDATE treatmentPlan SET state =@State where treatmentPlanID=@ID;";
                 insertCommand.Parameters.AddWithValue("@State", (int)state);
                 insertCommand.Parameters.AddWithValue("@ID", iD);
-          
+
                 insertCommand.ExecuteNonQuery();
 
                 db.Close();
@@ -311,7 +324,7 @@ namespace DataAccessLibrary
                     TreatmentPlaneState temp = (TreatmentPlaneState)state;
                     string date2 = query.GetString(4);
                     DateTime datetime2 = Convert.ToDateTime("01/01/0001 00:00:00");
-                    if(!date2.Equals("0"))
+                    if (!date2.Equals("0"))
                     {
                         datetime2 = Convert.ToDateTime(date2);
                     }
@@ -346,18 +359,18 @@ namespace DataAccessLibrary
 
                 SqliteCommand selectCommand = new SqliteCommand
                     ("SELECT * from treatmentPlan where customerID=@CustomerID", db);
-                    selectCommand.Parameters.AddWithValue("@CustomerID", id);
+                selectCommand.Parameters.AddWithValue("@CustomerID", id);
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
-               
+
                 while (query.Read())
                 {
                     int treatementPlanID = query.GetInt32(0);
                     string customerId = query.GetString(1);
                     int state = query.GetInt32(2);
                     TreatmentPlaneState temp = (TreatmentPlaneState)state;
-                   
+
                     string date2 = query.GetString(4);
                     DateTime datetime2 = Convert.ToDateTime("01/01/0001 00:00:00");
                     if (!date2.Equals("0"))
@@ -419,7 +432,7 @@ namespace DataAccessLibrary
         /// <param name="treatmentID"></param>
         /// <param name="price"></param>
         /// <param name="treatmentCompleteDate"></param>
-        public static void AddNewTreatmentPlanTreatments(int treatmentPlanID, int treatmentID, Decimal price, string treatmentCompleteDate,int tooth,string comment,bool isDone)
+        public static void AddNewTreatmentPlanTreatments(int treatmentPlanID, int treatmentID, Decimal price, string treatmentCompleteDate, int tooth, string comment, bool isDone)
         {
 
             int _isDone = (isDone) ? 1 : 0;
@@ -572,13 +585,13 @@ namespace DataAccessLibrary
                 while (query.Read())
                 {
 
-                        payment.Add(new Payments(
-                        query.GetInt32(0),
-                        query.GetInt32(1),
-                        query.GetString(2),
-                        query.GetFloat(3),
-                        Convert.ToDateTime(query.GetString(4))
-                   ));
+                    payment.Add(new Payments(
+                    query.GetInt32(0),
+                    query.GetInt32(1),
+                    query.GetString(2),
+                    query.GetFloat(3),
+                    Convert.ToDateTime(query.GetString(4))
+               ));
 
                 }
 
@@ -940,9 +953,9 @@ namespace DataAccessLibrary
             }
 
             return treatmentList;
- 
+
         }
-        
+
 
         /// <summary>
         /// Update treatmentPlanTreatments

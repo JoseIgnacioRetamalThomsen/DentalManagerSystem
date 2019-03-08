@@ -26,5 +26,10 @@ namespace DentalManagerSys.Views
         {
             this.InitializeComponent();
         }
+
+        private void NewAccountButton_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(NewUserView));
+        }
     }
 }
