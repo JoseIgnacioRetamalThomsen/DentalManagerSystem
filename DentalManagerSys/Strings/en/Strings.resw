@@ -480,6 +480,12 @@
   <data name="CreateNewAccountButton.Content" xml:space="preserve">
     <value>Create </value>
   </data>
+  <data name="InternetStatusFalse.Text" xml:space="preserve">
+    <value>No internet connection,  you can work off line but can't create new account  or manage your accout.</value>
+  </data>
+  <data name="InternetStatusTrueText.Text" xml:space="preserve">
+    <value>Internet connection detected.</value>
+  </data>
   <data name="LoginHeader.Text" xml:space="preserve">
     <value>Login</value>
   </data>

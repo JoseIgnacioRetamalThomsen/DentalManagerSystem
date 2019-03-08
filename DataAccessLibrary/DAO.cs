@@ -56,6 +56,31 @@ namespace DataAccessLibrary
 
         }
 
+        #region User Data Methods
+
+        public static void AddNewUser(User user)
+        {
+            using (SqliteConnection db =
+              new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "INSERT INTO users (name,password) VALUES (@Name ,@Password);";
+                insertCommand.Parameters.AddWithValue("@Name", user.Name);
+                insertCommand.Parameters.AddWithValue("@Password", user.Password);
+
+                insertCommand.ExecuteNonQuery();
+
+                db.Close();
+            }
+        }
+        #endregion
+
+
         public static void AddNewTreatmentPlanTreatments(object top)
         {
             throw new NotImplementedException();

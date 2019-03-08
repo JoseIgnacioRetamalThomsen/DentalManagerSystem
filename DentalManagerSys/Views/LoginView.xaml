@@ -74,7 +74,8 @@
                 
                 <TextBlock 
                     x:Name="InterneStatusText" 
-                    Text="Microsoft Passport is ready to use!"
+                   
+                    x:Uid="/Strings/InternetStatusTrueText"
                     VerticalAlignment="Center" 
                     FontSize="20"
                     Style="{StaticResource LoginText}"/>

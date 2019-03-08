@@ -1,4 +1,6 @@
-﻿using DentalManagerSys.ViewModel;
+﻿using DataAccessLibrary;
+using DentalManagerSys.ViewModel;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -51,7 +53,7 @@ namespace DentalManagerSys.Views
                 {
                     ErrorMessage.Text = "";
 
-
+                    DAO.AddNewUser(new User(userNameInput.Text, newPasswordBox.Password));
                 }
                 
             }
