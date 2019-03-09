@@ -50,6 +50,8 @@ namespace DentalManagerSys
 
 
 
+
+
         }
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
@@ -135,18 +137,18 @@ namespace DentalManagerSys
             {
 
 
-                   case "PatientsList":
-                        ContentFrame.Navigate(typeof(ViewAllCustomers));
-                        break;
-                    case "ManageTreaments":
-                        ContentFrame.Navigate(typeof(ManageTreatmentsView));
-                        break;
-                    case "ViewAllTransactionsNV":
-                        ContentFrame.Navigate(typeof(NewCustomer));
-                        break;
-                    case "content":
-                        ContentFrame.Navigate(typeof(MainPage));
-                        break;
+                case "PatientsList":
+                    ContentFrame.Navigate(typeof(ViewAllCustomers));
+                    break;
+                case "ManageTreaments":
+                    ContentFrame.Navigate(typeof(ManageTreatmentsView));
+                    break;
+                case "ViewAllTransactionsNV":
+                    ContentFrame.Navigate(typeof(NewCustomer));
+                    break;
+                case "content":
+                    ContentFrame.Navigate(typeof(MainPage));
+                    break;
 
             }
 
