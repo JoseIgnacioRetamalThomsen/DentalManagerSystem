@@ -42,7 +42,7 @@ namespace DataAccessLibrary
                 createPayments.ExecuteReader();
 
                 //users tables
-                String users = "CREATE TABLE IF NOT EXISTS users(userID INTEGER,name varchar(32)NOT NULL,password varchar(16)NOT NULL,PRIMARY KEY (userID) )";
+                String users = "CREATE TABLE IF NOT EXISTS users(userID INTEGER,name varchar(32)NOT NULL,email varchar(32),password varchar(16)NOT NULL,PRIMARY KEY (userID) )";
                 SqliteCommand createUsers = new SqliteCommand(users, db);
 
                 createUsers.ExecuteReader();
@@ -69,9 +69,10 @@ namespace DataAccessLibrary
 
                 insertCommand.Connection = db;
 
-                insertCommand.CommandText = "INSERT INTO users (name,password) VALUES (@Name ,@Password);";
+                insertCommand.CommandText = "INSERT INTO users (name,password,email) VALUES (@Name ,@Password, @Email);";
                 insertCommand.Parameters.AddWithValue("@Name", user.Name);
                 insertCommand.Parameters.AddWithValue("@Password", user.Password);
+                insertCommand.Parameters.AddWithValue("@Email", user.Email);
 
                 insertCommand.ExecuteNonQuery();
 

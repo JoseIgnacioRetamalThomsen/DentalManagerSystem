@@ -25,7 +25,7 @@
 
             <Grid
                 x:Name="NewUserDataGrid"
-                 Width="400" Height="370">
+                 Width="400" Height="350">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -37,8 +37,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="1.9*" />
-                    <RowDefinition Height="*" />
+                   
                 </Grid.RowDefinitions>
 
                 <TextBox 
@@ -46,11 +45,20 @@
                     Grid.Row="0" Grid.Column="0" 
                     Margin="2"
                     Grid.ColumnSpan="2"
-                    Text="{x:Bind ViewModel.Name,Mode=TwoWay}"/>
+                    />
 
+                <TextBox 
+                    x:Name="Email" 
+                    Grid.Column="0" Grid.Row="1"
+                     MaxLength="50" 
+                    InputScope="EmailNameOrAddress" 
+                                        Margin="2"
+                    Grid.ColumnSpan="2"
+                    x:Uid="/Strings/EmailInput" />
+                
                 <PasswordBox 
                     x:Name="newPasswordBox" 
-                                        Grid.Row="1" Grid.Column="0" 
+                                        Grid.Row="2" Grid.Column="0" 
                     Margin="2"
                     Grid.ColumnSpan="2"
                     x:Uid="/Strings/NewPasswordBox"
@@ -58,7 +66,7 @@
 
                 <PasswordBox 
                     x:Name="confirmPasswordBox" 
-                    Grid.Row="2" Grid.Column="0" 
+                    Grid.Row="3" Grid.Column="0" 
                     Margin="2"
                     Grid.ColumnSpan="2"
                     x:Uid="/Strings/ConfirmPasswordBox" />
@@ -67,7 +75,7 @@
                 <Button
                     x:Name="NewAccountButton"
                     x:Uid="/Strings/CreateNewAccountButton"
-                    Grid.Row="3" Grid.Column="0" 
+                    Grid.Row="4" Grid.Column="0" 
                     Margin="2"
                     Grid.ColumnSpan="2"
                     HorizontalAlignment="Stretch"

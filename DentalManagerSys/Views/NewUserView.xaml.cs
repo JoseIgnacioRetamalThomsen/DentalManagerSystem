@@ -26,7 +26,7 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class NewUserView : Page
     {
-        public CreateUserViewModel ViewModel { get; set; } = new CreateUserViewModel();
+      
         private string passwordError;
         private string nameError;
         public NewUserView()
@@ -38,7 +38,7 @@ namespace DentalManagerSys.Views
 
         private void NewAccountButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.test();
+            
 
             if(!newPasswordBox.Password.Equals(confirmPasswordBox.Password))
             {
@@ -53,7 +53,7 @@ namespace DentalManagerSys.Views
                 {
                     ErrorMessage.Text = "";
 
-                    DAO.AddNewUser(new User(userNameInput.Text, newPasswordBox.Password));
+                    DAO.AddNewUser(new User(userNameInput.Text, newPasswordBox.Password,Email.Text));
                 }
                 
             }
