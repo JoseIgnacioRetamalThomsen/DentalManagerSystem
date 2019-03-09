@@ -43,7 +43,6 @@ namespace DentalManagerSys
             //f.AddNewTreatmentPlan("G00352031", 1, "25/08/2012", "08/03/2012");
             // f.UpdateTreatment(new Treatment(1,"Test 6",60000));
             //f.AddNewTreatment(new Treatment(2, "Test 2", 200));
-            // f.AddNewTreatment(new Treatment(6, "Test 6", 600));
             // f.AddNewTreatment(new Treatment(8, "Test 8", 800));
             // f.UpdateTreatment(new Treatment(10, "Test 6", 60000));
             //f.UpdateTreatment(new Treatment(4, "Test 4", 4000));
