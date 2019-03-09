@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DataAccessLibrary;
+using DataAccessLibrary.REST;
+using Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -24,25 +27,50 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class LoginView : Page
     {
+        string createAccount;
+        string wrongPassword;
         public LoginView()
         {
             this.InitializeComponent();
-            bool isInternetConnected = NetworkInterface.GetIsNetworkAvailable();
-            Debug.WriteLine(isInternetConnected);
+
+            InitString();
+
 
         }
 
-
-        protected override  void OnNavigatedTo(NavigationEventArgs e)
+        private void InitString()
         {
-            bool isInternetConnected = NetworkInterface.GetIsNetworkAvailable();
-            isInternetConnected = false;
-            if (isInternetConnected)
+            wrongPassword = "Wrong password";
+            createAccount = "Please click on Account Management for create your account";
+        }
+
+        User user;
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            user = DAO.GetUser();
+            if (user != null)
             {
+
+                //set name on view
+                LoginUserName.Text = user.Name;
             }
             else
             {
-                // Microsoft Passport is not setup so inform the user
+                LoginUserName.Text =  createAccount;
+            }
+
+
+            bool isInternetConnected = NetworkInterface.GetIsNetworkAvailable();
+            //isInternetConnected = false;
+            if (isInternetConnected)
+            {
+                //remote login 
+
+
+            }
+            else
+            {
+                // No internet 
                 InternetStatus.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 50, 170, 207));
                 var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
                 string message = resourceLoader.GetString("/Strings/InternetStatusFalse/Text");
@@ -51,15 +79,34 @@ namespace DentalManagerSys.Views
             }
         }
 
-        private void SignInButton_Click(object sender, RoutedEventArgs e)
+        private async void SignInButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
-        }
+            user.Password = passwordBox.Password;
+            Res res = await Auth.SignIn(user);
+            Debug.WriteLine(res.Success);
+            if (res.Success)
+            {
+                Frame.Navigate(typeof(MainPage));
 
+
+            }
+            else
+            {
+                ErrorMessage.Text = wrongPassword;
+            }
+        }
         private void AccountManagementButton_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
             ErrorMessage.Text = "";
-            Frame.Navigate(typeof(AccountManagementView));
+            if (user == null)
+            {
+                Frame.Navigate(typeof(NewUserView));
+            }
+            else
+            {
+                Frame.Navigate(typeof(AccountManagementView));
+            }
+
         }
     }
 }

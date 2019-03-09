@@ -513,10 +513,19 @@
   <data name="UserName.PlaceholderText" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="EmailInput.Header" xml:space="preserve">
-    <value />
+  <data name="emailErrorBad.Text" xml:space="preserve">
+    <value>The email address is improperly formatted.</value>
+  </data>
+  <data name="emailErrorInUse.Text" xml:space="preserve">
+    <value>The email address is already in use by another account.</value>
   </data>
   <data name="EmailInput.PlaceholderText" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="passwordError.Text" xml:space="preserve">
+    <value>The password don't match.</value>
+  </data>
+  <data name="passWordErrorShort.Text" xml:space="preserve">
+    <value>The password must be a string with at least 6 characters.</value>
   </data>
 </root>

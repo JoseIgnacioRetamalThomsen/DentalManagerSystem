@@ -82,6 +82,35 @@ namespace DataAccessLibrary
         #endregion
 
 
+        public static User GetUser()
+        {
+            User user = null;
+            using (SqliteConnection db =
+               new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from users", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                   int id = query.GetInt32(0);
+                    user = new User(
+                        query.GetString(1),
+                        "no pass",//query.GetString(3),
+                        query.GetString(2)
+                        
+                        );
+                }
+
+                db.Close();
+            }
+            return user;
+        }
+
         public static void AddNewTreatmentPlanTreatments(object top)
         {
             throw new NotImplementedException();

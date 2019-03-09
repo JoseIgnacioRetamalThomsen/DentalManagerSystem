@@ -1,4 +1,5 @@
 ﻿using DataAccessLibrary;
+using DataAccessLibrary.REST;
 using DentalManagerSys.ViewModel;
 using Models;
 using System;
@@ -26,39 +27,89 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class NewUserView : Page
     {
-      
+
         private string passwordError;
         private string nameError;
+        private string emailErrorInUse;
+        private string emailErrorBad;
+        private string passWordErrorShort;
         public NewUserView()
         {
             this.InitializeComponent();
-            passwordError = "Password don't match.";
-            nameError = "Name is to short.";
+
+            LoadString();
+
         }
 
-        private void NewAccountButton_Click(object sender, RoutedEventArgs e)
+        private void LoadString()
         {
-            
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
 
-            if(!newPasswordBox.Password.Equals(confirmPasswordBox.Password))
+            passwordError = resourceLoader.GetString("/Strings/passwordError/Text");
+            nameError = resourceLoader.GetString("/Strings/nameError/Text");
+            emailErrorInUse = resourceLoader.GetString("/Strings/emailErrorInUse/Text");
+            emailErrorBad = resourceLoader.GetString("/Strings/emailErrorBad/Text");
+            passWordErrorShort = resourceLoader.GetString("/Strings/passWordErrorShort/Text");
+        }
+
+        /// <summary>
+        /// Add a new user from gui
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void NewAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            //check passwords match
+            if (!newPasswordBox.Password.Equals(confirmPasswordBox.Password))
             {
                 ErrorMessage.Text = passwordError;
             }
             else
             {
-                if(userNameInput.Text.Length<2)
+                //check user name lenght
+                if (userNameInput.Text.Length < 2)
                 {
                     ErrorMessage.Text = nameError;
-                }else
+                }
+                else
                 {
                     ErrorMessage.Text = "";
+                    //Http request with created user
+                    var user = new User { Name = userNameInput.Text, Password = newPasswordBox.Password, Email = Email.Text };
+                    Res res = await Auth.AddNewUser(user);
 
-                    DAO.AddNewUser(new User(userNameInput.Text, newPasswordBox.Password,Email.Text));
+                    //res succes new user created
+                    if (res.Success)
+                    {
+                        //add user to local DB
+                        DAO.AddNewUser(new User(userNameInput.Text, newPasswordBox.Password, Email.Text));
+
+                        //navigate to login page
+                        Frame.Navigate(typeof(LoginView));
+
+                    }
+                    else
+                    {
+                        //user not created, server don't allow.
+                        //Show error messages
+                        switch (res.Code)
+                        {
+                            case "auth/invalid-email":
+                                ErrorMessage.Text = emailErrorBad;
+                                break;
+                            case "auth/email-already-exists":
+                                ErrorMessage.Text = emailErrorInUse;
+                                break;
+                            case "auth/invalid-password":
+                                ErrorMessage.Text = passWordErrorShort;
+                                break;
+                        }
+                    }
                 }
-                
+
             }
 
-            Debug.WriteLine(newPasswordBox.Password);
         }
     }
 }

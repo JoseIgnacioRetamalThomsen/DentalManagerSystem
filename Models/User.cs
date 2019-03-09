@@ -10,6 +10,8 @@ namespace Models
         public String Password { get; set; }
         public String Email { get; set; }
 
+        public User() { }
+
         public User(string name, string password, string email)
         {
             Name = name;
