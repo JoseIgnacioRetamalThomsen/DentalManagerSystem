@@ -58,7 +58,9 @@ namespace DataAccessLibrary
             };
 
             //Create a new row  with the updated values
-            await firebase.Child(node).Child(treatment.iD.ToString).PostAsync<TreatmentData>(treatmentData);
+            //await firebase.Child(node).Child(treatment.iD.ToString).PostAsync<TreatmentData>(treatmentData);
+
+            await firebase.Child(node).PostAsync<TreatmentData>(treatmentData);
         }
 
         /// <summary>
@@ -78,11 +80,20 @@ namespace DataAccessLibrary
                  price = treatment.price
              };
 
-         //Delete the old row by Id
-          await firebase.Child(node).Child(treatment.iD.ToString).DeleteAsync();
+            var results = await firebase.Child(node).OnceAsync<TreatmentData>();
+            foreach (var details in results)
+            {
+
+                if (Convert.ToInt32(details.Object.iD) == treatment.iD)
+                {
+                    //Delete the old row by key Id
+                     await firebase.Child(node).Child(details.Key).DeleteAsync();
+                    break;
+                }
+            }
 
           //Create a new row  with the updated values
-         await firebase.Child(node).Child(treatment.iD.ToString).PostAsync<TreatmentData>(treatmentData);
+          await firebase.Child(node).PostAsync<TreatmentData>(treatmentData);
         }
 
 
@@ -126,7 +137,7 @@ namespace DataAccessLibrary
                 comments= comments,
             };
 
-            var results = await firebase.Child(node).Child(id+"/").OnceAsync<CustomerData>();
+            var results = await firebase.Child(node).OnceAsync<CustomerData>();
             foreach (var details in results)
             {
                 if (id == details.Object.id)
@@ -143,7 +154,7 @@ namespace DataAccessLibrary
             }
             else
             {
-                await firebase.Child(node).Child(id.ToString).PostAsync<CustomerData>(customerData);
+                await firebase.Child(node).PostAsync<CustomerData>(customerData);
             }
 
         }
@@ -187,11 +198,20 @@ namespace DataAccessLibrary
                 comments = comments,
             };
 
-                //Delete the old row by Id
-                await firebase.Child(node).Child(customerID).DeleteAsync();
+            var results = await firebase.Child(node).OnceAsync<CustomerData>();
+            foreach (var details in results)
+            {
 
-                //Add the new customer row
-               await firebase.Child(node).Child(customerID).PostAsync<CustomerData>(customerData);
+                if (customerID == details.Object.id)
+                {
+                    //Delete the old row by key id
+                    await firebase.Child(node).Child(details.Key).DeleteAsync();
+                    break;
+                }
+            }
+
+               //Add the new customer row
+               await firebase.Child(node).PostAsync<CustomerData>(customerData);
         }
 
 
@@ -215,7 +235,7 @@ namespace DataAccessLibrary
               treatmentPlanCompleteDate= treatmentPlanCompleteDate
             };
 
-            await firebase.Child(node).Child(customerID.ToString).PostAsync<TreatmentPlanData>(treatmentPlanData);
+            await firebase.Child(node).PostAsync<TreatmentPlanData>(treatmentPlanData);
         }
 
 
@@ -241,7 +261,7 @@ namespace DataAccessLibrary
                 treatmentCompleteDate = t.CompletedDate.ToString()
             };
 
-            await firebase.Child(node).Child(t.TreatmentPlanTreatmentsID.ToString).PostAsync<TreatmentPlanTreatmentsData>(treatmentPlanTreatmentsData);
+            await firebase.Child(node).PostAsync<TreatmentPlanTreatmentsData>(treatmentPlanTreatmentsData);
         }
 
         /// <summary>
@@ -263,12 +283,20 @@ namespace DataAccessLibrary
                 treatmentCompleteDate = t.CompletedDate.ToString()
             };
 
+            var results = await firebase.Child(node).OnceAsync<TreatmentPlanTreatmentsData>();
+            foreach (var details in results)
+            {
 
-            //Delete the old row by Id
-             await firebase.Child(node).Child(t.TreatmentPlanTreatmentsID.ToString()).DeleteAsync();
+                if (t.TreatmentPlanTreatmentsID.ToString() == details.Object.treatmentPlanTreatmentsID)
+                {
+                    //Delete the old row by key id
+                    await firebase.Child(node).Child(details.Key).DeleteAsync();
+                    break;
+                }
+            }
 
             //add the new row
-            await firebase.Child(node).Child(t.TreatmentPlanTreatmentsID.ToString).PostAsync<TreatmentPlanTreatmentsData>(treatmentPlanTreatmentsData);
+            await firebase.Child(node).PostAsync<TreatmentPlanTreatmentsData>(treatmentPlanTreatmentsData);
         }
 
         /// <summary>
@@ -295,5 +323,194 @@ namespace DataAccessLibrary
             await firebase.Child(node).PostAsync<PaymentsData>(paymentsData);
         }
 
+        /// <summary>
+        /// Read from Firebase, delete everything in all 5 tables and repopulate 
+        /// them with the information gotten from Firebase.
+        /// </summary>
+        public async void ReadDataFromFirebase()
+        {
+            //Open connection with Firebase
+            ConnectToFirebase();
+
+            String TreatmentNode = "marko" + "Treatments" + "/";
+            String CustomerNode = "marko" + "Customers" + "/";
+            String TreatmentPlanNode = "marko" + "TreatmentPlans" + "/";
+            String TreatmentPlanTreatmentNode = "marko" + "TreatmentPlanTreatments" + "/";
+            String PaymentNode = "marko" + "Payments" + "/";
+
+            //Establish SQLite connection and populate treatment table
+            using (SqliteConnection db =
+                            new SqliteConnection("Filename=dentalManagerDB.db"))
+                        {
+                            //open sqlite Connection 
+                            db.Open();
+                            SqliteCommand selectCommand = new SqliteCommand
+                             //Delete everything in the treatment table
+                                ("DELETE from treatment", db);
+                            SqliteDataReader query = selectCommand.ExecuteReader();
+
+                            //Read from Firebase and populate the local datbase/SQLite treatment table
+                            var results = await firebase.Child(TreatmentNode).OnceAsync<TreatmentData>();
+                            foreach (var details in results)
+                            {
+                                SqliteCommand insertCommand = new SqliteCommand();
+                                insertCommand.Connection = db;
+
+                                // Use parameterized query
+                                insertCommand.CommandText = "INSERT INTO treatment (treatmentName,price) VALUES (@TreatmentName ,@Price);";
+                                insertCommand.Parameters.AddWithValue("@TreatmentName", details.Object.name);
+                                insertCommand.Parameters.AddWithValue("@Price", details.Object.price);
+
+                                insertCommand.ExecuteReader();
+                            }
+
+                            db.Close();
+                        }
+
+
+            //Establish SQLite connection and populate customers table
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                //open sqlite Connection 
+                db.Open();
+                SqliteCommand selectCommand = new SqliteCommand
+                    //Delete everything in the customers table
+                    ("DELETE from customers", db);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                //Read from Firebase and populate the local datbase/SQLite customers table
+
+                var rlts = await firebase.Child(CustomerNode).OnceAsync<CustomerData>();
+                foreach (var details in rlts)
+                {
+                    SqliteCommand insertCommand = new SqliteCommand();
+
+                    insertCommand.Connection = db;
+
+                    // Use parameterized query
+                    insertCommand.CommandText = "INSERT INTO customers VALUES (@Id ,@FirstName ,@Surname,@DOB ,@Street ,@city ,@Province ,@Country ,@Postocode ,@MobileNum ,@FixNum ,@Email,@Comments);";
+                    insertCommand.Parameters.AddWithValue("@Id", details.Object.id);
+                    insertCommand.Parameters.AddWithValue("@FirstName", details.Object.firstName);
+                    insertCommand.Parameters.AddWithValue("@Surname", details.Object.surname);
+                    insertCommand.Parameters.AddWithValue("@DOB", details.Object.DOB);
+                    insertCommand.Parameters.AddWithValue("@Street", details.Object.street);
+                    insertCommand.Parameters.AddWithValue("@city", details.Object.city);
+                    insertCommand.Parameters.AddWithValue("@Province", details.Object.province);
+                    insertCommand.Parameters.AddWithValue("@Country", details.Object.country);
+                    insertCommand.Parameters.AddWithValue("@Postocode", details.Object.postcode);
+                    insertCommand.Parameters.AddWithValue("@MobileNum", details.Object.mobileNum);
+                    insertCommand.Parameters.AddWithValue("@FixNum", details.Object.fixNum);
+                    insertCommand.Parameters.AddWithValue("@Email", details.Object.email);
+                    insertCommand.Parameters.AddWithValue("@Comments", details.Object.comments);
+
+                    insertCommand.ExecuteReader();
+                }
+
+                db.Close();
+            }
+
+            //Establish SQLite connection and populate Treatment Plan table
+            using (SqliteConnection db =
+                            new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                //open sqlite Connection 
+                db.Open();
+                SqliteCommand selectCommand = new SqliteCommand
+                    //Delete everything in the Treatment Plan table
+                    ("DELETE from treatmentPlan", db);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                //Read from Firebase and populate the local datbase/SQLite treatmentPlan table
+                var results = await firebase.Child(TreatmentPlanNode).OnceAsync<TreatmentPlanData>();
+                foreach (var details in results)
+                {
+                 
+                    SqliteCommand insertCommand = new SqliteCommand();
+                    insertCommand.Connection = db;
+
+                    // Use parameterized query
+                    insertCommand.CommandText = "INSERT INTO treatmentPlan (customerID,state,creationDate,treatmentPlanCompleteDate) VALUES (@CustomerID,@State,@CreationDate,@TreatmentPlanCompleteDate);";
+                    insertCommand.Parameters.AddWithValue("@CustomerID", details.Object.customerID);
+                    insertCommand.Parameters.AddWithValue("@State", details.Object.state);
+                    insertCommand.Parameters.AddWithValue("@CreationDate", details.Object.creationDate);
+                    insertCommand.Parameters.AddWithValue("@TreatmentPlanCompleteDate", details.Object.treatmentPlanCompleteDate);
+
+                    insertCommand.ExecuteReader();
+                }
+
+                db.Close();
+            }
+
+            //Establish SQLite connection and populate treatment plan treatment table
+            using (SqliteConnection db =
+                            new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                //open sqlite Connection 
+                db.Open();
+                SqliteCommand selectCommand = new SqliteCommand
+                    //Delete everything in the treatment plan treatment table
+                    ("DELETE from treatmentPlanTreatments", db);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                //Read from Firebase and populate the local datbase/SQLite treatmentPlanTreatments table
+                var results = await firebase.Child(TreatmentPlanTreatmentNode).OnceAsync<TreatmentPlanTreatmentsData>();
+                foreach (var details in results)
+                {
+                    SqliteCommand insertCommand = new SqliteCommand();
+                    insertCommand.Connection = db;
+
+                    // Use parameterized query
+                    insertCommand.CommandText = "INSERT INTO treatmentPlanTreatments (TreatmentPlanID,TreatmentID,Price,TreatmentCompleteDate) VALUES (@TreatmentPlanID,@TreatmentID,@Price,@TreatmentCompleteDate);";
+
+                    insertCommand.Parameters.AddWithValue("@TreatmentPlanID", details.Object.treatmentPlanID);
+                    insertCommand.Parameters.AddWithValue("@TreatmentID", details.Object.treatmentID);
+                    insertCommand.Parameters.AddWithValue("@Price", details.Object.price);
+                    insertCommand.Parameters.AddWithValue("@TreatmentCompleteDate", details.Object.treatmentCompleteDate);
+
+                    insertCommand.ExecuteReader();
+
+                }
+
+                db.Close();
+            }
+
+
+            //Establish SQLite connection and populate payment table
+            using (SqliteConnection db =
+                            new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                //open sqlite Connection 
+                db.Open();
+                SqliteCommand selectCommand = new SqliteCommand
+                    //Delete everything in the payment table
+                    ("DELETE from payments", db);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                //Read from Firebase and populate the local datbase/SQLite payments table
+                var results = await firebase.Child(PaymentNode).OnceAsync<PaymentsData>();
+                foreach (var details in results)
+                {
+  
+                    SqliteCommand insertCommand = new SqliteCommand();
+                    insertCommand.Connection = db;
+
+                    // Use parameterized query
+                    insertCommand.CommandText = "INSERT INTO payments (treatmentPlanID,customerID,amount,treatmentCompleteDate) VALUES (@TreatmentPlanID,@CustomerID,@Amount,@TreatmentCompleteDate);";
+                    insertCommand.Parameters.AddWithValue("@TreatmentPlanID", details.Object.treatmentPlanID);
+                    insertCommand.Parameters.AddWithValue("@CustomerID", details.Object.customerID);
+                    insertCommand.Parameters.AddWithValue("@Amount", details.Object.amount);
+                    insertCommand.Parameters.AddWithValue("@TreatmentCompleteDate", details.Object.treatmentCompleteDate);
+
+                    insertCommand.ExecuteReader();
+
+                }
+
+                db.Close();
+            }
+
+            // await firebase.Child("markTreatments/").DeleteAsync();
+
+        }
     }
 }

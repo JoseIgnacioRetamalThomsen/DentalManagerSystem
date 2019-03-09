@@ -62,8 +62,7 @@ namespace DataAccessLibrary
         {
             try
             {
-
-
+       
                 using (SqliteConnection db =
                     new SqliteConnection("Filename=dentalManagerDB.db"))
                 {
