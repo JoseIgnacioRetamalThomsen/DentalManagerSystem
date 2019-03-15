@@ -1,8 +1,10 @@
 ﻿using DataAccessLibrary;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Models;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -70,7 +72,12 @@ namespace DentalManagerSys.Views
             }
             else
             {
-                DAO.AddNewTreatment(inputTreatmentName.Text, Convert.ToDecimal(inputTreatmentPrice.Text));
+                long treatmentId= DAO.AddNewTreatment(inputTreatmentName.Text, Convert.ToDecimal(inputTreatmentPrice.Text));
+
+                //convert the float to an int
+                int treatmentId1 = (int)treatmentId;
+                FireBaseDAO f = new FireBaseDAO();
+                f.AddNewTreatment(new Treatment(treatmentId1, inputTreatmentName.Text, Convert.ToDecimal(inputTreatmentPrice.Text)));
                 //clear
                 this.ClearButton_Tapped(this, new TappedRoutedEventArgs());
             }
