@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccessLibrary.REST;
+using Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,16 +23,28 @@ namespace DentalManagerSys.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    
     public sealed partial class ResetPasswordView : Page
     {
+        private string message1;
+        private string message2;
         public ResetPasswordView()
         {
             this.InitializeComponent();
+            InitStrings();
+        }
+
+        private void InitStrings()
+        {
+            message1 = "We send you a email with a link for change your password";
+            message2 = "Change your password";
         }
 
         private async void ResetPasswordButton_Click(object sender, RoutedEventArgs e)
         {
-            await new MessageDialog("We send you a email with a link for change your password", "Change your password").ShowAsync();
+            User user = new User("name","password", Email.Text);
+            await Auth.ResetPassword(user);
+            await new MessageDialog(message1, message2).ShowAsync();
             Frame.Navigate(typeof(LoginView));
         }
     }
