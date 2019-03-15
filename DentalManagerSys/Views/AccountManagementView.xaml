@@ -17,14 +17,7 @@
                 FontSize="36" 
                 Style="{StaticResource LoginText}"/>
 
-            <TextBlock 
-                x:Name="NewAccountButton" 
-                x:Uid="/Strings/NewAccountButton"
-                Foreground="DodgerBlue"
-                TextAlignment="Center" 
-                VerticalAlignment="Center"
-                FontSize="16"
-                PointerPressed="NewAccountButton_PointerPressed"/>
+          
            
         </StackPanel>
     </Grid>

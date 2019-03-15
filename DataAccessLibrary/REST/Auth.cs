@@ -58,6 +58,29 @@ namespace DataAccessLibrary.REST
             }
                 return response;
         }
+
+        public static async Task<UserRes> GetUser(User user)
+        {
+            UserRes response = null;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                var post = new Post { Title = "" + DateTime.Now.Ticks, Body = JsonConvert.SerializeObject(user) };
+
+                string URL = "http://" + serverAddress + ":" + serverPort + "/api/user";
+
+                var content = new StringContent(JsonConvert.SerializeObject(post), Encoding.UTF8, "application/json");
+
+                var res = await httpClient.PostAsync(URL, content);
+
+                string resBody = await res.Content.ReadAsStringAsync();
+
+                response = JsonConvert.DeserializeObject<UserRes>(resBody);//JsonParse(resBody);
+
+                Debug.Write("res " + response.DisplayName);
+
+            }
+            return response;
+        }
     }
 
     public class Post
@@ -71,5 +94,14 @@ namespace DataAccessLibrary.REST
         public bool Success { get; set; }
         public string Msg { get; set; }
         public string Code { get; set; }
+    }
+    public class UserRes
+    {
+        public string Uid { get; set; }
+        public string DisplayName { get; set; }
+        public string Email { get; set; }
+        public string PhotoURL { get; set; }
+        public string ProviderId { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }
