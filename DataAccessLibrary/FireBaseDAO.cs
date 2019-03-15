@@ -10,9 +10,9 @@ using Models;
 
 namespace DataAccessLibrary
 {
- 
 
-    public  class FireBaseDAO
+
+    public class FireBaseDAO
     {
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace DataAccessLibrary
         /// <summary>
         /// Establish connection with Firebase
         /// </summary>
-        public  void ConnectToFirebase()
+        public void ConnectToFirebase()
         {
             this.firebase = new FirebaseClient(
 
@@ -43,16 +43,16 @@ namespace DataAccessLibrary
         /// </summary>
         /// <param name="treatmentName"></param>
         /// <param name="price"></param>
-            public async void AddNewTreatment(Treatment treatment)
+        public async void AddNewTreatment(Treatment treatment)
         {
-            
+
             ConnectToFirebase();
 
             String node = "marko" + "Treatments" + "/";
 
             TreatmentData treatmentData = new TreatmentData
             {
-                iD= treatment.iD,
+                iD = treatment.iD,
                 name = treatment.name,
                 price = treatment.price
             };
@@ -73,12 +73,12 @@ namespace DataAccessLibrary
 
             String node = "marko" + "Treatments" + "/";
 
-         TreatmentData treatmentData = new TreatmentData
-             {
-                 iD = treatment.iD,
-                 name = treatment.name,
-                 price = treatment.price
-             };
+            TreatmentData treatmentData = new TreatmentData
+            {
+                iD = treatment.iD,
+                name = treatment.name,
+                price = treatment.price
+            };
 
             var results = await firebase.Child(node).OnceAsync<TreatmentData>();
             foreach (var details in results)
@@ -87,13 +87,13 @@ namespace DataAccessLibrary
                 if (Convert.ToInt32(details.Object.iD) == treatment.iD)
                 {
                     //Delete the old row by key Id
-                     await firebase.Child(node).Child(details.Key).DeleteAsync();
+                    await firebase.Child(node).Child(details.Key).DeleteAsync();
                     break;
                 }
             }
 
-          //Create a new row  with the updated values
-          await firebase.Child(node).PostAsync<TreatmentData>(treatmentData);
+            //Create a new row  with the updated values
+            await firebase.Child(node).PostAsync<TreatmentData>(treatmentData);
         }
 
 
@@ -121,19 +121,19 @@ namespace DataAccessLibrary
             String node = "marko" + "Customers" + "/";
             var customerData = new CustomerData
             {
-                id=id,
+                id = id,
                 firstName = firstName,
                 surname = surname,
-                DOB= DOB,
-                street= street,
-                city= city,
-                province= province,
-                country= country,
-                postcode= postcode,
-                mobileNum= mobileNum,
-                fixNum= fixNum,
-                email= email,
-                comments= comments,
+                DOB = DOB,
+                street = street,
+                city = city,
+                province = province,
+                country = country,
+                postcode = postcode,
+                mobileNum = mobileNum,
+                fixNum = fixNum,
+                email = email,
+                comments = comments,
             };
 
             var results = await firebase.Child(node).OnceAsync<CustomerData>();
@@ -209,8 +209,8 @@ namespace DataAccessLibrary
                 }
             }
 
-               //Add the new customer row
-               await firebase.Child(node).PostAsync<CustomerData>(customerData);
+            //Add the new customer row
+            await firebase.Child(node).PostAsync<CustomerData>(customerData);
         }
 
 
@@ -228,10 +228,10 @@ namespace DataAccessLibrary
             String node = "marko" + "TreatmentPlans" + "/";
             var treatmentPlanData = new TreatmentPlanData
             {
-              customerID= customerID,
-              state= state,
-              creationDate = creationDate,
-              treatmentPlanCompleteDate= treatmentPlanCompleteDate
+                customerID = customerID,
+                state = state,
+                creationDate = creationDate,
+                treatmentPlanCompleteDate = treatmentPlanCompleteDate
             };
 
             await firebase.Child(node).PostAsync<TreatmentPlanData>(treatmentPlanData);
@@ -340,31 +340,31 @@ namespace DataAccessLibrary
             //Establish SQLite connection and populate treatment table
             using (SqliteConnection db =
                             new SqliteConnection("Filename=dentalManagerDB.db"))
-                        {
-                            //open sqlite Connection 
-                            db.Open();
-                            SqliteCommand selectCommand = new SqliteCommand
-                             //Delete everything in the treatment table
-                                ("DELETE from treatment", db);
-                            SqliteDataReader query = selectCommand.ExecuteReader();
+            {
+                //open sqlite Connection 
+                db.Open();
+                SqliteCommand selectCommand = new SqliteCommand
+                    //Delete everything in the treatment table
+                    ("DELETE from treatment", db);
+                SqliteDataReader query = selectCommand.ExecuteReader();
 
-                            //Read from Firebase and populate the local datbase/SQLite treatment table
-                            var results = await firebase.Child(TreatmentNode).OnceAsync<TreatmentData>();
-                            foreach (var details in results)
-                            {
-                                SqliteCommand insertCommand = new SqliteCommand();
-                                insertCommand.Connection = db;
+                //Read from Firebase and populate the local datbase/SQLite treatment table
+                var results = await firebase.Child(TreatmentNode).OnceAsync<TreatmentData>();
+                foreach (var details in results)
+                {
+                    SqliteCommand insertCommand = new SqliteCommand();
+                    insertCommand.Connection = db;
 
-                                // Use parameterized query
-                                insertCommand.CommandText = "INSERT INTO treatment (treatmentName,price) VALUES (@TreatmentName ,@Price);";
-                                insertCommand.Parameters.AddWithValue("@TreatmentName", details.Object.name);
-                                insertCommand.Parameters.AddWithValue("@Price", details.Object.price);
+                    // Use parameterized query
+                    insertCommand.CommandText = "INSERT INTO treatment (treatmentName,price) VALUES (@TreatmentName ,@Price);";
+                    insertCommand.Parameters.AddWithValue("@TreatmentName", details.Object.name);
+                    insertCommand.Parameters.AddWithValue("@Price", details.Object.price);
 
-                                insertCommand.ExecuteReader();
-                            }
+                    insertCommand.ExecuteReader();
+                }
 
-                            db.Close();
-                        }
+                db.Close();
+            }
 
 
             //Establish SQLite connection and populate customers table
@@ -424,7 +424,7 @@ namespace DataAccessLibrary
                 var results = await firebase.Child(TreatmentPlanNode).OnceAsync<TreatmentPlanData>();
                 foreach (var details in results)
                 {
-                 
+
                     SqliteCommand insertCommand = new SqliteCommand();
                     insertCommand.Connection = db;
 
@@ -490,7 +490,7 @@ namespace DataAccessLibrary
                 var results = await firebase.Child(PaymentNode).OnceAsync<PaymentsData>();
                 foreach (var details in results)
                 {
-  
+
                     SqliteCommand insertCommand = new SqliteCommand();
                     insertCommand.Connection = db;
 
