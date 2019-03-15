@@ -31,11 +31,25 @@ namespace DentalManagerSys
             this.InitializeComponent();
 
             DAO.InitializeDatabase();
-            //DAO.AddMockData();
+            FireBaseDAO f = new FireBaseDAO();
+            f.ReadDataFromFirebase();
+
+            // f.AddNewTreatment("Cannines", 2000);
+            // f.UpdateCustomer("g0026", "James", "", "Ndip", "123 Monivea", "Galway", "g00352031", "g00352031", "g00352031", "g00352031", "g00352031", "g00352031", "Is Test Marshall");
             // DAO.UpdateTreatmentOnPlan(new TreatmentOnPlan(1, "text", 7));
-            //  DAO.UpdateTreatment(new Treatment(1,"text",7));
-            //DAO.AddNewTreatmentPlanTreatments(1, 1, 2000, "01/01/2019", 1, "hello", false);
-            //DAO.UpdateTreatmentPlanState(TreatmentPlaneState.Finish, 1);
+            //f.UpdateTreatmentOnPlan(new TreatmentOnPlan(2, 4,2,40, 20080501));
+            // f.AddNewpayment(1,"G00352031",8000,"25/08/2014");
+            // f.AddNewTreatmentPlan("g0026", 0,"25/08/2014", "09/03/2020");
+            //f.AddNewTreatmentPlan("G00352031", 1, "25/08/2012", "08/03/2012");
+            //f.UpdateTreatment(new Treatment(1,"Test 6",60000));
+            //f.AddNewTreatment(new Treatment(2, "Test 2", 200));
+            // f.AddNewTreatment(new Treatment(8, "Test 8", 800));
+            // f.UpdateTreatment(new Treatment(10, "Test 6", 60000));
+            //f.UpdateTreatment(new Treatment(4, "Test 4", 4000));
+            //f.UpdateTreatment(new Treatment(26, "4 Molars ", 600));
+
+
+
 
 
         }
@@ -123,18 +137,18 @@ namespace DentalManagerSys
             {
 
 
-                   case "PatientsList":
-                        ContentFrame.Navigate(typeof(ViewAllCustomers));
-                        break;
-                    case "ManageTreaments":
-                        ContentFrame.Navigate(typeof(ManageTreatmentsView));
-                        break;
-                    case "settings":
-                        ContentFrame.Navigate(typeof(SettingsView));
-                        break;
-                    case "content":
-                        ContentFrame.Navigate(typeof(MainPage));
-                        break;
+                case "PatientsList":
+                    ContentFrame.Navigate(typeof(ViewAllCustomers));
+                    break;
+                case "ManageTreaments":
+                    ContentFrame.Navigate(typeof(ManageTreatmentsView));
+                    break;
+                case "ViewAllTransactionsNV":
+                    ContentFrame.Navigate(typeof(NewCustomer));
+                    break;
+                case "content":
+                    ContentFrame.Navigate(typeof(MainPage));
+                    break;
 
             }
 

@@ -98,6 +98,8 @@ namespace DentalManagerSys.Views
             TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
             top.IsDone = false;
             DAO.UpdateTreatmentOnPlan(top);
+            FireBaseDAO f = new FireBaseDAO();
+            f.UpdateTreatmentOnPlan(top);
             ReloadListView();
         }
 
@@ -119,6 +121,8 @@ namespace DentalManagerSys.Views
             top.IsDone = true;
             //Debug.WriteLine(top.CompletedDate + " " + top.TreatmentPlanTreatmentsID);
             DAO.UpdateTreatmentOnPlan(top);
+            FireBaseDAO f = new FireBaseDAO();
+            f.UpdateTreatmentOnPlan(top);
             ReloadListView();
 
 
