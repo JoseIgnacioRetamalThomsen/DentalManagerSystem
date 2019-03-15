@@ -1,6 +1,18 @@
-﻿using System;
+﻿///------------------------------------------
+///
+///  Dental Manager System
+///  Profesional Practice in IT project
+///  GMIT 2019
+///  
+///  Markm Ndpenoch
+///  Jose I. Retamal
+///------------------------------------------
+///
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -8,44 +20,44 @@ namespace Models
 {
     public class Treatment //: INotifyPropertyChanged
     {
-        public int iD { get; set; }
+        public int ID { get; set; }
 
 
-        public string name { get; set; }
-        public decimal price;
+        public string Name { get; set; }
+        public decimal _Price;
 
-        //public event PropertyChangedEventHandler PropertyChanged = delegate { };
-
-
+        
         public Treatment(int iD, string name, decimal price)
         {
-            this.iD = iD;
-            this.name = name;
-            this.price = price;
+            this.ID = iD;
+            this.Name = name;
+            this._Price = price;
         }
 
         public decimal Price
         {
-            get { return price; }
+            get { return _Price; }
             set
             {
-                price = value;
+                _Price = value;
                // OnPropertyChanged();
             }
         }
 
+        public String ShowPrice
+        {
+            set { }
+           
+            get
+            {
+                return _Price.ToString("C", CultureInfo.CurrentCulture);
+            }
+        }
 
         public override string ToString()
         {
-            return this.name;
+            return this.Name;
         }
-
-        //public void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    // Raise the PropertyChanged event, passing the name of the property whose value has changed.
-        //    PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
-
+                
     }
 }

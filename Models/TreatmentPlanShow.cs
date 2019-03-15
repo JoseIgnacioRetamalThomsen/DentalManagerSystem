@@ -1,4 +1,15 @@
-﻿using System;
+﻿///------------------------------------------
+///
+///  Dental Manager System
+///  Profesional Practice in IT project
+///  GMIT 2019
+///  
+///  Markm Ndpenoch
+///  Jose I. Retamal
+///------------------------------------------
+///
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -22,9 +33,9 @@ namespace Models
                
                 foreach(Treatment treatment in treatmentList)
                 {
-                    if(treatment.iD == top.TreatmentID)
+                    if(treatment.ID == top.TreatmentID)
                     {
-                        Treatments.Add(new TreatmentOnPlanShow(top, treatment.name));
+                        Treatments.Add(new TreatmentOnPlanShow(top, treatment.Name));
                     }
                 }
                 

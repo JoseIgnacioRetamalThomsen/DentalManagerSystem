@@ -1,23 +1,8 @@
 ﻿using DataAccessLibrary;
 using Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace DentalManagerSys.Views
 {
@@ -26,31 +11,23 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class EditCustomerDetails : Page
     {
-        private string iD;
+        /// <summary>
+        /// Initial customer data
+        /// </summary>
+        Customer temp;
+        /// <summary>
+        /// Create page
+        /// </summary>
         public EditCustomerDetails()
         {
             this.InitializeComponent();
-            
+
         }
 
-        private void DisplayDetails(string iD)
-        {
-            Debug.WriteLine("id");
-            Customer temp = DAO.GetCustomerByID(iD);
-            
-            PageTitle.Text = temp.name + " " + temp.surname;
-            DOBTextBox.Text = temp.dOB.ToString();
-            streetTextBox.Text = temp.street;
-            cityTextBox.Text = temp.city;
-            provinceTextBox.Text = temp.province;
-            countryTextBox.Text = temp.country;
-            postcodeTextBox.Text = temp.postcode;
-            mobileTextBox.Text = temp.mobileNum;
-            fixTextBox.Text = temp.homeNum;
-            emailTextBox.Text = temp.email;
-            commentsTextBox.Text = temp.comments;
-        }
-
+        /// <summary>
+        /// Load customer data
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter == null)
@@ -64,12 +41,59 @@ namespace DentalManagerSys.Views
 
         }
 
+        /// <summary>
+        /// Show customer data in view
+        /// </summary>
+        /// <param name="iD"></param>
+        private void DisplayDetails(string iD)
+        {
+
+            temp = DAO.GetCustomerByID(iD);
+
+            NameTextBox.Text = temp.name;
+            SurnameTextBox.Text = temp.surname;
+            DOBTextBox.Text = temp.dOB.ToString();
+            streetTextBox.Text = temp.street;
+            cityTextBox.Text = temp.city;
+            provinceTextBox.Text = temp.province;
+            countryTextBox.Text = temp.country;
+            postcodeTextBox.Text = temp.postcode;
+            mobileTextBox.Text = temp.mobileNum;
+            fixTextBox.Text = temp.homeNum;
+            emailTextBox.Text = temp.email;
+            commentsTextBox.Text = temp.comments;
+        }
         
+        /// <summary>
+        /// Save customer data and go back
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveCustomerDetails_Click(object sender, RoutedEventArgs e)
         {
+            DAO.UpdateCustomer(
+                temp.iD,
+                NameTextBox.Text,
+                SurnameTextBox.Text,
+                DOBTextBox.Text,
+                streetTextBox.Text,
+                cityTextBox.Text,
+                provinceTextBox.Text,
+                countryTextBox.Text,
+                postcodeTextBox.Text,
+                mobileTextBox.Text,
+                fixTextBox.Text,
+                emailTextBox.Text,
+                commentsTextBox.Text
+            );
             Frame.GoBack();
         }
 
+        /// <summary>
+        /// Go back with no save data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancelEditCustomer_Click(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();

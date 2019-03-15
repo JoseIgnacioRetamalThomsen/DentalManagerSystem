@@ -1,6 +1,4 @@
-﻿using DataAccessLibrary;
-using Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,20 +20,11 @@ namespace DentalManagerSys.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class EditTreatment : Page
+    public sealed partial class SettingsView : Page
     {
-        private string iD;
-
-        public EditTreatment()
+        public SettingsView()
         {
             this.InitializeComponent();
-        }
-
-        private void DisplayTreatmentDetails(string id)
-        {
-
-          
- 
         }
     }
 }

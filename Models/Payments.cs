@@ -1,5 +1,17 @@
-﻿using System;
+﻿///------------------------------------------
+///
+///  Dental Manager System
+///  Profesional Practice in IT project
+///  GMIT 2019
+///  
+///  Markm Ndpenoch
+///  Jose I. Retamal
+///------------------------------------------
+///
+
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Models
@@ -11,6 +23,16 @@ namespace Models
         public string customerID { get; set; }
         public float amount { get; set; }
         public DateTime completedDate { get; set; }
+
+        public String ShowAmount
+        {
+            set { }
+            get
+            {
+                return amount.ToString("C", CultureInfo.CurrentCulture);
+                //return string.Format("{0:0}", amount);
+            }
+        }
 
         public Payments(int paymentsID, int treatmentPlanID,string customerID, float amount, DateTime treatmentCompleteDate)
         {

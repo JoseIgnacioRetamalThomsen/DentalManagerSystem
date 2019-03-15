@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,13 +21,25 @@ namespace DentalManagerSys.ViewModel
             {
                 total = value;
                 OnPropertyChanged("Total");
+                OnPropertyChanged("ShowTotal");
             }
         }
+        public string ShowTotal
+        {
+            get
+            {
+                return total.ToString("C", CultureInfo.CurrentCulture);
+            }
+            set
+            {
 
-        public ObservableCollection<TreatmentOnPlanShow> TreatmentsOnPlan { get; set; }
+            }
+        }
+        public ObservableCollection<TreatmentOnPlan> TreatmentsOnPlan { get; set; }
 
-        public TreatmentPlanShow TreatmentPlanForView { get; set; }
+        
 
+     
         public DateTime completedTreatmentDate;
         public DateTime CompletedTreatmentDate
         {
@@ -66,7 +79,7 @@ namespace DentalManagerSys.ViewModel
             {
                 actualTreatmentPlanState = value;
                 OnPropertyChanged("TreatmentPLanState");
-                
+
             }
         }
 
@@ -87,18 +100,36 @@ namespace DentalManagerSys.ViewModel
             }
         }
 
+        public TreatmentPlanViewModel()
+        {
+            
+        }
+        public int PlanID { get; set; }
+
         public void LoadTreatments(int planID)
         {
             List<TreatmentOnPlan> top = DAO.GetTreatmentOnPlansByID(planID);
-            
+            TreatmentsOnPlan = new ObservableCollection<TreatmentOnPlan>( DAO.GetTreatmentOnPlansByID(planID));
 
-            List<Treatment> treatments = DAO.GetAllTreatment();
-            TreatmentPlanForView = new TreatmentPlanShow(ActualTreatmentPlan, Customer, top,treatments);
-            TreatmentPlanForView.PrintConsole();
-            TreatmentsOnPlan = new ObservableCollection<TreatmentOnPlanShow>(TreatmentPlanForView.Treatments);
+            PlanID = planID;
+            CalculateTotal();
 
-            Total = TreatmentPlanForView.GetTotal();
-           
+
+
+        }
+
+        public void CalculateTotal()
+        {
+            Total = 0;
+            foreach(TreatmentOnPlan t in TreatmentsOnPlan)
+            {
+                Total += t.Price;
+            }
+        }
+
+        public void ChangeState(TreatmentPlaneState state)
+        {
+            DAO.UpdateTreatmentPlanState(state,PlanID);
         }
     }
 }

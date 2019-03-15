@@ -40,7 +40,8 @@ namespace DentalManagerSys.Views
 
             ViewModel = new NewTreatmentPlanViewModel();
 
-           TreatmentsDoneListView.ItemsSource = ViewModel.TreatmentsOnPlan;
+            TreatmentsDoneListView.ItemsSource = ViewModel.TreatmentsOnPlan;
+            SelectToothCB.ItemsSource = ViewModel.Tooths;
             ViewModel.Total = 0;
         }
 
@@ -68,13 +69,13 @@ namespace DentalManagerSys.Views
 
             }
 
-            
+
         }
 
         private void TreatmentsCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            
+
+
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -84,27 +85,43 @@ namespace DentalManagerSys.Views
 
         private void TreatmentsDoneListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-           
+
         }
 
         private void TreatmentsDoneListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Debug.WriteLine("willThis" + ((ListView)sender).SelectedIndex);
-            Debug.WriteLine("willThis" + ViewModel.TreatmentsOnPlan[((ListView)sender).SelectedIndex].price.ToString());
+            Debug.WriteLine("willThis" + ViewModel.TreatmentsOnPlan[((ListView)sender).SelectedIndex].Price.ToString());
 
             //set value of treament on edit box for editing
-            EditPriceTB.Text = ((int)ViewModel.TreatmentsOnPlan[((ListView)sender).SelectedIndex].price).ToString();
-            
+            EditPriceTB.Text = ((int)ViewModel.TreatmentsOnPlan[((ListView)sender).SelectedIndex].Price).ToString();
+            SaveChangedPriceButton.IsEnabled = true;
+
+
         }
 
         private void TreatmentsCB_DropDownClosed(object sender, object e)
         {
             ComboBox temp = (ComboBox)sender;
-            Treatment t = treatments[temp.SelectedIndex];
+            Treatment t;
+            try
+            {
+                t = treatments[temp.SelectedIndex];
+            }
+            catch
+            {
+                //No selection whe do nothging
+                return;
+            }
             //add adddes treatments to list of all treatements in plan
-            ViewModel.TreatmentsOnPlan.Add(new Treatment(t.iD, t.name, t.price));
+            //ViewModel.TreatmentsOnPlan.Add(new Treatment(t.iD, t.name, t.price));
+
+            ViewModel.PriceBefore = t._Price;
+            ViewModel.BeforeTreatment = t;
+            isPrice = true;
+            EnableAddButton();
             //add price of treatment to total
-            ViewModel.Total += t.Price;
+            // ViewModel.Total += t.Price;
 
         }
 
@@ -113,11 +130,12 @@ namespace DentalManagerSys.Views
             sender.Text = new String(sender.Text.Where(char.IsDigit).ToArray());
         }
 
-      
+
 
         private void CreateTreatmentPlanButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             ViewModel.CreateNewTreatmentPlan();
+            Frame.GoBack();
         }
 
         private void SaveChangedPriceButton_Tapped(object sender, TappedRoutedEventArgs e)
@@ -129,6 +147,8 @@ namespace DentalManagerSys.Views
             ViewModel.TreatmentsOnPlan[ItemIndex].Price = NewPrice;
             ViewModel.RecalculateTotal();
             ReloadTretmentsListView();
+            SaveChangedPriceButton.IsEnabled = false;
+
         }
 
         private void ReloadTretmentsListView()
@@ -139,7 +159,51 @@ namespace DentalManagerSys.Views
             TreatmentsDoneListView.SelectionChanged += TreatmentsDoneListView_SelectionChanged;
         }
 
-        
+        private void AddButon_Click(object sender, RoutedEventArgs e)
+        {
+
+            ViewModel.Comments = CommentTB.Text;
+
+            ViewModel.AddTreatment();
+
+            TreatmentsCB.SelectedItem = null;
+            SelectToothCB.SelectedItem = null;
+            isPrice = false;
+            isToothNumber = false;
+            AddButon.IsEnabled = false;
+            CommentTB.Text = "";
+            ViewModel.PriceBefore = 0;
+        }
+
+        private void SelectToothCB_DropDownClosed(object sender, object e)
+        {
+            isToothNumber = true;
+            try
+            {
+                ViewModel.Tooth = Convert.ToInt32(((ComboBox)sender).SelectedValue.ToString());
+            }
+            catch
+            {
+                //no selection, do nothing
+                return;
+            }
+            EnableAddButton();
+        }
+
+        bool isPrice = false;
+        bool isToothNumber = false;
+        private void EnableAddButton()
+        {
+            if (isPrice && isToothNumber)
+            {
+                AddButon.IsEnabled = true;
+            }
+        }
+
+        private void NewPaymentButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 
