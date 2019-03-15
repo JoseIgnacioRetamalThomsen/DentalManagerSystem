@@ -52,9 +52,9 @@ namespace DataAccessLibrary
 
             TreatmentData treatmentData = new TreatmentData
             {
-                iD = treatment.iD,
-                name = treatment.name,
-                price = treatment.price
+                iD = treatment.ID,
+                name = treatment.Name,
+                price = treatment.Price
             };
 
             //Create a new row  with the updated values
@@ -75,16 +75,16 @@ namespace DataAccessLibrary
 
             TreatmentData treatmentData = new TreatmentData
             {
-                iD = treatment.iD,
-                name = treatment.name,
-                price = treatment.price
+                iD = treatment.ID,
+                name = treatment.Name,
+                price = treatment.Price
             };
 
             var results = await firebase.Child(node).OnceAsync<TreatmentData>();
             foreach (var details in results)
             {
 
-                if (Convert.ToInt32(details.Object.iD) == treatment.iD)
+                if (Convert.ToInt32(details.Object.iD) == treatment.ID)
                 {
                     //Delete the old row by key Id
                     await firebase.Child(node).Child(details.Key).DeleteAsync();

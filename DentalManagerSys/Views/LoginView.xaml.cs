@@ -81,6 +81,8 @@ namespace DentalManagerSys.Views
 
         private async void SignInButton_Click(object sender, RoutedEventArgs e)
         {
+            Frame.Navigate(typeof(MainPage));
+            return;
             user.Password = passwordBox.Password;
             Res res = await Auth.SignIn(user);
             Debug.WriteLine(res.Success);
