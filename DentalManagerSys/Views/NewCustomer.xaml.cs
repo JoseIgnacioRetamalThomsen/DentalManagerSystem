@@ -87,7 +87,6 @@ namespace DentalManagerSys.Views
                 //create new customer 
                 Debug.WriteLine(birthDatePicker.Date.ToString("yyyy-MM-dd"));
 
-
                 //check if added, if not unique id
                 bool temp = DAO.AddNewCustomer(
                     idInput.Text, //id
@@ -104,6 +103,8 @@ namespace DentalManagerSys.Views
                     emaillInput.Text, //email
                     commentsInput.Text //email
                     );
+
+
                 Debug.Write(temp);
                 if (temp)
                 {
@@ -160,11 +161,27 @@ namespace DentalManagerSys.Views
             else
             {
                 //create new customer 
-                Debug.WriteLine(birthDatePicker.Date.ToString("yyyy-MM-dd"));
+               Debug.WriteLine(birthDatePicker.Date.ToString("yyyy-MM-dd"));
 
+                FireBaseDAO f = new FireBaseDAO();
+                f.AddNewCustomer(
+                    idInput.Text, //id
+                    inputName.Text, //name
+                    inputSurename.Text,//surname
+                    birthDatePicker.Date.ToString("yyyy-MM-dd"), //dob
+                    streetInput.Text, //street address
+                    cityInput.Text, //city
+                    provinceInput.Text,//Province
+                    countryInput.Text, //country
+                    postCodeInput.Text,//postcode
+                    mobilNumInput.Text,//mobil number
+                    homeNumInput.Text,//home number
+                    emaillInput.Text, //email
+                    commentsInput.Text //email
+                    );
 
                 //check if added, if not unique id
-                 temp = DAO.AddNewCustomer(
+                temp = DAO.AddNewCustomer(
                     idInput.Text, //id
                     inputName.Text, //name
                     inputSurename.Text,//surname

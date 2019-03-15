@@ -118,7 +118,6 @@ namespace DataAccessLibrary
         {
             bool FoundiD = false;
             ConnectToFirebase();
-
             String node = "marko" + "Customers" + "/";
             var customerData = new CustomerData
             {

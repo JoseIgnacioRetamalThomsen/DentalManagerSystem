@@ -59,6 +59,8 @@ namespace DentalManagerSys.Views
             Debug.WriteLine("working");
             decimal amount = Convert.ToDecimal(Amount.Text);
             DAO.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID,ViewModel.Customer.iD,amount,DateTime.Now.ToString());
+            FireBaseDAO f = new FireBaseDAO();
+            f.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID, ViewModel.Customer.iD, amount, DateTime.Now.ToString());
             Frame.GoBack();
         }
 

@@ -95,6 +95,8 @@ namespace DentalManagerSys.Views
             TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index].Treatment;
             top.CompletedDate = Convert.ToDateTime("01/01/0001 00:00:00");
             DAO.UpdateTreatmentOnPlan(top);
+            FireBaseDAO f = new FireBaseDAO();
+            f.UpdateTreatmentOnPlan(top);
             ReloadListView();
         }
 
@@ -115,9 +117,9 @@ namespace DentalManagerSys.Views
             top.CompletedDate = DateTime.Now;
             Debug.WriteLine(top.CompletedDate + " " + top.TreatmentPlanTreatmentsID);
             DAO.UpdateTreatmentOnPlan(top);
+            FireBaseDAO f = new FireBaseDAO();
+            f.UpdateTreatmentOnPlan(top);
             ReloadListView();
-
-          
         }
 
         private void EditPlanDone_Click(object sender, RoutedEventArgs e)
