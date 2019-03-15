@@ -543,6 +543,15 @@
   <data name="wrongPassword.Text" xml:space="preserve">
     <value>Wrong Password</value>
   </data>
+  <data name="ResetPassword.Text" xml:space="preserve">
+    <value>Reset password using email (do this if you forgot your password).</value>
+  </data>
+  <data name="ResetPasswordButton.Content" xml:space="preserve">
+    <value>Send Email</value>
+  </data>
+  <data name="ResetPasswordHeader.Text" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
   <data name="SyncAccountButtonAM.Text" xml:space="preserve">
     <value>Synchonize account</value>
   </data>

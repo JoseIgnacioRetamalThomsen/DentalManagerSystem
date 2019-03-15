@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -20,18 +21,17 @@ namespace DentalManagerSys.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AccountManagementView : Page
+    public sealed partial class ResetPasswordView : Page
     {
-        public AccountManagementView()
+        public ResetPasswordView()
         {
             this.InitializeComponent();
         }
 
-       
-
-        private void ResetPassword_PointerPressed(object sender, PointerRoutedEventArgs e)
+        private async void ResetPasswordButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ResetPasswordView));
+            await new MessageDialog("We send you a email with a link for change your password", "Change your password").ShowAsync();
+            Frame.Navigate(typeof(LoginView));
         }
     }
 }
