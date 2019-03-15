@@ -36,8 +36,11 @@ namespace DentalManagerSys.Views
 
         private void InitStrings()
         {
-            message1 = "We send you a email with a link for change your password";
-            message2 = "Change your password";
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
+
+            message1 = resourceLoader.GetString("/Strings/message1/Text");
+            message2 = resourceLoader.GetString("/Strings/message2/Text");
+          
         }
 
         private async void ResetPasswordButton_Click(object sender, RoutedEventArgs e)

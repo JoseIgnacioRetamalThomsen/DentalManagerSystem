@@ -543,6 +543,12 @@
   <data name="wrongPassword.Text" xml:space="preserve">
     <value>Wrong Password</value>
   </data>
+  <data name="message1.Text" xml:space="preserve">
+    <value>We send you a email with a link for change your password</value>
+  </data>
+  <data name="message2.Text" xml:space="preserve">
+    <value>Change your password</value>
+  </data>
   <data name="ResetPassword.Text" xml:space="preserve">
     <value>Reset password using email (do this if you forgot your password).</value>
   </data>

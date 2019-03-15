@@ -14,6 +14,11 @@ namespace DataAccessLibrary.REST
         static string serverAddress = "168.63.65.229";
         static string serverPort = "8081";
 
+        private static string AddNewUserURL = "/api/newuser";
+        private static string SignInURL = "/api/signin";
+        private static string GetUserDataURL = "/api/user";
+        private static string ResetPasswordURL = "/api/resetpass";
+
         public static async Task<Res> AddNewUser(User user)
         {
             HttpClient client = new HttpClient();
@@ -22,7 +27,7 @@ namespace DataAccessLibrary.REST
 
             var post = new Post { Title = "" + DateTime.Now.Ticks, Body = JsonConvert.SerializeObject(user) };
 
-            string URL = "http://" + serverAddress + ":" + serverPort + "/api/newuser";
+            string URL = "http://" + serverAddress + ":" + serverPort + AddNewUserURL;
 
             //var content =  (JsonConvert.SerializeObject(post));
             var content = new StringContent(JsonConvert.SerializeObject(post), Encoding.UTF8, "application/json");
@@ -43,7 +48,7 @@ namespace DataAccessLibrary.REST
             {
                 var post = new Post { Title = "" + DateTime.Now.Ticks, Body = JsonConvert.SerializeObject(user) };
 
-                string URL = "http://" + serverAddress + ":" + serverPort + "/api/signin";
+                string URL = "http://" + serverAddress + ":" + serverPort + SignInURL;
 
                 var content = new StringContent(JsonConvert.SerializeObject(post), Encoding.UTF8, "application/json");
 
@@ -66,7 +71,7 @@ namespace DataAccessLibrary.REST
             {
                 var post = new Post { Title = "" + DateTime.Now.Ticks, Body = JsonConvert.SerializeObject(user) };
 
-                string URL = "http://" + serverAddress + ":" + serverPort + "/api/user";
+                string URL = "http://" + serverAddress + ":" + serverPort + GetUserDataURL;
 
                 var content = new StringContent(JsonConvert.SerializeObject(post), Encoding.UTF8, "application/json");
 
@@ -89,7 +94,7 @@ namespace DataAccessLibrary.REST
             {
                 var post = new Post { Title = "" + DateTime.Now.Ticks, Body = JsonConvert.SerializeObject(user) };
 
-                string URL = "http://" + serverAddress + ":" + serverPort + "/api/resetpass";
+                string URL = "http://" + serverAddress + ":" + serverPort + ResetPasswordURL;
 
                 var content = new StringContent(JsonConvert.SerializeObject(post), Encoding.UTF8, "application/json");
 
