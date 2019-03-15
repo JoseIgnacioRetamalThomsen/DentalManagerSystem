@@ -169,8 +169,7 @@ namespace DataAccessLibrary
         {
             try
             {
-
-
+       
                 using (SqliteConnection db =
                     new SqliteConnection("Filename=dentalManagerDB.db"))
                 {
@@ -215,8 +214,10 @@ namespace DataAccessLibrary
         /// </summary>
         /// <param name="treatmentName"></param>
         /// <param name="price"></param>
-        public static void AddNewTreatment(string treatmentName, Decimal price)
+        public static long AddNewTreatment(string treatmentName, Decimal price)
         {
+            long id = 0;
+
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -232,8 +233,18 @@ namespace DataAccessLibrary
 
                 insertCommand.ExecuteReader();
 
+                //insertCommand.Connection.Close();
+                //insertCommand.Connection = db;
+                SqliteCommand insertCommand1 = new SqliteCommand();
+                insertCommand1.Connection = db;
+
+                string sql = @"select last_insert_rowid()";
+                insertCommand1.CommandText = sql;
+                id = (long)insertCommand1.ExecuteScalar();
                 db.Close();
             }
+
+            return id;
         }
 
         /// <summary>
