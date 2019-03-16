@@ -75,13 +75,6 @@ namespace DentalManagerSys.Views
                 Treatment treatment = new Treatment(0,inputTreatmentName.Text, Convert.ToDecimal(inputTreatmentPrice.Text));
                 App.Data.AddNewTreatment(treatment);
 
-                //    long treatmentId= DAO.AddNewTreatment(inputTreatmentName.Text, Convert.ToDecimal(inputTreatmentPrice.Text));
-
-                ////convert the float to an int
-                //int treatmentId1 = (int)treatmentId;
-                //FireBaseDAO f = new FireBaseDAO();
-                //f.AddNewTreatment(new Treatment(treatmentId1, inputTreatmentName.Text, Convert.ToDecimal(inputTreatmentPrice.Text)));
-                //clear
                 this.ClearButton_Tapped(this, new TappedRoutedEventArgs());
             }
         }

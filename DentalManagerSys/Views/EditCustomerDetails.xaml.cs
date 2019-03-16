@@ -72,10 +72,23 @@ namespace DentalManagerSys.Views
         /// <param name="e"></param>
         private void SaveCustomerDetails_Click(object sender, RoutedEventArgs e)
         {
+            App.Data.UpdateCustomerDetails(
+                temp.iD,
+                NameTextBox.Text,
+                SurnameTextBox.Text,
+                DOBTextBox.Text,
+                streetTextBox.Text,
+                cityTextBox.Text,
+                provinceTextBox.Text,
+                countryTextBox.Text,
+                postcodeTextBox.Text,
+                mobileTextBox.Text,
+                fixTextBox.Text,
+                emailTextBox.Text,
+                commentsTextBox.Text
+                );
 
-            Debug.WriteLine("Test   1");
-
-            FireBaseDAO f = new FireBaseDAO();
+           /* FireBaseDAO f = new FireBaseDAO();
             f.UpdateCustomer(
                    temp.iD,
                 NameTextBox.Text,
@@ -106,7 +119,7 @@ namespace DentalManagerSys.Views
                 fixTextBox.Text,
                 emailTextBox.Text,
                 commentsTextBox.Text
-            );
+            );*/
             Frame.GoBack();
         }
 

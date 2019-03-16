@@ -146,8 +146,41 @@ namespace DentalManagerSys.Views
                 //create new customer 
                 Debug.WriteLine(birthDatePicker.Date.ToString("yyyy-MM-dd"));
 
-                FireBaseDAO f = new FireBaseDAO();
-                f.AddNewCustomer(
+                /* FireBaseDAO f = new FireBaseDAO();
+                 f.AddNewCustomer(
+                     idInput.Text, //id
+                     inputName.Text, //name
+                     inputSurename.Text,//surname
+                     birthDatePicker.Date.ToString("yyyy-MM-dd"), //dob
+                     streetInput.Text, //street address
+                     cityInput.Text, //city
+                     provinceInput.Text,//Province
+                     countryInput.Text, //country
+                     postCodeInput.Text,//postcode
+                     mobilNumInput.Text,//mobil number
+                     homeNumInput.Text,//home number
+                     emaillInput.Text, //email
+                     commentsInput.Text //email
+                     );
+
+                //check if added, if not unique id
+                temp = DAO.AddNewCustomer(
+                   idInput.Text, //id
+                   inputName.Text, //name
+                   inputSurename.Text,//surname
+                   birthDatePicker.Date.ToString("yyyy-MM-dd"), //dob
+                   streetInput.Text, //street address
+                   cityInput.Text, //city
+                   provinceInput.Text,//Province
+                   countryInput.Text, //country
+                   postCodeInput.Text,//postcode
+                   mobilNumInput.Text,//mobil number
+                   homeNumInput.Text,//home number
+                   emaillInput.Text, //email
+                   commentsInput.Text //email
+                   );*/
+
+                App.Data.NewCustomerDetailsFb(
                     idInput.Text, //id
                     inputName.Text, //name
                     inputSurename.Text,//surname
@@ -164,7 +197,7 @@ namespace DentalManagerSys.Views
                     );
 
                 //check if added, if not unique id
-                temp = DAO.AddNewCustomer(
+                temp = App.Data.NewCustomerDetailsSQLite(
                    idInput.Text, //id
                    inputName.Text, //name
                    inputSurename.Text,//surname

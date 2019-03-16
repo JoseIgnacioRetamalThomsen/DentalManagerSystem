@@ -129,9 +129,10 @@ namespace DentalManagerSys.ViewModel
 
         public void ChangeState(TreatmentPlaneState state)
         {
-            FireBaseDAO f = new FireBaseDAO();
+            App.Data.UpdateTreatmentPlanState(state, PlanID);
+           /* FireBaseDAO f = new FireBaseDAO();
             DAO.UpdateTreatmentPlanState(state,PlanID);
-            f.UpdateTreatmentPlanState(state, PlanID);
+            f.UpdateTreatmentPlanState(state, PlanID);*/
         }
     }
 }

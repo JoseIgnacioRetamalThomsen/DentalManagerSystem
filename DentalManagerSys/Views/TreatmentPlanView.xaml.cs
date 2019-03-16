@@ -97,9 +97,10 @@ namespace DentalManagerSys.Views
             int index = TreatmentsOnPlanLV.SelectedIndex;
             TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
             top.IsDone = false;
-            DAO.UpdateTreatmentOnPlan(top);
+            App.Data.UpdateTreatmentOnPlan(top);
+            /*DAO.UpdateTreatmentOnPlan(top);
             FireBaseDAO f = new FireBaseDAO();
-            f.UpdateTreatmentOnPlan(top);
+            f.UpdateTreatmentOnPlan(top);*/
             ReloadListView();
         }
 
@@ -119,10 +120,10 @@ namespace DentalManagerSys.Views
             TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
             top.CompletedDate = DateTime.Now;
             top.IsDone = true;
-            //Debug.WriteLine(top.CompletedDate + " " + top.TreatmentPlanTreatmentsID);
-            DAO.UpdateTreatmentOnPlan(top);
+            App.Data.UpdateTreatmentOnPlan(top);
+           /* DAO.UpdateTreatmentOnPlan(top);
             FireBaseDAO f = new FireBaseDAO();
-            f.UpdateTreatmentOnPlan(top);
+            f.UpdateTreatmentOnPlan(top);*/
             ReloadListView();
 
 
