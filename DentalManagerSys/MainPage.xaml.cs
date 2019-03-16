@@ -32,7 +32,7 @@ namespace DentalManagerSys
 
             DAO.InitializeDatabase();
             FireBaseDAO f = new FireBaseDAO();
-            f.ReadDataFromFirebase();
+           f.ReadDataFromFirebase();
 
             // f.AddNewTreatment("Cannines", 2000);
             // f.UpdateCustomer("g0026", "James", "", "Ndip", "123 Monivea", "Galway", "g00352031", "g00352031", "g00352031", "g00352031", "g00352031", "g00352031", "Is Test Marshall");

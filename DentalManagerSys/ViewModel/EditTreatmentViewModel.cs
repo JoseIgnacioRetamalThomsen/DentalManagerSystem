@@ -57,6 +57,8 @@ namespace DentalManagerSys.ViewModel
 
         internal void SaveTreatment(string text, decimal v)
         {
+            FireBaseDAO f = new FireBaseDAO();
+            f.UpdateTreatment(new Treatment(TreamentOnModel.ID, text, v));
             DAO.UpdateTreatment(new Treatment(TreamentOnModel.ID, text, v));
         }
     }

@@ -113,13 +113,17 @@ namespace DentalManagerSys.ViewModel
 
         public void CreateNewTreatmentPlan()
         {
+            FireBaseDAO f = new FireBaseDAO();
             int id = (int)DAO.AddNewTreatmentPlan(ActualCustomer.iD, (int)TreatmentPlaneState.Created, DateTime.Now.ToString(), "0");
 
-            foreach(TreatmentOnPlan top in treatmentsOnPlan){
+            //Add new Treatmentplan to firebase.
+            f.AddNewTreatmentPlan(id, ActualCustomer.iD, (int)TreatmentPlaneState.Created, DateTime.Now.ToString(), "0");
+            foreach (TreatmentOnPlan top in treatmentsOnPlan){
                 
                 top.TreatmentPlanID = id;
                 DAO.AddNewTreatmentPlanTreatments(top);
-                
+                f.AddNewTreatmentPlanTreatments(top);
+
             }
 
             //foreach (Treatment t in treatmentsOnPlan)

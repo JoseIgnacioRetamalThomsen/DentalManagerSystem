@@ -90,23 +90,31 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand
+                try
+                {
+                    SqliteCommand selectCommand = new SqliteCommand
                     ("SELECT * from users", db);
 
-                SqliteDataReader query = selectCommand.ExecuteReader();
+                    SqliteDataReader query = selectCommand.ExecuteReader();
 
-                while (query.Read())
-                {
-                   int id = query.GetInt32(0);
-                    user = new User(
-                        query.GetString(1),
-                        "no pass",//query.GetString(3),
-                        query.GetString(2)
-                        
-                        );
+                    while (query.Read())
+                    {
+                        int id = query.GetInt32(0);
+                        user = new User(
+                            query.GetString(1),
+                            "no pass",//query.GetString(3),
+                            query.GetString(2)
+
+                            );
+                    }
+
+                    db.Close();
                 }
-
-                db.Close();
+                catch
+                {
+                    Debug.WriteLine("User name not found!");
+                }
+                
             }
             return user;
         }
@@ -1002,12 +1010,13 @@ namespace DataAccessLibrary
                     bool isDone = query.GetInt32(7) == 0 ? false : true;
                     string name = query.GetString(9);
 
+
                     treatmentList.Add(new TreatmentOnPlan(
                     TreatmentPlanTreatmentsID,
                     TreatmentPlanID,
                     TreatmentID,
                     price,
-                    date,
+                     date,
                     toothNum,
                     comments,
                     isDone,
