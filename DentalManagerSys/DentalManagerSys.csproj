@@ -138,6 +138,9 @@
     <Compile Include="Views\SyncAccountView.xaml.cs">
       <DependentUpon>SyncAccountView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TreatmentPlanPreviewView.xaml.cs">
+      <DependentUpon>TreatmentPlanPreviewView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TreatmentsView.xaml.cs">
       <DependentUpon>TreatmentsView.xaml</DependentUpon>
     </Compile>
@@ -229,6 +232,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SyncAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TreatmentPlanPreviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

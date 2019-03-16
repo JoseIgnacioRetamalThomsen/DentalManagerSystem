@@ -561,4 +561,22 @@
   <data name="SyncAccountButtonAM.Text" xml:space="preserve">
     <value>Synchonize account</value>
   </data>
+  <data name="PreviewTreatmentPlan.Label" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="PreviewTreatmentPlan.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Preview this treatment plan</value>
+  </data>
+  <data name="BackButton.Label" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="BackButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Back to create new treeatment plan</value>
+  </data>
+  <data name="PrintButtonPreview.Label" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="PrintButtonPreview.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Print and move on</value>
+  </data>
 </root>

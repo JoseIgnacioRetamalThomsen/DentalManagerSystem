@@ -1,4 +1,5 @@
 ﻿using DataAccessLibrary;
+using DentalManagerSys.Print;
 using DentalManagerSys.ViewModel;
 using Models;
 using System;
@@ -32,6 +33,8 @@ namespace DentalManagerSys.Views
         //ObservableCollection<Treatment> treatmentsOnPlan = new ObservableCollection<Treatment>();
 
         public NewTreatmentPlanViewModel ViewModel { get; set; }
+        public object TreatmentPanPrint { get; private set; }
+        #region Constructors and build
         public NewTreatmentPlanView()
         {
             this.InitializeComponent();
@@ -52,6 +55,11 @@ namespace DentalManagerSys.Views
             //TreatmentsCB.SelectedIndex = 0;
         }
 
+        #endregion
+
+
+
+        #region Navigation methods
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter == null)
@@ -72,6 +80,9 @@ namespace DentalManagerSys.Views
 
         }
 
+        #endregion
+
+        #region buttons handlers
         private void TreatmentsCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -151,13 +162,7 @@ namespace DentalManagerSys.Views
 
         }
 
-        private void ReloadTretmentsListView()
-        {
-            TreatmentsDoneListView.SelectionChanged -= TreatmentsDoneListView_SelectionChanged;
-            TreatmentsDoneListView.ItemsSource = null;
-            TreatmentsDoneListView.ItemsSource = ViewModel.TreatmentsOnPlan;
-            TreatmentsDoneListView.SelectionChanged += TreatmentsDoneListView_SelectionChanged;
-        }
+      
 
         private void AddButon_Click(object sender, RoutedEventArgs e)
         {
@@ -204,6 +209,24 @@ namespace DentalManagerSys.Views
         {
 
         }
+
+        private void PreviewTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer,new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan));
+            Frame.Navigate(typeof(TreatmentPlanPreviewView),tp);
+
+        }
+        #endregion
+
+        #region util
+        private void ReloadTretmentsListView()
+        {
+            TreatmentsDoneListView.SelectionChanged -= TreatmentsDoneListView_SelectionChanged;
+            TreatmentsDoneListView.ItemsSource = null;
+            TreatmentsDoneListView.ItemsSource = ViewModel.TreatmentsOnPlan;
+            TreatmentsDoneListView.SelectionChanged += TreatmentsDoneListView_SelectionChanged;
+        }
+        #endregion
     }
 
 
