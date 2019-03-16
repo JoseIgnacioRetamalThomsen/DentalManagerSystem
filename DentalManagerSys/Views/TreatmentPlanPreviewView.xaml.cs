@@ -30,14 +30,15 @@ namespace DentalManagerSys.Views
         public TreatmentPlanPreviewView()
         {
             this.InitializeComponent();
-           
+            InitStaticString();
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-             tp = (TreatmentPlanPrint)e.Parameter;
+            tp = (TreatmentPlanPrint)e.Parameter;
 
             ph = new PrintHelper(tp);
 
@@ -59,6 +60,22 @@ namespace DentalManagerSys.Views
             Frame.GoBack();
         }
 
+        private string npTittle;
+        private string npContent;
+        private string npOKButton;
+        private string nsTitle;
+        private string nsContent;
+
+        private void InitStaticString()
+        {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
+            npTittle = resourceLoader.GetString("/Strings/npTittle/Text");
+            npContent=  resourceLoader.GetString("/Strings/npContent/Text");
+            npOKButton = resourceLoader.GetString("/Strings/npOKButton/Text");
+            nsTitle = resourceLoader.GetString("/Strings/nsTitle/Text");
+            nsContent = resourceLoader.GetString("/Strings/nsContent/Text");
+        }
+
         private async void Print_Click(object sender, RoutedEventArgs e)
         {
             if (PrintManager.IsSupported())
@@ -67,15 +84,16 @@ namespace DentalManagerSys.Views
                 {
                     // Show print UI
                     await PrintManager.ShowPrintUIAsync();
+                    
                 }
                 catch
                 {
                     // Printing cannot proceed at this time
                     ContentDialog noPrintingDialog = new ContentDialog()
                     {
-                        Title = "Printing error",
-                        Content = "\nSorry, printing can' t proceed at this time.",
-                        PrimaryButtonText = "OK"
+                        Title = npTittle,
+                        Content = npContent,
+                        PrimaryButtonText = npOKButton
                     };
                     await noPrintingDialog.ShowAsync();
                 }
@@ -85,9 +103,9 @@ namespace DentalManagerSys.Views
                 // Printing is not supported on this device
                 ContentDialog noPrintingDialog = new ContentDialog()
                 {
-                    Title = "Printing not supported",
-                    Content = "\nSorry, printing is not supported on this device.",
-                    PrimaryButtonText = "OK"
+                    Title = nsTitle,
+                    Content = nsContent,
+                    PrimaryButtonText = npOKButton
                 };
                 await noPrintingDialog.ShowAsync();
             }

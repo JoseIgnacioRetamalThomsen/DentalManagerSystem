@@ -34,6 +34,14 @@
                 <AppBarSeparator/>
 
                 <AppBarButton
+                    x:Name="PrintTreatmentPlan"
+                    Icon="Print"
+                    x:Uid="/Strings/PrintTreatmentPlanNew"
+                    IsEnabled="True"
+                    Tapped="PrintTreatmentPlan_Tapped"/>
+                <AppBarSeparator/>
+
+                <AppBarButton
                     x:Name="PreviewTreatmentPlan"
                     Icon="Preview"
                     x:Uid="/Strings/PreviewTreatmentPlan"

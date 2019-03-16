@@ -573,10 +573,31 @@
   <data name="BackButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Back to create new treeatment plan</value>
   </data>
+  <data name="npContent.Text" xml:space="preserve">
+    <value>Sorry, printing can' t proceed at this time.</value>
+  </data>
+  <data name="npOKButton.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="npTittle.Text" xml:space="preserve">
+    <value>Printing error</value>
+  </data>
+  <data name="nsContent.Text" xml:space="preserve">
+    <value>Sorry, printing is not supported on this device.</value>
+  </data>
+  <data name="nsTitle.Text" xml:space="preserve">
+    <value>Printing not supported</value>
+  </data>
   <data name="PrintButtonPreview.Label" xml:space="preserve">
     <value>Print</value>
   </data>
   <data name="PrintButtonPreview.ToolTipService.ToolTip" xml:space="preserve">
     <value>Print and move on</value>
+  </data>
+  <data name="PrintTreatmentPlanNew.Label" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="PrintTreatmentPlanNew.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create and print</value>
   </data>
 </root>

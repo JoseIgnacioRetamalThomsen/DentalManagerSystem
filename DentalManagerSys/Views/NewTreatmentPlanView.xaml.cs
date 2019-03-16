@@ -227,6 +227,11 @@ namespace DentalManagerSys.Views
             TreatmentsDoneListView.SelectionChanged += TreatmentsDoneListView_SelectionChanged;
         }
         #endregion
+
+        private void PrintTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
     }
 
 
