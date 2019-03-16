@@ -1,5 +1,6 @@
 ﻿using DataAccessLibrary;
 using Models;
+using System.Diagnostics;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -71,6 +72,26 @@ namespace DentalManagerSys.Views
         /// <param name="e"></param>
         private void SaveCustomerDetails_Click(object sender, RoutedEventArgs e)
         {
+
+            Debug.WriteLine("Test   1");
+
+            FireBaseDAO f = new FireBaseDAO();
+            f.UpdateCustomer(
+                   temp.iD,
+                NameTextBox.Text,
+                SurnameTextBox.Text,
+                DOBTextBox.Text,
+                streetTextBox.Text,
+                cityTextBox.Text,
+                provinceTextBox.Text,
+                countryTextBox.Text,
+                postcodeTextBox.Text,
+                mobileTextBox.Text,
+                fixTextBox.Text,
+                emailTextBox.Text,
+                commentsTextBox.Text
+                );
+
             DAO.UpdateCustomer(
                 temp.iD,
                 NameTextBox.Text,

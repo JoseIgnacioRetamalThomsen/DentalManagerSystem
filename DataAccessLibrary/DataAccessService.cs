@@ -22,5 +22,19 @@ namespace DataAccessLibrary
 
             // add tpo firebase
         }
+
+
+        //Edit Treatment is in EditTreatmentViewModel
+
+        //Add new Custermer is in NewCustomer.xaml.cs 
+        //Edit Customer is in EditCustomerDetails.xaml.cs
+
+        //Add new  Treatment Plan(AddNewTreatmentPlan) table is in NewTreatmentPlanViewModel.cs
+        //Update Treatment Plan(UpdateTreatmentPlanState) table is in TreatmentPlanViewModel
+
+        //Add new TreatmentPlanTreatments(AddNewTreatmentPlanTreatments) is in NewTreatmentPlanViewModel.cs
+        //Update TreatmentPlanTreatments(UpdateTreatmentOnPlan) is in TreatmentPlanView
+
+        //Add new Payment(AddNewpayment) is in NewPaymentView
     }
 }
