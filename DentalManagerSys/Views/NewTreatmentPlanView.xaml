@@ -33,11 +33,25 @@
                     Tapped="CreateTreatmentPlanButton_Tapped"/>
                 <AppBarSeparator/>
 
-                
+                <AppBarButton
+                    x:Name="PrintTreatmentPlan"
+                    Icon="Print"
+                    x:Uid="/Strings/PrintTreatmentPlanNew"
+                    IsEnabled="True"
+                    Tapped="PrintTreatmentPlan_Tapped"/>
+                <AppBarSeparator/>
+
+                <AppBarButton
+                    x:Name="PreviewTreatmentPlan"
+                    Icon="Preview"
+                    x:Uid="/Strings/PreviewTreatmentPlan"
+                    IsEnabled="True"
+                    Tapped="PreviewTreatmentPlan_Tapped"/>
+                <AppBarSeparator/>
+
+
 
             </CommandBar>
-
-
 
             <Grid 
                 x:Name="TopGrid"
@@ -53,17 +67,37 @@
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <!--<ColumnDefinition Width="*" />
-                    <ColumnDefinition  Width="*"/>-->
                 </Grid.ColumnDefinitions>
 
                 <StackPanel>
-                    <TextBlock   x:Uid="/Strings/CreateTreatmentPlanText" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+                    <TextBlock  
+                        x:Uid="/Strings/CreateTreatmentPlanText" 
+                        Style="{StaticResource TitleTextBlockStyle}">
+                                            </TextBlock>
                 </StackPanel>
 
-                <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal"  Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="5">
+                <StackPanel 
+                    Grid.Column="0" 
+                    Grid.Row="1" 
+                    Orientation="Horizontal"  
+                    Grid.ColumnSpan="2" 
+                    VerticalAlignment="Center" 
+                    Margin="5">
+
                     <StackPanel Margin="2">
+                        
+                        <TextBlock x:Uid="/Strings/SelectTooth"/>
+                        
+                        <ComboBox
+                            x:Name="SelectToothCB"
+                            DropDownClosed="SelectToothCB_DropDownClosed"/>
+                        
+                    </StackPanel>
+
+                    <StackPanel Margin="2">
+                        
                         <TextBlock x:Uid="/Strings/AddTreatment" ></TextBlock>
+                        
                         <ComboBox 
                             x:Name="TreatmentsCB" 
                             MinWidth="200" 
@@ -71,14 +105,10 @@
                             DropDownClosed="TreatmentsCB_DropDownClosed"
                            
                             x:Uid="/Strings/TreatmentsCB"></ComboBox>
+                        
                     </StackPanel>
 
-                    <StackPanel Margin="2">
-                        <TextBlock x:Uid="/Strings/SelectTooth"/>
-                        <ComboBox
-                            x:Name="SelectToothCB"
-                            DropDownClosed="SelectToothCB_DropDownClosed"/>
-                    </StackPanel>
+                 
                     <StackPanel Margin="2" >
                         <TextBlock x:Uid="/Strings/TreatmentPriceTB"/>
                         <TextBox
@@ -88,6 +118,7 @@
                             Text="{x:Bind ViewModel.PriceBefore, Mode=OneWay}"
                             TextChanging="EditPriceTB_TextChanging"/>
                     </StackPanel>
+
                     <StackPanel VerticalAlignment="Bottom" Margin="2">
                         <TextBox 
                             x:Name="CommentTB"
@@ -144,9 +175,9 @@
                             Tapped="SaveChangedPriceButton_Tapped"/>
 
                         <AppBarSeparator/>
-                    
+
                     </CommandBar>
-                    
+
                 </RelativePanel>
 
                 <ListView x:Name="TreatmentsDoneListView" Height="200"

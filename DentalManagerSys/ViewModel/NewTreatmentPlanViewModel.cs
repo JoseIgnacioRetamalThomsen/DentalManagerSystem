@@ -76,7 +76,7 @@ namespace DentalManagerSys.ViewModel
             {
                 _PriceBefore = value;
                 OnPropertyChanged(nameof(PriceBefore));
-          
+
             }
         }
 
@@ -88,7 +88,7 @@ namespace DentalManagerSys.ViewModel
             {
                 _BeforeTreatment = value;
                 OnPropertyChanged(nameof(BeforeTreatment));
-                
+
             }
         }
         public int Tooth { get; set; }
@@ -109,7 +109,7 @@ namespace DentalManagerSys.ViewModel
 
 
 
-     
+
 
         public void CreateNewTreatmentPlan()
         {
@@ -123,12 +123,13 @@ namespace DentalManagerSys.ViewModel
             f.AddNewTreatmentPlan(id, ActualCustomer.iD, (int)TreatmentPlaneState.Created, DateTime.Now.ToString(), "0");
 
             foreach (TreatmentOnPlan top in treatmentsOnPlan){
-                
+
                 top.TreatmentPlanID = id;
                 DAO.AddNewTreatmentPlanTreatments(top);
                 f.AddNewTreatmentPlanTreatments(top);
 
             }
+
 
         }
 

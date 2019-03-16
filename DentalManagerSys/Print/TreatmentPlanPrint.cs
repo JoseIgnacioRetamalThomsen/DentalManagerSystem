@@ -31,6 +31,8 @@ namespace DentalManagerSys.Print
         private string totalLabel;
 
         private List<TreatmentOnPlan> treatments;
+
+        #region constructors
         public TreatmentPlanPrint()
         {
             this.Width = 800;
@@ -49,6 +51,24 @@ namespace DentalManagerSys.Print
 
         }
 
+        public TreatmentPlanPrint(Customer c, List<TreatmentOnPlan> list)
+        {
+            this.Width = 800;
+            // this.Height = 5000;
+            this.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
+
+            InitStrings(c);
+            InitGrid();
+            InitTreatments(list);
+            SetTitle();
+            SetDate();
+            SetPatientData();
+            SetTreatmentNum();
+            SetTreatments();
+        }
+        #endregion
+
+        #region load dataa
         private void InitTreatments()
         {
             treatments = new List<TreatmentOnPlan>();
@@ -59,6 +79,66 @@ namespace DentalManagerSys.Print
             treatments.Add(new TreatmentOnPlan(1, 1, 1, 25000, DateTime.Now, 3, "none", false, "Treattment one 2dasd "));
 
         }
+        private void InitTreatments(List<TreatmentOnPlan> list)
+        {
+            treatments = new List<TreatmentOnPlan>(list);
+           
+
+        }
+
+
+        private void InitStrings()
+        {
+
+            //static
+            patienNameLabelString = "Name :";
+            patienAddressLabelString = "Address : ";
+            TreatmentNumberLabelString = "Treatment Num : ";
+
+            treatmentLabel = "Treatments";
+            teathNumberLabel = "Code";
+            amountLabel = "Price";
+            totalLabel = "Total";
+
+            //dinamic
+            title = "Plan Budget";
+            subTitle = "Dental Clinic";
+            doctorName = "Dr. Manual Arraigado";
+            date = "18/03/2019";
+
+            patientName = "Marco Alfonso Gonazales";
+            patientAddress = "13 Shop street , Vina Del Mar";
+            treatmentNumber = "1";
+
+
+        }
+        private void InitStrings(Customer c)
+        {
+
+            //static
+            patienNameLabelString = "Name :";
+            patienAddressLabelString = "Address : ";
+            TreatmentNumberLabelString = "Treatment Num : ";
+
+            treatmentLabel = "Treatments";
+            teathNumberLabel = "Code";
+            amountLabel = "Price";
+            totalLabel = "Total";
+
+            //dinamic
+            title = "Plan Budget";
+            subTitle = "Dental Clinic";
+            doctorName = "Dr. Manual Arraigado";
+            date = "18/03/2019";
+
+            patientName = c.name + " " + c.surname;
+            patientAddress = c.street+", " + c.city + ", " + c.country +". " + c.postcode;
+            treatmentNumber = "1";
+
+
+        }
+
+        #endregion
 
         //row 5
         private void SetTreatmentNum()
@@ -279,31 +359,7 @@ namespace DentalManagerSys.Print
 
         }
 
-        private void InitStrings()
-        {
-
-            //static
-            patienNameLabelString = "Name :";
-            patienAddressLabelString = "Address : ";
-            TreatmentNumberLabelString = "Treatment Num : ";
-
-            treatmentLabel = "Treatments";
-            teathNumberLabel = "Code";
-            amountLabel = "Price";
-            totalLabel = "Total";
-
-            //dinamic
-            title = "Plan Budget";
-            subTitle = "Dental Clinic";
-            doctorName = "Dr. Manual Arraigado";
-            date = "18/03/2019";
-
-            patientName = "Marco Alfonso Gonazales";
-            patientAddress = "13 Shop street , Vina Del Mar";
-            treatmentNumber = "1";
-
-
-        }
+       
 
         //row1
         private void SetDate()

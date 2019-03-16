@@ -98,6 +98,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Print\PrintHelper.cs" />
     <Compile Include="Print\TreatmentPlanPrint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CustomerDetailsViewModel.cs" />
@@ -136,6 +137,9 @@
     </Compile>
     <Compile Include="Views\SyncAccountView.xaml.cs">
       <DependentUpon>SyncAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TreatmentPlanPreviewView.xaml.cs">
+      <DependentUpon>TreatmentPlanPreviewView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TreatmentsView.xaml.cs">
       <DependentUpon>TreatmentsView.xaml</DependentUpon>
@@ -228,6 +232,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SyncAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TreatmentPlanPreviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
