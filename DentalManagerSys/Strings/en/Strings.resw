@@ -528,4 +528,37 @@
   <data name="passWordErrorShort.Text" xml:space="preserve">
     <value>The password must be a string with at least 6 characters.</value>
   </data>
+  <data name="AccountManagementNewOrSyncHeader.Text" xml:space="preserve">
+    <value>Account Management</value>
+  </data>
+  <data name="createAccount.Text" xml:space="preserve">
+    <value>Please click on Account Management for create your account or sync accout from another computer</value>
+  </data>
+  <data name="SyncAccountButton.Content" xml:space="preserve">
+    <value>Synchronize </value>
+  </data>
+  <data name="SyncAccountHeader.Text" xml:space="preserve">
+    <value>Synchronize your account</value>
+  </data>
+  <data name="wrongPassword.Text" xml:space="preserve">
+    <value>Wrong Password</value>
+  </data>
+  <data name="message1.Text" xml:space="preserve">
+    <value>We send you a email with a link for change your password</value>
+  </data>
+  <data name="message2.Text" xml:space="preserve">
+    <value>Change your password</value>
+  </data>
+  <data name="ResetPassword.Text" xml:space="preserve">
+    <value>Reset password using email (do this if you forgot your password).</value>
+  </data>
+  <data name="ResetPasswordButton.Content" xml:space="preserve">
+    <value>Send Email</value>
+  </data>
+  <data name="ResetPasswordHeader.Text" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="SyncAccountButtonAM.Text" xml:space="preserve">
+    <value>Synchonize account</value>
+  </data>
 </root>

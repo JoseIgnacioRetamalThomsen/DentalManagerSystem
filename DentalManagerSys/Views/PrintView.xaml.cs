@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DentalManagerSys.Print;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,18 +21,13 @@ namespace DentalManagerSys.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AccountManagementView : Page
+    public sealed partial class PrintView : Page
     {
-        public AccountManagementView()
+        public PrintView()
         {
             this.InitializeComponent();
-        }
-
-       
-
-        private void ResetPassword_PointerPressed(object sender, PointerRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(ResetPasswordView));
+            TreatmentPlanPrint tp = new TreatmentPlanPrint();
+            Main.Children.Add(tp);
         }
     }
 }

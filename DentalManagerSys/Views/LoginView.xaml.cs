@@ -32,7 +32,7 @@ namespace DentalManagerSys.Views
         public LoginView()
         {
             this.InitializeComponent();
-
+            DAO.InitializeDatabase();
             InitString();
 
 
@@ -40,23 +40,35 @@ namespace DentalManagerSys.Views
 
         private void InitString()
         {
-            wrongPassword = "Wrong password";
-            createAccount = "Please click on Account Management for create your account";
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
+
+            wrongPassword = resourceLoader.GetString("/Strings/wrongPassword/Text");
+            createAccount = resourceLoader.GetString("/Strings/createAccount/Text");
+           // wrongPassword = "Wrong password";
+            //createAccount = "Please click on Account Management for create your account";
         }
 
         User user;
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            // get user data from local database
             user = DAO.GetUser();
             if (user != null)
             {
 
                 //set name on view
                 LoginUserName.Text = user.Name;
+
+                //enable login button
+                SignInButton.IsEnabled = true;
             }
             else
             {
+                //if there is not user a account must be created
                 LoginUserName.Text =  createAccount;
+
+                //disable login button
+                SignInButton.IsEnabled = false;
             }
 
 
@@ -81,8 +93,7 @@ namespace DentalManagerSys.Views
 
         private async void SignInButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
-            return;
+           
             user.Password = passwordBox.Password;
             Res res = await Auth.SignIn(user);
             Debug.WriteLine(res.Success);
@@ -102,7 +113,8 @@ namespace DentalManagerSys.Views
             ErrorMessage.Text = "";
             if (user == null)
             {
-                Frame.Navigate(typeof(NewUserView));
+                Frame.Navigate(typeof(AccountManagementSyncOrNew));
+               // Frame.Navigate(typeof(NewUserView));
             }
             else
             {

@@ -20,18 +20,21 @@ namespace DentalManagerSys.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AccountManagementView : Page
+    public sealed partial class AccountManagementSyncOrNew : Page
     {
-        public AccountManagementView()
+        public AccountManagementSyncOrNew()
         {
             this.InitializeComponent();
         }
 
-       
-
-        private void ResetPassword_PointerPressed(object sender, PointerRoutedEventArgs e)
+        private void NewAccountButton_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ResetPasswordView));
+            Frame.Navigate(typeof(NewUserView));
+        }
+
+        private void SyncAccountButton_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SyncAccountView));
         }
     }
 }
