@@ -158,5 +158,10 @@ namespace DentalManagerSys.Views
             Frame.Navigate(typeof(NewPaymentView), new NewPaymentData( ViewModel.Customer.iD,0,false),
                  new DrillInNavigationTransitionInfo());
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
+        }
     }
 }

@@ -27,11 +27,18 @@
 
 
                 <AppBarButton
+                    x:Name="BackButton"
+                    Icon="Back"
+                    x:Uid="/Strings/BackButton"
+                    IsEnabled="True"
+                    Click="BackButton_Click"/>
+
+                <!--<AppBarButton
                     x:Name="EditPlanDone"
                     Icon="Add"
                     x:Uid="/Strings/EditPlanDone"
                 Click="EditPlanDone_Click"
-                    IsEnabled="True"/>
+                    IsEnabled="True"/>-->
 
             <AppBarSeparator/>
 

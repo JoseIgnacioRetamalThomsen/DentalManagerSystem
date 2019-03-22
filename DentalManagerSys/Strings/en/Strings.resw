@@ -571,7 +571,7 @@
     <value>Back</value>
   </data>
   <data name="BackButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Back to create new treeatment plan</value>
+    <value>Back to previous page.</value>
   </data>
   <data name="npContent.Text" xml:space="preserve">
     <value>Sorry, printing can' t proceed at this time.</value>
