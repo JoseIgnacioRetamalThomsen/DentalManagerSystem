@@ -18,8 +18,8 @@ namespace DataAccessLibrary
         /// <summary>
         /// Firebase authetication parameters
         /// </summary>
-        private const String databaseUrl = "https://unlockpincode-d448d.firebaseio.com/";
-        private const String databaseSecret = "gOjxFlBGP1v8vufauNkO9VqnH5PiEwltVATNdUey";
+        private const String databaseUrl = "https://dentalmanagersystem.firebaseio.com/";
+        private const String databaseSecret = "f8YxsUaD2hAKXvywrf3XBJAMuIsjopDVba1v78np";
         private FirebaseClient firebase;
 
 
@@ -48,7 +48,9 @@ namespace DataAccessLibrary
 
             ConnectToFirebase();
 
-            String node = "marko" + "Treatments" + "/";
+            string userName = DAO.GetUserID();
+
+            String node = userName + "Treatments" + "/";
 
             TreatmentData treatmentData = new TreatmentData
             {
@@ -71,7 +73,9 @@ namespace DataAccessLibrary
         {
             ConnectToFirebase();
 
-            String node = "marko" + "Treatments" + "/";
+            string userName = DAO.GetUserID();
+
+            String node = userName + "Treatments" + "/";
 
             TreatmentData treatmentData = new TreatmentData
             {
@@ -119,7 +123,12 @@ namespace DataAccessLibrary
 
             bool FoundiD = false;
             ConnectToFirebase();
-            String node = "marko" + "Customers" + "/";
+
+            string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+            String node = myUsername + "Customers" + "/";
+            
             var customerData = new CustomerData
             {
                 id = id,
@@ -180,7 +189,10 @@ namespace DataAccessLibrary
 
             ConnectToFirebase();
 
-            String node = "marko" + "Customers" + "/";
+            string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+            String node = myUsername + "Customers" + "/";
             var customerData = new CustomerData
             {
                 id = customerID,
@@ -226,7 +238,10 @@ namespace DataAccessLibrary
         {
             ConnectToFirebase();
 
-            String node = "marko" + "TreatmentPlans" + "/";
+            string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+            String node = myUsername + "TreatmentPlans" + "/";
             var treatmentPlanData = new TreatmentPlanData
             {
                 treatmentPlanID = treatmentPlanID,
@@ -255,7 +270,10 @@ namespace DataAccessLibrary
             string creationDate="";
             string treatmentPlanCompleteDate="";
 
-            String node = "marko" + "TreatmentPlans" + "/";
+            string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+            String node = myUsername + "TreatmentPlans" + "/";
             var treatmentPlanData = new TreatmentPlanData
             {
                 treatmentPlanID = iD,
@@ -291,7 +309,10 @@ namespace DataAccessLibrary
         {
             ConnectToFirebase();
 
-            String node = "marko" + "TreatmentPlanTreatments" + "/";
+            string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+            String node = myUsername + "TreatmentPlanTreatments" + "/";
 
             var treatmentPlanTreatmentsData = new TreatmentPlanTreatmentsData
             {
@@ -317,7 +338,10 @@ namespace DataAccessLibrary
         {
             ConnectToFirebase();
 
-            String node = "marko" + "TreatmentPlanTreatments" + "/";
+            string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+            String node = myUsername + "TreatmentPlanTreatments" + "/";
 
             var treatmentPlanTreatmentsData = new TreatmentPlanTreatmentsData
             {
@@ -358,7 +382,10 @@ namespace DataAccessLibrary
         {
             ConnectToFirebase();
 
-             String node = "marko" + "Payments" + "/";
+            string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+            String node = myUsername + "Payments" + "/";
 
              var paymentsData = new PaymentsData
              {
@@ -381,11 +408,15 @@ namespace DataAccessLibrary
             //Open connection with Firebase
             ConnectToFirebase();
 
-            String TreatmentNode = "marko" + "Treatments" + "/";
-            String CustomerNode = "marko" + "Customers" + "/";
-            String TreatmentPlanNode = "marko" + "TreatmentPlans" + "/";
-            String TreatmentPlanTreatmentNode = "marko" + "TreatmentPlanTreatments" + "/";
-            String PaymentNode = "marko" + "Payments" + "/";
+            string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+
+            String TreatmentNode = myUsername + "Treatments" + "/";
+            String CustomerNode = myUsername + "Customers" + "/";
+            String TreatmentPlanNode = myUsername + "TreatmentPlans" + "/";
+            String TreatmentPlanTreatmentNode = myUsername + "TreatmentPlanTreatments" + "/";
+            String PaymentNode = myUsername + "Payments" + "/";
 
                //Establish SQLite connection and populate treatment table
                 using (SqliteConnection db =
@@ -398,6 +429,8 @@ namespace DataAccessLibrary
                         ("DELETE from treatment", db);
                     SqliteDataReader query = selectCommand.ExecuteReader();
 
+                   try
+                   {
                     //Read from Firebase and populate the local datbase/SQLite treatment table
                     var results = await firebase.Child(TreatmentNode).OnceAsync<TreatmentData>();
                     foreach (var details in results)
@@ -413,8 +446,13 @@ namespace DataAccessLibrary
                         insertCommand.ExecuteReader();
                     }
 
-                    db.Close();
                 }
+                    catch
+                    {
+                    Debug.WriteLine("Nothing found in Firebase");
+                }
+                db.Close();
+            }
 
 
                 //Establish SQLite connection and populate customers table
@@ -428,8 +466,10 @@ namespace DataAccessLibrary
                         ("DELETE from customers", db);
                     SqliteDataReader query = selectCommand.ExecuteReader();
 
-                    //Read from Firebase and populate the local datbase/SQLite customers table
+                //Read from Firebase and populate the local datbase/SQLite customers table
 
+                try
+                {
                     var rlts = await firebase.Child(CustomerNode).OnceAsync<CustomerData>();
                     foreach (var details in rlts)
                     {
@@ -455,6 +495,11 @@ namespace DataAccessLibrary
 
                         insertCommand.ExecuteReader();
                     }
+                }
+                catch
+                {
+                    Debug.WriteLine("Nothing found in customers in Firebase");
+                }
 
                     db.Close();
                 }
@@ -470,6 +515,8 @@ namespace DataAccessLibrary
                         ("DELETE from treatmentPlan", db);
                     SqliteDataReader query = selectCommand.ExecuteReader();
 
+                try
+                {
                     //Read from Firebase and populate the local datbase/SQLite treatmentPlan table
                     var results = await firebase.Child(TreatmentPlanNode).OnceAsync<TreatmentPlanData>();
                     foreach (var details in results)
@@ -488,8 +535,14 @@ namespace DataAccessLibrary
                         insertCommand.ExecuteReader();
                     }
 
+                }
+                catch
+                {
+                    Debug.WriteLine("Nothing Found IN TreatmentPlan in Firebase");
+                }
                     db.Close();
                 }
+
 
                 //Establish SQLite connection and populate treatment plan treatment table
                 using (SqliteConnection db =
@@ -501,6 +554,8 @@ namespace DataAccessLibrary
                         //Delete everything in the treatment plan treatment table
                         ("DELETE from treatmentPlanTreatments", db);
                     SqliteDataReader query = selectCommand.ExecuteReader();
+                try
+                {
 
                     //Read from Firebase and populate the local datbase/SQLite treatmentPlanTreatments table
                     var results = await firebase.Child(TreatmentPlanTreatmentNode).OnceAsync<TreatmentPlanTreatmentsData>();
@@ -520,6 +575,11 @@ namespace DataAccessLibrary
                         insertCommand.ExecuteReader();
 
                     }
+                }
+                catch
+                {
+                    Debug.WriteLine("Nothing Found in TreatmentPlanTreatments Firebase");
+                }
 
                     db.Close();
                 }
@@ -536,6 +596,8 @@ namespace DataAccessLibrary
                         ("DELETE from payments", db);
                     SqliteDataReader query = selectCommand.ExecuteReader();
 
+                try
+                {
                     //Read from Firebase and populate the local datbase/SQLite payments table
                     var results = await firebase.Child(PaymentNode).OnceAsync<PaymentsData>();
                     foreach (var details in results)
@@ -554,12 +616,17 @@ namespace DataAccessLibrary
                         insertCommand.ExecuteReader();
 
                     }
+                }
+                catch
+                {
+                    Debug.WriteLine("Nothing Found in Payments In Firebase");
+                }
 
                     db.Close();
                 }
 
-               /*await firebase.Child("markoPayments/").DeleteAsync();
-               await firebase.Child("markoTreatmentPlanTreatments/").DeleteAsync();
+               /*await firebase.Child("GOO352031@GMIT-IECustomers/").DeleteAsync();
+               await firebase.Child("GOO352031@GMITIECustomers/").DeleteAsync();
                await firebase.Child("mmarkoTreatmentPlans/").DeleteAsync();
                await firebase.Child("markoTreatments/").DeleteAsync();*/
 

@@ -1033,6 +1033,45 @@ namespace DataAccessLibrary
 
 
         /// <summary>
+        /// Get user ID
+        /// </summary>
+        /// <returns></returns>
+        public static string GetUserID()
+        {
+
+            string UserID = "";
+            User user = null;
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from users", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+
+                    user = new User(
+                    query.GetString(0),
+                    query.GetString(1),
+                   UserID= query.GetString(2)
+
+                 );
+
+                }
+
+                db.Close();
+            }
+
+            return UserID;
+        }
+
+
+        /// <summary>
         /// Update treatmentPlanTreatments
         /// </summary>
         /// <param name="treatmentPlanTreatmentsID"></param>

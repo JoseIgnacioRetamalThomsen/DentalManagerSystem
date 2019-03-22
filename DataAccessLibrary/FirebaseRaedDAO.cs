@@ -12,10 +12,12 @@ namespace DataAccessLibrary
         /// <summary>
         /// Firebase authetication parameters
         /// </summary>
-        private const String databaseUrl = "https://unlockpincode-d448d.firebaseio.com/";
-        private const String databaseSecret = "gOjxFlBGP1v8vufauNkO9VqnH5PiEwltVATNdUey";
+        private const String databaseUrl = "https://dentalmanagersystem.firebaseio.com/";
+        private const String databaseSecret = "f8YxsUaD2hAKXvywrf3XBJAMuIsjopDVba1v78np";
         private FirebaseClient firebase;
 
+
+       
 
         /// <summary>
         /// Establish connection with Firebase
@@ -37,13 +39,17 @@ namespace DataAccessLibrary
 
             ConnectToFirebase();
 
-            string tableName = "mark" + "Treatments" + "/";
+            string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+
+            string tableName = myUsername + "Treatments" + "/";
 
             var results = await firebase.Child(tableName).OnceAsync<TreatmentData>();
             foreach (var t in results)
             {
              
-                   System.Diagnostics.Debug.WriteLine("Test "+ t.Object.iD);
+               
             }
 
 
