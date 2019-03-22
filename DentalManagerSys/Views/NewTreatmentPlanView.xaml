@@ -26,6 +26,13 @@
                 DefaultLabelPosition="Right">
 
                 <AppBarButton
+                    x:Name="BackButton"
+                    Icon="Back"
+                    x:Uid="/Strings/BackButton"
+                    IsEnabled="True"
+                    Click="BackButton_Click"/>
+
+                <AppBarButton
                     x:Name="CreateTreatmentPlanButton"
                     Icon="Add"
                     x:Uid="/Strings/CreateNewTreatmentPlanButton"
@@ -101,9 +108,7 @@
                         <ComboBox 
                             x:Name="TreatmentsCB" 
                             MinWidth="200" 
-                            SelectionChanged="TreatmentsCB_SelectionChanged"
                             DropDownClosed="TreatmentsCB_DropDownClosed"
-                           
                             x:Uid="/Strings/TreatmentsCB"></ComboBox>
                         
                     </StackPanel>
@@ -187,7 +192,7 @@
                        ScrollViewer.VerticalScrollBarVisibility="Auto"
                           SelectionMode="Single"
                           IsItemClickEnabled="True"
-                          ItemClick="TreatmentsDoneListView_ItemClick"
+                          
                           SelectionChanged="TreatmentsDoneListView_SelectionChanged"
             
                          

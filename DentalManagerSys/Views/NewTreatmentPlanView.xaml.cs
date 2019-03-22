@@ -11,6 +11,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Printing;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -34,6 +35,11 @@ namespace DentalManagerSys.Views
 
         public NewTreatmentPlanViewModel ViewModel { get; set; }
         public object TreatmentPanPrint { get; private set; }
+
+        /// <summary>
+        /// Print helper
+        /// </summary>
+        PrintHelper ph;
         #region Constructors and build
         public NewTreatmentPlanView()
         {
@@ -46,6 +52,8 @@ namespace DentalManagerSys.Views
             TreatmentsDoneListView.ItemsSource = ViewModel.TreatmentsOnPlan;
             SelectToothCB.ItemsSource = ViewModel.Tooths;
             ViewModel.Total = 0;
+
+           
         }
 
         private void InitTreamentsCB()
@@ -77,38 +85,22 @@ namespace DentalManagerSys.Views
 
             }
 
+            //init print helper
+            base.OnNavigatedTo(e);
+
 
         }
 
         #endregion
 
         #region buttons handlers
-        private void TreatmentsCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-
-        }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void TreatmentsDoneListView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
 
         private void TreatmentsDoneListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Debug.WriteLine("willThis" + ((ListView)sender).SelectedIndex);
-            Debug.WriteLine("willThis" + ViewModel.TreatmentsOnPlan[((ListView)sender).SelectedIndex].Price.ToString());
-
             //set value of treament on edit box for editing
             EditPriceTB.Text = ((int)ViewModel.TreatmentsOnPlan[((ListView)sender).SelectedIndex].Price).ToString();
             SaveChangedPriceButton.IsEnabled = true;
-
-
         }
 
         private void TreatmentsCB_DropDownClosed(object sender, object e)
@@ -162,7 +154,7 @@ namespace DentalManagerSys.Views
 
         }
 
-      
+
 
         private void AddButon_Click(object sender, RoutedEventArgs e)
         {
@@ -212,9 +204,30 @@ namespace DentalManagerSys.Views
 
         private void PreviewTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer,new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan));
-            Frame.Navigate(typeof(TreatmentPlanPreviewView),tp);
+            //create treatment plan for print 
+            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan));
+            Frame.Navigate(typeof(TreatmentPlanPreviewView), tp);
 
+        }
+
+        private string npTittle;
+        private string npContent;
+        private string npOKButton;
+        private string nsTitle;
+        private string nsContent;
+
+   
+
+        private   void PrintTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            //create treatment plan for print 
+            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan));
+            Frame.Navigate(typeof(TreatmentPlanPreviewView), tp );
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
         }
         #endregion
 
@@ -228,10 +241,7 @@ namespace DentalManagerSys.Views
         }
         #endregion
 
-        private void PrintTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
-        {
 
-        }
     }
 
 

@@ -107,6 +107,7 @@ namespace DentalManagerSys.Views
                     Content = nsContent,
                     PrimaryButtonText = npOKButton
                 };
+
                 await noPrintingDialog.ShowAsync();
             }
         }
