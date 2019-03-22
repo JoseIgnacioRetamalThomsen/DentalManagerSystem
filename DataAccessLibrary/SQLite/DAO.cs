@@ -1004,7 +1004,7 @@ namespace DataAccessLibrary
                     int TreatmentPlanID = query.GetInt32(1);
                     int TreatmentID = query.GetInt32(2);
                     decimal price = query.GetDecimal(3);
-                    DateTime date = Convert.ToDateTime(query.GetDateTime(4));
+                    DateTime date = Convert.ToDateTime(query.GetString(4));
                     int toothNum = query.GetInt32(5);
                     string comments = query.GetString(6);
                     bool isDone = query.GetInt32(7) == 0 ? false : true;
