@@ -78,33 +78,33 @@
                     CanUserReorderColumns="False"
                     CanUserResizeColumns="False"
                     AutoGenerateColumns="False"
-                    
                     BorderThickness="0"
                     GridLinesVisibility="None"
-                 ItemsSource="{x:Bind customerList}"
+                    ItemsSource="{x:Bind customerList}"
                     IsReadOnly="True"
-                 SelectionChanged="DataGrid_SelectionChanged"
-                 >
+                    SelectionChanged="DataGrid_SelectionChanged">
+                    
                     <toolkit:DataGrid.Columns>
                         <toolkit:DataGridTextColumn
                             Tag="FirstName"
                             Binding="{Binding name}"
-                            x:Uid="/Strings/NameDataGrid"
-                            
-                            />
+                            x:Uid="/Strings/NameDataGrid"/>
 
                         <toolkit:DataGridTextColumn
                             Tag="Surname"
                             Binding="{Binding surname}"
                             x:Uid="/Strings/SurnameDataGrid"/>
+                        
                         <toolkit:DataGridTextColumn
                             Tag="ID"
                             Binding="{Binding iD}"
                             x:Uid="/Strings/IDDataGrid"/>
+                        
                         <toolkit:DataGridTextColumn
                             Tag="Email"
                             Binding="{Binding email}"
                             x:Uid="/Strings/EmailDataGrid"/>
+                        
                         <toolkit:DataGridTextColumn
                             Tag="MobileNum"
                             Binding="{Binding mobileNum}"

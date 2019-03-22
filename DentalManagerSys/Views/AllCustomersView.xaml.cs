@@ -21,6 +21,10 @@ namespace DentalManagerSys.Views
             this.InitializeComponent();
             customerList = new ObservableCollection<Customer>(DAO.GetAllCustomer());
 
+            foreach(Customer c in customerList)
+            {
+                c.Print();
+            }
            
         }
 
