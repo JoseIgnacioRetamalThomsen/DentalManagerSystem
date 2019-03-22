@@ -567,12 +567,14 @@ namespace DataAccessLibrary
                         insertCommand.Connection = db;
 
                         // Use parameterized query
-                        insertCommand.CommandText = "INSERT INTO treatmentPlanTreatments (TreatmentPlanID,TreatmentID,Price,TreatmentCompleteDate) VALUES (@TreatmentPlanID,@TreatmentID,@Price,@TreatmentCompleteDate);";
+                        insertCommand.CommandText = "INSERT INTO treatmentPlanTreatments (TreatmentPlanID,TreatmentID,Price,TreatmentCompleteDate,tooth,comment) VALUES (@TreatmentPlanID,@TreatmentID,@Price,@TreatmentCompleteDate,@Tooth,@Comment);";
 
                         insertCommand.Parameters.AddWithValue("@TreatmentPlanID", details.Object.treatmentPlanID);
                         insertCommand.Parameters.AddWithValue("@TreatmentID", details.Object.treatmentID);
                         insertCommand.Parameters.AddWithValue("@Price", details.Object.price);
                         insertCommand.Parameters.AddWithValue("@TreatmentCompleteDate", details.Object.treatmentCompleteDate);
+                        insertCommand.Parameters.AddWithValue("@Tooth", details.Object.tooth);
+                        insertCommand.Parameters.AddWithValue("@Comment", details.Object.comment);
 
                         insertCommand.ExecuteReader();
 
