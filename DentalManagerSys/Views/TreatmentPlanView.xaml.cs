@@ -121,7 +121,9 @@ namespace DentalManagerSys.Views
             int index = TreatmentsOnPlanLV.SelectedIndex;
             TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
             top.IsDone = false;
+
             App.Data.UpdateTreatmentOnPlan(top);
+
             ReloadListView();
         }
 
