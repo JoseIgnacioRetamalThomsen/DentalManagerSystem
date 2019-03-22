@@ -13,6 +13,10 @@ namespace DentalManagerSys.ViewModel
 {
     public class TreatmentPlanViewModel : ViewModelBase
     {
+        private static string created = "Created";
+        private static string accepted = "Accepted";
+        private static string done = "done";
+
         public decimal total;
         public decimal Total
         {
@@ -58,7 +62,8 @@ namespace DentalManagerSys.ViewModel
 
         public ObservableCollection<TreatmentPlaneState> treatmentsPlans = new ObservableCollection<TreatmentPlaneState>()
         {
-            TreatmentPlaneState.Accepted,TreatmentPlaneState.Created,TreatmentPlaneState.Finish
+            //created,accepted,done
+           TreatmentPlaneState.Accepted,TreatmentPlaneState.Created,TreatmentPlaneState.Finish
         };
 
         public ObservableCollection<TreatmentPlaneState> TreatmentsPlans

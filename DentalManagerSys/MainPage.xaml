@@ -10,18 +10,19 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView x:Name="NavView"
-                    ItemInvoked="NavView_ItemInvoked"
-                    Loaded="NavView_Loaded"
-                    Windows10version1803:BackRequested="NavView_BackRequested">
+    <NavigationView 
+            x:Name="NavView"
+            ItemInvoked="NavView_ItemInvoked"
+            Loaded="NavView_Loaded"
+            Windows10version1803:BackRequested="NavView_BackRequested"
+            Header="Dental Mager">
+        
         <NavigationView.MenuItems>
             <NavigationViewItem Icon="ContactInfo" x:Uid="/Strings/NavViewItemPatients" Tag="PatientsList" />
             <NavigationViewItem Icon="List"  x:Uid="/Strings/NavViewTretments" Tag="ManageTreaments" />
             <!--<NavigationViewItem Icon="Refresh" Content="Menu Item3" Tag="SamplePage3" />
             <NavigationViewItem Icon="Download" Content="Menu Item4" Tag="SamplePage4" />-->
         </NavigationView.MenuItems>
-
-
 
         <Frame x:Name="ContentFrame" Margin="24">
             <Frame.ContentTransitions>
