@@ -33,7 +33,7 @@ namespace DentalManagerSys
             DAO.InitializeDatabase();
            App.userName= DAO.GetUserID();
             FireBaseDAO f = new FireBaseDAO();
-           f.ReadDataFromFirebase();
+            f.ReadDataFromFirebase();
 
 
         }
@@ -41,7 +41,7 @@ namespace DentalManagerSys
         {
             if (args.IsSettingsInvoked)
             {
-                 ContentFrame.Navigate(typeof(SettingsView));
+                ContentFrame.Navigate(typeof(SettingsView));
             }
             else
             {
@@ -82,12 +82,15 @@ namespace DentalManagerSys
 
         private void On_Navigated(object sender, NavigationEventArgs e)
         {
-             NavView.IsBackEnabled = ContentFrame.CanGoBack;
+            //NavView.IsBackButtonVisible = 0;
+            NavView.IsBackEnabled = ContentFrame.CanGoBack;
 
+            //nav to settings if seting is click
             if (ContentFrame.SourcePageType == typeof(SettingsView))
             {
                 NavView.SelectedItem = NavView.SettingsItem as NavigationViewItem;
             }
+            //nave to other pages
             else
             {
                 Dictionary<Type, string> lookup = new Dictionary<Type, string>()
@@ -100,13 +103,12 @@ namespace DentalManagerSys
                 };
 
                 String stringTag = lookup[ContentFrame.SourcePageType];
-                //Debug.Write(stringTag);
+
                 // set the new SelectedItem
                 foreach (NavigationViewItemBase item in NavView.MenuItems)
                 {
                     if (item is NavigationViewItem && item.Tag.Equals(stringTag))
                     {
-                        //Debug.Write("yes");
                         item.IsSelected = true;
                         break;
                     }
@@ -119,8 +121,6 @@ namespace DentalManagerSys
         {
             switch (item.Tag)
             {
-
-
                 case "PatientsList":
                     ContentFrame.Navigate(typeof(ViewAllCustomers));
                     break;
@@ -156,6 +156,11 @@ namespace DentalManagerSys
         private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
             On_BackRequested();
+        }
+
+        private void NavView_BackRequested_1(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        {
+
         }
     }
 }

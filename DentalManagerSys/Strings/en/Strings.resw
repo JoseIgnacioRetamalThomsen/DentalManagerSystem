@@ -352,7 +352,7 @@
     <value>Active Treatment Plan</value>
   </data>
   <data name="CreateTreatmentsTextBox.Text" xml:space="preserve">
-    <value>Create Treatment Plan</value>
+    <value>Created Treatments Plans</value>
   </data>
   <data name="DoneTreatmentsTextBox.Text" xml:space="preserve">
     <value>Complete Treatment Plan</value>
