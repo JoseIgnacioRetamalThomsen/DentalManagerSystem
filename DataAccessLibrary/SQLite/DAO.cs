@@ -722,7 +722,6 @@ namespace DataAccessLibrary
                     query.GetString(0),
                     query.GetString(1),
                     query.GetString(2),
-                    query.GetString(3),
                     query.GetString(4),
                     query.GetString(5),
                     query.GetString(6),
@@ -730,8 +729,9 @@ namespace DataAccessLibrary
                     query.GetString(8),
                     query.GetString(9),
                     query.GetString(10),
-                    new DateTime(),
-                    query.GetString(11)
+                    query.GetString(11),
+                    Convert.ToDateTime(query.GetString(3)),
+                    query.GetString(12)
                     ));
                 }
 
