@@ -49,8 +49,9 @@ namespace DataAccessLibrary
             ConnectToFirebase();
 
             string userName = DAO.GetUserID();
-
-            String node = userName + "Treatments" + "/";
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+            String node = myUsername + "Treatments" + "/";
 
             TreatmentData treatmentData = new TreatmentData
             {
@@ -74,8 +75,9 @@ namespace DataAccessLibrary
             ConnectToFirebase();
 
             string userName = DAO.GetUserID();
-
-            String node = userName + "Treatments" + "/";
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+            String node = myUsername + "Treatments" + "/";
 
             TreatmentData treatmentData = new TreatmentData
             {
