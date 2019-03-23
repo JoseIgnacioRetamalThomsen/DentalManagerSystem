@@ -15,7 +15,7 @@ namespace DataAccessLibrary
 
         public void AddNewTreatment(Treatment treatment)
         {
-       
+
            long number = sqlite.AddNewTreatment(treatment.Name, treatment.Price);
 
 
@@ -28,7 +28,7 @@ namespace DataAccessLibrary
             sqlite.UpdateTreatment(new Treatment(iD, text, v));
 
             firebaseDAO.UpdateTreatment(new Treatment(iD, text, v));
-             
+
         }
 
         public bool NewCustomerDetails(string idInput, string inputName, string inputSurename, string DOB, string streetInput, string cityInput, string provinceInput, string countryInput, string postCodeInput, string mobilNumInput, string homeNumInput, string emaillInput, string commentsInput)
@@ -39,7 +39,7 @@ namespace DataAccessLibrary
             firebaseDAO.AddNewCustomer(idInput, inputName, inputSurename, DOB, streetInput, cityInput, provinceInput, countryInput, postCodeInput, mobilNumInput, homeNumInput, emaillInput, commentsInput);
 
 
-            
+
             return temp;
         }
 
@@ -51,7 +51,7 @@ namespace DataAccessLibrary
 
             firebaseDAO.UpdateCustomer(idInput,inputName,inputSurename,DOB,streetInput,cityInput,provinceInput,countryInput,postCodeInput,mobilNumInput,homeNumInput,emaillInput,commentsInput);
 
-           
+
         }
 
         //Update Treatment Plan(UpdateTreatmentPlanState) table is in TreatmentPlanViewModel
@@ -62,7 +62,7 @@ namespace DataAccessLibrary
             firebaseDAO.UpdateTreatmentPlanState(state, PlanID);
         }
 
-     
+
 
 
         //Update TreatmentPlanTreatments(UpdateTreatmentOnPlan) is in TreatmentPlanView
@@ -71,7 +71,7 @@ namespace DataAccessLibrary
             sqlite.UpdateTreatmentOnPlan(top);
 
             firebaseDAO.UpdateTreatmentOnPlan(top);
-            
+
         }
 
         //Add new Payment(AddNewpayment) is in NewPaymentView
