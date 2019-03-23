@@ -111,7 +111,7 @@
     <Compile Include="Views\User\AccountManagementSyncOrNew.xaml.cs">
       <DependentUpon>AccountManagementSyncOrNew.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AccountManagementView.xaml.cs">
+    <Compile Include="Views\User\AccountManagementView.xaml.cs">
       <DependentUpon>AccountManagementView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditCustomerDetails.xaml.cs">
@@ -120,22 +120,22 @@
     <Compile Include="Views\EditTreatmentView.xaml.cs">
       <DependentUpon>EditTreatmentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoginView.xaml.cs">
+    <Compile Include="Views\User\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewUserView.xaml.cs">
+    <Compile Include="Views\User\NewUserView.xaml.cs">
       <DependentUpon>NewUserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PrintView.xaml.cs">
       <DependentUpon>PrintView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ResetPasswordView.xaml.cs">
+    <Compile Include="Views\User\ResetPasswordView.xaml.cs">
       <DependentUpon>ResetPasswordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SyncAccountView.xaml.cs">
+    <Compile Include="Views\User\SyncAccountView.xaml.cs">
       <DependentUpon>SyncAccountView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TreatmentPlanPreviewView.xaml.cs">
@@ -199,7 +199,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AccountManagementView.xaml">
+    <Page Include="Views\User\AccountManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,11 +211,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LoginView.xaml">
+    <Page Include="Views\User\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewUserView.xaml">
+    <Page Include="Views\User\NewUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,7 +223,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ResetPasswordView.xaml">
+    <Page Include="Views\User\ResetPasswordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,7 +231,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SyncAccountView.xaml">
+    <Page Include="Views\User\SyncAccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
