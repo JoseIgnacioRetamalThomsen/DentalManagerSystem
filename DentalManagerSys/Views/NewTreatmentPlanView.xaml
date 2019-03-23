@@ -191,6 +191,12 @@
                             Tapped="SaveChangedPriceButton_Tapped"/>
 
                         <AppBarSeparator/>
+                        <AppBarButton
+                            x:Name="RemoveTreatmentButton"
+                            Icon="Delete"
+                            x:Uid="/Strings/RemoveTreatmentButton"
+                            IsEnabled="false"
+                            Tapped="RemoveTreatmentButton_Tapped"/>
 
                     </CommandBar>
 
@@ -222,16 +228,16 @@
                                 </Grid.RowDefinitions>
 
                                 <Border BorderBrush="Gray" BorderThickness="0,0,0.5,0.5" Grid.Column="0" Grid.Row="0">
-                                    <TextBlock Text="Name" Foreground="Gray" TextAlignment="Center"/>
+                                    <TextBlock Foreground="Gray" TextAlignment="Center" x:Uid="/Strings/NameHeader"/>
                                 </Border>
                                 <Border BorderBrush="Gray" BorderThickness="0,0,0.5,0.5" Grid.Column="1" Grid.Row="0">
-                                    <TextBlock Text="Tooth" Foreground="Gray" TextAlignment="Center"/>
+                                    <TextBlock  Foreground="Gray" TextAlignment="Center" x:Uid="/Strings/ToothHeader"/>
                                 </Border>
                                 <Border BorderBrush="Gray" BorderThickness="0,0,0.5,0.5" Grid.Column="2" Grid.Row="0">
-                                    <TextBlock Text="Comment" Foreground="Gray"  MaxWidth="120" TextAlignment="Center"/>
+                                    <TextBlock  Foreground="Gray"  MaxWidth="120" TextAlignment="Center" x:Uid="/Strings/CommentHeader"/>
                                 </Border>
                                 <Border BorderBrush="Gray" BorderThickness="0,0,0,0.5" Grid.Column="3" Grid.Row="0">
-                                    <TextBlock Text="Price" Foreground="Gray" TextAlignment="Center"/>
+                                    <TextBlock Foreground="Gray" TextAlignment="Center" x:Uid="/Strings/PriceHeader"/>
                                 </Border>
 
                             </Grid>

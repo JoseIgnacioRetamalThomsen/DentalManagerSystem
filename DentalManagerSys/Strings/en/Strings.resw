@@ -600,7 +600,25 @@
   <data name="PrintTreatmentPlanNew.ToolTipService.ToolTip" xml:space="preserve">
     <value>Create and print</value>
   </data>
+  <data name="CommentHeader.Text" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="NameHeader.Text" xml:space="preserve">
+    <value>Treatment name</value>
+  </data>
+  <data name="PriceHeader.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="RemoveTreatmentButton.Label" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="RemoveTreatmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Remove selected treatment</value>
+  </data>
   <data name="SelectToothCB.PlaceholderText" xml:space="preserve">
     <value>Select tooth</value>
+  </data>
+  <data name="ToothHeader.Text" xml:space="preserve">
+    <value>Tooth</value>
   </data>
 </root>
