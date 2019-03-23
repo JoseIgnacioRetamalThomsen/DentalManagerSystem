@@ -34,66 +34,7 @@ namespace DentalManagerSys.Views
 
         }
 
-        /// <summary>
-        /// Get Data from view and if name, surname and id are there create new customer, if any of those values is missing prompt error message or
-        ///  if user Id is not unique will prompt error message as well.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //private void AddButton_Tapped(object sender, TappedRoutedEventArgs e)
-        //{
-        //    //check for required values
-        //    if (inputName.Text == "")
-        //    {
-        //        topTextBlock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("NameError/Text");
-        //        topTextBlock.Foreground = new SolidColorBrush(Colors.Red);
-        //    }
-        //    else if (inputSurename.Text == "")
-        //    {
-        //        topTextBlock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("SurnameError/Text");
-        //        topTextBlock.Foreground = new SolidColorBrush(Colors.Red);
-        //    }
-        //    else if (idInput.Text == "")
-        //    {
-        //        topTextBlock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("IDError/Text");
-        //        topTextBlock.Foreground = new SolidColorBrush(Colors.Red);
-        //    }
-        //    else
-        //    {
-        //        //create new customer 
-        //        Debug.WriteLine(birthDatePicker.Date.ToString("yyyy-MM-dd"));
-
-
-        //        //check if added, if not unique id
-        //        bool temp = DAO.AddNewCustomer(
-        //            idInput.Text, //id
-        //            inputName.Text, //name
-        //            inputSurename.Text,//surname
-        //            birthDatePicker.Date.ToString("yyyy-MM-dd"), //dob
-        //            streetInput.Text, //street address
-        //            cityInput.Text, //city
-        //            provinceInput.Text,//Province
-        //            countryInput.Text, //country
-        //            postCodeInput.Text,//postcode
-        //            mobilNumInput.Text,//mobil number
-        //            homeNumInput.Text,//home number
-        //            emaillInput.Text, //email
-        //            commentsInput.Text //email
-        //            );
-
-        //        if (temp)
-        //        {
-        //            //all good was created
-        //            ClearButton_Tapped(this, new TappedRoutedEventArgs());
-        //            ResetMessageText();
-        //        }
-        //        else
-        //        {
-        //            topTextBlock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("UniqueIdError/Text");
-        //            topTextBlock.Foreground = new SolidColorBrush(Colors.Red);
-        //        }
-        //    }
-        //}
+        
 
         private void ResetMessageText()
         {
@@ -180,24 +121,24 @@ namespace DentalManagerSys.Views
                    commentsInput.Text //email
                    );*/
 
-                App.Data.NewCustomerDetailsFb(
-                    idInput.Text, //id
-                    inputName.Text, //name
-                    inputSurename.Text,//surname
-                    birthDatePicker.Date.ToString("yyyy-MM-dd"), //dob
-                    streetInput.Text, //street address
-                    cityInput.Text, //city
-                    provinceInput.Text,//Province
-                    countryInput.Text, //country
-                    postCodeInput.Text,//postcode
-                    mobilNumInput.Text,//mobil number
-                    homeNumInput.Text,//home number
-                    emaillInput.Text, //email
-                    commentsInput.Text //email
-                    );
+                //App.Data.NewCustomerDetailsFb(
+                //    idInput.Text, //id
+                //    inputName.Text, //name
+                //    inputSurename.Text,//surname
+                //    birthDatePicker.Date.ToString("yyyy-MM-dd"), //dob
+                //    streetInput.Text, //street address
+                //    cityInput.Text, //city
+                //    provinceInput.Text,//Province
+                //    countryInput.Text, //country
+                //    postCodeInput.Text,//postcode
+                //    mobilNumInput.Text,//mobil number
+                //    homeNumInput.Text,//home number
+                //    emaillInput.Text, //email
+                //    commentsInput.Text //email
+                //    );
 
                 //check if added, if not unique id
-                temp = App.Data.NewCustomerDetailsSQLite(
+                temp = App.Data.NewCustomerDetails(
                    idInput.Text, //id
                    inputName.Text, //name
                    inputSurename.Text,//surname
