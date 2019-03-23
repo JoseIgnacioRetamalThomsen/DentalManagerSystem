@@ -18,37 +18,46 @@ using Windows.UI.Xaml.Input;
 namespace DentalManagerSys.Views
 {
     /// <summary>
-    /// Main view for account management
+    /// Options for acount management for first time use in a pc.
     /// </summary>
-    public sealed partial class AccountManagementView : Page
+    public sealed partial class AccountManagementSyncOrNew : Page
     {
         /// <summary>
         /// create object
         /// </summary>
-        public AccountManagementView()
+        public AccountManagementSyncOrNew()
         {
             this.InitializeComponent();
         }
 
         /// <summary>
-        /// navigate to reset password view
+        /// Navigate to new account view
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ResetPassword_PointerPressed(object sender, PointerRoutedEventArgs e)
+        private void NewAccountButton_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ResetPasswordView));
+            Frame.Navigate(typeof(NewUserView));
         }
 
         /// <summary>
-        /// Back button, navigate to previous page.
+        /// Navigate to syncrhonize account view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SyncAccountButton_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SyncAccountView));
+        }
+
+        /// <summary>
+        /// Navigate to previus page: login page.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
-
         }
     }
 }

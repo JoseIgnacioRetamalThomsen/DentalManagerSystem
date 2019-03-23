@@ -1,37 +1,58 @@
-﻿using DataAccessLibrary;
+﻿///------------------------------------------
+///
+///  Dental Manager System
+///  Profesional Practice in IT project
+///  GMIT 2019
+///  
+///  Markm Ndpeanoch
+///  Jose I. Retamal
+///------------------------------------------
+///
+using DataAccessLibrary;
 using DataAccessLibrary.REST;
 using Models;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace DentalManagerSys.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Page for synchronize account.
     /// </summary>
     public sealed partial class SyncAccountView : Page
     {
-        private string errorMessageSyncAccount = "Wrong password or account.";
+        private string errorMessageSyncAccount;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public SyncAccountView()
         {
             this.InitializeComponent();
+            InitString();
+
         }
 
+        /// <summary>
+        /// Initialize string from resources.
+        /// </summary>
+        private void InitString()
+        {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
+
+            errorMessageSyncAccount = resourceLoader.GetString("/Strings/errorMessageSyncAccount/Text");
+        }
+
+        /// <summary>
+        /// Syncronize the account, show error message or navigate to login page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void SyncAccountButton_Click(object sender, RoutedEventArgs e)
         {
            
@@ -39,11 +60,8 @@ namespace DentalManagerSys.Views
             Res res = await Auth.SignIn(user);
             if(res.Success)
             {
-
                 UserRes userData = await Auth.GetUser(user);
-                Debug.WriteLine(userData.DisplayName);
-                //create user 
-
+                
                 //create user account
                 User userForCreate = new User(userData.DisplayName, "none", userData.Email);
                 DAO.AddNewUser(userForCreate);
@@ -55,6 +73,16 @@ namespace DentalManagerSys.Views
             {
                 ErrorMessage.Text = errorMessageSyncAccount;
             }
+        }
+
+        /// <summary>
+        /// Back to account managemint page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
         }
     }
 }

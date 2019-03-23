@@ -12,6 +12,22 @@
         <StackPanel
             Orientation="Vertical">
 
+            <CommandBar 
+                x:Name="PatientsCommandBar"
+                Style="{StaticResource CommandBarStyle}"
+                RelativePanel.LeftOf="PageTitle"
+                DefaultLabelPosition="Right"
+                HorizontalAlignment="Left">
+
+                <AppBarButton
+                    x:Name="BackButton"
+                    Icon="Back"
+                    x:Uid="/Strings/BackButton"
+                    IsEnabled="True"
+                    Click="BackButton_Click"/>
+
+            </CommandBar>
+
             <TextBlock 
                 x:Uid="/Strings/NewAccountHeader" 
                 FontSize="36" 

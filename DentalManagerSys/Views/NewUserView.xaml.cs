@@ -1,29 +1,26 @@
-﻿using DataAccessLibrary;
+﻿///------------------------------------------
+///
+///  Dental Manager System
+///  Profesional Practice in IT project
+///  GMIT 2019
+///  
+///  Markm Ndpeanoch
+///  Jose I. Retamal
+///------------------------------------------
+///
+using Windows.UI.Xaml;
+using DataAccessLibrary;
 using DataAccessLibrary.REST;
-using DentalManagerSys.ViewModel;
 using Models;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace DentalManagerSys.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    ///View for create a new user
     /// </summary>
     public sealed partial class NewUserView : Page
     {
@@ -33,6 +30,10 @@ namespace DentalManagerSys.Views
         private string emailErrorInUse;
         private string emailErrorBad;
         private string passWordErrorShort;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public NewUserView()
         {
             this.InitializeComponent();
@@ -41,6 +42,9 @@ namespace DentalManagerSys.Views
 
         }
 
+        /// <summary>
+        /// Initialize string from resources.
+        /// </summary>
         private void LoadString()
         {
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
@@ -110,6 +114,16 @@ namespace DentalManagerSys.Views
 
             }
 
+        }
+
+        /// <summary>
+        /// Go back to revius view: AccountManagement
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
         }
     }
 }

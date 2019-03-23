@@ -108,7 +108,7 @@
     <Compile Include="ViewModel\TreatmentPlanViewModel.cs" />
     <Compile Include="ViewModel\TreatmentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="Views\AccountManagementSyncOrNew.xaml.cs">
+    <Compile Include="Views\User\AccountManagementSyncOrNew.xaml.cs">
       <DependentUpon>AccountManagementSyncOrNew.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AccountManagementView.xaml.cs">
@@ -195,7 +195,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AccountManagementSyncOrNew.xaml">
+    <Page Include="Views\User\AccountManagementSyncOrNew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

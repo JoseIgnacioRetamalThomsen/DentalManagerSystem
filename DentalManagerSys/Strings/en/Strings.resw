@@ -603,6 +603,9 @@
   <data name="CommentHeader.Text" xml:space="preserve">
     <value>Comment</value>
   </data>
+  <data name="errorMessageSyncAccount.Text" xml:space="preserve">
+    <value>Wrong password or account.</value>
+  </data>
   <data name="NameHeader.Text" xml:space="preserve">
     <value>Treatment name</value>
   </data>
