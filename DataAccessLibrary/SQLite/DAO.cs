@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace DataAccessLibrary
 {
-    public static class DAO
+    public class DAO
     {
 
         /// <summary>
@@ -120,25 +120,22 @@ namespace DataAccessLibrary
             return user;
         }
 
-        public static void AddNewTreatmentPlanTreatments(object top)
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public static void AddMockData()
-        {
-            DAO.AddNewCustomer("12234543-k", "Marco Antonio", "Perez Gonzales", "03/03/1978 00:00:00", "Los leons 29", "Valpariso", "Valparaiso", "Chile", "gh567", "0983442233", "02122222", "marco@email.com", "Sin alergias");
-            DAO.AddNewTreatment("Composite Compuesto", 24000);
-            DAO.AddNewTreatment("Incrustacion", 30000);
-            AddNewTreatmentPlan("12234543-k", (int)TreatmentPlaneState.Created, DateTime.Now.ToString(), "0");
-            //AddNewTreatmentPlanTreatments(1, 1, 24000, "0");
-            //AddNewTreatmentPlanTreatments(1, 2, 30000, "0");
-            //AddNewTreatmentPlanTreatments(1, 2, 25000, "0");
+        //public static void AddMockData()
+        //{
+        //    DAO.AddNewCustomer("12234543-k", "Marco Antonio", "Perez Gonzales", "03/03/1978 00:00:00", "Los leons 29", "Valpariso", "Valparaiso", "Chile", "gh567", "0983442233", "02122222", "marco@email.com", "Sin alergias");
+        //    DAO.AddNewTreatment("Composite Compuesto", 24000);
+        //    DAO.AddNewTreatment("Incrustacion", 30000);
+        //    AddNewTreatmentPlan("12234543-k", (int)TreatmentPlaneState.Created, DateTime.Now.ToString(), "0");
+        //    //AddNewTreatmentPlanTreatments(1, 1, 24000, "0");
+        //    //AddNewTreatmentPlanTreatments(1, 2, 30000, "0");
+        //    //AddNewTreatmentPlanTreatments(1, 2, 25000, "0");
 
 
-        }
+        //}
 
-        public static void UpdateTreatmentPlanState(TreatmentPlaneState state, int iD)
+        public  void UpdateTreatmentPlanState(TreatmentPlaneState state, int iD)
         {
             
              
@@ -176,7 +173,7 @@ namespace DataAccessLibrary
         /// <param name="mobileNum"></param>
         /// <param name="fixNum"></param>
         /// <param name="email"></param>
-        public static bool AddNewCustomer(string id, string firstName, string surname, string dOB, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email, string comments)
+        public  bool AddNewCustomer(string id, string firstName, string surname, string dOB, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email, string comments)
         {
             try
             {
@@ -225,7 +222,7 @@ namespace DataAccessLibrary
         /// </summary>
         /// <param name="treatmentName"></param>
         /// <param name="price"></param>
-        public static long AddNewTreatment(string treatmentName, Decimal price)
+        public  long AddNewTreatment(string treatmentName, Decimal price)
         {
             long id = 0;
 
@@ -341,7 +338,7 @@ namespace DataAccessLibrary
         /// <param name="state"></param>
         /// <param name="creationDate"></param>
         /// <param name="treatmentPlanCompleteDate"></param>
-        public static long AddNewTreatmentPlan(string customerID, int state, string creationDate, string treatmentPlanCompleteDate)
+        public  long AddNewTreatmentPlan(string customerID, int state, string creationDate, string treatmentPlanCompleteDate)
         {
             long id = 0;
             using (SqliteConnection db =
@@ -509,7 +506,7 @@ namespace DataAccessLibrary
         /// <param name="treatmentID"></param>
         /// <param name="price"></param>
         /// <param name="treatmentCompleteDate"></param>
-        public static void AddNewTreatmentPlanTreatments(int treatmentPlanID, int treatmentID, Decimal price, string treatmentCompleteDate, int tooth, string comment, bool isDone)
+        public  void AddNewTreatmentPlanTreatments(int treatmentPlanID, int treatmentID, Decimal price, string treatmentCompleteDate, int tooth, string comment, bool isDone)
         {
 
             int _isDone = (isDone) ? 1 : 0;
@@ -537,7 +534,7 @@ namespace DataAccessLibrary
                 db.Close();
             }
         }
-        public static void AddNewTreatmentPlanTreatments(TreatmentOnPlan t)
+        public  void AddNewTreatmentPlanTreatments(TreatmentOnPlan t)
         {
 
             int _isDone = (t.IsDone) ? 1 : 0;
@@ -574,7 +571,7 @@ namespace DataAccessLibrary
         /// <param name="customerID"></param>
         /// <param name="amount"></param>
         /// <param name="treatmentCompleteDate"></param>
-        public static void AddNewpayment(int treatmentPlanID, string customerID, decimal amount, string treatmentCompleteDate)
+        public  void AddNewpayment(int treatmentPlanID, string customerID, decimal amount, string treatmentCompleteDate)
         {
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
@@ -898,7 +895,7 @@ namespace DataAccessLibrary
         /// <param name="fixNum"></param>
         /// <param name="email"></param>
         /// <param name="comments"></param>
-        public static void UpdateCustomer(string customerID, string firstName, string surname, string dOB, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email, string comments)
+        public  void UpdateCustomer(string customerID, string firstName, string surname, string dOB, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email, string comments)
         {
             using (SqliteConnection db =
                new SqliteConnection("Filename=dentalManagerDB.db"))
@@ -956,7 +953,7 @@ namespace DataAccessLibrary
         }
 
 
-        public static void UpdateTreatment(Treatment treatment)
+        public  void UpdateTreatment(Treatment treatment)
         {
             using (SqliteConnection db =
                new SqliteConnection("Filename=dentalManagerDB.db"))
@@ -1082,7 +1079,7 @@ namespace DataAccessLibrary
         /// <param name="treatmentID"></param>
         /// <param name="price"></param>
         /// <param name="completedDate"></param>
-        public static void UpdateTreatmentOnPlan(TreatmentOnPlan t)
+        public  void UpdateTreatmentOnPlan(TreatmentOnPlan t)
         {
             int isDone = (t.IsDone) ? 1 : 0;
             using (SqliteConnection db =
