@@ -11,9 +11,9 @@ namespace DataAccessLibrary
     {
         FireBaseDAO firebaseDAO = new FireBaseDAO();
 
-        string userID = "email";
+       
 
-        public ObservableCollection<TreatmentOnPlan> treatmentsOnPlan;
+        //public ObservableCollection<TreatmentOnPlan> treatmentsOnPlan;
 
         public void AddNewTreatment(Treatment treatment)
         {
@@ -63,22 +63,22 @@ namespace DataAccessLibrary
 
         //Add new  Treatment Plan(AddNewTreatmentPlan) table is in NewTreatmentPlanViewModel.cs
         //Add new TreatmentPlanTreatments(AddNewTreatmentPlanTreatments) is in NewTreatmentPlanViewModel.cs
-        public void AddNewTreatmentPlan(string customerID, int state, string creationDate, string treatmentPlanCompleteDate)
-        {
-            int id = (int)DAO.AddNewTreatmentPlan(customerID, state, creationDate, treatmentPlanCompleteDate);
+        //public void AddNewTreatmentPlan(string customerID, int state, string creationDate, string treatmentPlanCompleteDate)
+        //{
+        //    int id = (int)DAO.AddNewTreatmentPlan(customerID, state, creationDate, treatmentPlanCompleteDate);
 
-            //Add new Treatmentplan to firebase.
-            firebaseDAO.AddNewTreatmentPlan(id, customerID, state, creationDate, treatmentPlanCompleteDate);
+        //    //Add new Treatmentplan to firebase.
+        //    firebaseDAO.AddNewTreatmentPlan(id, customerID, state, creationDate, treatmentPlanCompleteDate);
 
-            foreach (TreatmentOnPlan top in treatmentsOnPlan)
-            {
+        //    foreach (TreatmentOnPlan top in treatmentsOnPlan)
+        //    {
 
-                top.TreatmentPlanID = id;
-                DAO.AddNewTreatmentPlanTreatments(top);
-                firebaseDAO.AddNewTreatmentPlanTreatments(top);
+        //        top.TreatmentPlanID = id;
+        //        DAO.AddNewTreatmentPlanTreatments(top);
+        //        firebaseDAO.AddNewTreatmentPlanTreatments(top);
 
-            }
-        }
+        //    }
+        //}
 
 
         //Update TreatmentPlanTreatments(UpdateTreatmentOnPlan) is in TreatmentPlanView
@@ -94,6 +94,23 @@ namespace DataAccessLibrary
         {
             DAO.AddNewpayment(treatmentPlanID, customerID, amount, treatmentCompleteDate);
             firebaseDAO.AddNewpayment(treatmentPlanID, customerID, amount, treatmentCompleteDate);
+        }
+
+        public long AddNewTreatmentPlan(string customerID, int state, string creationDate, string treatmentPlanCompleteDate)
+        {
+            // add to sql
+            int id = (int)DAO.AddNewTreatmentPlan(customerID, state, creationDate, treatmentPlanCompleteDate);
+
+            //add to firebase
+            firebaseDAO.AddNewTreatmentPlan(id, customerID, state, creationDate, treatmentPlanCompleteDate);
+
+            return id;
+        }
+
+        public  void AddNewTreatmentPlanTreatments(TreatmentOnPlan t)
+        {
+            DAO.AddNewTreatmentPlanTreatments(t);
+            firebaseDAO.AddNewTreatmentPlanTreatments(t);
         }
     }
 }
