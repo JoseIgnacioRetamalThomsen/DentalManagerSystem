@@ -12,9 +12,6 @@ namespace DataAccessLibrary
         FireBaseDAO firebaseDAO = new FireBaseDAO();
 
 
-
-        //public ObservableCollection<TreatmentOnPlan> treatmentsOnPlan;
-
         public void AddNewTreatment(Treatment treatment)
         {
 

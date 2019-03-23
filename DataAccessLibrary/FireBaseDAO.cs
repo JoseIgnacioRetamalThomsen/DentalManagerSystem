@@ -355,6 +355,7 @@ namespace DataAccessLibrary
         {
             ConnectToFirebase();
 
+            Debug.WriteLine("Helooooooooooooooooooooo");
             string userName = DAO.GetUserID();
             String myUsername = userName;
             myUsername = myUsername.Replace(".", "-");
@@ -375,17 +376,20 @@ namespace DataAccessLibrary
             var results = await firebase.Child(node).OnceAsync<TreatmentPlanTreatmentsData>();
             foreach (var details in results)
             {
-   
-                if (t.TreatmentPlanTreatmentsID.ToString() == details.Object.treatmentPlanTreatmentsID)
+                Debug.WriteLine("Pass on Id: "+ t.TreatmentPlanTreatmentsID);
+                Debug.WriteLine("Firebase Id: "+ details.Object.treatmentPlanID);
+                if (t.TreatmentPlanTreatmentsID == details.Object.treatmentPlanID)
                 {
+                    Debug.WriteLine("testt in");
                     //Delete the old row by key id
                     await firebase.Child(node).Child(details.Key).DeleteAsync();
+                    //add the new row
+                    await firebase.Child(node).PostAsync<TreatmentPlanTreatmentsData>(treatmentPlanTreatmentsData);
                     break;
                 }
             }
 
-            //add the new row
-            await firebase.Child(node).PostAsync<TreatmentPlanTreatmentsData>(treatmentPlanTreatmentsData);
+          
         }
 
         /// <summary>
