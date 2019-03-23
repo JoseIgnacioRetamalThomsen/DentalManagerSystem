@@ -7,6 +7,11 @@ using System.Text;
 
 namespace DataAccessLibrary
 {
+    /// <summary>
+    /// Provide acces for data for sqlite and firebase batabases
+    /// All writes are done to firebase and sqlite db
+    /// Reads are only done from sqlite db 
+    /// </summary>
     public class DataAccessService
     {
         FireBaseDAO firebaseDAO = new FireBaseDAO();
@@ -88,7 +93,7 @@ namespace DataAccessLibrary
 
             //add to firebase
             firebaseDAO.AddNewTreatmentPlan(id, customerID, state, creationDate, treatmentPlanCompleteDate);
-
+                            
             return id;
         }
 
