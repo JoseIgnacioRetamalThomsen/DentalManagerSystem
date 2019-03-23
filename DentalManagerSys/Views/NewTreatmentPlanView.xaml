@@ -66,7 +66,7 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="200"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -77,10 +77,11 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel>
+
                     <TextBlock  
                         x:Uid="/Strings/CreateTreatmentPlanText" 
                         Style="{StaticResource TitleTextBlockStyle}">
-                                            </TextBlock>
+                    </TextBlock>
                 </StackPanel>
 
                 <StackPanel 
@@ -91,30 +92,32 @@
                     VerticalAlignment="Center" 
                     Margin="5">
 
-                    <StackPanel Margin="2">
-                        
+                    <StackPanel Margin="5" >
+
                         <TextBlock x:Uid="/Strings/SelectTooth"/>
-                        
+
                         <ComboBox
                             x:Name="SelectToothCB"
-                            DropDownClosed="SelectToothCB_DropDownClosed"/>
+                            DropDownClosed="SelectToothCB_DropDownClosed"
+                            x:Uid="/Strings/SelectToothCB"
+                            MinWidth="100"/>
                         
                     </StackPanel>
 
-                    <StackPanel Margin="2">
-                        
+                    <StackPanel Margin="5" >
+
                         <TextBlock x:Uid="/Strings/AddTreatment" ></TextBlock>
-                        
+
                         <ComboBox 
                             x:Name="TreatmentsCB" 
                             MinWidth="200" 
                             DropDownClosed="TreatmentsCB_DropDownClosed"
-                            x:Uid="/Strings/TreatmentsCB"></ComboBox>
-                        
+                            x:Uid="/Strings/TreatmentsCB"/>
+
                     </StackPanel>
 
-                 
-                    <StackPanel Margin="2" >
+
+                    <StackPanel Margin="5" >
                         <TextBlock x:Uid="/Strings/TreatmentPriceTB"/>
                         <TextBox
                             x:Name="PriceTB"
@@ -124,19 +127,23 @@
                             TextChanging="EditPriceTB_TextChanging"/>
                     </StackPanel>
 
-                    <StackPanel VerticalAlignment="Bottom" Margin="2">
+                    <StackPanel VerticalAlignment="Bottom" Margin="5" >
                         <TextBox 
                             x:Name="CommentTB"
                             x:Uid="/Strings/CommentTB"
                             MinWidth="120"
                             MaxWidth="120"/>
                     </StackPanel>
-                    <StackPanel VerticalAlignment="Bottom" Margin="2">
+                    
+                    <StackPanel VerticalAlignment="Bottom" Margin="5">
+                        
                         <Button
                             x:Name="AddButon"
                             Click="AddButon_Click"
                             x:Uid="/Strings/AddButton"
-                            IsEnabled="False"/>
+                            IsEnabled="False"
+                            MinWidth="200"/>
+                        
                     </StackPanel>
 
                 </StackPanel>

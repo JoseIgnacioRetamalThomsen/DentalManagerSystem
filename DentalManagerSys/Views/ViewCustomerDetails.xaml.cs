@@ -4,7 +4,7 @@
 ///  Profesional Practice in IT project
 ///  GMIT 2019
 ///  
-///  Markm Ndpenoch
+///  Markm Ndpeanoch
 ///  Jose I. Retamal
 ///------------------------------------------
 ///
