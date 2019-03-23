@@ -41,9 +41,9 @@ namespace DentalManagerSys.ViewModel
         }
         public ObservableCollection<TreatmentOnPlan> TreatmentsOnPlan { get; set; }
 
-        
 
-     
+
+
         public DateTime completedTreatmentDate;
         public DateTime CompletedTreatmentDate
         {
@@ -107,7 +107,7 @@ namespace DentalManagerSys.ViewModel
 
         public TreatmentPlanViewModel()
         {
-            
+
         }
         public int PlanID { get; set; }
 

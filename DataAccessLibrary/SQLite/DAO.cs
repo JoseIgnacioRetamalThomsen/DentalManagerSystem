@@ -9,6 +9,7 @@ namespace DataAccessLibrary
 {
     public static class DAO
     {
+
         /// <summary>
         /// Create a database and tables
         /// </summary>
@@ -139,6 +140,8 @@ namespace DataAccessLibrary
 
         public static void UpdateTreatmentPlanState(TreatmentPlaneState state, int iD)
         {
+            
+             
             using (SqliteConnection db =
                new SqliteConnection("Filename=dentalManagerDB.db"))
             {
