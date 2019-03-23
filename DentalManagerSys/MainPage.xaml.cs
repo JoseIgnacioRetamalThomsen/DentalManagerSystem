@@ -31,9 +31,10 @@ namespace DentalManagerSys
             this.InitializeComponent();
 
             DAO.InitializeDatabase();
-           App.userName= DAO.GetUserID();
+            App.userName= DAO.GetUserID();
             FireBaseDAO f = new FireBaseDAO();
             f.ReadDataFromFirebase();
+            
 
 
         }

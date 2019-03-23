@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
 
 namespace DataAccessLibrary
@@ -85,6 +86,7 @@ namespace DataAccessLibrary
         {
             DAO.UpdateTreatmentOnPlan(top);
             firebaseDAO.UpdateTreatmentOnPlan(top);
+            Debug.WriteLine("Hiiiiiiiii");
         }
 
         //Add new Payment(AddNewpayment) is in NewPaymentView

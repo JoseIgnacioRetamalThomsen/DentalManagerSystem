@@ -147,6 +147,7 @@ namespace DentalManagerSys.ViewModel
             TreatmentsOnPlan.Add(new TreatmentOnPlan(0,0,BeforeTreatment.ID,
                 PriceBefore,DateTime.Now,Tooth, Comments, false,BeforeTreatment.Name));
             RecalculateTotal();
+           
         }
     }
 }
