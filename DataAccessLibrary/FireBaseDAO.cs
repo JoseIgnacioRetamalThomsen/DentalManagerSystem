@@ -266,9 +266,24 @@ namespace DataAccessLibrary
         {
             ConnectToFirebase();
 
+            int realState=0;
+            if (state.ToString() == "Created")
+            {
+                realState = 0;
+            }
+            if (state.ToString()== "Accepted")
+            {
+                realState = 1;
+            }
+            if(state.ToString()== "Finish")
+            {
+                realState = 2;
+            }
+
+            Debug.WriteLine("The real sate is " + realState);
+
             int treatmentPlanID=0;
             string customerID ="";
-            int state1=0;
             string creationDate="";
             string treatmentPlanCompleteDate="";
 
@@ -279,33 +294,25 @@ namespace DataAccessLibrary
             var treatmentPlanData = new TreatmentPlanData
             {
                 treatmentPlanID = iD,
-                state = (int)state
             };
-
-
 
             var results = await firebase.Child(node).OnceAsync<TreatmentPlanData>();
             foreach (var details in results)
             {
-                Debug.WriteLine("treatmentPlanID---" + details.Object.treatmentPlanID);
-                Debug.WriteLine("ID ---" + iD);
+         
 
                 if (iD == details.Object.treatmentPlanID)
                 {
-                    Debug.WriteLine("Hiiiii****** "+ details.Object.treatmentPlanID);
-                    Debug.WriteLine("Helloooo*******  " + iD);
                     treatmentPlanID = details.Object.treatmentPlanID;
                     customerID = details.Object.customerID;
-                    state1 = (int)details.Object.state;
                     creationDate = details.Object.creationDate;
                     treatmentPlanCompleteDate = details.Object.treatmentPlanCompleteDate;
                     await firebase.Child(node).Child(details.Key).DeleteAsync();
-                    AddNewTreatmentPlan(treatmentPlanID, customerID, state1, creationDate, treatmentPlanCompleteDate);
+                    AddNewTreatmentPlan(treatmentPlanID, customerID, realState, creationDate, treatmentPlanCompleteDate);
                     break;
                 }     
             }
 
-            //AddNewTreatmentPlan(treatmentPlanID,customerID,state1, creationDate,treatmentPlanCompleteDate);
         }
 
         /// <summary>
@@ -428,7 +435,7 @@ namespace DataAccessLibrary
             String TreatmentPlanTreatmentNode = myUsername + "TreatmentPlanTreatments" + "/";
             String PaymentNode = myUsername + "Payments" + "/";
 
-               //Establish SQLite connection and populate treatment table
+              //Establish SQLite connection and populate treatment table
                 using (SqliteConnection db =
                                 new SqliteConnection("Filename=dentalManagerDB.db"))
                 {
@@ -638,7 +645,7 @@ namespace DataAccessLibrary
                     db.Close();
                 }
 
-               /*await firebase.Child("g00351330@gmit-ieTreatmentPlans/").DeleteAsync();
+              /* await firebase.Child("g00351330@gmit-ieTreatmentPlans/").DeleteAsync();
                await firebase.Child("GOO352031@GMITIECustomers/").DeleteAsync();
                await firebase.Child("mmarkoTreatmentPlans/").DeleteAsync();
                await firebase.Child("markoTreatments/").DeleteAsync();*/
