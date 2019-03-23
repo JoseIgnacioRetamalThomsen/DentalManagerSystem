@@ -65,9 +65,9 @@
                 RelativePanel.Below="PageTitle">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="8*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
@@ -80,7 +80,13 @@
 
                     <TextBlock  
                         x:Uid="/Strings/CreateTreatmentPlanText" 
-                        Style="{StaticResource TitleTextBlockStyle}">
+                        Style="{StaticResource TitleTextBlockStyle}" 
+                        Margin="2">
+                    </TextBlock>
+                    <TextBlock 
+                        Text="Add treatment:"
+                        Style="{StaticResource BaseTextBlockStyle}"
+                        Margin="2">
                     </TextBlock>
                 </StackPanel>
 
@@ -101,7 +107,7 @@
                             DropDownClosed="SelectToothCB_DropDownClosed"
                             x:Uid="/Strings/SelectToothCB"
                             MinWidth="100"/>
-                        
+
                     </StackPanel>
 
                     <StackPanel Margin="5" >
@@ -134,16 +140,16 @@
                             MinWidth="120"
                             MaxWidth="120"/>
                     </StackPanel>
-                    
+
                     <StackPanel VerticalAlignment="Bottom" Margin="5">
-                        
+
                         <Button
                             x:Name="AddButon"
                             Click="AddButon_Click"
                             x:Uid="/Strings/AddButton"
                             IsEnabled="False"
                             MinWidth="200"/>
-                        
+
                     </StackPanel>
 
                 </StackPanel>
@@ -153,9 +159,7 @@
                   x:Name="TreatmentsGrip"
                 RelativePanel.AlignLeftWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
-                RelativePanel.Below="TopGrid"
-               
-                  >
+                RelativePanel.Below="TopGrid">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -187,31 +191,35 @@
                             Tapped="SaveChangedPriceButton_Tapped"/>
 
                         <AppBarSeparator/>
+                        <AppBarButton
+                            x:Name="RemoveTreatmentButton"
+                            Icon="Delete"
+                            x:Uid="/Strings/RemoveTreatmentButton"
+                            IsEnabled="false"
+                            Tapped="RemoveTreatmentButton_Tapped"/>
 
                     </CommandBar>
 
                 </RelativePanel>
 
-                <ListView x:Name="TreatmentsDoneListView" Height="200"
-                      ScrollViewer.HorizontalScrollMode="Enabled" 
-                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                      ScrollViewer.VerticalScrollMode="Enabled"
-                       ScrollViewer.VerticalScrollBarVisibility="Auto"
-                          SelectionMode="Single"
-                          IsItemClickEnabled="True"
-                          
-                          SelectionChanged="TreatmentsDoneListView_SelectionChanged"
-            
-                         
-                          Grid.Row="1">
+                <ListView 
+                    x:Name="TreatmentsDoneListView" Height="200"
+                    ScrollViewer.HorizontalScrollMode="Enabled" 
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                    ScrollViewer.VerticalScrollMode="Enabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    SelectionMode="Single"
+                    IsItemClickEnabled="True"
+                    SelectionChanged="TreatmentsDoneListView_SelectionChanged"
+                    Grid.Row="1">
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate  x:DataType="local1:TreatmentOnPlan">
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
                             <Grid >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="250"/>
                                     <ColumnDefinition Width="50" />
-                                    <ColumnDefinition  Width="150"/>
+                                    <ColumnDefinition  Width="250"/>
                                     <ColumnDefinition  Width="150"/>
 
                                 </Grid.ColumnDefinitions>
@@ -219,8 +227,38 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
+                                <Border BorderBrush="Gray" BorderThickness="0,0,0.5,0.5" Grid.Column="0" Grid.Row="0">
+                                    <TextBlock Foreground="Gray" TextAlignment="Center" x:Uid="/Strings/NameHeader"/>
+                                </Border>
+                                <Border BorderBrush="Gray" BorderThickness="0,0,0.5,0.5" Grid.Column="1" Grid.Row="0">
+                                    <TextBlock  Foreground="Gray" TextAlignment="Center" x:Uid="/Strings/ToothHeader"/>
+                                </Border>
+                                <Border BorderBrush="Gray" BorderThickness="0,0,0.5,0.5" Grid.Column="2" Grid.Row="0">
+                                    <TextBlock  Foreground="Gray"  MaxWidth="120" TextAlignment="Center" x:Uid="/Strings/CommentHeader"/>
+                                </Border>
+                                <Border BorderBrush="Gray" BorderThickness="0,0,0,0.5" Grid.Column="3" Grid.Row="0">
+                                    <TextBlock Foreground="Gray" TextAlignment="Center" x:Uid="/Strings/PriceHeader"/>
+                                </Border>
 
-                                <TextBlock Text="{x:Bind Name}" Grid.Column="0" Grid.Row="0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate  x:DataType="local1:TreatmentOnPlan">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition  Width="250"/>
+                                    <ColumnDefinition  Width="150"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock  Text="{x:Bind Name}" Grid.Column="0" Grid.Row="0"/>
                                 <TextBlock Text="{x:Bind Tooth}" Grid.Column="1" Grid.Row="0"/>
                                 <TextBlock Text="{x:Bind Comment}" Grid.Column="2" Grid.Row="0"  MaxWidth="120"/>
                                 <TextBlock Text="{x:Bind ShowPrice}" Grid.Column="3" Grid.Row="0"/>
@@ -229,21 +267,23 @@
                         </DataTemplate>
 
                     </ListView.ItemTemplate>
+
                 </ListView>
             </Grid>
             <StackPanel
                 RelativePanel.Below="TreatmentsGrip">
                 <StackPanel
-                    
                     Orientation="Horizontal"
-            x:Name="TotalSP"
-            >
+                    x:Name="TotalSP"
+                    Margin="5">
                     <TextBlock 
-                        x:Uid="/Strings/TotalTB"/>
+                        x:Uid="/Strings/TotalTB"
+                        Margin="5"/>
                     <TextBox 
-                x:Name="TotalTB"
-                Text="{x:Bind Path=ViewModel.ShowTotal, Mode=OneWay}"
-                       IsReadOnly="True"/>
+                        x:Name="TotalTB"
+                        Text="{x:Bind Path=ViewModel.ShowTotal, Mode=OneWay}"
+                        MinWidth="200"
+                        IsReadOnly="True"/>
                 </StackPanel>
             </StackPanel>
         </RelativePanel>

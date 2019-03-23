@@ -57,7 +57,7 @@ namespace DentalManagerSys.Views
             SelectToothCB.ItemsSource = ViewModel.Tooths;
             ViewModel.Total = 0;
 
-           
+
         }
 
         private void InitTreamentsCB()
@@ -68,7 +68,7 @@ namespace DentalManagerSys.Views
         }
 
         #endregion
-                
+
         #region Navigation methods
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -95,16 +95,28 @@ namespace DentalManagerSys.Views
 
         #endregion
 
-        #region buttons handlers
+        #region buttons and events handlers 
 
-
+        /// <summary>
+        /// There is a treatmet selected, when hapens the treatment price can be change or the 
+        /// treatment can be removed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TreatmentsDoneListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (((ListView)sender).SelectedIndex < 0) return;
             //set value of treament on edit box for editing
             EditPriceTB.Text = ((int)ViewModel.TreatmentsOnPlan[((ListView)sender).SelectedIndex].Price).ToString();
             SaveChangedPriceButton.IsEnabled = true;
+            RemoveTreatmentButton.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Select treatment for add.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TreatmentsCB_DropDownClosed(object sender, object e)
         {
             ComboBox temp = (ComboBox)sender;
@@ -118,31 +130,40 @@ namespace DentalManagerSys.Views
                 //No selection whe do nothging
                 return;
             }
-            //add adddes treatments to list of all treatements in plan
-            //ViewModel.TreatmentsOnPlan.Add(new Treatment(t.iD, t.name, t.price));
 
             ViewModel.PriceBefore = t._Price;
             ViewModel.BeforeTreatment = t;
-            isPrice = true;
+            isTreament = true;
             EnableAddButton();
-            //add price of treatment to total
-            // ViewModel.Total += t.Price;
 
         }
 
+        /// <summary>
+        /// Limit price text to only numbers.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void EditPriceTB_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
             sender.Text = new String(sender.Text.Where(char.IsDigit).ToArray());
         }
 
-
-
+        /// <summary>
+        /// Create the treatmwent plan an go back
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateTreatmentPlanButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             ViewModel.CreateNewTreatmentPlan();
             Frame.GoBack();
         }
 
+        /// <summary>
+        /// Change price of the selected treatment.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveChangedPriceButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             decimal NewPrice = Convert.ToDecimal(EditPriceTB.Text);
@@ -150,30 +171,43 @@ namespace DentalManagerSys.Views
 
             //edit value
             ViewModel.TreatmentsOnPlan[ItemIndex].Price = NewPrice;
-            ViewModel.RecalculateTotal();
-            ReloadTretmentsListView();
-            SaveChangedPriceButton.IsEnabled = false;
+            EditDone();
+
 
         }
+        private void RemoveTreatmentButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            int ItemIndex = TreatmentsDoneListView.SelectedIndex;
+            ViewModel.TreatmentsOnPlan.RemoveAt(ItemIndex);
+            EditDone();
+          
+        }
 
+      
 
-
+        /// <summary>
+        /// Add the treatment to plan.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddButon_Click(object sender, RoutedEventArgs e)
         {
-
             ViewModel.Comments = CommentTB.Text;
-
             ViewModel.AddTreatment();
-
             TreatmentsCB.SelectedItem = null;
             SelectToothCB.SelectedItem = null;
-            isPrice = false;
+            isTreament = false;
             isToothNumber = false;
             AddButon.IsEnabled = false;
             CommentTB.Text = "";
             ViewModel.PriceBefore = 0;
         }
 
+        /// <summary>
+        /// Select tooth.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectToothCB_DropDownClosed(object sender, object e)
         {
             isToothNumber = true;
@@ -189,21 +223,24 @@ namespace DentalManagerSys.Views
             EnableAddButton();
         }
 
-        bool isPrice = false;
+        bool isTreament = false;
         bool isToothNumber = false;
+        /// <summary>
+        /// Enable the add buton when tooth and treatement are selected
+        /// </summary>
         private void EnableAddButton()
         {
-            if (isPrice && isToothNumber)
+            if (isTreament && isToothNumber)
             {
                 AddButon.IsEnabled = true;
             }
         }
 
-        private void NewPaymentButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Show preview print.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PreviewTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
         {
             //create treatment plan for print 
@@ -212,19 +249,11 @@ namespace DentalManagerSys.Views
 
         }
 
-        private string npTittle;
-        private string npContent;
-        private string npOKButton;
-        private string nsTitle;
-        private string nsContent;
-
-   
-
-        private   void PrintTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
+        private void PrintTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
         {
             //create treatment plan for print 
             TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan));
-            Frame.Navigate(typeof(TreatmentPlanPreviewView), tp );
+            Frame.Navigate(typeof(TreatmentPlanPreviewView), tp);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -240,6 +269,14 @@ namespace DentalManagerSys.Views
             TreatmentsDoneListView.ItemsSource = null;
             TreatmentsDoneListView.ItemsSource = ViewModel.TreatmentsOnPlan;
             TreatmentsDoneListView.SelectionChanged += TreatmentsDoneListView_SelectionChanged;
+        }
+
+        private void EditDone()
+        {
+            ViewModel.RecalculateTotal();
+            ReloadTretmentsListView();
+            SaveChangedPriceButton.IsEnabled = false;
+            RemoveTreatmentButton.IsEnabled = false;
         }
         #endregion
 
