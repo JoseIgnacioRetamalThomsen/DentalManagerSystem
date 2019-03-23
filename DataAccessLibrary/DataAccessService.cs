@@ -67,6 +67,8 @@ namespace DataAccessLibrary
         {
             int id = (int)DAO.AddNewTreatmentPlan(customerID, state, creationDate, treatmentPlanCompleteDate);
 
+            Debug.WriteLine("TreatmentPlan : "+ id);
+
             //Add new Treatmentplan to firebase.
             firebaseDAO.AddNewTreatmentPlan(id, customerID, state, creationDate, treatmentPlanCompleteDate);
 
@@ -86,7 +88,7 @@ namespace DataAccessLibrary
         {
             DAO.UpdateTreatmentOnPlan(top);
             firebaseDAO.UpdateTreatmentOnPlan(top);
-            Debug.WriteLine("Hiiiiiiiii");
+
         }
 
         //Add new Payment(AddNewpayment) is in NewPaymentView
