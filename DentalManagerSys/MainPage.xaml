@@ -15,7 +15,7 @@
             ItemInvoked="NavView_ItemInvoked"
             Loaded="NavView_Loaded"
             Windows10version1803:BackRequested="NavView_BackRequested"
-            Header="Dental Mager">
+            Header="Dental Manager">
         
         <NavigationView.MenuItems>
             <NavigationViewItem Icon="ContactInfo" x:Uid="/Strings/NavViewItemPatients" Tag="PatientsList" />

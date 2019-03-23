@@ -27,6 +27,13 @@
                 DefaultLabelPosition="Right">
 
                 <AppBarButton
+                    x:Name="BackButton"
+                    Icon="Back"
+                    x:Uid="/Strings/BackButton"
+                    IsEnabled="True"
+                    Click="BackButton_Click"/>
+
+                <AppBarButton
                     Tag="CreateTreatmentPlanButton"
                     Icon="Add"
                     x:Uid="/Strings/CreateTreatmentPlanButton"

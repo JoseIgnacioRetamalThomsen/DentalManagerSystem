@@ -68,10 +68,23 @@ namespace DentalManagerSys.Views
             TreatmentStateCB.ItemsSource = ViewModel.TreatmentsPlans;
             TreatmentStateCB.SelectedItem = ViewModel.ActualTreatmentPlanState;
 
+           
+
             //treatments lv
             TreatmentsOnPlanLV.ItemsSource = ViewModel.TreatmentsOnPlan;
+
+            TreatmentStateCB.SelectionChanged += TreatmentStateCB_SelectionChanged;
+
+
         }
 
+        private bool UserSeriesChange = false;
+
+        private void TreatmentStateCB_DropDownOpened(object sender, object e)
+        {
+            UserSeriesChange = true;
+            
+        }
         /// <summary>
         /// Change state of treatment plan, 
         /// the new state is save to database each time the selection changes.
@@ -80,6 +93,11 @@ namespace DentalManagerSys.Views
         /// <param name="e"></param>
         private void TreatmentStateCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (!UserSeriesChange)
+            {
+                return;
+            }
+
             ViewModel.ActualTreatmentPlanState = (TreatmentPlaneState)((ComboBox)sender).SelectedItem;
             ViewModel.ChangeState((TreatmentPlaneState)((ComboBox)sender).SelectedItem);
         }
@@ -121,7 +139,9 @@ namespace DentalManagerSys.Views
             int index = TreatmentsOnPlanLV.SelectedIndex;
             TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
             top.IsDone = false;
+
             App.Data.UpdateTreatmentOnPlan(top);
+
             ReloadListView();
         }
 
@@ -164,5 +184,12 @@ namespace DentalManagerSys.Views
             Frame.Navigate(typeof(NewPaymentView), new NewPaymentData(ViewModel.Customer.iD, ViewModel.ActualTreatmentPlan.TreatmentPLanID, true),
                 new DrillInNavigationTransitionInfo());
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
+        }
+
+
     }
 }

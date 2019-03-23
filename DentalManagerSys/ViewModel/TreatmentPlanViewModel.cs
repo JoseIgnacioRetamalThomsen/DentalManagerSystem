@@ -41,9 +41,9 @@ namespace DentalManagerSys.ViewModel
         }
         public ObservableCollection<TreatmentOnPlan> TreatmentsOnPlan { get; set; }
 
-        
 
-     
+
+
         public DateTime completedTreatmentDate;
         public DateTime CompletedTreatmentDate
         {
@@ -107,7 +107,7 @@ namespace DentalManagerSys.ViewModel
 
         public TreatmentPlanViewModel()
         {
-            
+
         }
         public int PlanID { get; set; }
 
@@ -134,12 +134,11 @@ namespace DentalManagerSys.ViewModel
 
         public void ChangeState(TreatmentPlaneState state)
         {
-           // App.Data.UpdateTreatmentPlanState(state, PlanID);
-            FireBaseDAO f = new FireBaseDAO();
-             DAO.UpdateTreatmentPlanState(state,PlanID);
-           //  f.UpdateTreatmentPlanState(state, PlanID);
-            Debug.WriteLine("State  1: "+ state);
-            Debug.WriteLine("Plan  1: " + PlanID);
+            App.Data.UpdateTreatmentPlanState(state, PlanID);
+            Debug.WriteLine("SGDFGASDGSFDAGSDASFDFDASASDSFDASFDASFDASFDASFDASFDASFDASFDASFDASFDA");
+           /* FireBaseDAO f = new FireBaseDAO();
+            DAO.UpdateTreatmentPlanState(state,PlanID);
+            f.UpdateTreatmentPlanState(state, PlanID);*/
         }
     }
 }

@@ -415,7 +415,7 @@
     <value>Add</value>
   </data>
   <data name="AddTreatment.Text" xml:space="preserve">
-    <value>Add Treatment</value>
+    <value>Add Treatment:</value>
   </data>
   <data name="CommentTB.PlaceholderText" xml:space="preserve">
     <value>Comment</value>
@@ -424,10 +424,10 @@
     <value>Create Treatment Plan</value>
   </data>
   <data name="PriceTBox.PlaceholderText" xml:space="preserve">
-    <value>Price</value>
+    <value>Edit Price:</value>
   </data>
   <data name="SelectTooth.Text" xml:space="preserve">
-    <value>Select tooth</value>
+    <value>Select tooth :</value>
   </data>
   <data name="TreatmentPriceTB.Text" xml:space="preserve">
     <value>Price</value>
@@ -571,7 +571,7 @@
     <value>Back</value>
   </data>
   <data name="BackButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Back to create new treeatment plan</value>
+    <value>Back to previous page.</value>
   </data>
   <data name="npContent.Text" xml:space="preserve">
     <value>Sorry, printing can' t proceed at this time.</value>
@@ -599,5 +599,8 @@
   </data>
   <data name="PrintTreatmentPlanNew.ToolTipService.ToolTip" xml:space="preserve">
     <value>Create and print</value>
+  </data>
+  <data name="SelectToothCB.PlaceholderText" xml:space="preserve">
+    <value>Select tooth</value>
   </data>
 </root>
