@@ -1,20 +1,21 @@
-﻿using DataAccessLibrary;
+﻿///------------------------------------------
+///
+///  Dental Manager System
+///  Profesional Practice in IT project
+///  GMIT 2019
+///  
+///  Markm Ndpeanoch
+///  Jose I. Retamal
+///------------------------------------------
+///
+
+
 using DentalManagerSys.ViewModel;
 using Models;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
@@ -27,18 +28,26 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class TreatmentPlanView : Page
     {
+        /// <summary>
+        /// View model for this pages
+        /// </summary>
         TreatmentPlanViewModel ViewModel { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public TreatmentPlanView()
         {
             this.InitializeComponent();
         }
 
-
+        /// <summary>
+        /// When navigate to this page, treament plan data is receive
+        /// from navigation parameters
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-
-
             ViewModel = new TreatmentPlanViewModel();
 
 
@@ -59,17 +68,46 @@ namespace DentalManagerSys.Views
             TreatmentStateCB.ItemsSource = ViewModel.TreatmentsPlans;
             TreatmentStateCB.SelectedItem = ViewModel.ActualTreatmentPlanState;
 
+           
+
             //treatments lv
             TreatmentsOnPlanLV.ItemsSource = ViewModel.TreatmentsOnPlan;
+
+            TreatmentStateCB.SelectionChanged += TreatmentStateCB_SelectionChanged;
+
+
         }
 
+        private bool UserSeriesChange = false;
+
+        private void TreatmentStateCB_DropDownOpened(object sender, object e)
+        {
+            UserSeriesChange = true;
+            
+        }
+        /// <summary>
+        /// Change state of treatment plan, 
+        /// the new state is save to database each time the selection changes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TreatmentStateCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ViewModel.ActualTreatmentPlanState = (TreatmentPlaneState)((ComboBox)sender).SelectedItem;
+            if (!UserSeriesChange)
+            {
+                return;
+            }
 
+            ViewModel.ActualTreatmentPlanState = (TreatmentPlaneState)((ComboBox)sender).SelectedItem;
             ViewModel.ChangeState((TreatmentPlaneState)((ComboBox)sender).SelectedItem);
         }
 
+        /// <summary>
+        /// When user select a treatment plan, it can change the state to done
+        /// this will set done date to acutal date.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TreatmentsOnPlanLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //get selected item index
@@ -89,18 +127,27 @@ namespace DentalManagerSys.Views
                 CreateTreatmentPlanCompletedB.IsEnabled = false;
                 CreateTreatmentPlanNotCopletedB.IsEnabled = true;
             }
-
         }
 
+        /// <summary>
+        /// Mark a treatment as not completed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateTreatmentPlanNotCopletedB_Click(object sender, RoutedEventArgs e)
         {
             int index = TreatmentsOnPlanLV.SelectedIndex;
             TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
             top.IsDone = false;
-            DAO.UpdateTreatmentOnPlan(top);
+
+            App.Data.UpdateTreatmentOnPlan(top);
+
             ReloadListView();
         }
 
+        /// <summary>
+        /// Reload list of treaments
+        /// </summary>
         private void ReloadListView()
         {
             TreatmentsOnPlanLV.SelectionChanged -= TreatmentsOnPlanLV_SelectionChanged;
@@ -117,8 +164,10 @@ namespace DentalManagerSys.Views
             TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
             top.CompletedDate = DateTime.Now;
             top.IsDone = true;
-            //Debug.WriteLine(top.CompletedDate + " " + top.TreatmentPlanTreatmentsID);
-            DAO.UpdateTreatmentOnPlan(top);
+            App.Data.UpdateTreatmentOnPlan(top);
+            /* DAO.UpdateTreatmentOnPlan(top);
+             FireBaseDAO f = new FireBaseDAO();
+             f.UpdateTreatmentOnPlan(top);*/
             ReloadListView();
 
 
@@ -132,8 +181,15 @@ namespace DentalManagerSys.Views
 
         private void NewPaymentButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(NewPaymentView), new NewPaymentData(ViewModel.Customer.iD,ViewModel.ActualTreatmentPlan.TreatmentPLanID,true),
+            Frame.Navigate(typeof(NewPaymentView), new NewPaymentData(ViewModel.Customer.iD, ViewModel.ActualTreatmentPlan.TreatmentPLanID, true),
                 new DrillInNavigationTransitionInfo());
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
+        }
+
+
     }
 }

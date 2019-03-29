@@ -1,8 +1,10 @@
 ﻿using DataAccessLibrary;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Models;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -70,8 +72,9 @@ namespace DentalManagerSys.Views
             }
             else
             {
-                DAO.AddNewTreatment(inputTreatmentName.Text, Convert.ToDecimal(inputTreatmentPrice.Text));
-                //clear
+                Treatment treatment = new Treatment(0,inputTreatmentName.Text, Convert.ToDecimal(inputTreatmentPrice.Text));
+                App.Data.AddNewTreatment(treatment);
+
                 this.ClearButton_Tapped(this, new TappedRoutedEventArgs());
             }
         }

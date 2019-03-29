@@ -13,6 +13,10 @@ namespace DentalManagerSys.ViewModel
 {
     public class TreatmentPlanViewModel : ViewModelBase
     {
+        private static string created = "Created";
+        private static string accepted = "Accepted";
+        private static string done = "done";
+
         public decimal total;
         public decimal Total
         {
@@ -37,9 +41,9 @@ namespace DentalManagerSys.ViewModel
         }
         public ObservableCollection<TreatmentOnPlan> TreatmentsOnPlan { get; set; }
 
-        
 
-     
+
+
         public DateTime completedTreatmentDate;
         public DateTime CompletedTreatmentDate
         {
@@ -58,7 +62,8 @@ namespace DentalManagerSys.ViewModel
 
         public ObservableCollection<TreatmentPlaneState> treatmentsPlans = new ObservableCollection<TreatmentPlaneState>()
         {
-            TreatmentPlaneState.Accepted,TreatmentPlaneState.Created,TreatmentPlaneState.Finish
+            //created,accepted,done
+           TreatmentPlaneState.Accepted,TreatmentPlaneState.Created,TreatmentPlaneState.Finish
         };
 
         public ObservableCollection<TreatmentPlaneState> TreatmentsPlans
@@ -102,7 +107,7 @@ namespace DentalManagerSys.ViewModel
 
         public TreatmentPlanViewModel()
         {
-            
+
         }
         public int PlanID { get; set; }
 
@@ -129,7 +134,12 @@ namespace DentalManagerSys.ViewModel
 
         public void ChangeState(TreatmentPlaneState state)
         {
-            DAO.UpdateTreatmentPlanState(state,PlanID);
+            App.Data.UpdateTreatmentPlanState(state, PlanID);
+
+            /* FireBaseDAO f = new FireBaseDAO();
+             f.UpdateTreatmentPlanState(state, PlanID);
+            DAO.UpdateTreatmentPlanState(state,PlanID);*/
+
         }
     }
 }

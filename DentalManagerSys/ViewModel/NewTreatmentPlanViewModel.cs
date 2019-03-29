@@ -76,7 +76,7 @@ namespace DentalManagerSys.ViewModel
             {
                 _PriceBefore = value;
                 OnPropertyChanged(nameof(PriceBefore));
-          
+
             }
         }
 
@@ -88,7 +88,7 @@ namespace DentalManagerSys.ViewModel
             {
                 _BeforeTreatment = value;
                 OnPropertyChanged(nameof(BeforeTreatment));
-                
+
             }
         }
         public int Tooth { get; set; }
@@ -109,39 +109,32 @@ namespace DentalManagerSys.ViewModel
 
 
 
-     
+
 
         public void CreateNewTreatmentPlan()
         {
-            int id = (int)DAO.AddNewTreatmentPlan(ActualCustomer.iD, (int)TreatmentPlaneState.Created, DateTime.Now.ToString(), "0");
 
-            foreach(TreatmentOnPlan top in treatmentsOnPlan){
-                
+
+
+            FireBaseDAO f = new FireBaseDAO();
+            //int id = (int)DAO.AddNewTreatmentPlan(ActualCustomer.iD, (int)TreatmentPlaneState.Created, DateTime.Now.ToString(), "0");
+
+            ////Add new Treatmentplan to firebase.
+            //f.AddNewTreatmentPlan(id, ActualCustomer.iD, (int)TreatmentPlaneState.Created, DateTime.Now.ToString(), "0");
+
+            int id = (int)App.Data.AddNewTreatmentPlan(ActualCustomer.iD, (int)TreatmentPlaneState.Created, DateTime.Now.ToString(), "0");
+
+            foreach (TreatmentOnPlan top in treatmentsOnPlan)
+            {
+
                 top.TreatmentPlanID = id;
-                DAO.AddNewTreatmentPlanTreatments(top);
-                
+                App.Data.AddNewTreatmentPlanTreatments(top);
+                //DAO.AddNewTreatmentPlanTreatments(top);
+                //f.AddNewTreatmentPlanTreatments(top);
+
             }
 
-            //foreach (Treatment t in treatmentsOnPlan)
-            //{
 
-            //    DAO.AddNewTreatmentPlanTreatments(id, Convert.ToInt32(t.iD), t.price, "0", 1, "mock", false);
-            //}
-
-            //int id1 = (int)DAO.AddNewTreatmentPlan(ActualCustomer.iD, (int)TreatmentPlaneState.Finish, DateTime.Now.ToString(), "0");
-
-            //foreach (Treatment t in treatmentsOnPlan)
-            //{
-
-            //    DAO.AddNewTreatmentPlanTreatments(id1, Convert.ToInt32(t.iD), t.price, "0", 1, "mock", false);
-            //}
-            //int id2 = (int)DAO.AddNewTreatmentPlan(ActualCustomer.iD, (int)TreatmentPlaneState.Accepted, DateTime.Now.ToString(), "0");
-
-            //foreach (Treatment t in treatmentsOnPlan)
-            //{
-
-            //    DAO.AddNewTreatmentPlanTreatments(id2, Convert.ToInt32(t.iD), t.price, "0", 1, "mock", false);
-            //}
         }
 
         public void RecalculateTotal()
@@ -158,6 +151,7 @@ namespace DentalManagerSys.ViewModel
             TreatmentsOnPlan.Add(new TreatmentOnPlan(0,0,BeforeTreatment.ID,
                 PriceBefore,DateTime.Now,Tooth, Comments, false,BeforeTreatment.Name));
             RecalculateTotal();
+           
         }
     }
 }

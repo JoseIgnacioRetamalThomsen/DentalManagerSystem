@@ -11,13 +11,16 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Models
 {
     public enum TreatmentPlaneState
     {
-        Created, Accepted, Finish
+        Created,
+        Accepted,
+        Finish
     }
     public class TreatmentPlan
     {
@@ -36,9 +39,9 @@ namespace Models
             this.TreatmentPlanCompleteDate = treatmentPlanCompleteDate;
         }
 
-        public TreatmentPlan(int treatementPLanID,string customerID, TreatmentPlaneState state, DateTime creationDate, DateTime treatmentPlanCompleteDate)
+        public TreatmentPlan(int treatementPLanID, string customerID, TreatmentPlaneState state, DateTime creationDate, DateTime treatmentPlanCompleteDate)
         {
-            this.TreatmentPLanID =treatementPLanID;
+            this.TreatmentPLanID = treatementPLanID;
             CustomerID = customerID;
             State = state;
             this.CreationDate = creationDate;
@@ -52,7 +55,7 @@ namespace Models
 
         public override string ToString()
         {
-            return "ID= "+ IDForCustomer + " " + CreationDate.ToString("dd/MM/yyyy") ;
+            return "ID= " + IDForCustomer + " " + CreationDate.ToString("dd/MM/yyyy");
         }
     }
 }

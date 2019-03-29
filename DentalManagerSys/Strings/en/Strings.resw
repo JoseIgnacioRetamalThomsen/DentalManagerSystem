@@ -352,7 +352,7 @@
     <value>Active Treatment Plan</value>
   </data>
   <data name="CreateTreatmentsTextBox.Text" xml:space="preserve">
-    <value>Create Treatment Plan</value>
+    <value>Created Treatments Plans</value>
   </data>
   <data name="DoneTreatmentsTextBox.Text" xml:space="preserve">
     <value>Complete Treatment Plan</value>
@@ -415,7 +415,7 @@
     <value>Add</value>
   </data>
   <data name="AddTreatment.Text" xml:space="preserve">
-    <value>Add Treatment</value>
+    <value>Add Treatment:</value>
   </data>
   <data name="CommentTB.PlaceholderText" xml:space="preserve">
     <value>Comment</value>
@@ -424,10 +424,10 @@
     <value>Create Treatment Plan</value>
   </data>
   <data name="PriceTBox.PlaceholderText" xml:space="preserve">
-    <value>Price</value>
+    <value>Edit Price:</value>
   </data>
   <data name="SelectTooth.Text" xml:space="preserve">
-    <value>Select tooth</value>
+    <value>Select tooth :</value>
   </data>
   <data name="TreatmentPriceTB.Text" xml:space="preserve">
     <value>Price</value>
@@ -464,5 +464,164 @@
   </data>
   <data name="CancelButton.Label" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="AccountInfoTextBlock.Text" xml:space="preserve">
+    <value>Create account/ Account management</value>
+  </data>
+  <data name="AccountManagementButton.Text" xml:space="preserve">
+    <value>Account Management</value>
+  </data>
+  <data name="AccountManagementHeader.Text" xml:space="preserve">
+    <value>AccountManagement</value>
+  </data>
+  <data name="ConfirmPasswordBox.PlaceholderText" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="CreateNewAccountButton.Content" xml:space="preserve">
+    <value>Create </value>
+  </data>
+  <data name="InternetStatusFalse.Text" xml:space="preserve">
+    <value>No internet connection,  you can work off line but can't create new account  or manage your accout.</value>
+  </data>
+  <data name="InternetStatusTrueText.Text" xml:space="preserve">
+    <value>Internet connection detected.</value>
+  </data>
+  <data name="LoginHeader.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginHelp.Text" xml:space="preserve">
+    <value>If you forgot you password or don't have an account: Click on "Account management".</value>
+  </data>
+  <data name="LoginPasswordInfo.Text" xml:space="preserve">
+    <value>Enter your password below</value>
+  </data>
+  <data name="NewAccountButton.Text" xml:space="preserve">
+    <value>Create a new Account</value>
+  </data>
+  <data name="NewAccountHeader.Text" xml:space="preserve">
+    <value>New Account</value>
+  </data>
+  <data name="NewPasswordBox.PlaceholderText" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PasswordBox.PlaceholderText" xml:space="preserve">
+    <value>password</value>
+  </data>
+  <data name="SignInButton.Content" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="UserName.PlaceholderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="emailErrorBad.Text" xml:space="preserve">
+    <value>The email address is improperly formatted.</value>
+  </data>
+  <data name="emailErrorInUse.Text" xml:space="preserve">
+    <value>The email address is already in use by another account.</value>
+  </data>
+  <data name="EmailInput.PlaceholderText" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="passwordError.Text" xml:space="preserve">
+    <value>The password don't match.</value>
+  </data>
+  <data name="passWordErrorShort.Text" xml:space="preserve">
+    <value>The password must be a string with at least 6 characters.</value>
+  </data>
+  <data name="AccountManagementNewOrSyncHeader.Text" xml:space="preserve">
+    <value>Account Management</value>
+  </data>
+  <data name="createAccount.Text" xml:space="preserve">
+    <value>Please click on Account Management for create your account or sync accout from another computer</value>
+  </data>
+  <data name="SyncAccountButton.Content" xml:space="preserve">
+    <value>Synchronize </value>
+  </data>
+  <data name="SyncAccountHeader.Text" xml:space="preserve">
+    <value>Synchronize your account</value>
+  </data>
+  <data name="wrongPassword.Text" xml:space="preserve">
+    <value>Wrong Password</value>
+  </data>
+  <data name="message1.Text" xml:space="preserve">
+    <value>We send you a email with a link for change your password</value>
+  </data>
+  <data name="message2.Text" xml:space="preserve">
+    <value>Change your password</value>
+  </data>
+  <data name="ResetPassword.Text" xml:space="preserve">
+    <value>Reset password using email (do this if you forgot your password).</value>
+  </data>
+  <data name="ResetPasswordButton.Content" xml:space="preserve">
+    <value>Send Email</value>
+  </data>
+  <data name="ResetPasswordHeader.Text" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="SyncAccountButtonAM.Text" xml:space="preserve">
+    <value>Synchonize account</value>
+  </data>
+  <data name="PreviewTreatmentPlan.Label" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="PreviewTreatmentPlan.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Preview this treatment plan</value>
+  </data>
+  <data name="BackButton.Label" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="BackButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Back to previous page.</value>
+  </data>
+  <data name="npContent.Text" xml:space="preserve">
+    <value>Sorry, printing can' t proceed at this time.</value>
+  </data>
+  <data name="npOKButton.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="npTittle.Text" xml:space="preserve">
+    <value>Printing error</value>
+  </data>
+  <data name="nsContent.Text" xml:space="preserve">
+    <value>Sorry, printing is not supported on this device.</value>
+  </data>
+  <data name="nsTitle.Text" xml:space="preserve">
+    <value>Printing not supported</value>
+  </data>
+  <data name="PrintButtonPreview.Label" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="PrintButtonPreview.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Print and move on</value>
+  </data>
+  <data name="PrintTreatmentPlanNew.Label" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="PrintTreatmentPlanNew.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create and print</value>
+  </data>
+  <data name="CommentHeader.Text" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="errorMessageSyncAccount.Text" xml:space="preserve">
+    <value>Wrong password or account.</value>
+  </data>
+  <data name="NameHeader.Text" xml:space="preserve">
+    <value>Treatment name</value>
+  </data>
+  <data name="PriceHeader.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="RemoveTreatmentButton.Label" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="RemoveTreatmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Remove selected treatment</value>
+  </data>
+  <data name="SelectToothCB.PlaceholderText" xml:space="preserve">
+    <value>Select tooth</value>
+  </data>
+  <data name="ToothHeader.Text" xml:space="preserve">
+    <value>Tooth</value>
   </data>
 </root>

@@ -1,21 +1,27 @@
-﻿using DataAccessLibrary;
+﻿///------------------------------------------
+///
+///  Dental Manager System
+///  Profesional Practice in IT project
+///  GMIT 2019
+///  
+///  Markm Ndpeanoch
+///  Jose I. Retamal
+///------------------------------------------
+///
+
+using DataAccessLibrary;
+using DentalManagerSys.Print;
 using DentalManagerSys.ViewModel;
 using Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -23,7 +29,7 @@ using Windows.UI.Xaml.Navigation;
 namespace DentalManagerSys.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// View for create a new treatment plan.
     /// </summary>
     public sealed partial class NewTreatmentPlanView : Page
     {
@@ -32,6 +38,13 @@ namespace DentalManagerSys.Views
         //ObservableCollection<Treatment> treatmentsOnPlan = new ObservableCollection<Treatment>();
 
         public NewTreatmentPlanViewModel ViewModel { get; set; }
+        public object TreatmentPanPrint { get; private set; }
+
+        /// <summary>
+        /// Print helper
+        /// </summary>
+        PrintHelper ph;
+        #region Constructors and build
         public NewTreatmentPlanView()
         {
             this.InitializeComponent();
@@ -43,6 +56,8 @@ namespace DentalManagerSys.Views
             TreatmentsDoneListView.ItemsSource = ViewModel.TreatmentsOnPlan;
             SelectToothCB.ItemsSource = ViewModel.Tooths;
             ViewModel.Total = 0;
+
+
         }
 
         private void InitTreamentsCB()
@@ -52,6 +67,9 @@ namespace DentalManagerSys.Views
             //TreatmentsCB.SelectedIndex = 0;
         }
 
+        #endregion
+
+        #region Navigation methods
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter == null)
@@ -69,37 +87,36 @@ namespace DentalManagerSys.Views
 
             }
 
-
-        }
-
-        private void TreatmentsCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+            //init print helper
+            base.OnNavigatedTo(e);
 
 
         }
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        #endregion
 
-        }
+        #region buttons and events handlers 
 
-        private void TreatmentsDoneListView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// There is a treatmet selected, when hapens the treatment price can be change or the 
+        /// treatment can be removed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TreatmentsDoneListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Debug.WriteLine("willThis" + ((ListView)sender).SelectedIndex);
-            Debug.WriteLine("willThis" + ViewModel.TreatmentsOnPlan[((ListView)sender).SelectedIndex].Price.ToString());
-
+            if (((ListView)sender).SelectedIndex < 0) return;
             //set value of treament on edit box for editing
             EditPriceTB.Text = ((int)ViewModel.TreatmentsOnPlan[((ListView)sender).SelectedIndex].Price).ToString();
             SaveChangedPriceButton.IsEnabled = true;
-
-
+            RemoveTreatmentButton.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Select treatment for add.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TreatmentsCB_DropDownClosed(object sender, object e)
         {
             ComboBox temp = (ComboBox)sender;
@@ -113,31 +130,40 @@ namespace DentalManagerSys.Views
                 //No selection whe do nothging
                 return;
             }
-            //add adddes treatments to list of all treatements in plan
-            //ViewModel.TreatmentsOnPlan.Add(new Treatment(t.iD, t.name, t.price));
 
             ViewModel.PriceBefore = t._Price;
             ViewModel.BeforeTreatment = t;
-            isPrice = true;
+            isTreament = true;
             EnableAddButton();
-            //add price of treatment to total
-            // ViewModel.Total += t.Price;
 
         }
 
+        /// <summary>
+        /// Limit price text to only numbers.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void EditPriceTB_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
             sender.Text = new String(sender.Text.Where(char.IsDigit).ToArray());
         }
 
-
-
+        /// <summary>
+        /// Create the treatmwent plan an go back
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateTreatmentPlanButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             ViewModel.CreateNewTreatmentPlan();
             Frame.GoBack();
         }
 
+        /// <summary>
+        /// Change price of the selected treatment.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveChangedPriceButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             decimal NewPrice = Convert.ToDecimal(EditPriceTB.Text);
@@ -145,36 +171,43 @@ namespace DentalManagerSys.Views
 
             //edit value
             ViewModel.TreatmentsOnPlan[ItemIndex].Price = NewPrice;
-            ViewModel.RecalculateTotal();
-            ReloadTretmentsListView();
-            SaveChangedPriceButton.IsEnabled = false;
+            EditDone();
+
 
         }
-
-        private void ReloadTretmentsListView()
+        private void RemoveTreatmentButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            TreatmentsDoneListView.SelectionChanged -= TreatmentsDoneListView_SelectionChanged;
-            TreatmentsDoneListView.ItemsSource = null;
-            TreatmentsDoneListView.ItemsSource = ViewModel.TreatmentsOnPlan;
-            TreatmentsDoneListView.SelectionChanged += TreatmentsDoneListView_SelectionChanged;
+            int ItemIndex = TreatmentsDoneListView.SelectedIndex;
+            ViewModel.TreatmentsOnPlan.RemoveAt(ItemIndex);
+            EditDone();
+          
         }
 
+      
+
+        /// <summary>
+        /// Add the treatment to plan.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddButon_Click(object sender, RoutedEventArgs e)
         {
-
             ViewModel.Comments = CommentTB.Text;
-
             ViewModel.AddTreatment();
-
             TreatmentsCB.SelectedItem = null;
             SelectToothCB.SelectedItem = null;
-            isPrice = false;
+            isTreament = false;
             isToothNumber = false;
             AddButon.IsEnabled = false;
             CommentTB.Text = "";
             ViewModel.PriceBefore = 0;
         }
 
+        /// <summary>
+        /// Select tooth.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectToothCB_DropDownClosed(object sender, object e)
         {
             isToothNumber = true;
@@ -190,20 +223,64 @@ namespace DentalManagerSys.Views
             EnableAddButton();
         }
 
-        bool isPrice = false;
+        bool isTreament = false;
         bool isToothNumber = false;
+        /// <summary>
+        /// Enable the add buton when tooth and treatement are selected
+        /// </summary>
         private void EnableAddButton()
         {
-            if (isPrice && isToothNumber)
+            if (isTreament && isToothNumber)
             {
                 AddButon.IsEnabled = true;
             }
         }
 
-        private void NewPaymentButton_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Show preview print.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PreviewTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            //create treatment plan for print 
+            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan));
+            Frame.Navigate(typeof(TreatmentPlanPreviewView), tp);
 
         }
+
+        private void PrintTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            //create treatment plan for print 
+            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan));
+            Frame.Navigate(typeof(TreatmentPlanPreviewView), tp);
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
+        }
+        #endregion
+
+        #region util
+        private void ReloadTretmentsListView()
+        {
+            TreatmentsDoneListView.SelectionChanged -= TreatmentsDoneListView_SelectionChanged;
+            TreatmentsDoneListView.ItemsSource = null;
+            TreatmentsDoneListView.ItemsSource = ViewModel.TreatmentsOnPlan;
+            TreatmentsDoneListView.SelectionChanged += TreatmentsDoneListView_SelectionChanged;
+        }
+
+        private void EditDone()
+        {
+            ViewModel.RecalculateTotal();
+            ReloadTretmentsListView();
+            SaveChangedPriceButton.IsEnabled = false;
+            RemoveTreatmentButton.IsEnabled = false;
+        }
+        #endregion
+
+
     }
 
 
