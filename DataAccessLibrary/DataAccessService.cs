@@ -28,6 +28,7 @@ namespace DataAccessLibrary
             DAOCount++;
             FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
+            firebaseDAO.UpdateCountRecordFB(FBCount);
 
             long number = sqlite.AddNewTreatment(treatment.Name, treatment.Price);
 
@@ -42,6 +43,7 @@ namespace DataAccessLibrary
             DAOCount++;
             FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
+            firebaseDAO.UpdateCountRecordFB(FBCount);
 
             sqlite.UpdateTreatment(new Treatment(iD, text, v));
 
@@ -55,6 +57,7 @@ namespace DataAccessLibrary
             DAOCount++;
             FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
+            firebaseDAO.UpdateCountRecordFB(FBCount);
 
             bool temp = false;
             temp = sqlite.AddNewCustomer(idInput, inputName, inputSurename, DOB, streetInput, cityInput, provinceInput, countryInput, postCodeInput, mobilNumInput, homeNumInput, emaillInput, commentsInput);
@@ -74,6 +77,7 @@ namespace DataAccessLibrary
             DAOCount++;
             FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
+            firebaseDAO.UpdateCountRecordFB(FBCount);
 
             sqlite.UpdateCustomer(idInput, inputName, inputSurename, DOB, streetInput, cityInput, provinceInput, countryInput, postCodeInput, mobilNumInput, homeNumInput, emaillInput, commentsInput);
 
@@ -89,6 +93,7 @@ namespace DataAccessLibrary
             DAOCount++;
             FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
+            firebaseDAO.UpdateCountRecordFB(FBCount);
 
             sqlite.UpdateTreatmentPlanState(state, PlanID);
 
@@ -105,6 +110,7 @@ namespace DataAccessLibrary
             DAOCount++;
             FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
+            firebaseDAO.UpdateCountRecordFB(FBCount);
 
             sqlite.UpdateTreatmentOnPlan(top);
 
@@ -119,6 +125,7 @@ namespace DataAccessLibrary
             DAOCount++;
             FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
+            firebaseDAO.UpdateCountRecordFB(FBCount);
 
             sqlite.AddNewpayment(treatmentPlanID, customerID, amount, treatmentCompleteDate);
             firebaseDAO.AddNewpayment(treatmentPlanID, customerID, amount, treatmentCompleteDate);
@@ -130,6 +137,7 @@ namespace DataAccessLibrary
             DAOCount++;
             FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
+            firebaseDAO.UpdateCountRecordFB(FBCount);
 
             // add to sql
             int id = (int)sqlite.AddNewTreatmentPlan(customerID, state, creationDate, treatmentPlanCompleteDate);
@@ -146,6 +154,7 @@ namespace DataAccessLibrary
             DAOCount++;
             FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
+            firebaseDAO.UpdateCountRecordFB(FBCount);
 
             sqlite.AddNewTreatmentPlanTreatments(t);
 

@@ -30,16 +30,44 @@ namespace DentalManagerSys
         {
             this.InitializeComponent();
 
-            DAO.InitializeDatabase();
-            App.userName= DAO.GetUserID();
-            FireBaseDAO f = new FireBaseDAO();
-           // DAO d = new DAO();
-          //  d.NewUserCount(App.userName, 0);
-            f.ReadDataFromFirebase();
-           // f.CreateCountRecordFB(0);
-            //f.UpdateCountRecordFB(1);
+            int firebaseCnt;
+            int sqliteCnt;
 
+            DAO.InitializeDatabase();
+            FireBaseDAO f = new FireBaseDAO();
+            DAO d = new DAO();
+
+            App.userName= DAO.GetUserID();
+             //Add create a new user count table if it is a new user.
+             if (App.NewUser == true)
+             {
+                 d.NewUserCount(App.userName, 0);
+                 f.CreateCountRecordFB(0);
+             }
+             else
+             {
+                sqliteCnt = DAO.GetUserCountSqlite(App.userName);
+                //Because it is an async method so, must be called on an await, that is why is doen like so...
+                readfromFb();
+                async void readfromFb()
+                {
+                    firebaseCnt = await f.GetUserCountFb(App.userName);
+
+                    if(firebaseCnt> sqliteCnt)
+                    {
+
+                    }else if(sqliteCnt> firebaseCnt)
+                    {
+
+                    }
+                   
+                }
+
+            }
+
+            f.ReadDataFromFirebase();
         }
+
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)

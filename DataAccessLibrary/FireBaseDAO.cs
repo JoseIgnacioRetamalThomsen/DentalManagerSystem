@@ -63,7 +63,10 @@ namespace DataAccessLibrary
             await firebase.Child(node).PostAsync<FbCnt>(fbCnt);
         }
 
-
+        /// <summary>
+        /// Update Firebase count
+        /// </summary>
+        /// <param name="counterNum"></param>
         public async void UpdateCountRecordFB(int counterNum)
         {
             ConnectToFirebase();
@@ -94,6 +97,35 @@ namespace DataAccessLibrary
                 }
             }
 
+        }
+
+        public async Task<int> GetUserCountFb(string email)
+        {
+            ConnectToFirebase();
+
+            //string userName = DAO.GetUserID();
+            String myUsername = email;
+            myUsername = myUsername.Replace(".", "-");
+            String node = "CounterRecord" + "/";
+            int cntNum=0;
+
+            FbCnt fbCnt = new FbCnt
+            {
+                username = myUsername,
+            };
+
+            var results = await firebase.Child(node).OnceAsync<FbCnt>();
+            foreach (var details in results)
+            {
+
+                if (details.Object.username == myUsername)
+                {
+                    cntNum = details.Object.cnt;
+                    break;
+                }
+            }
+
+            return cntNum;
         }
 
         /// <summary>
@@ -411,7 +443,6 @@ namespace DataAccessLibrary
         {
             ConnectToFirebase();
 
-            Debug.WriteLine("Helooooooooooooooooooooo");
             string userName = DAO.GetUserID();
             String myUsername = userName;
             myUsername = myUsername.Replace(".", "-");
@@ -705,13 +736,14 @@ namespace DataAccessLibrary
                     db.Close();
                 }
 
-              /* await firebase.Child("g00351330@gmit-ieTreatmentPlans/").DeleteAsync();
-               await firebase.Child("GOO352031@GMITIECustomers/").DeleteAsync();
-               await firebase.Child("mmarkoTreatmentPlans/").DeleteAsync();
-               await firebase.Child("markoTreatments/").DeleteAsync();*/
 
-        }
-        
-            
+                /* await firebase.Child("g00351330@gmit-ieTreatmentPlans/").DeleteAsync();
+                 await firebase.Child("GOO352031@GMITIECustomers/").DeleteAsync();
+                 await firebase.Child("mmarkoTreatmentPlans/").DeleteAsync();
+                 await firebase.Child("markoTreatments/").DeleteAsync();*/
+
+            }
+
+
     }
 }

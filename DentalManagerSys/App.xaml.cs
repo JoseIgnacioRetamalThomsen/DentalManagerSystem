@@ -27,9 +27,8 @@ namespace DentalManagerSys
 
         public static DataAccessService Data = new DataAccessService();
 
-        public static string  userName;
-
-
+        public static string userName;
+        public static bool NewUser=false;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code

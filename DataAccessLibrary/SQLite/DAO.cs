@@ -154,7 +154,7 @@ namespace DataAccessLibrary
                 insertCommand.Connection = db;
 
                 // Use parameterized query to prevent SQL injection attacks
-                insertCommand.CommandText = "INSERT INTO countRecord VALUES (@ID,@Email,@CounterNum);";
+                insertCommand.CommandText = "INSERT INTO countRecord VALUES (@ID,@CounterNum,@Email);";
                 insertCommand.Parameters.AddWithValue("@ID", 0);
                 insertCommand.Parameters.AddWithValue("@CounterNum", counterNum);
                 insertCommand.Parameters.AddWithValue("@Email", email);
@@ -192,6 +192,38 @@ namespace DataAccessLibrary
             }
         }
 
+
+        public static int GetUserCountSqlite(string email)
+        {
+
+            int userCntNum=0;
+            CounterData cd = null;
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from countRecord where email=@Email", db);
+                selectCommand.Parameters.AddWithValue("@Email", email);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    cd = new CounterData(
+                    query.GetInt32(0),
+                    userCntNum = query.GetInt32(1),
+                    query.GetString(2)
+                 );
+
+                }
+
+                db.Close();
+            }
+
+            return userCntNum;
+        }
 
         public  void UpdateTreatmentPlanState(TreatmentPlaneState state, int iD)
         {
@@ -1116,7 +1148,7 @@ namespace DataAccessLibrary
                     user = new User(
                     query.GetString(0),
                     query.GetString(1),
-                   UserID= query.GetString(2)
+                    UserID= query.GetString(2)
 
                  );
 
