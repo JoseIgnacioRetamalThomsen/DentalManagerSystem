@@ -36,6 +36,7 @@ namespace DentalManagerSys
             DAO.InitializeDatabase();
             FireBaseDAO f = new FireBaseDAO();
             DAO d = new DAO();
+           // f.ReadDataFromSQLite();
 
             App.userName= DAO.GetUserID();
              //Add create a new user count table if it is a new user.
