@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
@@ -16,7 +18,7 @@ namespace DentalManagerSys.Views.Form
         int column = 7;
         int starhour = 8;
         List<int> slot = new List<int>() { 0, 15, 30, 45 };
-        List<String> days = new List<string>() { "Monday","Tueday","Wenesday","Thursday","Friday","Saturday"};
+        List<String> days = new List<string>() { "Monday", "Tueday", "Wenesday", "Thursday", "Friday", "Saturday" };
         Grid ApoGrid = new Grid();
         int columnwidth = 150;
         public ApointmetsView()
@@ -31,13 +33,13 @@ namespace DentalManagerSys.Views.Form
             //for 12 hours, 08:00 to 20:00, 4 slot of 15 mint per hour 
             for (int i = 0; i <= hours * slotPerHour; i++)
             {
-                ApoGrid.RowDefinitions.Add(new RowDefinition() {});
+                ApoGrid.RowDefinitions.Add(new RowDefinition() { });
             }
 
             //create columns
             for (int i = 0; i < column; i++)
             {
-                ApoGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width=new Windows.UI.Xaml.GridLength(columnwidth) });
+                ApoGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new Windows.UI.Xaml.GridLength(columnwidth) });
             }
 
             //add time to first colum
@@ -47,41 +49,41 @@ namespace DentalManagerSys.Views.Form
                 {
                     Height = 20,
                     Width = columnwidth,
-                    BorderThickness = new Windows.UI.Xaml.Thickness(1,1,1,0),
+                    BorderThickness = new Windows.UI.Xaml.Thickness(1, 1, 1, 0),
                     BorderBrush = new SolidColorBrush(Colors.Black)
                     //Background = new SolidColorBrush(Colors.Black)
                 };
 
-               // border.SetValue(Grid.RowProperty, i);
-               // border.SetValue(Grid.ColumnProperty, 0);
+                // border.SetValue(Grid.RowProperty, i);
+                // border.SetValue(Grid.ColumnProperty, 0);
                 Grid.SetColumn(border, 0);
                 Grid.SetRow(border, i);
 
                 if (i % 4 == 0) starhour++;
                 TextBlock label = new TextBlock()
                 {
-                    Text = ""+ starhour +":" + slot[i%4],
-                    VerticalAlignment=Windows.UI.Xaml.VerticalAlignment.Center,
+                    Text = "" + starhour + ":" + slot[i % 4],
+                    VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Center,
                     TextAlignment = Windows.UI.Xaml.TextAlignment.Center
-                    
+
                 };
                 Grid.SetColumn(label, 0);
                 Grid.SetRow(label, i);
                 //label.SetValue(Grid.RowProperty, i);
-               // label.SetValue(Grid.ColumnProperty, 0);
+                // label.SetValue(Grid.ColumnProperty, 0);
                 ApoGrid.Children.Add(label);
                 ApoGrid.Children.Add(border);
 
-                
+
 
 
             }
             // add day headers
-            for(int i =1;i<column;i++)
+            for (int i = 1; i < column; i++)
             {
                 TextBlock label = new TextBlock()
                 {
-                    Text = "" +days[i-1],
+                    Text = "" + days[i - 1],
                     VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Center,
                     TextAlignment = Windows.UI.Xaml.TextAlignment.Center
 
@@ -93,9 +95,9 @@ namespace DentalManagerSys.Views.Form
             }
 
             //add border to all other
-            for(int row =1;row < hours * slotPerHour;row++)
+            for (int row = 1; row < hours * slotPerHour; row++)
             {
-                for(int col=1;col<column;col++)
+                for (int col = 1; col < column; col++)
                 {
                     Border border = new Border()
                     {
@@ -116,6 +118,58 @@ namespace DentalManagerSys.Views.Form
                 }
             }
 
+        }
+
+        public void AddApointment(List<int> timeSlot, string name, int day)
+        {
+
+            Border border = new Border()
+            {
+                //Height = 20,
+                Width = columnwidth,
+                // BorderThickness = new Windows.UI.Xaml.Thickness(1, 1, 1, 0),
+                //  BorderBrush = new SolidColorBrush(Colors.Black)
+                Background = new SolidColorBrush(Colors.LightGreen)
+            };
+
+            // border.SetValue(Grid.RowProperty, i);
+            // border.SetValue(Grid.ColumnProperty, 0);
+            Grid.SetColumn(border, day);
+            Grid.SetRow(border, timeSlot[0]);
+
+            Grid.SetRowSpan(border, 2);
+
+            TextBlock label = new TextBlock()
+            {
+                Text = name,
+                VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Center,
+                TextAlignment = Windows.UI.Xaml.TextAlignment.Center
+
+            };
+            Grid.SetColumn(label, day);
+            Grid.SetRow(label, timeSlot[0]);
+            //label.SetValue(Grid.RowProperty, i);
+            // label.SetValue(Grid.ColumnProperty, 0);
+
+            ApoGrid.Children.Add(border);
+            ApoGrid.Children.Add(label);
+            border.Tapped += Border_Tapped;
+            label.Tapped += Border_Tapped;
+
+        }
+
+        private void Border_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            FrameworkElement b = (FrameworkElement)sender;
+
+            //try
+            //{
+            //     b = (Border)sender;
+            //}catch
+            //{
+            //    b = (TextBlock)sender;
+            //}
+            Debug.WriteLine("d" + b.GetValue(Grid.ColumnProperty)+ b.GetValue(Grid.RowProperty));
         }
     }
 }
