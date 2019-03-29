@@ -49,12 +49,17 @@ namespace DataAccessLibrary
                 String address = "CREATE TABLE IF NOT EXISTS address(addressID INTEGER,userID INTEGER NOT NULL,street varchar(32),city varchar(20),province" +
                     " varchar(20),country varchar(20), postcode varchar(20),PRIMARY KEY (addressID), FOREIGN KEY (userID) REFERENCES users(userID)  )";
                 SqliteCommand createAddress = new SqliteCommand(address, db);
-
                 createAddress.ExecuteReader();
 
+                string appointments = "CREATE TABLE IF NOT EXISTS appointment(id INTEGER,patientID INTEGER NOT NULL,date DATETIME,status INTEGER NOT NULL,PRIMARY KEY (id), FOREIGN KEY (patientID) REFERENCES customers(customerID))";
+                SqliteCommand createAppointments = new SqliteCommand(appointments, db);
+                createAppointments.ExecuteReader();
+                
                 String countRecord = "CREATE TABLE IF NOT EXISTS countRecord(countID INTEGER,counterNum INTEGER NOT NULL,email varchar(32)NOT NULL, PRIMARY KEY (countID),FOREIGN KEY (email) REFERENCES users(email))";
                 SqliteCommand createCountRecord = new SqliteCommand(countRecord, db);
                 createCountRecord.ExecuteReader();
+
+
             }
 
         }
@@ -117,7 +122,7 @@ namespace DataAccessLibrary
                 {
                     Debug.WriteLine("User name not found!");
                 }
-                
+
             }
             return user;
         }
@@ -227,8 +232,8 @@ namespace DataAccessLibrary
 
         public  void UpdateTreatmentPlanState(TreatmentPlaneState state, int iD)
         {
-            
-             
+
+
             using (SqliteConnection db =
                new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -267,7 +272,7 @@ namespace DataAccessLibrary
         {
             try
             {
-       
+
                 using (SqliteConnection db =
                     new SqliteConnection("Filename=dentalManagerDB.db"))
                 {

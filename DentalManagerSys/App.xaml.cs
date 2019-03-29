@@ -1,5 +1,6 @@
 ﻿using DataAccessLibrary;
 using DentalManagerSys.Views;
+using DentalManagerSys.Views.Appointments;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -74,8 +75,8 @@ namespace DentalManagerSys
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                   rootFrame.Navigate(typeof(LoginView), e.Arguments);
-                 // rootFrame.Navigate(typeof(NewTreatmentPlanView), e.Arguments);
+                  // rootFrame.Navigate(typeof(LoginView), e.Arguments);
+                rootFrame.Navigate(typeof(ViewWeekAppointments), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

@@ -108,6 +108,10 @@
     <Compile Include="ViewModel\TreatmentPlanViewModel.cs" />
     <Compile Include="ViewModel\TreatmentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="Views\Appointments\ViewWeekAppointments.xaml.cs">
+      <DependentUpon>ViewWeekAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Form\ApointmetsView.cs" />
     <Compile Include="Views\User\AccountManagementSyncOrNew.xaml.cs">
       <DependentUpon>AccountManagementSyncOrNew.xaml</DependentUpon>
     </Compile>
@@ -194,6 +198,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Appointments\ViewWeekAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\User\AccountManagementSyncOrNew.xaml">
       <SubType>Designer</SubType>
