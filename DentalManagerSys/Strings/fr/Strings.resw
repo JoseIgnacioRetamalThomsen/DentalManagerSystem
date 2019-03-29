@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Add.Content" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="City.PlaceholderText" xml:space="preserve">
+    <value>Localité</value>
+  </data>
+  <data name="Clear.Content" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
+  <data name="Country.PlaceholderText" xml:space="preserve">
+    <value>Pays/région</value>
+  </data>
+  <data name="DOB.Header" xml:space="preserve">
+    <value>Date de naissance</value>
+  </data>
+  <data name="Email.PlaceholderText" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="FirstName.PlaceholderText" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="HomeNum.PlaceholderText" xml:space="preserve">
+    <value># Accueil</value>
+  </data>
+  <data name="Id.PlaceholderText" xml:space="preserve">
+    <value> ID </value>
+  </data>
+  <data name="IDError.Text" xml:space="preserve">
+    <value>D’identité est requise</value>
+  </data>
+  <data name="MobilNum.PlaceholderText" xml:space="preserve">
+    <value># Mobile</value>
+  </data>
+  <data name="NameError.Text" xml:space="preserve">
+    <value>Nom obligatoire</value>
+  </data>
+  <data name="NewCustomerTextBlock.Text" xml:space="preserve">
+    <value>Créer nouveau client</value>
+  </data>
+  <data name="NewTreatmentTextBlock.Text" xml:space="preserve">
+    <value>Créer le traitement</value>
+  </data>
+  <data name="PostCode.PlaceholderText" xml:space="preserve">
+    <value>Code postal</value>
+  </data>
+  <data name="Province.PlaceholderText" xml:space="preserve">
+    <value>Province</value>
+  </data>
+  <data name="Street.PlaceholderText" xml:space="preserve">
+    <value>Rue</value>
+  </data>
+  <data name="Surename.PlaceholderText" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="SurnameError.Text" xml:space="preserve">
+    <value>Nom de famille est nécessaire</value>
+  </data>
+  <data name="TreatmentName.PlaceholderText" xml:space="preserve">
+    <value>Nom de traitement</value>
+  </data>
+  <data name="TreatmentPrice.PlaceholderText" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="TreatmentInputError.Text" xml:space="preserve">
+    <value>Tous les champs sont requerid</value>
+  </data>
+  <data name="UniqueIdError.Text" xml:space="preserve">
+    <value>ID doit être unique</value>
+  </data>
+  <data name="AddBarButton.Label" xml:space="preserve">
+    <value>Nouveau Patient</value>
+  </data>
+  <data name="AddBarButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Créer un nouveau patient</value>
+  </data>
+  <data name="NavViewItemPatients.Content" xml:space="preserve">
+    <value>Liste de patients</value>
+  </data>
+  <data name="NavViewItem_Patients.Text" xml:space="preserve">
+    <value>Liste de patients</value>
+  </data>
+  <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
+    <value>Patients de rechercher...</value>
+  </data>
+  <data name="SelectBarButton.Label" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
+  <data name="SelectBarButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Sélectionner le patient pour voir les détails et ajoutent les plans de traitements</value>
+  </data>
+  <data name="ViewAllCustomerPageTitle.Text" xml:space="preserve">
+    <value>Patients</value>
+  </data>
+  <data name="EmailDataGrid.Header" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="IDDataGrid.Header" xml:space="preserve">
+    <value>Identificateur</value>
+  </data>
+  <data name="MobileDataGrid.Header" xml:space="preserve">
+    <value># Mobile</value>
+  </data>
+  <data name="NameDataGrid.Header" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="SurnameDataGrid.Header" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="AddNewCustomer.Label" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="AddNewCustomer.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Ajouter patiente et cliquez sur Afficher tous les clients</value>
+  </data>
+  <data name="AddNewCustomerPlus.Label" xml:space="preserve">
+    <value>Ajouter +</value>
+  </data>
+  <data name="AddNewCustomerPlus.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Ajouter celle-ci et une autre patiente alors</value>
+  </data>
+  <data name="Comments.PlaceholderText" xml:space="preserve">
+    <value>Commentaires</value>
+  </data>
+  <data name="IdViewCustomer.Text" xml:space="preserve">
+    <value>Identificateur</value>
+  </data>
+  <data name="cityViewCustomer.Text" xml:space="preserve">
+    <value>Localité</value>
+  </data>
+  <data name="comentsViewCustomer.Text" xml:space="preserve">
+    <value>Commentaires</value>
+  </data>
+  <data name="countryViewCustomer.Text" xml:space="preserve">
+    <value>Pays/région</value>
+  </data>
+  <data name="DOBViewCustomer.Text" xml:space="preserve">
+    <value>DATE DE NAISSANCE</value>
+  </data>
+  <data name="emailViewCustomer.Text" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="fixNumViewCustomer.Text" xml:space="preserve">
+    <value>Numéro de la maison</value>
+  </data>
+  <data name="mobileViewCustomer.Text" xml:space="preserve">
+    <value>Téléphone mobile</value>
+  </data>
+  <data name="postcodeViewCustomer.Text" xml:space="preserve">
+    <value>Code postal</value>
+  </data>
+  <data name="streetViewCustomer.Text" xml:space="preserve">
+    <value>Rue</value>
+  </data>
+  <data name="AddTreatmentButton.Label" xml:space="preserve">
+    <value>Ajouter nouveau</value>
+  </data>
+  <data name="AddTreatmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Créer nouveau traitement</value>
+  </data>
+  <data name="NavViewTretments.Content" xml:space="preserve">
+    <value>Liste des traitements</value>
+  </data>
+  <data name="RefreshAddCustomerView.Label" xml:space="preserve">
+    <value>Effacer tout</value>
+  </data>
+  <data name="RefreshAddCustomerView.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Désactivez toutes les entrées à</value>
+  </data>
+  <data name="TreatmentNameDataGrid.Header" xml:space="preserve">
+    <value>par nom</value>
+  </data>
+  <data name="TreatmentPriceDataGrid.Header" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="TretmentsListTitle.Text" xml:space="preserve">
+    <value>Traitements</value>
+  </data>
+  <data name="AddTreatmentPlusButton.Label" xml:space="preserve">
+    <value>Ajouter +</value>
+  </data>
+  <data name="AddTreatmentPlusButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Ajouter ce traitement et puis un autre</value>
+  </data>
+  <data name="CreateTreatmentPlanButton.Label" xml:space="preserve">
+    <value>Plan de traitement</value>
+  </data>
+  <data name="CreateTreatmentPlanButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Créer un plan de traitement</value>
+  </data>
+  <data name="RefrshTreatmentsButton.Label" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
+  <data name="RefrshTreatmentsButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Effacer toutes les entrées</value>
+  </data>
+  <data name="provinceViewCustomer.Text" xml:space="preserve">
+    <value>Province</value>
+  </data>
+  <data name="EditBarButton.Label" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="EditBarButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Modifier les données du patient</value>
+  </data>
+  <data name="ViewTreatmentName.Text" xml:space="preserve">
+    <value>Nom de traitement</value>
+  </data>
+  <data name="ViewTreatmentPrice.Text" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="CreateNewTreatmentPlanButton.Label" xml:space="preserve">
+    <value>Créer</value>
+  </data>
+  <data name="CreateNewTreatmentPlanButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Créer ce plan de traitement</value>
+  </data>
+  <data name="SaveChangedPriceButton.Label" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="SaveChangedPriceButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Prix de certains traitements de mise à jour</value>
+  </data>
+  <data name="TotalTB.Text" xml:space="preserve">
+    <value>Total : </value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Téléphone mobile</value>
+  </data>
+  <data name="ActiveTreatmentsTextBox.Text" xml:space="preserve">
+    <value>Plan de traitement actif</value>
+  </data>
+  <data name="CreateTreatmentsTextBox.Text" xml:space="preserve">
+    <value>Plans de traitements créé</value>
+  </data>
+  <data name="DoneTreatmentsTextBox.Text" xml:space="preserve">
+    <value>Plan de traitement complet</value>
+  </data>
+  <data name="CreateTreatmentPlanCompletedB.Label" xml:space="preserve">
+    <value>Terminé</value>
+  </data>
+  <data name="CreateTreatmentPlanCompletedB.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Marquer ce traitements comme terminée</value>
+  </data>
+  <data name="CreateTreatmentPlanNotCopleted.Label" xml:space="preserve">
+    <value>Incomplet</value>
+  </data>
+  <data name="CreateTreatmentPlanNotCopleted.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Marquer ce traitement pas complétés</value>
+  </data>
+  <data name="NewPaymentButton.Label" xml:space="preserve">
+    <value>Nouveau paiement</value>
+  </data>
+  <data name="NewPaymentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Ajouter nouveau paiement pour le client sélectionné</value>
+  </data>
+  <data name="TreatmentsLVTitleTB.Text" xml:space="preserve">
+    <value>Traitements dans le plan</value>
+  </data>
+  <data name="CreatePaymentBarButton.Label" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="CreatePaymentBarButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Créer ce nouveau paiement</value>
+  </data>
+  <data name="TreatmentsCB.PlaceholderText" xml:space="preserve">
+    <value>Ajouter Treament au plan</value>
+  </data>
+  <data name="AllPaymerExpander.Text" xml:space="preserve">
+    <value>Tous les paiements</value>
+  </data>
+  <data name="AmountTB.PlaceholderText" xml:space="preserve">
+    <value>Montant</value>
+  </data>
+  <data name="CancelEditCustomer.Label" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="CancelEditCustomer.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Supprimer les modifications et revenir en arrière</value>
+  </data>
+  <data name="EditPlanDone.Label" xml:space="preserve">
+    <value>Terminé</value>
+  </data>
+  <data name="EditPlanDone.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="SaveCustomerDetails.Label" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="SaveCustomerDetails.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Enregistrer les modifications</value>
+  </data>
+  <data name="AddButton.Content" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="AddTreatment.Text" xml:space="preserve">
+    <value>Ajoutez le traitement :</value>
+  </data>
+  <data name="CommentTB.PlaceholderText" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="CreateTreatmentPlanText.Text" xml:space="preserve">
+    <value>Créer le Plan de traitement</value>
+  </data>
+  <data name="PriceTBox.PlaceholderText" xml:space="preserve">
+    <value>Modifier les prix :</value>
+  </data>
+  <data name="SelectTooth.Text" xml:space="preserve">
+    <value>Choisissez la dent :</value>
+  </data>
+  <data name="TreatmentPriceTB.Text" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="EditTreatmentButton.Label" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="EditTreatmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Modifier le traitement sélectionné</value>
+  </data>
+  <data name="CancelTreatmentChangesButton.Label" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="CancelTreatmentChangesButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Annuler les modifications</value>
+  </data>
+  <data name="SaveTreatmentButton.Label" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="SaveTreatmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Enregistrer les modifications</value>
+  </data>
+  <data name="EditCustomerPageTitle.Text" xml:space="preserve">
+    <value> Modifier les détails du Patient</value>
+  </data>
+  <data name="NameTextBox.Text" xml:space="preserve">
+    <value>par nom</value>
+  </data>
+  <data name="SurnameTextBox.Text" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="CancelButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Annuler et revenir en arrière</value>
+  </data>
+  <data name="CancelButton.Label" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="AccountInfoTextBlock.Text" xml:space="preserve">
+    <value>Gestion de compte / créer compte</value>
+  </data>
+  <data name="AccountManagementButton.Text" xml:space="preserve">
+    <value>Gestion du compte</value>
+  </data>
+  <data name="AccountManagementHeader.Text" xml:space="preserve">
+    <value>AccountManagement</value>
+  </data>
+  <data name="ConfirmPasswordBox.PlaceholderText" xml:space="preserve">
+    <value>Confirmer</value>
+  </data>
+  <data name="CreateNewAccountButton.Content" xml:space="preserve">
+    <value>Créer </value>
+  </data>
+  <data name="InternetStatusFalse.Text" xml:space="preserve">
+    <value>Pas de connexion internet, vous pouvez travailler hors ligne, mais impossible de créer le nouveau compte ou gérer votre compte.</value>
+  </data>
+  <data name="InternetStatusTrueText.Text" xml:space="preserve">
+    <value>Connexion Internet détectée.</value>
+  </data>
+  <data name="LoginHeader.Text" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="LoginHelp.Text" xml:space="preserve">
+    <value>Si vous avez vous oublié mot de passe ou que vous n’avez pas un compte : cliquez sur « Account management ».</value>
+  </data>
+  <data name="LoginPasswordInfo.Text" xml:space="preserve">
+    <value>Entrez votre mot de passe ci-dessous</value>
+  </data>
+  <data name="NewAccountButton.Text" xml:space="preserve">
+    <value>Créer un nouveau compte</value>
+  </data>
+  <data name="NewAccountHeader.Text" xml:space="preserve">
+    <value>Nouveau compte</value>
+  </data>
+  <data name="NewPasswordBox.PlaceholderText" xml:space="preserve">
+    <value>Mot de p.</value>
+  </data>
+  <data name="PasswordBox.PlaceholderText" xml:space="preserve">
+    <value>mot de passe</value>
+  </data>
+  <data name="SignInButton.Content" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="UserName.PlaceholderText" xml:space="preserve">
+    <value>par nom</value>
+  </data>
+  <data name="emailErrorBad.Text" xml:space="preserve">
+    <value>L’adresse e-mail est incorrectement formaté.</value>
+  </data>
+  <data name="emailErrorInUse.Text" xml:space="preserve">
+    <value>L’adresse de courriel est déjà utilisé par un autre compte.</value>
+  </data>
+  <data name="EmailInput.PlaceholderText" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="passwordError.Text" xml:space="preserve">
+    <value>Le mot de passe ne correspondent pas.</value>
+  </data>
+  <data name="passWordErrorShort.Text" xml:space="preserve">
+    <value>Le mot de passe doit être une chaîne au moins 6 caractères.</value>
+  </data>
+  <data name="AccountManagementNewOrSyncHeader.Text" xml:space="preserve">
+    <value>Gestion du compte</value>
+  </data>
+  <data name="createAccount.Text" xml:space="preserve">
+    <value>Veuillez cliquer sur le compte gestion pour créer votre compte ou la synchronisation accout depuis un autre ordinateur</value>
+  </data>
+  <data name="SyncAccountButton.Content" xml:space="preserve">
+    <value>Synchroniser </value>
+  </data>
+  <data name="SyncAccountHeader.Text" xml:space="preserve">
+    <value>Synchroniser votre compte</value>
+  </data>
+  <data name="wrongPassword.Text" xml:space="preserve">
+    <value>Mot de passe incorrect</value>
+  </data>
+  <data name="message1.Text" xml:space="preserve">
+    <value>Nous vous envoyons un email avec un lien pour changer votre mot de passe</value>
+  </data>
+  <data name="message2.Text" xml:space="preserve">
+    <value>Modifier votre mot de passe</value>
+  </data>
+  <data name="ResetPassword.Text" xml:space="preserve">
+    <value>Réinitialiser mot de passe par courrier électronique (le faire si vous avez oublié votre mot de passe).</value>
+  </data>
+  <data name="ResetPasswordButton.Content" xml:space="preserve">
+    <value>Envoyer un e-mail</value>
+  </data>
+  <data name="ResetPasswordHeader.Text" xml:space="preserve">
+    <value>Réinitialiser le mot de passe</value>
+  </data>
+  <data name="SyncAccountButtonAM.Text" xml:space="preserve">
+    <value>Synchonize compte</value>
+  </data>
+  <data name="PreviewTreatmentPlan.Label" xml:space="preserve">
+    <value>Aperçu</value>
+  </data>
+  <data name="PreviewTreatmentPlan.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Obtenir un aperçu de ce plan de traitement</value>
+  </data>
+  <data name="BackButton.Label" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
+  <data name="BackButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Retour à la page précédente.</value>
+  </data>
+  <data name="npContent.Text" xml:space="preserve">
+    <value>Désolé, l’impression de can' t aller de l’avant en ce moment.</value>
+  </data>
+  <data name="npOKButton.Text" xml:space="preserve">
+    <value>W!!ÔK !!W</value>
+  </data>
+  <data name="npTittle.Text" xml:space="preserve">
+    <value>Erreur d'impression</value>
+  </data>
+  <data name="nsContent.Text" xml:space="preserve">
+    <value>Désolé, impression n’est pas supportée sur cet appareil.</value>
+  </data>
+  <data name="nsTitle.Text" xml:space="preserve">
+    <value>Impression non pris en charge</value>
+  </data>
+  <data name="PrintButtonPreview.Label" xml:space="preserve">
+    <value>Imprimer</value>
+  </data>
+  <data name="PrintButtonPreview.ToolTipService.ToolTip" xml:space="preserve">
+    <value>D’impression et de passer</value>
+  </data>
+  <data name="PrintTreatmentPlanNew.Label" xml:space="preserve">
+    <value>Imprimer</value>
+  </data>
+  <data name="PrintTreatmentPlanNew.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Créer et imprimer</value>
+  </data>
+  <data name="CommentHeader.Text" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="errorMessageSyncAccount.Text" xml:space="preserve">
+    <value>Mauvais mot de passe ou compte.</value>
+  </data>
+  <data name="NameHeader.Text" xml:space="preserve">
+    <value>Nom de traitement</value>
+  </data>
+  <data name="PriceHeader.Text" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="RemoveTreatmentButton.Label" xml:space="preserve">
+    <value>Retirer</value>
+  </data>
+  <data name="RemoveTreatmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Supprimer le traitement sélectionné</value>
+  </data>
+  <data name="SelectToothCB.PlaceholderText" xml:space="preserve">
+    <value>Sélectionnez la dent</value>
+  </data>
+  <data name="ToothHeader.Text" xml:space="preserve">
+    <value>Dent</value>
+  </data>
+</root>
