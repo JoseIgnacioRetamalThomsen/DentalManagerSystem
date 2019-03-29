@@ -36,7 +36,7 @@ namespace DentalManagerSys
             DAO.InitializeDatabase();
             FireBaseDAO f = new FireBaseDAO();
             DAO d = new DAO();
-            f.ReadDataFromSQLite();
+           // f.ReadDataFromSQLite();
 
             App.userName= DAO.GetUserID();
              //Add create a new user count table if it is a new user.
@@ -47,7 +47,7 @@ namespace DentalManagerSys
              }
              else
              {
-                /*sqliteCnt = DAO.GetUserCountSqlite(App.userName);
+                sqliteCnt = DAO.GetUserCountSqlite(App.userName);
                 //Because it is an async method so, must be called on an await, that is why is doen like so...
                 readfromFb();
                 async void readfromFb()
@@ -62,7 +62,7 @@ namespace DentalManagerSys
 
                     }
                    
-                }*/
+                }
 
             }
 

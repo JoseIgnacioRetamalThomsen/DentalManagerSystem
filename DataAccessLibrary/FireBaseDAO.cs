@@ -28,13 +28,21 @@ namespace DataAccessLibrary
         /// </summary>
         public void ConnectToFirebase()
         {
-            this.firebase = new FirebaseClient(
+            try
+            {
+                this.firebase = new FirebaseClient(
 
-                 databaseUrl,
-                 new FirebaseOptions
-                 {
-                     AuthTokenAsyncFactory = () => Task.FromResult(databaseSecret)
-                 });
+               databaseUrl,
+               new FirebaseOptions
+               {
+                   AuthTokenAsyncFactory = () => Task.FromResult(databaseSecret)
+               });
+            }
+            catch
+            {
+                Debug.WriteLine("Can't Conect to Firebase, check your Internet connection!");
+            }
+          
         }
 
         /// <summary>
@@ -766,8 +774,6 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-               // List<Customer> customers = new List<Customer>();
-
                 SqliteCommand selectCommand = new SqliteCommand
                     ("SELECT * from customers", db);
 
@@ -775,7 +781,6 @@ namespace DataAccessLibrary
 
                 while (query.Read())
                 {
-                    // customers.Add(new Customer(
                     query.GetString(0);
                     query.GetString(1);
                     query.GetString(2);
@@ -790,11 +795,39 @@ namespace DataAccessLibrary
                     Convert.ToDateTime(query.GetString(3));
                     query.GetString(12);
                     UpdateCustomer(query.GetString(0), query.GetString(1), query.GetString(2), Convert.ToDateTime(query.GetString(3)).ToString(), query.GetString(4), query.GetString(5), query.GetString(6), query.GetString(7), query.GetString(8), query.GetString(9), query.GetString(10), query.GetString(11), query.GetString(12));
-                    //));
                 }
 
                 db.Close();
             }
+
+
+            //Read from SQLite to update Firebase Treatment table
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from treatment", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+
+                    query.GetInt32(0);
+                    query.GetString(1);
+                    query.GetDecimal(2);
+
+
+              
+                }
+
+                db.Close();
+            }
+
+            //Read from Firebase and update treatmentPlan
+
 
         }
 
