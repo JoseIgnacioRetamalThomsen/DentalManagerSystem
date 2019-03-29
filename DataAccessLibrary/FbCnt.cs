@@ -1,8 +1,9 @@
 ﻿namespace DataAccessLibrary
 {
-    internal class FbCnt
+   public  class FbCnt
     {
-        public object cnt { get; set; }
+        public int cnt { get; set; }
+        public string username { get; set; }
 
     }
 }

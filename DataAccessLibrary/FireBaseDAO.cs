@@ -37,6 +37,64 @@ namespace DataAccessLibrary
                  });
         }
 
+        /// <summary>
+        /// Create a counter record in Firebase. Is created once per user  when they createan accoount.
+        /// </summary>
+        /// <param name="counterNum"></param>
+        public async void CreateCountRecordFB(int counterNum)
+        {
+
+            ConnectToFirebase();
+
+            string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+            String node = "CounterRecord" + "/";
+
+            FbCnt fbCnt = new FbCnt
+            {
+              cnt= counterNum,
+              username= myUsername,
+            };
+
+            //Create a new row  with the updated values
+            //await firebase.Child(node).Child(treatment.iD.ToString).PostAsync<TreatmentData>(treatmentData);
+
+            await firebase.Child(node).PostAsync<FbCnt>(fbCnt);
+        }
+
+
+        public async void UpdateCountRecordFB(int counterNum)
+        {
+            ConnectToFirebase();
+
+            string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+            String node = "CounterRecord" + "/";
+
+            FbCnt fbCnt = new FbCnt
+            {
+                cnt = counterNum,
+                username = myUsername,
+            };
+
+            var results = await firebase.Child(node).OnceAsync<FbCnt>();
+            foreach (var details in results)
+            {
+
+                if (details.Object.username == myUsername)
+                {
+                    //Delete the old row by key Id
+                    await firebase.Child(node).Child(details.Key).DeleteAsync();
+
+                    //Create a new row  with the updated values
+                    await firebase.Child(node).PostAsync<FbCnt>(fbCnt);
+                    break;
+                }
+            }
+
+        }
 
         /// <summary>
         /// Add a new treatment to Firebae
@@ -101,8 +159,6 @@ namespace DataAccessLibrary
             //Create a new row  with the updated values
             await firebase.Child(node).PostAsync<TreatmentData>(treatmentData);
         }
-
-
 
         /// <summary>
         /// Add a new customer to Firebase

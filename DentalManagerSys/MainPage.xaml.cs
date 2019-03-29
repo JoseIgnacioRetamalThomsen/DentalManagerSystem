@@ -33,9 +33,11 @@ namespace DentalManagerSys
             DAO.InitializeDatabase();
             App.userName= DAO.GetUserID();
             FireBaseDAO f = new FireBaseDAO();
+           // DAO d = new DAO();
+          //  d.NewUserCount(App.userName, 0);
             f.ReadDataFromFirebase();
-            
-
+           // f.CreateCountRecordFB(0);
+            //f.UpdateCountRecordFB(1);
 
         }
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
