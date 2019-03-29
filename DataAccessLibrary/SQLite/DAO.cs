@@ -39,13 +39,11 @@ namespace DataAccessLibrary
 
                 String payments = "CREATE TABLE IF NOT EXISTS payments(paymentsID INTEGER,treatmentPlanID int,customerID varchar(20)NOT NULL,amount float,treatmentCompleteDate DATETIME,PRIMARY KEY (paymentsID),FOREIGN KEY (treatmentPlanID) REFERENCES treatmentPlan(treatmentPlanID),FOREIGN KEY (customerID) REFERENCES customers(customerID))";
                 SqliteCommand createPayments = new SqliteCommand(payments, db);
-
                 createPayments.ExecuteReader();
 
                 //users tables
                 String users = "CREATE TABLE IF NOT EXISTS users(userID INTEGER,name varchar(32)NOT NULL,email varchar(32),password varchar(16)NOT NULL,PRIMARY KEY (userID) )";
                 SqliteCommand createUsers = new SqliteCommand(users, db);
-
                 createUsers.ExecuteReader();
 
                 String address = "CREATE TABLE IF NOT EXISTS address(addressID INTEGER,userID INTEGER NOT NULL,street varchar(32),city varchar(20),province" +
@@ -53,6 +51,10 @@ namespace DataAccessLibrary
                 SqliteCommand createAddress = new SqliteCommand(address, db);
 
                 createAddress.ExecuteReader();
+
+                String countRecord = "CREATE TABLE IF NOT EXISTS countRecord(countID INTEGER,counterNum INTEGER NOT NULL,email varchar(32)NOT NULL, PRIMARY KEY (countID),FOREIGN KEY (email) REFERENCES users(email))";
+                SqliteCommand createCountRecord = new SqliteCommand(countRecord, db);
+                createCountRecord.ExecuteReader();
             }
 
         }
@@ -120,7 +122,7 @@ namespace DataAccessLibrary
             return user;
         }
 
-       
+
 
         //public static void AddMockData()
         //{
@@ -134,6 +136,62 @@ namespace DataAccessLibrary
 
 
         //}
+
+        /// <summary>
+        /// Create the first column of the count table(to be used once).
+        /// </summary>
+        /// <param name="countID"></param>
+        /// <param name="counterNum"></param>
+        public void NewUserCount(string email, int counterNum)
+        {
+
+            using (SqliteConnection db =
+               new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query to prevent SQL injection attacks
+                insertCommand.CommandText = "INSERT INTO countRecord VALUES (@ID,@Email,@CounterNum);";
+                insertCommand.Parameters.AddWithValue("@ID", 0);
+                insertCommand.Parameters.AddWithValue("@CounterNum", counterNum);
+                insertCommand.Parameters.AddWithValue("@Email", email);
+
+                insertCommand.ExecuteNonQuery();
+
+                db.Close();
+            }
+        }
+
+        /// <summary>
+        /// Update counter
+        /// </summary>
+        /// <param name="counterNum"></param>
+        public void UpdateCountRecordSQlite(int counterNum)
+        {
+            string userName = DAO.GetUserID();
+
+            using (SqliteConnection db =
+               new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query to prevent SQL injection attacks
+                insertCommand.CommandText = "UPDATE countRecord SET counterNum =@CounterNum where email=@UserName;";
+                insertCommand.Parameters.AddWithValue("@CounterNum", counterNum);
+                insertCommand.Parameters.AddWithValue("@UserName", userName);
+
+                insertCommand.ExecuteNonQuery();
+
+                db.Close();
+            }
+        }
+
 
         public  void UpdateTreatmentPlanState(TreatmentPlaneState state, int iD)
         {

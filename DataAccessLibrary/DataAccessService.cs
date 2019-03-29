@@ -17,11 +17,19 @@ namespace DataAccessLibrary
         FireBaseDAO firebaseDAO = new FireBaseDAO();
         private DAO sqlite = new DAO();
 
+        //Keep count for Sychronization
+        public static int DAOCount;
+        public static int FBCount;
+
 
         public void AddNewTreatment(Treatment treatment)
         {
+            //Keep count for Sychronization
+            DAOCount++;
+            FBCount++;
+            sqlite.UpdateCountRecordSQlite(DAOCount);
 
-           long number = sqlite.AddNewTreatment(treatment.Name, treatment.Price);
+            long number = sqlite.AddNewTreatment(treatment.Name, treatment.Price);
 
 
             treatment.ID = (int)number;
@@ -30,6 +38,11 @@ namespace DataAccessLibrary
 
         public void UpdateTreatment(int iD, string text, decimal v)
         {
+            //Keep count for Sychronization
+            DAOCount++;
+            FBCount++;
+            sqlite.UpdateCountRecordSQlite(DAOCount);
+
             sqlite.UpdateTreatment(new Treatment(iD, text, v));
 
             firebaseDAO.UpdateTreatment(new Treatment(iD, text, v));
@@ -38,6 +51,11 @@ namespace DataAccessLibrary
 
         public bool NewCustomerDetails(string idInput, string inputName, string inputSurename, string DOB, string streetInput, string cityInput, string provinceInput, string countryInput, string postCodeInput, string mobilNumInput, string homeNumInput, string emaillInput, string commentsInput)
         {
+            //Keep count for Sychronization
+            DAOCount++;
+            FBCount++;
+            sqlite.UpdateCountRecordSQlite(DAOCount);
+
             bool temp = false;
             temp = sqlite.AddNewCustomer(idInput, inputName, inputSurename, DOB, streetInput, cityInput, provinceInput, countryInput, postCodeInput, mobilNumInput, homeNumInput, emaillInput, commentsInput);
 
@@ -52,6 +70,11 @@ namespace DataAccessLibrary
         //Edit Customer is in EditCustomerDetails.xaml.cs
         public void UpdateCustomerDetails( string idInput, string inputName, string inputSurename, string DOB, string streetInput, string cityInput, string provinceInput, string countryInput, string postCodeInput, string mobilNumInput, string homeNumInput, string emaillInput, string commentsInput)
         {
+            //Keep count for Sychronization
+            DAOCount++;
+            FBCount++;
+            sqlite.UpdateCountRecordSQlite(DAOCount);
+
             sqlite.UpdateCustomer(idInput, inputName, inputSurename, DOB, streetInput, cityInput, provinceInput, countryInput, postCodeInput, mobilNumInput, homeNumInput, emaillInput, commentsInput);
 
             firebaseDAO.UpdateCustomer(idInput,inputName,inputSurename,DOB,streetInput,cityInput,provinceInput,countryInput,postCodeInput,mobilNumInput,homeNumInput,emaillInput,commentsInput);
@@ -62,6 +85,11 @@ namespace DataAccessLibrary
         //Update Treatment Plan(UpdateTreatmentPlanState) table is in TreatmentPlanViewModel
         public void UpdateTreatmentPlanState(TreatmentPlaneState state, int PlanID)
         {
+            //Keep count for Sychronization
+            DAOCount++;
+            FBCount++;
+            sqlite.UpdateCountRecordSQlite(DAOCount);
+
             sqlite.UpdateTreatmentPlanState(state, PlanID);
 
             firebaseDAO.UpdateTreatmentPlanState(state, PlanID);
@@ -73,6 +101,11 @@ namespace DataAccessLibrary
         //Update TreatmentPlanTreatments(UpdateTreatmentOnPlan) is in TreatmentPlanView
         public void UpdateTreatmentOnPlan(TreatmentOnPlan top)
         {
+            //Keep count for Sychronization
+            DAOCount++;
+            FBCount++;
+            sqlite.UpdateCountRecordSQlite(DAOCount);
+
             sqlite.UpdateTreatmentOnPlan(top);
 
             firebaseDAO.UpdateTreatmentOnPlan(top);
@@ -82,12 +115,22 @@ namespace DataAccessLibrary
         //Add new Payment(AddNewpayment) is in NewPaymentView
         public void AddNewpayment(int treatmentPlanID, string customerID, decimal amount, string treatmentCompleteDate)
         {
+            //Keep count for Sychronization
+            DAOCount++;
+            FBCount++;
+            sqlite.UpdateCountRecordSQlite(DAOCount);
+
             sqlite.AddNewpayment(treatmentPlanID, customerID, amount, treatmentCompleteDate);
             firebaseDAO.AddNewpayment(treatmentPlanID, customerID, amount, treatmentCompleteDate);
         }
 
         public long AddNewTreatmentPlan(string customerID, int state, string creationDate, string treatmentPlanCompleteDate)
         {
+            //Keep count for Sychronization
+            DAOCount++;
+            FBCount++;
+            sqlite.UpdateCountRecordSQlite(DAOCount);
+
             // add to sql
             int id = (int)sqlite.AddNewTreatmentPlan(customerID, state, creationDate, treatmentPlanCompleteDate);
 
@@ -99,6 +142,11 @@ namespace DataAccessLibrary
 
         public  void AddNewTreatmentPlanTreatments(TreatmentOnPlan t)
         {
+            //Keep count for Sychronization
+            DAOCount++;
+            FBCount++;
+            sqlite.UpdateCountRecordSQlite(DAOCount);
+
             sqlite.AddNewTreatmentPlanTreatments(t);
 
             firebaseDAO.AddNewTreatmentPlanTreatments(t);
