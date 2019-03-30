@@ -666,8 +666,10 @@ namespace DataAccessLibrary
         /// <param name="customerID"></param>
         /// <param name="amount"></param>
         /// <param name="treatmentCompleteDate"></param>
-        public  void AddNewpayment(int treatmentPlanID, string customerID, decimal amount, string treatmentCompleteDate)
+        public long AddNewpayment(int treatmentPlanID, string customerID, decimal amount, string treatmentCompleteDate)
         {
+            long id = 0;
+
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -685,8 +687,17 @@ namespace DataAccessLibrary
 
                 insertCommand.ExecuteReader();
 
+                SqliteCommand insertCommand1 = new SqliteCommand();
+                insertCommand1.Connection = db;
+
+                string sql = @"select last_insert_rowid()";
+                insertCommand1.CommandText = sql;
+                id = (long)insertCommand1.ExecuteScalar();
+
                 db.Close();
             }
+
+            return id;
         }
 
         /// <summary>
@@ -760,7 +771,7 @@ namespace DataAccessLibrary
                     query.GetString(2),
                     query.GetFloat(3),
                     Convert.ToDateTime(query.GetString(4))
-               ));
+                   ));
 
                 }
 

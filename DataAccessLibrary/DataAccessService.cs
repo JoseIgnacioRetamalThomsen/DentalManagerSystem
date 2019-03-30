@@ -127,8 +127,9 @@ namespace DataAccessLibrary
             sqlite.UpdateCountRecordSQlite(DAOCount);
             firebaseDAO.UpdateCountRecordFB(FBCount);
 
-            sqlite.AddNewpayment(treatmentPlanID, customerID, amount, treatmentCompleteDate);
-            firebaseDAO.AddNewpayment(treatmentPlanID, customerID, amount, treatmentCompleteDate);
+            long paymentId=sqlite.AddNewpayment(treatmentPlanID, customerID, amount, treatmentCompleteDate);
+            int paymentID = (int)paymentId;
+            firebaseDAO.AddNewpayment(paymentID,treatmentPlanID, customerID, amount, treatmentCompleteDate);
         }
 
         public long AddNewTreatmentPlan(string customerID, int state, string creationDate, string treatmentPlanCompleteDate)

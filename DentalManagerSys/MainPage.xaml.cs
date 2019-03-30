@@ -36,8 +36,7 @@ namespace DentalManagerSys
             DAO.InitializeDatabase();
             FireBaseDAO f = new FireBaseDAO();
             DAO d = new DAO();
-           // f.ReadDataFromSQLite();
-
+  
             App.userName= DAO.GetUserID();
              //Add create a new user count table if it is a new user.
              if (App.NewUser == true)
@@ -56,17 +55,18 @@ namespace DentalManagerSys
 
                     if(firebaseCnt> sqliteCnt)
                     {
-
-                    }else if(sqliteCnt> firebaseCnt)
+                        f.ReadDataFromFirebase();
+                    }
+                    else if(sqliteCnt> firebaseCnt)
                     {
-
+                        f.ReadDataFromSQLite();
                     }
                    
                 }
 
             }
 
-            f.ReadDataFromFirebase();
+           
         }
 
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
