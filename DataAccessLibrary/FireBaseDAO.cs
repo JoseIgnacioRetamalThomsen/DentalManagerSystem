@@ -833,9 +833,12 @@ namespace DataAccessLibrary
                     db.Close();
                 }
 
-                //await firebase.Child("g00351330@gmit-ieTreatmentPlans/").DeleteAsync();
-   
-            }
+            //Read from Firebase and update SQLite countRecord table
+
+
+            //await firebase.Child("g00351330@gmit-ieTreatmentPlans/").DeleteAsync();
+
+        }
 
 
         public async void ReadDataFromSQLite()
@@ -1018,6 +1021,9 @@ namespace DataAccessLibrary
 
                 db.Close();
             }
+
+
+            //Read from SQLite and update countRecor in Firebase
 
         }
 

@@ -36,7 +36,16 @@ namespace DentalManagerSys
             DAO.InitializeDatabase();
             FireBaseDAO f = new FireBaseDAO();
             DAO d = new DAO();
-  
+           
+
+
+            /*GetCountRecordFb();
+            async void GetCountRecordFb()
+            {
+                DataAccessService.FBCount = await f.GetUserCountFb(App.userName);
+            }
+            Debug.WriteLine("Goooood: "+ DataAccessService.FBCount);*/
+
             App.userName= DAO.GetUserID();
              //Add create a new user count table if it is a new user.
              if (App.NewUser == true)
@@ -63,6 +72,16 @@ namespace DentalManagerSys
                     }
                    
                 }
+
+                //Inizialise the count records.
+                GetCountRecordFb();
+                async void GetCountRecordFb()
+                {
+                    DataAccessService.FBCount = await f.GetUserCountFb(App.userName);
+                }
+
+                DataAccessService.DAOCount = DAO.GetUserCountSqlite(App.userName);
+              
 
             }
 
