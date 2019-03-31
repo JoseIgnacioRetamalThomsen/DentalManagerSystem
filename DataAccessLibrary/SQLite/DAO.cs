@@ -177,6 +177,8 @@ namespace DataAccessLibrary
         public void UpdateCountRecordSQlite(int counterNum)
         {
             string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
 
             using (SqliteConnection db =
                new SqliteConnection("Filename=dentalManagerDB.db"))
@@ -187,9 +189,9 @@ namespace DataAccessLibrary
                 insertCommand.Connection = db;
 
                 // Use parameterized query to prevent SQL injection attacks
-                insertCommand.CommandText = "UPDATE countRecord SET counterNum =@CounterNum where email=@UserName;";
+                insertCommand.CommandText = "UPDATE countRecord SET counterNum =@CounterNum where email=@Email;";
                 insertCommand.Parameters.AddWithValue("@CounterNum", counterNum);
-                insertCommand.Parameters.AddWithValue("@UserName", userName);
+                insertCommand.Parameters.AddWithValue("@Email", myUsername);
 
                 insertCommand.ExecuteNonQuery();
 
@@ -204,15 +206,17 @@ namespace DataAccessLibrary
             int userCntNum = 0;
              CounterData cd = null;
 
-             using (SqliteConnection db =
+            String myEmail = email;
+            myEmail = myEmail.Replace(".", "-");
+
+            using (SqliteConnection db =
                new SqliteConnection("Filename=dentalManagerDB.db"))
              {
                  db.Open();
 
-
-                 SqliteCommand selectCommand = new SqliteCommand
-                     ("SELECT * from countRecord where email=@email", db);
-                 selectCommand.Parameters.AddWithValue("@email", email);
+                SqliteCommand selectCommand = new SqliteCommand
+                     ("SELECT * from countRecord where email=@MyEmail", db);
+                 selectCommand.Parameters.AddWithValue("@MyEmail", myEmail);
 
                  SqliteDataReader query = selectCommand.ExecuteReader();
 
@@ -222,15 +226,12 @@ namespace DataAccessLibrary
                      query.GetInt32(0),
                      userCntNum = query.GetInt32(1),
                      query.GetString(2)
-                  );
-
+                      );
                  }
 
                  db.Close();
-
-             }
-
-             return userCntNum;
+            }
+            return userCntNum;
         }
 
 
