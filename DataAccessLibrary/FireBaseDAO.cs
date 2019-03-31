@@ -90,13 +90,11 @@ namespace DataAccessLibrary
             var results = await firebase.Child(node).OnceAsync<FbCnt>();
             foreach (var details in results)
             {
-                int count = 0;
-                if (details.Object.username == myUsername && count==0)
+                if (details.Object.username == myUsername)
                 {
-                    count++;
                     //Delete the old row by key Id
                     await firebase.Child(node).Child(details.Key).DeleteAsync();
-                    //Create a new row  with the updated values
+                    //Delete the old row by key Id
                     await firebase.Child(node).PostAsync<FbCnt>(fbCnt);
                     break;
                 }
