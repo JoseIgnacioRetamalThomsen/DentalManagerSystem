@@ -94,12 +94,12 @@ namespace DataAccessLibrary
                 {
                     //Delete the old row by key Id
                     await firebase.Child(node).Child(details.Key).DeleteAsync();
-                    //Delete the old row by key Id
-                    await firebase.Child(node).PostAsync<FbCnt>(fbCnt);
-                    break;
                 }
             }
 
+            //Add a new row.
+            await firebase.Child(node).PostAsync<FbCnt>(fbCnt);
+           
         }
 
         public async Task<int> GetUserCountFb(string email)
@@ -154,6 +154,7 @@ namespace DataAccessLibrary
             };
 
             await firebase.Child(node).PostAsync<TreatmentData>(treatmentData);
+
         }
 
         /// <summary>
@@ -179,17 +180,38 @@ namespace DataAccessLibrary
             var results = await firebase.Child(node).OnceAsync<TreatmentData>();
             foreach (var details in results)
             {
-
                 if (Convert.ToInt32(details.Object.iD) == treatment.ID)
                 {
                     //Delete the old row by key Id
                     await firebase.Child(node).Child(details.Key).DeleteAsync();
-                    //Create a new row  with the updated values
-                    await firebase.Child(node).PostAsync<TreatmentData>(treatmentData);
+                   //Create a new row  with the updated values
+                   await firebase.Child(node).PostAsync<TreatmentData>(treatmentData);
                     break;
                 }
+               
             }
+            
+        }
 
+        /// <summary>
+        /// Delet Treatment from Firebase
+        /// </summary>
+        public async void DeleteTreatment()
+        {
+            try
+            {
+                ConnectToFirebase();
+                string userName = DAO.GetUserID();
+                String myUsername = userName;
+                myUsername = myUsername.Replace(".", "-");
+                String node = myUsername + "Treatments" + "/";
+
+                await firebase.Child(node).DeleteAsync();
+            }
+            catch
+            {
+                Debug.WriteLine("Treatment not found!");
+            }
         }
 
         /// <summary>
@@ -316,6 +338,28 @@ namespace DataAccessLibrary
 
         }
 
+        /// <summary>
+        /// Delet Customer
+        /// </summary>
+        public async void DeleteCustomer()
+        {
+            try
+            {
+                ConnectToFirebase();
+
+                string userName = DAO.GetUserID();
+                String myUsername = userName;
+                myUsername = myUsername.Replace(".", "-");
+                String node = myUsername + "Customers" + "/";
+
+                await firebase.Child(node).DeleteAsync();
+            }
+            catch
+            {
+                Debug.WriteLine("Customers not found!");
+            }
+ 
+        }
 
         /// <summary>
         /// Add a new treatment plan to Firebase
@@ -347,12 +391,10 @@ namespace DataAccessLibrary
 
         /// <summary>
         ///  Write to Firebase when reading from SQLIte.
-        /// You can't use UpdateTreatmentPlanState(TreatmentPlaneState state, int iD)
-        /// Because this method only update exsiting row and can't add a new row.
         /// </summary>
         /// <param name="state"></param>
         /// <param name="iD"></param>
-        public async void UpdateTreatmentPlanState1(int treatmentPlanID, string customerID, TreatmentPlaneState state, string creationDate, string treatmentPlanCompleteDate)
+        public async void AddNewTreatmentPlanState(int treatmentPlanID, string customerID, TreatmentPlaneState state, string creationDate, string treatmentPlanCompleteDate)
         {
             ConnectToFirebase();
 
@@ -391,12 +433,22 @@ namespace DataAccessLibrary
         /// </summary>
         public async void DeletTreatmentPlanState()
         {
-            string userName = DAO.GetUserID();
-            String myUsername = userName;
-            myUsername = myUsername.Replace(".", "-");
-            String node = myUsername + "TreatmentPlans" + "/";
+            try
+            {
+                ConnectToFirebase();
 
-            await firebase.Child(node).DeleteAsync();
+                string userName = DAO.GetUserID();
+                String myUsername = userName;
+                myUsername = myUsername.Replace(".", "-");
+                String node = myUsername + "TreatmentPlans" + "/";
+
+                await firebase.Child(node).DeleteAsync();
+            }
+            catch
+            {
+                Debug.WriteLine("TreatmentPlans not found!");
+            }
+            
         }
 
             /// <summary>
@@ -529,6 +581,29 @@ namespace DataAccessLibrary
         }
 
         /// <summary>
+        /// Delete Treatmentplan table in Firebase
+        /// </summary>
+        public async void DeleteTreatmentPlanTreatments()
+        {
+            try
+            {
+                ConnectToFirebase();
+
+                string userName = DAO.GetUserID();
+                String myUsername = userName;
+                myUsername = myUsername.Replace(".", "-");
+                String node = myUsername + "TreatmentPlanTreatments" + "/";
+
+                await firebase.Child(node).DeleteAsync();
+            }
+            catch
+            {
+                Debug.WriteLine("TreatmentPlanTreatments not found!");
+            }
+          
+        }
+
+        /// <summary>
         ///Add new Payment to Firebase
         /// </summary>
         /// <param name="treatmentPlanID"></param>
@@ -554,7 +629,34 @@ namespace DataAccessLibrary
              };
 
              await firebase.Child(node).PostAsync<PaymentsData>(paymentsData);
+        }
 
+        /// <summary>
+        ///Add new Payment to Firebase pass by object
+        /// </summary>
+        /// <param name="treatmentPlanID"></param>
+        /// <param name="customerID"></param>
+        /// <param name="amount"></param>
+        /// <param name="treatmentCompleteDate"></param>
+        public async void AddNewpaymentObject(Payments p)
+        {
+            ConnectToFirebase();
+
+            string userName = DAO.GetUserID();
+            String myUsername = userName;
+            myUsername = myUsername.Replace(".", "-");
+            String node = myUsername + "Payments" + "/";
+
+            var paymentsData = new PaymentsData
+            {
+                paymentID = p.paymentsID,
+                treatmentPlanID = p.treatmentPlanID,
+                customerID = p.customerID,
+                amount = Convert.ToDecimal(p.amount),
+                treatmentCompleteDate = p.completedDate.ToString()
+            };
+
+            await firebase.Child(node).PostAsync<PaymentsData>(paymentsData);
         }
 
         /// <summary>
@@ -593,6 +695,28 @@ namespace DataAccessLibrary
 
         }
 
+        /// <summary>
+        /// Delete Payments table in Firebase
+        /// </summary>
+        public async void DeletePayments()
+        {
+            try
+            {
+                ConnectToFirebase();
+
+                string userName = DAO.GetUserID();
+                String myUsername = userName;
+                myUsername = myUsername.Replace(".", "-");
+                String node = myUsername + "Payments" + "/";
+
+                await firebase.Child(node).DeleteAsync();
+            }
+            catch
+            {
+                Debug.WriteLine("Payments not found!");
+            }
+
+        }
 
         /// <summary>
         /// Read from Firebase, delete everything in all 5 tables and repopulate 
@@ -886,7 +1010,10 @@ namespace DataAccessLibrary
             //Read from Customer Table SQLite and update Firebase Customer Table.
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
-            {
+            {  
+               //Delete customer table in Firebase
+               DeleteCustomer();
+
                 db.Open();
 
                 SqliteCommand selectCommand = new SqliteCommand
@@ -894,6 +1021,7 @@ namespace DataAccessLibrary
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
+                //Populate customer table in Firebase.
                 while (query.Read())
                 {
                     query.GetString(0);
@@ -909,7 +1037,7 @@ namespace DataAccessLibrary
                     query.GetString(11);
                     Convert.ToDateTime(query.GetString(3));
                     query.GetString(12);
-                    UpdateCustomer(query.GetString(0), query.GetString(1), query.GetString(2), Convert.ToDateTime(query.GetString(3)).ToString(), query.GetString(4), query.GetString(5), query.GetString(6), query.GetString(7), query.GetString(8), query.GetString(9), query.GetString(10), query.GetString(11), query.GetString(12));
+                    AddNewCustomer(query.GetString(0), query.GetString(1), query.GetString(2), Convert.ToDateTime(query.GetString(3)).ToString(), query.GetString(4), query.GetString(5), query.GetString(6), query.GetString(7), query.GetString(8), query.GetString(9), query.GetString(10), query.GetString(11), query.GetString(12));
                 }
 
                 db.Close();
@@ -920,6 +1048,9 @@ namespace DataAccessLibrary
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
+                //Delete Treatment from Firebase
+                 DeleteTreatment();
+
                 db.Open();
 
                 SqliteCommand selectCommand = new SqliteCommand
@@ -927,6 +1058,7 @@ namespace DataAccessLibrary
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
+                //populate treatment table in Firebase
                 while (query.Read())
                 {
                     Treatment treatment = new Treatment(
@@ -934,7 +1066,11 @@ namespace DataAccessLibrary
                         query.GetString(1),
                         query.GetDecimal(2)
                         );
-                    UpdateTreatment(treatment);
+                    AddNewTreatment(treatment);
+                    if (query.GetInt32(0) == 1)
+                    {
+                        AddNewTreatment(treatment);
+                    }
                 }
 
                 db.Close();
@@ -954,6 +1090,7 @@ namespace DataAccessLibrary
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
+                //Populate plan state table in Firebase.
                 while (query.Read())
                 {
                     int id = query.GetInt32(0);
@@ -975,7 +1112,7 @@ namespace DataAccessLibrary
                     datetime2
                     );
 
-                    UpdateTreatmentPlanState1(id, custumerID, tempSate, creationDate, date2);
+                    AddNewTreatmentPlanState(id, custumerID, tempSate, creationDate, date2);
                 }
 
                 db.Close();
@@ -986,6 +1123,9 @@ namespace DataAccessLibrary
             using (SqliteConnection db =
                new SqliteConnection("Filename=dentalManagerDB.db"))
             {
+                //Delete from DeleteTreatmentPlanTreatments in Firebase
+                DeleteTreatmentPlanTreatments();
+
                 db.Open();
 
                 SqliteCommand selectCommand = new SqliteCommand
@@ -1017,7 +1157,7 @@ namespace DataAccessLibrary
                     name
                     );
 
-                    UpdateTreatmentOnPlan(treatmentOnPlan);
+                    AddNewTreatmentPlanTreatments(treatmentOnPlan);
                 }
 
                 db.Close();
@@ -1027,6 +1167,9 @@ namespace DataAccessLibrary
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
+                //Delete payment from firebase
+                DeletePayments();
+
                 db.Open();
 
                 SqliteCommand selectCommand = new SqliteCommand
@@ -1034,6 +1177,7 @@ namespace DataAccessLibrary
        
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
+                //populate payment with info from SQLite
                 while (query.Read())
                 {
                     Payments payments = new Payments(
@@ -1043,7 +1187,7 @@ namespace DataAccessLibrary
                     query.GetFloat(3),
                     Convert.ToDateTime(query.GetString(4))
                     );
-                    UpdatePaymentFB(payments);
+                    AddNewpaymentObject(payments);
                 }
 
                 db.Close();
@@ -1055,7 +1199,6 @@ namespace DataAccessLibrary
                new SqliteConnection("Filename=dentalManagerDB.db"))
             {
                 db.Open();
-
 
                 SqliteCommand selectCommand = new SqliteCommand
                     ("SELECT * from countRecord ", db);
