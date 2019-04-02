@@ -42,6 +42,8 @@ namespace DentalManagerSys
              {
                  d.NewUserCount(App.userName, 0);
                  f.CreateCountRecordFB1(0);
+				 DataAccessService.FBCount = 0;
+                 DataAccessService.DAOCount = 0;
              }
              else
              {
