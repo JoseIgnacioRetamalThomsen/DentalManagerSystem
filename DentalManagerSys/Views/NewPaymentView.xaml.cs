@@ -15,6 +15,7 @@ using Models;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -60,6 +61,23 @@ namespace DentalManagerSys.Views
                 TreatmentPlanDB.SelectedItem = ViewModel.GetMostRecent();
         }
 
+        /*private async void InvalidAmtAlert()
+        {
+            await DisplayAlert("Warning!", "Amount filed must be filed!", "OK");
+        }*/
+
+        private async void InvalidAmtAlert()
+        {
+            ContentDialog noWifiDialog = new ContentDialog()
+            {
+                Title = "WARNING",
+                Content = "Amount field must be filed!",
+                CloseButtonText = "Ok"
+            };
+
+            await noWifiDialog.ShowAsync();
+        }
+
         /// <summary>
         /// Create new payment on DB with data from view
         /// </summary>
@@ -67,12 +85,21 @@ namespace DentalManagerSys.Views
         /// <param name="e"></param>
         private void AddPayment_Click(object sender, RoutedEventArgs e)
         {
-            decimal amount = Convert.ToDecimal(Amount.Text);
-            App.Data.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID, ViewModel.Customer.iD, amount, DateTime.Now.ToString());
-           /* DAO.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID,ViewModel.Customer.iD,amount,DateTime.Now.ToString());
-            FireBaseDAO f = new FireBaseDAO();
-            f.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID, ViewModel.Customer.iD, amount, DateTime.Now.ToString());*/
-            Frame.GoBack();
+            try
+            {
+                decimal amount = Convert.ToDecimal(Amount.Text);
+                App.Data.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID, ViewModel.Customer.iD, amount, DateTime.Now.ToString());
+                /* DAO.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID,ViewModel.Customer.iD,amount,DateTime.Now.ToString());
+                 FireBaseDAO f = new FireBaseDAO();
+                 f.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID, ViewModel.Customer.iD, amount, DateTime.Now.ToString());*/
+                Frame.GoBack();
+            }
+            catch
+            {
+                InvalidAmtAlert();
+                Frame.GoBack();
+            }
+            
         }
 
         /// <summary>
