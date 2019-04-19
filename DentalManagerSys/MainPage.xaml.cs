@@ -48,7 +48,7 @@ namespace DentalManagerSys
              else
              {
                 sqliteCnt = DAO.GetUserCountSqlite(App.userName);
-                //Because it is an async method so, must be called on an await, that is why is doen like so...
+                //Because it is an async method so, must be called on an await, that is why is done like so...
                 readfromFb();
                 async void readfromFb()
                 {
@@ -86,8 +86,9 @@ namespace DentalManagerSys
 
             }
 
-           
+            
         }
+
 
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
