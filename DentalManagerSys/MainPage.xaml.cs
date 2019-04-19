@@ -1,5 +1,6 @@
 ﻿using DataAccessLibrary;
 using DentalManagerSys.Views;
+using DentalManagerSys.Views.Appointments;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -150,7 +151,7 @@ namespace DentalManagerSys
                 {
                    {typeof(NewPaymentView), "NewPaymentView"},
                     {typeof(NewCustomer), "newCustomer"}//,
-                  //  {typeof(GamesPage), "games"},
+                   //{typeof(AllAppointmetsView), "games"},
                   //  {typeof(MusicPage), "music"},
                    // {typeof(MyContentPage), "content"}
                 };
@@ -179,6 +180,9 @@ namespace DentalManagerSys
                     break;
                 case "ManageTreaments":
                     ContentFrame.Navigate(typeof(ManageTreatmentsView));
+                    break;
+                case "AppoitmentsView":
+                    ContentFrame.Navigate(typeof(AllAppointmentsView));
                     break;
                 case "ViewAllTransactionsNV":
                     ContentFrame.Navigate(typeof(NewCustomer));

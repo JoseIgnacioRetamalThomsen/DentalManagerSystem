@@ -11,6 +11,7 @@
 
 using DataAccessLibrary;
 using DentalManagerSys.ViewModel;
+using DentalManagerSys.Views.Appointments;
 using Models;
 using System.Diagnostics;
 using Windows.UI.Xaml;
@@ -162,6 +163,12 @@ namespace DentalManagerSys.Views
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
+        }
+
+        private void NewAppointment_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CreateAppointmentView), new NewPaymentData(ViewModel.Customer.iD, 0, false),
+               new DrillInNavigationTransitionInfo());
         }
     }
 }

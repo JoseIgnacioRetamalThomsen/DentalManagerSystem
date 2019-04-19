@@ -15,7 +15,7 @@ namespace DataAccessLibrary
     public class DataAccessService
     {
         FireBaseDAO firebaseDAO = new FireBaseDAO();
-        private DAO sqlite = new DAO();
+        public DAO sqlite = new DAO();
 
         //Keep count for Sychronization
         public static int DAOCount;
@@ -161,5 +161,12 @@ namespace DataAccessLibrary
 
             firebaseDAO.AddNewTreatmentPlanTreatments(t);
         }
+
+        public void AddNewAppointment(Appointment appointment)
+        {
+            sqlite.AddAppointment(appointment);
+        }
     }
 }
+
+
