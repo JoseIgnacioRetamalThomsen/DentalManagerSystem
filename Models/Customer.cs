@@ -56,6 +56,10 @@ namespace Models
             this.v = v;
         }
 
+        public Customer()
+        {
+        }
+
         public void Print()
         {
             Debug.WriteLine("id" + this.iD);

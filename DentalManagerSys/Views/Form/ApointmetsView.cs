@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DentalManagerSys.Views.Appointments;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,25 +14,29 @@ namespace DentalManagerSys.Views.Form
 {
     public class ApointmetsView : StackPanel
     {
-        int hours = 12;
+        public event EventHandler<EmptySlotTapped> OnEmptySlotTapped;
+
+        int hours = 16;
         int slotPerHour = 4;
         int column = 7;
         int starhour = 8;
-        List<int> slot = new List<int>() { 0, 15, 30, 45 };
+       public static List<int> slot = new List<int>() { 0, 15, 30, 45 };
         List<String> days = new List<string>() { "Monday", "Tueday", "Wenesday", "Thursday", "Friday", "Saturday" };
         Grid ApoGrid = new Grid();
         int columnwidth = 150;
         public ApointmetsView()
         {
+            ApoGrid.HorizontalAlignment = HorizontalAlignment.Center;
             GuenerateAppGrid();
             this.Children.Add(ApoGrid);
+            
         }
 
         private void GuenerateAppGrid()
         {
             //create row
             //for 12 hours, 08:00 to 20:00, 4 slot of 15 mint per hour 
-            for (int i = 0; i <= hours * slotPerHour; i++)
+            for (int i = 0; i <= hours * slotPerHour+1; i++)
             {
                 ApoGrid.RowDefinitions.Add(new RowDefinition() { });
             }
@@ -39,11 +44,11 @@ namespace DentalManagerSys.Views.Form
             //create columns
             for (int i = 0; i < column; i++)
             {
-                ApoGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new Windows.UI.Xaml.GridLength(columnwidth) });
+                ApoGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new Windows.UI.Xaml.GridLength(columnwidth)  });
             }
-
+            starhour--;
             //add time to first colum
-            for (int i = 1; i <= hours * slotPerHour; i++)
+            for (int i = 1; i <= hours * slotPerHour+1; i++)
             {
                 Border border = new Border()
                 {
@@ -59,10 +64,10 @@ namespace DentalManagerSys.Views.Form
                 Grid.SetColumn(border, 0);
                 Grid.SetRow(border, i);
 
-                if (i % 4 == 0) starhour++;
+                if ((i-1) % 4 == 0) starhour++;
                 TextBlock label = new TextBlock()
                 {
-                    Text = "" + starhour + ":" + slot[i % 4],
+                    Text = "" + starhour + ":" + slot[(i-1) % 4],
                     VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Center,
                     TextAlignment = Windows.UI.Xaml.TextAlignment.Center
 
@@ -113,11 +118,39 @@ namespace DentalManagerSys.Views.Form
                     Grid.SetColumn(border, col);
                     Grid.SetRow(border, row);
 
+                    TextBlock label = new TextBlock();
+                    label.Text = "Free";
+                    label.TextAlignment = TextAlignment.Center;
+
+                    Grid.SetColumn(label, col);
+                    Grid.SetRow(label, row);
+
                     ApoGrid.Children.Add(border);
+                    ApoGrid.Children.Add(label);
+                    label.Tapped += EmptySlot_Tapped;
 
                 }
             }
 
+        }
+
+        private void EmptySlot_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+           // Debug.WriteLine("tapped");
+            FrameworkElement b = (FrameworkElement)sender;
+
+            //try
+            //{
+            //     b = (Border)sender;
+            //}catch
+            //{
+            //    b = (TextBlock)sender;
+            //}
+            //Debug.WriteLine("d" + b.GetValue(Grid.ColumnProperty) + b.GetValue(Grid.RowProperty));
+            EmptySlotTapped evnt = new EmptySlotTapped();
+            evnt.X = (int)b.GetValue(Grid.ColumnProperty);
+            evnt.Y = (int)b.GetValue(Grid.RowProperty)-1;
+            OnEmpty(evnt);
         }
 
         public void AddApointment(List<int> timeSlot, string name, int day)
@@ -169,7 +202,13 @@ namespace DentalManagerSys.Views.Form
             //{
             //    b = (TextBlock)sender;
             //}
-            Debug.WriteLine("d" + b.GetValue(Grid.ColumnProperty)+ b.GetValue(Grid.RowProperty));
+           // Debug.WriteLine("d" + b.GetValue(Grid.ColumnProperty)+ b.GetValue(Grid.RowProperty));
+           
+        }
+
+        protected virtual void OnEmpty(EmptySlotTapped e)
+        {
+            OnEmptySlotTapped?.Invoke(this, e);
         }
     }
 }

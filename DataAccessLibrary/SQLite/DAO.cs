@@ -204,32 +204,32 @@ namespace DataAccessLibrary
         {
 
             int userCntNum = 0;
-             CounterData cd = null;
+            CounterData cd = null;
 
             String myEmail = email;
             myEmail = myEmail.Replace(".", "-");
 
             using (SqliteConnection db =
                new SqliteConnection("Filename=dentalManagerDB.db"))
-             {
-                 db.Open();
+            {
+                db.Open();
 
                 SqliteCommand selectCommand = new SqliteCommand
                      ("SELECT * from countRecord where email=@MyEmail", db);
-                 selectCommand.Parameters.AddWithValue("@MyEmail", myEmail);
+                selectCommand.Parameters.AddWithValue("@MyEmail", myEmail);
 
-                 SqliteDataReader query = selectCommand.ExecuteReader();
+                SqliteDataReader query = selectCommand.ExecuteReader();
 
-                 while (query.Read())
-                 {
-                     cd = new CounterData(
-                     query.GetInt32(0),
-                     userCntNum = query.GetInt32(1),
-                     query.GetString(2)
-                      );
-                 }
+                while (query.Read())
+                {
+                    cd = new CounterData(
+                    query.GetInt32(0),
+                    userCntNum = query.GetInt32(1),
+                    query.GetString(2)
+                     );
+                }
 
-                 db.Close();
+                db.Close();
             }
             return userCntNum;
         }
@@ -288,7 +288,7 @@ namespace DataAccessLibrary
 
                     insertCommand.Connection = db;
 
-                    // Use parameterized query
+                    // Use parameterized query 
                     insertCommand.CommandText = "INSERT INTO customers VALUES (@Id ,@FirstName ,@Surname,@DOB ,@Street ,@city ,@Province ,@Country ,@Postocode ,@MobileNum ,@FixNum ,@Email,@Comments);";
                     insertCommand.Parameters.AddWithValue("@Id", id);
                     insertCommand.Parameters.AddWithValue("@FirstName", firstName);
@@ -1217,6 +1217,39 @@ namespace DataAccessLibrary
 
                 db.Close();
             }
+        }
+
+        public long AddAppointment(Appointment appointment)
+        {
+            long id;
+            using (SqliteConnection db =
+              new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query id INTEGER,patientID INTEGER NOT NULL,date DATETIME,status INTEGER NOT NULL
+                insertCommand.CommandText = "INSERT INTO appointment (patientId,date,status) VALUES " +
+                    "(@PatientId,@Date,@Status);";
+                insertCommand.Parameters.AddWithValue("@PatientId", appointment.PatientID);
+                insertCommand.Parameters.AddWithValue("@Date", appointment.Date);
+                insertCommand.Parameters.AddWithValue("@Status", appointment.Status);
+
+
+                insertCommand.ExecuteReader();
+
+                SqliteCommand insertCommand1 = new SqliteCommand();
+                insertCommand1.Connection = db;
+
+                string sql = @"select last_insert_rowid()";
+                insertCommand1.CommandText = sql;
+                id = (long)insertCommand1.ExecuteScalar();
+
+                db.Close();
+            }
+            return id;
         }
     }
 }
