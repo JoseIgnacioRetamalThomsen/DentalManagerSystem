@@ -48,6 +48,13 @@
                     Click="NewPaymentButton_Click"
                     IsEnabled="True"/>
 
+                <AppBarButton
+                    x:Name="NewAppointment"
+                    Icon="Add"
+                    x:Uid="/Strings/NewPaymentButton"
+                    Click="NewAppointment_Click"
+                    IsEnabled="True"/>
+
             </CommandBar>
 
             <Grid

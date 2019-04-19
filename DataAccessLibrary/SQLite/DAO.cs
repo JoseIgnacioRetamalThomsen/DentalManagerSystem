@@ -51,7 +51,7 @@ namespace DataAccessLibrary
                 SqliteCommand createAddress = new SqliteCommand(address, db);
                 createAddress.ExecuteReader();
 
-                string appointments = "CREATE TABLE IF NOT EXISTS appointment(id INTEGER,patientID INTEGER NOT NULL,date DATETIME,status INTEGER NOT NULL,PRIMARY KEY (id), FOREIGN KEY (patientID) REFERENCES customers(customerID))";
+                string appointments = "CREATE TABLE IF NOT EXISTS appointment(id INTEGER,patientID VARCHAR(20) NOT NULL,date DATETIME,status INTEGER NOT NULL,PRIMARY KEY (id), FOREIGN KEY (patientID) REFERENCES customers(customerID))";
                 SqliteCommand createAppointments = new SqliteCommand(appointments, db);
                 createAppointments.ExecuteReader();
 

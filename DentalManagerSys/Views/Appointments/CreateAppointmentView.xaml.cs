@@ -41,17 +41,17 @@ namespace DentalManagerSys.Views.Appointments
         {
             if (e.Parameter == null)
             {
-                ViewModel = new CreateAppointmentViewModel();
+                //ViewModel = new CreateAppointmentViewModel();
             }
             else
             {
                 ViewModel = new CreateAppointmentViewModel();
-                ViewModel.SetCustomer(e.Parameter.ToString());
+                ViewModel.SetCustomer(((NewPaymentData)e.Parameter).CustomerId);
             }
 
-            Customer Test = new Customer("12234543-k", "Marco Antonio", "Perez Gonzales", "03/03/1978 00:00:00", "Los leons 29",
-                "Valpariso", "Valparaiso", "Chile", "gh567", "0983442233", "02122222", DateTime.Now, "Sin alergias");
-            ViewModel.Customer = Test;
+            //Customer Test = new Customer("12234543-k", "Marco Antonio", "Perez Gonzales", "03/03/1978 00:00:00", "Los leons 29",
+            //    "Valpariso", "Valparaiso", "Chile", "gh567", "0983442233", "02122222", DateTime.Now, "Sin alergias");
+          //  ViewModel.Customer = Test;
 
             ApointmetsView av = new ApointmetsView();
             ScrollViewer sv = new ScrollViewer();
@@ -107,7 +107,7 @@ namespace DentalManagerSys.Views.Appointments
             Appointment ap = new Appointment();
 
             ap.Date = definitive;
-            ap.PatientID = 1;
+            ap.PatientID = ViewModel.Customer.iD;
             ap.Status = 0;
 
             App.Data.AddNewAppointment(ap);

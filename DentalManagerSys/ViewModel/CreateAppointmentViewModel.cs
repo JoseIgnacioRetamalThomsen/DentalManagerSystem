@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,11 +24,14 @@ namespace DentalManagerSys.ViewModel
             }
         }
 
-        public int CustomerID { get; set; }
+        public string CustomerID { get; set; }
 
         public void SetCustomer(string id)
         {
+            CustomerID = id;
+            Debug.WriteLine("wwefwaefwac "+id);
             Customer = DAO.GetCustomerByID(id);
+            Debug.WriteLine("name ddddddddddddddddddd "+Customer.name);
         }
     }
 }
