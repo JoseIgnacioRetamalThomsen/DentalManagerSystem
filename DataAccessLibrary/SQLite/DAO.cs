@@ -1214,7 +1214,7 @@ namespace DataAccessLibrary
                 insertCommand.Parameters.AddWithValue("@IsDone", isDone);
 
                 insertCommand.ExecuteNonQuery();
-
+                
                 db.Close();
             }
         }
@@ -1250,6 +1250,36 @@ namespace DataAccessLibrary
                 db.Close();
             }
             return id;
+        }
+
+        public static List<Appointment> GetAppointmetsWeek(DateTime startingDay)
+        {
+            List<Appointment> appoientments = new List<Appointment>();
+            DateTime endDate = startingDay.AddDays(6);
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from Appointment where Date>=@StartingDay AND Date<=@EndDate", db);
+                selectCommand.Parameters.AddWithValue("@StartingDay", startingDay);
+                selectCommand.Parameters.AddWithValue("@EndDate", endDate);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    Debug.WriteLine("sdf");
+                   
+
+                }
+
+                db.Close();
+            }
+
+            return appoientments;
         }
     }
 }

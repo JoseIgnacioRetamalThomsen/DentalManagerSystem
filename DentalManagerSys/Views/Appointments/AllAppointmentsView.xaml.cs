@@ -1,6 +1,7 @@
 ﻿using DentalManagerSys.Views.Form;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -32,6 +33,16 @@ namespace DentalManagerSys.Views.Appointments
             ScrollViewer sv = new ScrollViewer();
             sv.Content = av;
             SlotPickSP.Children.Add(sv);
+
+            // Set date to today
+            CalDate.Date = DateTime.Now;
+
+            ShowAppointments();
+        }
+
+        private void ShowAppointments()
+        {
+            Debug.WriteLine("workin");
         }
     }
 }
