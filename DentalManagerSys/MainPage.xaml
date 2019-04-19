@@ -20,6 +20,7 @@
         <NavigationView.MenuItems>
             <NavigationViewItem Icon="ContactInfo" x:Uid="/Strings/NavViewItemPatients" Tag="PatientsList" />
             <NavigationViewItem Icon="List"  x:Uid="/Strings/NavViewTretments" Tag="ManageTreaments" />
+            <NavigationViewItem Icon="Accept"  Content="Hello" Tag="AppoitmentsView" />
             <!--<NavigationViewItem Icon="Refresh" Content="Menu Item3" Tag="SamplePage3" />
             <NavigationViewItem Icon="Download" Content="Menu Item4" Tag="SamplePage4" />-->
         </NavigationView.MenuItems>
