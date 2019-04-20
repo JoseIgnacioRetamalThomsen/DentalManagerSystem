@@ -12,7 +12,7 @@
         <Grid>
             <RelativePanel>
                 <TextBlock 
-                x:Uid="/Strings/TretmentsListTitle" 
+                x:Uid="/Strings/AllAppointmetsTitle" 
                 x:Name="PageTitle" 
                 Style="{StaticResource PageTitleTextBlock}"/>
 
@@ -22,10 +22,10 @@
                 RelativePanel.RightOf="PageTitle">
 
                     <AppBarButton 
-                    x:Name="AddTreatmentButton"
-                    Icon="Add"
-                  
-                    x:Uid="/Strings/AddTreatmentButton"
+                    x:Name="DeleteAppointment"
+                    Icon="Delete"
+                  Tag="DeleteAppointment"
+                    x:Uid="/Strings/DeleteAppointmentButton"
                     IsEnabled="True"/>
                     <AppBarSeparator />
 
