@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,6 +26,15 @@ namespace DentalManagerSys.Views
         public IncomeView()
         {
             this.InitializeComponent();
+
+            // Set dates to current date
+            FromDate.Date = DateTime.Now;
+            ToDate.Date = DateTime.Now;
+        }
+
+        private void FromDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        {
+            Debug.WriteLine("im working");
         }
     }
 }

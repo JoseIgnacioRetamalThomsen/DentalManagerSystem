@@ -1,4 +1,5 @@
-﻿using DentalManagerSys.ViewModel;
+﻿using DataAccessLibrary;
+using DentalManagerSys.ViewModel;
 using DentalManagerSys.Views.Form;
 using Models;
 using System;
@@ -27,6 +28,8 @@ namespace DentalManagerSys.Views.Appointments
     public sealed partial class CreateAppointmentView : Page
     {
         public CreateAppointmentViewModel ViewModel;
+
+        ApointmetsView av;
         public CreateAppointmentView()
         {
             this.InitializeComponent();
@@ -53,7 +56,7 @@ namespace DentalManagerSys.Views.Appointments
             //    "Valpariso", "Valparaiso", "Chile", "gh567", "0983442233", "02122222", DateTime.Now, "Sin alergias");
           //  ViewModel.Customer = Test;
 
-            ApointmetsView av = new ApointmetsView();
+             av = new ApointmetsView();
             ScrollViewer sv = new ScrollViewer();
             sv.Content = av;
             SlotPickSP.Children.Add(sv);
@@ -61,17 +64,21 @@ namespace DentalManagerSys.Views.Appointments
 
             CalDate.Date = DateTime.Now;
 
+            ShowAppointments();
+
         }
 
         DateTime definitive;
         private void Av_OnEmptySlotTapped(object sender, EmptySlotTapped e)
         {
+            //enable create appointment button
+            CreateAppointmentButton.IsEnabled = true;
 
-            Debug.WriteLine("tapped" + e.X + e.Y);
+
             int slot = e.Y % 4;
-           // int time = e.X / 11;
-            Debug.WriteLine("ex"+e.X);
-            Debug.WriteLine(ApointmetsView.slot[slot]);
+         
+           
+          
             int min = ApointmetsView.slot[slot];
             int hour = e.Y / 4 +8;
             Debug.WriteLine("houe+" +hour);
@@ -90,11 +97,11 @@ namespace DentalManagerSys.Views.Appointments
             }
           
             
-            Debug.WriteLine("last " + startDay);
+        
             DateTime selectedDay = startDay.AddDays(e.X-1);
-            Debug.WriteLine("last " + selectedDay);
+       
              definitive = new DateTime(selectedDay.Year,selectedDay.Month,selectedDay.Day,hour,min,00);
-            Debug.WriteLine(definitive);
+        
             SelectedDate.Date = definitive.Date;
             SelectedTime.Time = definitive.TimeOfDay;
 
@@ -111,6 +118,45 @@ namespace DentalManagerSys.Views.Appointments
             ap.Status = 0;
 
             App.Data.AddNewAppointment(ap);
+        }
+
+        private void ShowAppointments()
+        {
+            //get starting day of selected week
+            DateTime dt = CalDate.Date.Value.DateTime;
+
+            DateTime startDay;
+
+            int newd = 0;
+            if (dt.DayOfWeek == DayOfWeek.Sunday)
+            {
+                startDay = dt.AddDays(-6).Date + new TimeSpan(0, 0, 0);
+            }
+            else
+            {
+                startDay = dt.AddDays(1 - (int)dt.DayOfWeek).Date + new TimeSpan(0, 0, 0);
+            }
+
+            //last day date
+            DateTime lastDay = startDay.AddDays(7);
+
+            //get appointments
+            List<Appointment> aps = DAO.GetAppointmetsWeek(startDay);
+
+            //display appointments
+
+
+            av.AddAppointments(aps);
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
         }
     }
 }

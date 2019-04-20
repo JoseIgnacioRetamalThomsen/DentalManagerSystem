@@ -624,4 +624,39 @@
   <data name="ToothHeader.Text" xml:space="preserve">
     <value>Tooth</value>
   </data>
+<<<<<<< HEAD
+  <data name="Appointments.Content" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="IncomeReport.Content" xml:space="preserve">
+    <value>Income Report</value>
+  </data>
+  <data name="FromDateTitle.Text" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="IncomeReportTitle.Text" xml:space="preserve">
+    <value>Income Reports</value>
+  </data>
+  <data name="ToDateTitle.Text" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="SubmitIncome.Content" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="IncomeAmount.Text" xml:space="preserve">
+    <value>Amount</value>
+=======
+  <data name="CreateAppointmentButton.Label" xml:space="preserve">
+    <value>Create Appointment</value>
+  </data>
+  <data name="CreateAppointmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create a new appointmet with the selected date</value>
+  </data>
+  <data name="NewAppointment.Label" xml:space="preserve">
+    <value>New Appointment</value>
+  </data>
+  <data name="NewAppointment.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create a new appointment for this patient</value>
+>>>>>>> 1888deb4d4c61e4fd1a517f4299b4bfe50135488
+  </data>
 </root>

@@ -1,4 +1,6 @@
-﻿using DentalManagerSys.Views.Form;
+﻿using DataAccessLibrary;
+using DentalManagerSys.Views.Form;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,25 +26,65 @@ namespace DentalManagerSys.Views.Appointments
     /// </summary>
     public sealed partial class AllAppointmentsView : Page
     {
+        ApointmetsView av;
         public AllAppointmentsView()
         {
             this.InitializeComponent();
 
             //add appointment view
-            ApointmetsView av = new ApointmetsView();
+             av = new ApointmetsView();
             ScrollViewer sv = new ScrollViewer();
             sv.Content = av;
             SlotPickSP.Children.Add(sv);
 
             // Set date to today
             CalDate.Date = DateTime.Now;
+            CalDate.DateChanged += CalDate_DateChanged;
+
+            ShowAppointments();
+
+           
+        }
+
+        private void CalDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        {
+       
+            SlotPickSP.Children.RemoveAt(0);
+            av = new ApointmetsView();
+            ScrollViewer sv = new ScrollViewer();
+            sv.Content = av;
+            SlotPickSP.Children.Add(sv);
 
             ShowAppointments();
         }
 
         private void ShowAppointments()
         {
-            Debug.WriteLine("workin");
+            //get starting day of selected week
+            DateTime dt = CalDate.Date.Value.DateTime;
+
+            DateTime startDay;
+
+            int newd = 0;
+            if (dt.DayOfWeek == DayOfWeek.Sunday)
+            {
+                startDay = dt.AddDays(-6).Date + new TimeSpan(0, 0, 0);
+            }
+            else
+            {
+                startDay = dt.AddDays(1 - (int)dt.DayOfWeek).Date + new TimeSpan(0, 0, 0);
+            }
+
+            //last day date
+            DateTime lastDay = startDay.AddDays(7);
+
+            //get appointments
+            List<Appointment> aps = DAO.GetAppointmetsWeek(startDay);
+
+            //display appointments
+          
+
+            av.AddAppointments(aps);
         }
     }
 }

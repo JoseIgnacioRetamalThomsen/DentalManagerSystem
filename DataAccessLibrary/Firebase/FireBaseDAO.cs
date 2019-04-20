@@ -570,8 +570,12 @@ namespace DataAccessLibrary
             {
                 if (t.TreatmentPlanTreatmentsID == details.Object.treatmentPlanID)
                 {
+                    Debug.WriteLine("t.TreatmentPlanTreatmentsID  " + t.TreatmentPlanTreatmentsID);
+                    Debug.WriteLine("details.Object.treatmentPlanID  " + details.Object.treatmentPlanID);
+                    Debug.WriteLine("State changed................!");
+                    //await firebase.Child(node).Child(details.Key).DeleteAsync();
                     //Delete the old row by key id
-                    await firebase.Child(node).Child(details.Key).DeleteAsync();
+                     await firebase.Child(node).Child(details.Key).DeleteAsync();
                     //add the new row
                     await firebase.Child(node).PostAsync<TreatmentPlanTreatmentsData>(treatmentPlanTreatmentsData);
                     break;

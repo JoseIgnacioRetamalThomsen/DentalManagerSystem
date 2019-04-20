@@ -119,7 +119,7 @@
     <Compile Include="Views\Appointments\ViewWeekAppointments.xaml.cs">
       <DependentUpon>ViewWeekAppointments.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Form\ApointmetsView.cs" />
+    <Compile Include="Form\ApointmetsView.cs" />
     <Compile Include="Views\IncomeView.xaml.cs">
       <DependentUpon>IncomeView.xaml</DependentUpon>
     </Compile>

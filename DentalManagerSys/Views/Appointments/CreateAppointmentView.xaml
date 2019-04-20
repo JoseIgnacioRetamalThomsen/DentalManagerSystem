@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-<RelativePanel>
+        <RelativePanel>
             <TextBlock   
             x:Name="PageTitle" 
             Style="{StaticResource PageTitleTextBlock}"
@@ -22,19 +22,20 @@
                 RelativePanel.RightOf="PageTitle">
 
                 <AppBarButton
-                    Tag="CreatePaymentBarButton"
+                    Tag="CreateAppointmentButton"
+                    x:Name="CreateAppointmentButton"
                     Icon="Add"
-                    x:Uid="/Strings/CreatePaymentBarButton"
-                    
-                    IsEnabled="True"/>
+                    x:Uid="/Strings/CreateAppointmentButton"
+                    Click="AppBarButton_Click"
+                    IsEnabled="False"/>
 
                 <AppBarSeparator/>
-                
+
                 <AppBarButton
                     x:Name="CancelButton"
                     Icon="Cancel"
                     x:Uid="/Strings/CancelButton"
-                    />
+                    Click="CancelButton_Click"/>
 
             </CommandBar>
 
@@ -44,18 +45,18 @@
                   VerticalAlignment="Bottom">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-               
+
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
-                    
+
                 </Grid.RowDefinitions>
 
                 <StackPanel 
                 x:Name="TreatmentPlanDBSP"
                Grid.Column="0">
-                    
+
 
                     <CalendarDatePicker x:Name="CalDate"/>
 
@@ -70,18 +71,18 @@
                 x:Name="SelectDateSlot"
                Grid.Column="0"
                     Grid.Row="1">
-                    
+
                     <ScrollViewer Width="1200" Height="400">
                         <StackPanel x:Name="SlotPickSP"
                                    
                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
                 ScrollViewer.VerticalScrollBarVisibility="Auto">
-                            
+
                         </StackPanel>
                     </ScrollViewer>
 
 
-                    
+
 
                 </StackPanel>
 
