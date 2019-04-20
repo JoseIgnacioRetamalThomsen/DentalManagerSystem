@@ -51,7 +51,7 @@
                 <AppBarButton
                     x:Name="NewAppointment"
                     Icon="Add"
-                    x:Uid="/Strings/NewPaymentButton"
+                    x:Uid="/Strings/NewAppointment"
                     Click="NewAppointment_Click"
                     IsEnabled="True"/>
 
