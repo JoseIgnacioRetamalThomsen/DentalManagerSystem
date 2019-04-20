@@ -120,6 +120,9 @@
       <DependentUpon>ViewWeekAppointments.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Form\ApointmetsView.cs" />
+    <Compile Include="Views\IncomeView.xaml.cs">
+      <DependentUpon>IncomeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\User\AccountManagementSyncOrNew.xaml.cs">
       <DependentUpon>AccountManagementSyncOrNew.xaml</DependentUpon>
     </Compile>
@@ -216,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Appointments\ViewWeekAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\IncomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

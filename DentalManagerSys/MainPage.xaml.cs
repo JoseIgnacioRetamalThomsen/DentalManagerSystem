@@ -37,17 +37,17 @@ namespace DentalManagerSys
             DAO.InitializeDatabase();
             FireBaseDAO f = new FireBaseDAO();
             DAO d = new DAO();
-            App.userName= DAO.GetUserID();
+            App.userName = DAO.GetUserID();
             //Add create a new user count table if it is a new user.
             if (App.NewUser == true)
-             {
-                 d.NewUserCount(App.userName, 0);
-                 f.CreateCountRecordFB1(0);
-				 DataAccessService.FBCount = 0;
-                 DataAccessService.DAOCount = 0;
-             }
-             else
-             {
+            {
+                d.NewUserCount(App.userName, 0);
+                f.CreateCountRecordFB1(0);
+                DataAccessService.FBCount = 0;
+                DataAccessService.DAOCount = 0;
+            }
+            else
+            {
                 sqliteCnt = DAO.GetUserCountSqlite(App.userName);
                 //Because it is an async method so, must be called on an await, that is why is done like so...
                 readfromFb();
@@ -55,7 +55,7 @@ namespace DentalManagerSys
                 {
                     firebaseCnt = await f.GetUserCountFb(App.userName);
 
-                    if(firebaseCnt> sqliteCnt)
+                    if (firebaseCnt > sqliteCnt)
                     {
                         f.ReadDataFromFirebase();
                         //Inizialise the count records.
@@ -66,13 +66,14 @@ namespace DentalManagerSys
                             DataAccessService.DAOCount = DataAccessService.FBCount;
                         }
                     }
-                    else if(sqliteCnt> firebaseCnt)
+                    else if (sqliteCnt > firebaseCnt)
                     {
                         f.ReadDataFromSQLite();
                         //Inizialise the count records.
                         DataAccessService.DAOCount = DAO.GetUserCountSqlite(App.userName);
                         DataAccessService.FBCount = DataAccessService.DAOCount;
-                    }else
+                    }
+                    else
                     {
                         //Inizialise the count records.
                         GetCountRecordFb();
@@ -87,7 +88,7 @@ namespace DentalManagerSys
 
             }
 
-            
+
         }
 
 
@@ -186,6 +187,9 @@ namespace DentalManagerSys
                     break;
                 case "ViewAllTransactionsNV":
                     ContentFrame.Navigate(typeof(NewCustomer));
+                    break;
+                case "IncomeReport":
+                    ContentFrame.Navigate(typeof(IncomeView));
                     break;
                 case "content":
                     ContentFrame.Navigate(typeof(MainPage));
