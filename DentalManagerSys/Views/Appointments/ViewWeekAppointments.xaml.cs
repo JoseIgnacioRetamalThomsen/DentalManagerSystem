@@ -29,7 +29,7 @@ namespace DentalManagerSys.Views.Appointments
 
             ApointmetsView ap = new ApointmetsView();
             Main.Children.Add(ap);
-            ap.AddApointment(new List<int>() { 1,2,3},"Maria",1);
+            //ap.AddApointment(new List<int>() { 1,2,3},"Maria",1);
         }
     }
 }

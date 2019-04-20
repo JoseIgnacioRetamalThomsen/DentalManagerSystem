@@ -67,11 +67,11 @@ namespace DentalManagerSys.Views.Appointments
         private void Av_OnEmptySlotTapped(object sender, EmptySlotTapped e)
         {
 
-            Debug.WriteLine("tapped" + e.X + e.Y);
+          
             int slot = e.Y % 4;
-           // int time = e.X / 11;
-            Debug.WriteLine("ex"+e.X);
-            Debug.WriteLine(ApointmetsView.slot[slot]);
+         
+           
+          
             int min = ApointmetsView.slot[slot];
             int hour = e.Y / 4 +8;
             Debug.WriteLine("houe+" +hour);
@@ -90,11 +90,11 @@ namespace DentalManagerSys.Views.Appointments
             }
           
             
-            Debug.WriteLine("last " + startDay);
+        
             DateTime selectedDay = startDay.AddDays(e.X-1);
-            Debug.WriteLine("last " + selectedDay);
+       
              definitive = new DateTime(selectedDay.Year,selectedDay.Month,selectedDay.Day,hour,min,00);
-            Debug.WriteLine(definitive);
+        
             SelectedDate.Date = definitive.Date;
             SelectedTime.Time = definitive.TimeOfDay;
 

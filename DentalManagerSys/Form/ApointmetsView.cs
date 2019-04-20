@@ -1,4 +1,6 @@
-﻿using DentalManagerSys.Views.Appointments;
+﻿using DataAccessLibrary;
+using DentalManagerSys.Views.Appointments;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,6 +16,7 @@ namespace DentalManagerSys.Views.Form
 {
     public class ApointmetsView : StackPanel
     {
+        List<Customer> customers = new List<Customer>();
         public event EventHandler<EmptySlotTapped> OnEmptySlotTapped;
 
         int hours = 16;
@@ -153,7 +156,28 @@ namespace DentalManagerSys.Views.Form
             OnEmpty(evnt);
         }
 
-        public void AddApointment(List<int> timeSlot, string name, int day)
+        public void AddAppointments(List<Appointment> ap)
+        {
+            
+            foreach(Appointment apnt in ap)
+            {
+                Customer cust = DAO.GetCustomerByID(apnt.PatientID);
+                int day = (int)apnt.Date.DayOfWeek;
+
+                int hour = Convert.ToInt32(apnt.Date.ToString("hh"));
+                int min = Convert.ToInt32(apnt.Date.ToString("mm"));
+
+                int timeslot = (hour - 8) * 4 + (slot.IndexOf(min)+1);
+                Debug.WriteLine("this"+cust.name + " "+ timeslot);
+
+                customers.Add(cust);
+
+                AddApointment( timeslot , cust.name, day );
+                
+            }
+        }
+
+        public void AddApointment(int timeSlot, string name, int day)
         {
 
             Border border = new Border()
@@ -168,9 +192,9 @@ namespace DentalManagerSys.Views.Form
             // border.SetValue(Grid.RowProperty, i);
             // border.SetValue(Grid.ColumnProperty, 0);
             Grid.SetColumn(border, day);
-            Grid.SetRow(border, timeSlot[0]);
+            Grid.SetRow(border, timeSlot);
 
-            Grid.SetRowSpan(border, 2);
+            
 
             TextBlock label = new TextBlock()
             {
@@ -180,7 +204,7 @@ namespace DentalManagerSys.Views.Form
 
             };
             Grid.SetColumn(label, day);
-            Grid.SetRow(label, timeSlot[0]);
+            Grid.SetRow(label, timeSlot);
             //label.SetValue(Grid.RowProperty, i);
             // label.SetValue(Grid.ColumnProperty, 0);
 
@@ -189,6 +213,12 @@ namespace DentalManagerSys.Views.Form
             border.Tapped += Border_Tapped;
             label.Tapped += Border_Tapped;
 
+        }
+
+        public void Clear()
+        {
+            Debug.WriteLine("sdaaaaaaaaaaaaaaaaaaaaaaaaa");
+            GuenerateAppGrid();
         }
 
         private void Border_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)

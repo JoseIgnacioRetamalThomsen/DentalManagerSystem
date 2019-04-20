@@ -1254,8 +1254,8 @@ namespace DataAccessLibrary
 
         public static List<Appointment> GetAppointmetsWeek(DateTime startingDay)
         {
-            List<Appointment> appoientments = new List<Appointment>();
-            DateTime endDate = startingDay.AddDays(6);
+            List<Appointment> aps = new List<Appointment>();
+            DateTime endDate = startingDay.AddDays(7);
 
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
@@ -1263,7 +1263,7 @@ namespace DataAccessLibrary
                 db.Open();
 
                 SqliteCommand selectCommand = new SqliteCommand
-                    ("SELECT * from Appointment where Date>=@StartingDay AND Date<=@EndDate", db);
+                    ("SELECT * from Appointment where Date>=@StartingDay AND Date<@EndDate", db);
                 selectCommand.Parameters.AddWithValue("@StartingDay", startingDay);
                 selectCommand.Parameters.AddWithValue("@EndDate", endDate);
 
@@ -1271,7 +1271,13 @@ namespace DataAccessLibrary
 
                 while (query.Read())
                 {
-                    Debug.WriteLine("sdf");
+                    aps.Add(new Appointment(
+                        query.GetInt32(0),
+                        query.GetString(1),
+                        query.GetDateTime(2),
+                        ((AppointmentStatus)query.GetInt32(3))
+                        
+                        ));
                    
 
                 }
@@ -1279,7 +1285,7 @@ namespace DataAccessLibrary
                 db.Close();
             }
 
-            return appoientments;
+            return aps;
         }
     }
 }
