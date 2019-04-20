@@ -33,7 +33,7 @@ namespace DentalManagerSys.Views.Appointments
         public CreateAppointmentView()
         {
             this.InitializeComponent();
-            
+
         }
 
         /// <summary>
@@ -75,10 +75,14 @@ namespace DentalManagerSys.Views.Appointments
             CreateAppointmentButton.IsEnabled = true;
 
 
+            //show stack panel with date
+            MessageSP.Visibility = Visibility.Collapsed;
+            SelectedDataSP.Visibility = Visibility.Visible;
+
             int slot = e.Y % 4;
-         
-           
-          
+
+
+
             int min = ApointmetsView.slot[slot];
             int hour = e.Y / 4 +8;
             Debug.WriteLine("houe+" +hour);
@@ -95,13 +99,13 @@ namespace DentalManagerSys.Views.Appointments
             {
                 startDay = dt.AddDays(1- (int)dt.DayOfWeek);
             }
-          
-            
-        
+
+
+
             DateTime selectedDay = startDay.AddDays(e.X-1);
-       
+
              definitive = new DateTime(selectedDay.Year,selectedDay.Month,selectedDay.Day,hour,min,00);
-        
+
             SelectedDate.Date = definitive.Date;
             SelectedTime.Time = definitive.TimeOfDay;
 
@@ -149,9 +153,22 @@ namespace DentalManagerSys.Views.Appointments
             av.AddAppointments(aps);
         }
 
+        /// <summary>
+        /// Create the new appointment and navigate back
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
+            Appointment ap = new Appointment();
 
+            ap.Date = definitive;
+            ap.PatientID = ViewModel.Customer.iD;
+            ap.Status = 0;
+
+            App.Data.AddNewAppointment(ap);
+
+            Frame.GoBack();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
