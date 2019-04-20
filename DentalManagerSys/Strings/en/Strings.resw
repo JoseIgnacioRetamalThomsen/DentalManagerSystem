@@ -645,7 +645,7 @@
   </data>
   <data name="IncomeAmount.Text" xml:space="preserve">
     <value>Amount</value>
-
+</data>
     <data name="AllAppointmetsTitle.Text" xml:space="preserve">
       <value>Appointments</value>
     </data>

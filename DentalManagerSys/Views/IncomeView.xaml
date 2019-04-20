@@ -29,8 +29,8 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
-                    
+
+
                     <StackPanel 
                 x:Name="FromDate1"
                Grid.Column="0">

@@ -239,6 +239,13 @@ namespace DentalManagerSys.Views.Form
 
         }
 
+        public void CleartHighLighted()
+        {
+            foreach (Border br in highlitedBorders)
+            {
+                ApoGrid.Children.Remove(br);
+            }
+        }
         public void Clear()
         {
             Debug.WriteLine("sdaaaaaaaaaaaaaaaaaaaaaaaaa");
