@@ -26,7 +26,7 @@ namespace DentalManagerSys.Views
         public PrintView()
         {
             this.InitializeComponent();
-            TreatmentPlanPrint tp = new TreatmentPlanPrint();
+            TreatmentPlanPrint tp = new TreatmentPlanPrint(App.ActualUser);
             Main.Children.Add(tp);
         }
     }

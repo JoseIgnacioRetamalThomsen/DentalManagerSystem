@@ -32,10 +32,13 @@ namespace DentalManagerSys.Print
 
         private List<TreatmentOnPlan> treatments;
 
+        private User user;
         #region constructors
-        public TreatmentPlanPrint()
+        public TreatmentPlanPrint(User _user)
         {
             this.Width = 800;
+
+            user = _user;
            // this.Height = 5000;
             this.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
 
@@ -51,13 +54,13 @@ namespace DentalManagerSys.Print
 
         }
 
-        public TreatmentPlanPrint(Customer c, List<TreatmentOnPlan> list)
+        public TreatmentPlanPrint(Customer c, List<TreatmentOnPlan> list,User u)
         {
             this.Width = 800;
             // this.Height = 5000;
             this.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
 
-            InitStrings(c);
+            InitStrings(u,c);
             InitGrid();
             InitTreatments(list);
             SetTitle();
@@ -118,24 +121,30 @@ namespace DentalManagerSys.Print
 
 
         }
-        private void InitStrings(Customer c)
+        private void InitStrings(User u,Customer c)
         {
 
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
+
+
+
             //static
-            patienNameLabelString = "Name :";
-            patienAddressLabelString = "Address : ";
-            TreatmentNumberLabelString = "Treatment Num : ";
+            patienNameLabelString = resourceLoader.GetString("/Strings/patienNameLabelString/Text");
+            patienAddressLabelString = resourceLoader.GetString("/Strings/patienAddressLabelString/Text");
+            TreatmentNumberLabelString = resourceLoader.GetString("/Strings/TreatmentNumberLabelString/Text");
 
-            treatmentLabel = "Treatments";
-            teathNumberLabel = "Code";
-            amountLabel = "Price";
-            totalLabel = "Total";
+            treatmentLabel = resourceLoader.GetString("/Strings/treatmentLabel/Text");
+            teathNumberLabel = resourceLoader.GetString("/Strings/teathNumberLabel/Text");
+            amountLabel = resourceLoader.GetString("/Strings/amountLabel/Text");
+            totalLabel = resourceLoader.GetString("/Strings/totalLabel/Text");
+                        
+            title = resourceLoader.GetString("/Strings/titlePrintPreview/Text");
+            subTitle = resourceLoader.GetString("/Strings/subTitlePlanPreview/Text");
 
-            //dinamic
-            title = "Plan Budget";
-            subTitle = "Dental Clinic";
-            doctorName = "Dr. Manual Arraigado";
-            date = "18/03/2019";
+
+            //dynamic
+            doctorName = "Dr. " + u.Name;
+            date = DateTime.Now.ToString("dd/MM/yyyy");
 
             patientName = c.name + " " + c.surname;
             patientAddress = c.street+", " + c.city + ", " + c.country +". " + c.postcode;
