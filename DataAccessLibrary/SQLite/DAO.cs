@@ -46,10 +46,10 @@ namespace DataAccessLibrary
                 SqliteCommand createUsers = new SqliteCommand(users, db);
                 createUsers.ExecuteReader();
 
-                String address = "CREATE TABLE IF NOT EXISTS address(addressID INTEGER,userID INTEGER NOT NULL,street varchar(32),city varchar(20),province" +
+                /*String address = "CREATE TABLE IF NOT EXISTS address(addressID INTEGER,userID INTEGER NOT NULL,street varchar(32),city varchar(20),province" +
                     " varchar(20),country varchar(20), postcode varchar(20),PRIMARY KEY (addressID), FOREIGN KEY (userID) REFERENCES users(userID)  )";
                 SqliteCommand createAddress = new SqliteCommand(address, db);
-                createAddress.ExecuteReader();
+                createAddress.ExecuteReader();*/
 
                 string appointments = "CREATE TABLE IF NOT EXISTS appointment(id INTEGER,patientID VARCHAR(20) NOT NULL,date DATETIME,status INTEGER NOT NULL,PRIMARY KEY (id), FOREIGN KEY (patientID) REFERENCES customers(customerID))";
                 SqliteCommand createAppointments = new SqliteCommand(appointments, db);
@@ -59,7 +59,7 @@ namespace DataAccessLibrary
                 SqliteCommand createCountRecord = new SqliteCommand(countRecord, db);
                 createCountRecord.ExecuteReader();
 
-                String adminDetails = "CREATE TABLE IF NOT EXISTS adminDetails(firstName varchar(30)NOT NULL,surname varchar(30)NOT NULL,street varchar(45),city varchar(30),province varchar(30),country varchar(15),postcode varchar(15),mobileNum varchar(15),fixNum varchar(15),email varchar(45),PRIMARY KEY (email))";
+                String adminDetails = "CREATE TABLE IF NOT EXISTS adminDetails(firstName varchar(30),surname varchar(30),street varchar(45),city varchar(30),province varchar(30),country varchar(15),postcode varchar(15),mobileNum varchar(15),fixNum varchar(15),email varchar(45) NOT NULL,PRIMARY KEY (email))";
                 SqliteCommand createAdminDetails = new SqliteCommand(adminDetails, db);
                 createAdminDetails.ExecuteReader();
 
@@ -202,6 +202,131 @@ namespace DataAccessLibrary
             }
         }
 
+        public void NewAdminDetails(string firstName, string surname,string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email)
+        {
+
+            using (SqliteConnection db =
+               new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query to prevent SQL injection attacks
+                insertCommand.CommandText = "INSERT INTO adminDetails VALUES (@FirstName ,@Surname, @Street ,@city ,@Province ,@Country ,@Postocode ,@MobileNum ,@FixNum ,@Email);";
+                insertCommand.Parameters.AddWithValue("@FirstName", firstName);
+                insertCommand.Parameters.AddWithValue("@Surname", surname);
+                insertCommand.Parameters.AddWithValue("@Street", street);
+                insertCommand.Parameters.AddWithValue("@city", city);
+                insertCommand.Parameters.AddWithValue("@Province", province);
+                insertCommand.Parameters.AddWithValue("@Country", country);
+                insertCommand.Parameters.AddWithValue("@Postocode", postcode);
+                insertCommand.Parameters.AddWithValue("@MobileNum", mobileNum);
+                insertCommand.Parameters.AddWithValue("@FixNum", fixNum);
+                insertCommand.Parameters.AddWithValue("@Email", email);
+
+                insertCommand.ExecuteNonQuery();
+
+                db.Close();
+            }
+        }
+
+        public bool CheckAdmidDetailsExist(string email)
+        {
+
+            Boolean FoundEmail = false;
+
+            using (SqliteConnection db =
+               new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                     ("SELECT * from adminDetails where email=@Email", db);
+                selectCommand.Parameters.AddWithValue("@Email", email);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    if (query.GetString(9).Equals(email))
+                    {
+                        FoundEmail=true;
+                    }
+                    query.GetString(9);
+                }
+
+                db.Close();
+            }
+            return FoundEmail;
+        }
+
+        public void UpdateAdminDetails(string firstName, string surname, string street, string city, string province, string country, string postcode, string mobileNum, string fixNum, string email)
+        {
+            using (SqliteConnection db =
+               new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query to prevent SQL injection attacks
+                insertCommand.CommandText = "UPDATE adminDetails SET firstName =@FirstName, surname =@Surname, street =@Street, city =@City,province =@Province,country =@Country, postcode =@Postcode, mobileNum =@MobileNum,fixNum =@FixNum where email=@Email;";
+                insertCommand.Parameters.AddWithValue("@FirstName", firstName);
+                insertCommand.Parameters.AddWithValue("@Surname", surname);
+                insertCommand.Parameters.AddWithValue("@Street", street);
+                insertCommand.Parameters.AddWithValue("@City", city);
+                insertCommand.Parameters.AddWithValue("@Province", province);
+                insertCommand.Parameters.AddWithValue("@Country", country);
+                insertCommand.Parameters.AddWithValue("@Postcode", postcode);
+                insertCommand.Parameters.AddWithValue("@MobileNum", mobileNum);
+                insertCommand.Parameters.AddWithValue("@FixNum", fixNum);
+                insertCommand.Parameters.AddWithValue("@Email", email);
+
+                insertCommand.ExecuteNonQuery();
+
+                db.Close();
+            }
+        }
+
+        public AdminDetails GetAdminDetails(string email)
+        {
+            AdminDetails adminDetails = null;
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from adminDetails where email=@Email", db);
+                selectCommand.Parameters.AddWithValue("@Email", email);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    adminDetails=new AdminDetails(
+                    query.GetString(0),
+                    query.GetString(1),
+                    query.GetString(2),
+                    query.GetString(3),
+                    query.GetString(4),
+                    query.GetString(5),
+                    query.GetString(6),
+                    query.GetString(7),
+                    query.GetString(8),
+                    query.GetString(9)
+                    );
+                }
+
+                db.Close();
+            }
+
+            return adminDetails;
+        }
 
         public static int GetUserCountSqlite(string email)
         {

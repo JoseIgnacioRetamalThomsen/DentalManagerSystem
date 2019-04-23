@@ -62,7 +62,7 @@ namespace Models
 
         public void Print()
         {
-            Debug.WriteLine("id" + this.iD);
+           /* Debug.WriteLine("id" + this.iD);
             Debug.WriteLine("name" + this.name);
             Debug.WriteLine("surname" + this.surname);
             Debug.WriteLine("street" + this.street);
@@ -74,7 +74,7 @@ namespace Models
             Debug.WriteLine("homeNum" + this.homeNum);
             Debug.WriteLine("email" + this.email);
             Debug.WriteLine("dob" + this.dOB);
-            Debug.WriteLine("comment" + this.comments);
+            Debug.WriteLine("comment" + this.comments);*/
 
         }
 
