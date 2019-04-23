@@ -18,6 +18,8 @@ namespace DentalManagerSys.Views.Form
     {
         List<Customer> customers = new List<Customer>();
         public event EventHandler<EmptySlotTapped> OnEmptySlotTapped;
+        public event EventHandler<EmptySlotTapped> OnUsedSlotTapped;
+        
 
         int hours = 16;
         int slotPerHour = 4;
@@ -58,7 +60,8 @@ namespace DentalManagerSys.Views.Form
                     Height = 20,
                     Width = columnwidth,
                     BorderThickness = new Windows.UI.Xaml.Thickness(1, 1, 1, 0),
-                    BorderBrush = new SolidColorBrush(Colors.Black)
+                    BorderBrush = new SolidColorBrush(Colors.Black),
+                    
                     //Background = new SolidColorBrush(Colors.Black)
                 };
 
@@ -112,7 +115,8 @@ namespace DentalManagerSys.Views.Form
                         Height = 20,
                         Width = columnwidth,
                         BorderThickness = new Windows.UI.Xaml.Thickness(1, 1, 1, 0),
-                        BorderBrush = new SolidColorBrush(Colors.Black)
+                        BorderBrush = new SolidColorBrush(Colors.Black),
+                        Name = "" + col+"_"+row
                         //Background = new SolidColorBrush(Colors.Black)
                     };
 
@@ -142,14 +146,7 @@ namespace DentalManagerSys.Views.Form
            // Debug.WriteLine("tapped");
             FrameworkElement b = (FrameworkElement)sender;
 
-            //try
-            //{
-            //     b = (Border)sender;
-            //}catch
-            //{
-            //    b = (TextBlock)sender;
-            //}
-            //Debug.WriteLine("d" + b.GetValue(Grid.ColumnProperty) + b.GetValue(Grid.RowProperty));
+      
             EmptySlotTapped evnt = new EmptySlotTapped();
             evnt.X = (int)b.GetValue(Grid.ColumnProperty);
             evnt.Y = (int)b.GetValue(Grid.RowProperty)-1;
@@ -210,11 +207,45 @@ namespace DentalManagerSys.Views.Form
 
             ApoGrid.Children.Add(border);
             ApoGrid.Children.Add(label);
-            border.Tapped += Border_Tapped;
-            label.Tapped += Border_Tapped;
+
+            label.Tapped += UsedSlot_Tapped;
 
         }
 
+        private void UsedSlot_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            FrameworkElement b = (FrameworkElement)sender;
+            
+            EmptySlotTapped evnt = new EmptySlotTapped();
+            evnt.X = (int)b.GetValue(Grid.ColumnProperty);
+            evnt.Y = (int)b.GetValue(Grid.RowProperty) - 1;
+            OnUsed(evnt);
+        }
+
+        List<Border> highlitedBorders = new List<Border>();
+        public void HighLightSlot(int x,int y)
+        {
+           
+            Border brd = new Border()
+            {
+                BorderBrush = new SolidColorBrush(Colors.Red),
+                BorderThickness = new Windows.UI.Xaml.Thickness(2)
+
+            };
+            brd.SetValue(Grid.ColumnProperty, x);
+            brd.SetValue(Grid.RowProperty, y + 1);
+            highlitedBorders.Add(brd);
+            ApoGrid.Children.Add(brd);
+
+        }
+
+        public void CleartHighLighted()
+        {
+            foreach(Border br in highlitedBorders)
+            {
+                ApoGrid.Children.Remove(br);
+            }
+        }
         public void Clear()
         {
             Debug.WriteLine("sdaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -239,6 +270,10 @@ namespace DentalManagerSys.Views.Form
         protected virtual void OnEmpty(EmptySlotTapped e)
         {
             OnEmptySlotTapped?.Invoke(this, e);
+        }
+        protected virtual void OnUsed(EmptySlotTapped e)
+        {
+            OnUsedSlotTapped?.Invoke(this, e);
         }
     }
 }

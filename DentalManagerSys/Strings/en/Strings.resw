@@ -624,16 +624,34 @@
   <data name="ToothHeader.Text" xml:space="preserve">
     <value>Tooth</value>
   </data>
+  <data name="AllAppointmetsTitle.Text" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="AppointmeDataLabelCreateAppointment.Text" xml:space="preserve">
+    <value>Appointment Date:</value>
+  </data>
   <data name="CreateAppointmentButton.Label" xml:space="preserve">
     <value>Create Appointment</value>
   </data>
   <data name="CreateAppointmentButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Create a new appointmet with the selected date</value>
   </data>
+  <data name="DeleteAppointmentButton.Label" xml:space="preserve">
+    <value>Cancel Appointment</value>
+  </data>
+  <data name="DeleteAppointmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Cancel selected appointment</value>
+  </data>
+  <data name="HelpLabelCreateAppointment.Text" xml:space="preserve">
+    <value>Click on a empty slot for select a date</value>
+  </data>
   <data name="NewAppointment.Label" xml:space="preserve">
     <value>New Appointment</value>
   </data>
   <data name="NewAppointment.ToolTipService.ToolTip" xml:space="preserve">
     <value>Create a new appointment for this patient</value>
+  </data>
+  <data name="WeekLabelCreateAppointment.Text" xml:space="preserve">
+    <value>Week:</value>
   </data>
 </root>

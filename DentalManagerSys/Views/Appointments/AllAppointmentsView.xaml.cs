@@ -43,7 +43,16 @@ namespace DentalManagerSys.Views.Appointments
 
             ShowAppointments();
 
+            //add on clicl to av
+            av.OnUsedSlotTapped += Av_OnUsedSlotTapped;
+
            
+        }
+
+        private void Av_OnUsedSlotTapped(object sender, EmptySlotTapped e)
+        {
+            av.CleartHighLighted();
+            av.HighLightSlot(e.X, e.Y);
         }
 
         private void CalDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
