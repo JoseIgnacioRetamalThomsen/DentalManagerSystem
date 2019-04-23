@@ -116,6 +116,7 @@
       <DependentUpon>CreateAppointmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Appointments\EmptySlotTapped.cs" />
+    <Compile Include="Views\Appointments\SlotWithAppointmetTappedEvent.cs" />
     <Compile Include="Views\Appointments\ViewWeekAppointments.xaml.cs">
       <DependentUpon>ViewWeekAppointments.xaml</DependentUpon>
     </Compile>

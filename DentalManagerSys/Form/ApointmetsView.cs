@@ -18,30 +18,35 @@ namespace DentalManagerSys.Views.Form
     {
         List<Customer> customers = new List<Customer>();
         public event EventHandler<EmptySlotTapped> OnEmptySlotTapped;
-        public event EventHandler<EmptySlotTapped> OnUsedSlotTapped;
-        
+
+        public event EventHandler<SlotWithAppointmetTappedEvent> OnUsedSlotTapped;
+
 
         int hours = 16;
         int slotPerHour = 4;
         int column = 7;
         int starhour = 8;
-       public static List<int> slot = new List<int>() { 0, 15, 30, 45 };
+        public static List<int> slot = new List<int>() { 0, 15, 30, 45 };
+
         List<String> days = new List<string>() { "Monday", "Tueday", "Wenesday", "Thursday", "Friday", "Saturday" };
+
         Grid ApoGrid = new Grid();
+
         int columnwidth = 150;
+
         public ApointmetsView()
         {
-            ApoGrid.HorizontalAlignment = HorizontalAlignment.Center;
+            ApoGrid.HorizontalAlignment = HorizontalAlignment.Left;
             GuenerateAppGrid();
             this.Children.Add(ApoGrid);
-            
+
         }
 
         private void GuenerateAppGrid()
         {
             //create row
-            //for 12 hours, 08:00 to 20:00, 4 slot of 15 mint per hour 
-            for (int i = 0; i <= hours * slotPerHour+1; i++)
+            //for 12 hours, 08:00 to 20:00, 4 slot of 15 mint per hour
+            for (int i = 0; i <= hours * slotPerHour + 1; i++)
             {
                 ApoGrid.RowDefinitions.Add(new RowDefinition() { });
             }
@@ -49,11 +54,11 @@ namespace DentalManagerSys.Views.Form
             //create columns
             for (int i = 0; i < column; i++)
             {
-                ApoGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new Windows.UI.Xaml.GridLength(columnwidth)  });
+                ApoGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new Windows.UI.Xaml.GridLength(columnwidth) });
             }
             starhour--;
             //add time to first colum
-            for (int i = 1; i <= hours * slotPerHour+1; i++)
+            for (int i = 1; i <= hours * slotPerHour + 1; i++)
             {
                 Border border = new Border()
                 {
@@ -61,7 +66,7 @@ namespace DentalManagerSys.Views.Form
                     Width = columnwidth,
                     BorderThickness = new Windows.UI.Xaml.Thickness(1, 1, 1, 0),
                     BorderBrush = new SolidColorBrush(Colors.Black),
-                    
+
                     //Background = new SolidColorBrush(Colors.Black)
                 };
 
@@ -70,10 +75,10 @@ namespace DentalManagerSys.Views.Form
                 Grid.SetColumn(border, 0);
                 Grid.SetRow(border, i);
 
-                if ((i-1) % 4 == 0) starhour++;
+                if ((i - 1) % 4 == 0) starhour++;
                 TextBlock label = new TextBlock()
                 {
-                    Text = "" + starhour + ":" + slot[(i-1) % 4],
+                    Text = "" + starhour + ":" + slot[(i - 1) % 4],
                     VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Center,
                     TextAlignment = Windows.UI.Xaml.TextAlignment.Center
 
@@ -116,7 +121,7 @@ namespace DentalManagerSys.Views.Form
                         Width = columnwidth,
                         BorderThickness = new Windows.UI.Xaml.Thickness(1, 1, 1, 0),
                         BorderBrush = new SolidColorBrush(Colors.Black),
-                        Name = "" + col+"_"+row
+                        Name = "" + col + "_" + row
                         //Background = new SolidColorBrush(Colors.Black)
                     };
 
@@ -143,37 +148,68 @@ namespace DentalManagerSys.Views.Form
 
         private void EmptySlot_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-           // Debug.WriteLine("tapped");
+            // Debug.WriteLine("tapped");
             FrameworkElement b = (FrameworkElement)sender;
 
-      
+
             EmptySlotTapped evnt = new EmptySlotTapped();
             evnt.X = (int)b.GetValue(Grid.ColumnProperty);
-            evnt.Y = (int)b.GetValue(Grid.RowProperty)-1;
+            evnt.Y = (int)b.GetValue(Grid.RowProperty) - 1;
             OnEmpty(evnt);
         }
 
-        public void AddAppointments(List<Appointment> ap)
+        Dictionary<string, Appointment> appointmentsOnGrid = new Dictionary<string, Appointment>();
+        Dictionary<string, AppointmentM> appointmentsOnGridM = new Dictionary<string, AppointmentM>();
+        public void AddAppointments(List<Appointment> ap, AppointmentStatus appointmentStatus)
         {
-            
-            foreach(Appointment apnt in ap)
+
+            foreach (Appointment apnt in ap)
             {
-                Customer cust = DAO.GetCustomerByID(apnt.PatientID);
-                int day = (int)apnt.Date.DayOfWeek;
+                if (apnt.Status == appointmentStatus)
+                {
+                    Customer cust = DAO.GetCustomerByID(apnt.PatientID);
+                    int day = (int)apnt.Date.DayOfWeek;
 
-                int hour = Convert.ToInt32(apnt.Date.ToString("hh"));
-                int min = Convert.ToInt32(apnt.Date.ToString("mm"));
+                    int hour = Convert.ToInt32(apnt.Date.ToString("hh"));
+                    int min = Convert.ToInt32(apnt.Date.ToString("mm"));
 
-                int timeslot = (hour - 8) * 4 + (slot.IndexOf(min)+1);
-                Debug.WriteLine("this"+cust.name + " "+ timeslot);
+                    int timeslot = (hour - 8) * 4 + (slot.IndexOf(min) + 1);
+                    Debug.WriteLine("this" + cust.name + " " + timeslot);
 
-                customers.Add(cust);
+                    customers.Add(cust);
 
-                AddApointment( timeslot , cust.name, day );
-                
+                    AddApointment(timeslot, cust.name, day);
+                    appointmentsOnGrid.Add("" + day + timeslot, apnt);
+                }
+
             }
         }
 
+        public void AddAppointments(List<AppointmentM> ap, AppointmentStatus appointmentStatus)
+        {
+            foreach (AppointmentM apnt in ap)
+            {
+                if (apnt.Status == appointmentStatus)
+                {
+                    Customer cust = DAO.GetCustomerByID(apnt.PatientID);
+                    int day = (int)apnt.Date.DayOfWeek;
+
+                    int hour = Convert.ToInt32(apnt.Date.ToString("hh"));
+                    int min = Convert.ToInt32(apnt.Date.ToString("mm"));
+
+                    int timeslot = (hour - 8) * 4 + (slot.IndexOf(min) + 1);
+                    Debug.WriteLine("this" + cust.name + " " + timeslot);
+
+                    customers.Add(cust);
+
+                    AddApointment(timeslot, cust.name, day);
+                    appointmentsOnGridM.Add("" + day + timeslot, apnt);
+                }
+
+            }
+        }
+
+        //timeSloit = row , Dat = col
         public void AddApointment(int timeSlot, string name, int day)
         {
 
@@ -191,7 +227,7 @@ namespace DentalManagerSys.Views.Form
             Grid.SetColumn(border, day);
             Grid.SetRow(border, timeSlot);
 
-            
+
 
             TextBlock label = new TextBlock()
             {
@@ -215,17 +251,21 @@ namespace DentalManagerSys.Views.Form
         private void UsedSlot_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             FrameworkElement b = (FrameworkElement)sender;
-            
-            EmptySlotTapped evnt = new EmptySlotTapped();
+
+            SlotWithAppointmetTappedEvent evnt = new SlotWithAppointmetTappedEvent();
             evnt.X = (int)b.GetValue(Grid.ColumnProperty);
             evnt.Y = (int)b.GetValue(Grid.RowProperty) - 1;
+            string key = "" + (int)b.GetValue(Grid.ColumnProperty) + (int)b.GetValue(Grid.RowProperty);
+            //evnt.AppointmentID = appointmentsOnGrid[key].ID;
+            evnt.AppointmentID = appointmentsOnGridM[key]._id;
+            Debug.WriteLine(evnt.AppointmentID);
             OnUsed(evnt);
         }
 
         List<Border> highlitedBorders = new List<Border>();
         public void HighLightSlot(int x,int y)
         {
-           
+
             Border brd = new Border()
             {
                 BorderBrush = new SolidColorBrush(Colors.Red),
@@ -263,15 +303,15 @@ namespace DentalManagerSys.Views.Form
             //{
             //    b = (TextBlock)sender;
             //}
-           // Debug.WriteLine("d" + b.GetValue(Grid.ColumnProperty)+ b.GetValue(Grid.RowProperty));
-           
+            // Debug.WriteLine("d" + b.GetValue(Grid.ColumnProperty)+ b.GetValue(Grid.RowProperty));
+
         }
 
         protected virtual void OnEmpty(EmptySlotTapped e)
         {
             OnEmptySlotTapped?.Invoke(this, e);
         }
-        protected virtual void OnUsed(EmptySlotTapped e)
+        protected virtual void OnUsed(SlotWithAppointmetTappedEvent e)
         {
             OnUsedSlotTapped?.Invoke(this, e);
         }

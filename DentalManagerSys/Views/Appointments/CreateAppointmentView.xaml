@@ -10,13 +10,13 @@
 
     <Grid>
         <RelativePanel>
-            <TextBlock   
-            x:Name="PageTitle" 
+            <TextBlock
+            x:Name="PageTitle"
             Style="{StaticResource PageTitleTextBlock}"
             Text="{x:Bind Path=ViewModel.CustomerName , Mode=OneTime}">
             </TextBlock>
 
-            <CommandBar 
+            <CommandBar
                 x:Name="PatientsCommandBar"
                 Style="{StaticResource CommandBarStyle}"
                 RelativePanel.RightOf="PageTitle">
@@ -53,13 +53,16 @@
 
                 </Grid.RowDefinitions>
 
-                <StackPanel 
+                <StackPanel
                 x:Name="TreatmentPlanDBSP"
                Grid.Column="0">
 
 
                     <TextBlock x:Uid="/Strings/WeekLabelCreateAppointment"  Style="{StaticResource BaseTextBlockStyle}" Padding="10"/>
-                    <CalendarDatePicker x:Name="CalDate"/>
+
+                    <CalendarDatePicker
+                        x:Name="CalDate"
+                        />
 
                     <TextBlock x:Uid="/Strings/AppointmeDataLabelCreateAppointment"   Style="{StaticResource BaseTextBlockStyle}" Padding="10"/>
 
@@ -76,14 +79,14 @@
                 </StackPanel>
 
 
-                <StackPanel 
+                <StackPanel
                 x:Name="SelectDateSlot"
                Grid.Column="0"
                     Grid.Row="1">
 
                     <ScrollViewer Width="1200" Height="400">
                         <StackPanel x:Name="SlotPickSP"
-                                   
+
                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
                 ScrollViewer.VerticalScrollBarVisibility="Auto">
 

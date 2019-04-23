@@ -9,6 +9,73 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid>
+            <RelativePanel>
+                <TextBlock 
+                x:Uid="/Strings/IncomeReportTitle" 
+                x:Name="PageTitle" 
+                Style="{StaticResource PageTitleTextBlock}"/>
 
+                <Grid RelativePanel.Below="PageTitle"
+                Margin="0,20,0,0"
+                  VerticalAlignment="Bottom">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <StackPanel 
+                x:Name="FromDate1"
+               Grid.Column="0">
+                        <TextBlock 
+                x:Uid="/Strings/FromDateTitle" 
+                x:Name="FromDate2" 
+                Style="{StaticResource PageTitleTextBlock}"/>
+                        <CalendarDatePicker x:Name="FromDate"
+                                            DateChanged="FromDate_DateChanged"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="0"
+                x:Name="AmoutOutput"
+                VerticalAlignment="Bottom"
+                        Margin="5,0,0,0">
+                        <TextBlock
+                    x:Uid="/Strings/IncomeAmount"
+                    />
+                        <TextBox
+                    x:Name="Amount"
+                    MinWidth="60"
+                    Text="0"  IsReadOnly="True"/>
+                    </StackPanel>
+
+
+                    <StackPanel 
+                x:Name="SelectDateSlot"
+               Grid.Column="0"
+                    Grid.Row="1">
+
+                        <ScrollViewer Width="1200" Height="400">
+                            <StackPanel x:Name="SlotPickSP"
+                                   
+                ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                            </StackPanel>
+                        </ScrollViewer>
+
+
+                    </StackPanel>
+
+                </Grid>
+            </RelativePanel>
+        </Grid>
     </Grid>
 </Page>

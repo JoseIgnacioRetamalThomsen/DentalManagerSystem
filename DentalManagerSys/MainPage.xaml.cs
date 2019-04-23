@@ -39,6 +39,7 @@ namespace DentalManagerSys
             DAO d = new DAO();
             App.userName = DAO.GetUserID();
             //Add create a new user count table if it is a new user.
+            
             if (App.NewUser == true)
             {
                 d.NewUserCount(App.userName, 0);
@@ -85,9 +86,9 @@ namespace DentalManagerSys
                     }
 
                 }
-
+                
             }
-
+            
 
         }
 

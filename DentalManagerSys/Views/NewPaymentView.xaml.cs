@@ -13,6 +13,7 @@ using DataAccessLibrary;
 using DentalManagerSys.ViewModel;
 using Models;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
@@ -88,7 +89,9 @@ namespace DentalManagerSys.Views
             try
             {
                 decimal amount = Convert.ToDecimal(Amount.Text);
-                App.Data.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID, ViewModel.Customer.iD, amount, DateTime.Now.ToString());
+                //Convert datetime to SQLite datetime format
+                string date= DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                App.Data.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID, ViewModel.Customer.iD, amount, date);
                 /* DAO.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID,ViewModel.Customer.iD,amount,DateTime.Now.ToString());
                  FireBaseDAO f = new FireBaseDAO();
                  f.AddNewpayment(((TreatmentPlan)TreatmentPlanDB.SelectedItem).TreatmentPLanID, ViewModel.Customer.iD, amount, DateTime.Now.ToString());*/

@@ -11,28 +11,29 @@
     <Grid>
         <Grid>
             <RelativePanel>
-                <TextBlock 
-                x:Uid="/Strings/AllAppointmetsTitle" 
-                x:Name="PageTitle" 
+                <TextBlock
+                x:Uid="/Strings/AllAppointmetsTitle"
+                x:Name="PageTitle"
                 Style="{StaticResource PageTitleTextBlock}"/>
 
-                <CommandBar 
+                <CommandBar
                 x:Name="PatientsCommandBar"
                 Style="{StaticResource CommandBarStyle}"
                 RelativePanel.RightOf="PageTitle">
 
-                    <AppBarButton 
-                    x:Name="DeleteAppointment"
-                    Icon="Delete"
-                  Tag="DeleteAppointment"
-                    x:Uid="/Strings/DeleteAppointmentButton"
-                    IsEnabled="True"/>
+                    <AppBarButton
+                        x:Name="DeleteAppointment"
+                        Icon="Delete"
+                        Tag="DeleteAppointment"
+                        x:Uid="/Strings/DeleteAppointmentButton"
+                        IsEnabled="True"
+                        Click="DeleteAppointment_Click"/>
                     <AppBarSeparator />
 
                     <AppBarButton
                     x:Name="EditTreatmentButton"
                     Icon="Edit"
-               
+
                     x:Uid="/Strings/EditTreatmentButton"
                     IsEnabled="False"/>
 
@@ -51,29 +52,33 @@
 
                     </Grid.RowDefinitions>
 
-                    <StackPanel 
-                x:Name="TreatmentPlanDBSP"
-               Grid.Column="0">
+                    <StackPanel
+                        x:Name="TreatmentPlanDBSP"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
 
-
-                        <CalendarDatePicker x:Name="CalDate"/>
-
-                        
-
+                        <StackPanel Margin="5">
+                            <TextBlock Text="Select Week" Style="{StaticResource BaseTextBlockStyle}" Padding="10"/>
+                            <CalendarDatePicker x:Name="CalDate"/>
+                        </StackPanel>
+                        <StackPanel Margin="5">
+                            <TextBlock Text="Selected appointment:" Style="{StaticResource BaseTextBlockStyle}" Padding="10"/>
+                            <TextBlock x:Name="NameLabel"/>
+                            <TextBlock x:Name="DateLabel"/>
+                        </StackPanel>
                     </StackPanel>
 
 
-                    <StackPanel 
-                x:Name="SelectDateSlot"
-               Grid.Column="0"
-                    Grid.Row="1">
+                    <StackPanel
+                        x:Name="SelectDateSlot"
+                        Grid.Column="0"
+                        Grid.Row="1">
 
                         <ScrollViewer Width="1200" Height="400">
-                            <StackPanel x:Name="SlotPickSP"
-                                   
-                ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                ScrollViewer.VerticalScrollBarVisibility="Auto">
-
+                            <StackPanel
+                                x:Name="SlotPickSP"
+                                ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                ScrollViewer.VerticalScrollBarVisibility="Auto">
                             </StackPanel>
                         </ScrollViewer>
 
