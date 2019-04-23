@@ -59,7 +59,10 @@
 
 
                     <TextBlock x:Uid="/Strings/WeekLabelCreateAppointment"  Style="{StaticResource BaseTextBlockStyle}" Padding="10"/>
-                    <CalendarDatePicker x:Name="CalDate"/>
+                   
+                    <CalendarDatePicker 
+                        x:Name="CalDate"
+                        />
 
                     <TextBlock x:Uid="/Strings/AppointmeDataLabelCreateAppointment"   Style="{StaticResource BaseTextBlockStyle}" Padding="10"/>
 

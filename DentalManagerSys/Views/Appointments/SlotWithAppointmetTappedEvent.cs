@@ -6,17 +6,12 @@ using System.Threading.Tasks;
 
 namespace DentalManagerSys.Views.Appointments
 {
-   public class EmptySlotTapped
+    public class SlotWithAppointmetTappedEvent
     {
+        
         public int X { get; set; }
         public int Y { get; set; }
+        public string AppointmentID { get; set; }
 
-        public int Slot {
-            get
-            {
-                return Y % 4;
-            }
-           
-          }
     }
 }

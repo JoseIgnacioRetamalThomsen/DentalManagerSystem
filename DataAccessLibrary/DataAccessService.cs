@@ -162,9 +162,9 @@ namespace DataAccessLibrary
             firebaseDAO.AddNewTreatmentPlanTreatments(t);
         }
 
-        public void AddNewAppointment(Appointment appointment)
+        public long AddNewAppointment(Appointment appointment)
         {
-            sqlite.AddAppointment(appointment);
+           return  sqlite.AddAppointment(appointment);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DataAccessLibrary;
+using DataAccessLibrary.REST;
 using DentalManagerSys.Views.Form;
 using Models;
 using System;
@@ -49,25 +50,49 @@ namespace DentalManagerSys.Views.Appointments
 
         }
 
-        private void Av_OnUsedSlotTapped(object sender, EmptySlotTapped e)
+        Appointment selectedAppointment;
+        Customer selectedCustomerApp;
+        private async void Av_OnUsedSlotTapped(object sender, SlotWithAppointmetTappedEvent e)
         {
             av.CleartHighLighted();
             av.HighLightSlot(e.X, e.Y);
+
+            //selectedAppointment = DAO.GetAppointmentByID(e.AppointmentID);
+
+            AppointmentM appointment = await AppointmentMlab.GetAppointmentByID(e.AppointmentID,App.ActualUser.Email);
+
+            selectedCustomerApp = DAO.GetCustomerByID(appointment.PatientID);
+            selectedCustomerApp.Print();
+
+
+
+            NameLabel.Text = selectedCustomerApp.name + " " + selectedCustomerApp.surname;
+            DateLabel.Text = appointment.Date.ToString("dddd, dd MMMM yyyy HH:mm:ss");
+
         }
 
         private void CalDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
 
+            ReloadView();
+
+            
+        }
+
+        private void ReloadView()
+        {
             SlotPickSP.Children.RemoveAt(0);
             av = new ApointmetsView();
             ScrollViewer sv = new ScrollViewer();
             sv.Content = av;
             SlotPickSP.Children.Add(sv);
 
+            //ad tap event
+            av.OnUsedSlotTapped += Av_OnUsedSlotTapped;
+
             ShowAppointments();
         }
-
-        private void ShowAppointments()
+        private async void ShowAppointments()
         {
             //get starting day of selected week
             DateTime dt = CalDate.Date.Value.DateTime;
@@ -88,12 +113,25 @@ namespace DentalManagerSys.Views.Appointments
             DateTime lastDay = startDay.AddDays(7);
 
             //get appointments
-            List<Appointment> aps = DAO.GetAppointmetsWeek(startDay);
+           // List<Appointment> aps = DAO.GetAppointmetsWeek(startDay);
+            List<AppointmentM> apm = await AppointmentMlab.GetAppointmentsWeek(startDay,App.ActualUser.Email);
 
             //display appointments
 
 
-            av.AddAppointments(aps);
+            //av.AddAppointments(aps,0);
+            av.AddAppointments(apm,0);
+        }
+
+        private void DeleteAppointment_Click(object sender, RoutedEventArgs e)
+        {
+            selectedAppointment.Status = AppointmentStatus.Cancel;
+            DAO.UpdateAppointment(selectedAppointment);
+
+
+            ReloadView();
+
+
         }
     }
 }
