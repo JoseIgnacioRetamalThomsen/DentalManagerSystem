@@ -12,6 +12,7 @@ namespace Models
         public DateTime Date { get; set; }
         public AppointmentStatus Status { get; set; }
         public int __v { get; set; }
+       
 
         public AppointmentM() { }
 

@@ -12,7 +12,7 @@ namespace DataAccessLibrary.REST
 {
     public class AppointmentMlab
     {
-        static string serverAddress = "localhost";//"168.63.65.229";
+        static string serverAddress = "168.63.65.229";
         static string serverPort = "8081";
 
         private static string AddAppointmentURL = "/api/appointment";
@@ -118,5 +118,37 @@ namespace DataAccessLibrary.REST
             return aps;
         }
 
+        public static async Task<Res> UpdateAppointment(AppointmentM appointment,string email)
+        {
+            HttpClient client = new HttpClient();
+
+            
+
+            client.DefaultRequestHeaders.Accept.Add
+                     (new MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Add("email", email);
+
+            var post = new Put { Title = "New Post", Body = JsonConvert.SerializeObject(appointment) };
+
+            string URL = "http://" + serverAddress + ":" + serverPort + AddAppointmentURL;
+
+            var content = new StringContent(JsonConvert.SerializeObject(post), Encoding.UTF8, "application/json");
+
+            var res = await client.PutAsync(URL, content);
+
+            string resBody = await res.Content.ReadAsStringAsync();
+            Res response = JsonConvert.DeserializeObject<Res>(resBody);//JsonParse(resBody);
+
+            return response;
+            
+        }
+
+    }
+
+    public class Put
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Body { get; set; }
     }
 }

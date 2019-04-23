@@ -50,7 +50,7 @@ namespace DentalManagerSys.Views.Appointments
 
         }
 
-        Appointment selectedAppointment;
+        AppointmentM selectedAppointment;
         Customer selectedCustomerApp;
         private async void Av_OnUsedSlotTapped(object sender, SlotWithAppointmetTappedEvent e)
         {
@@ -59,15 +59,15 @@ namespace DentalManagerSys.Views.Appointments
 
             //selectedAppointment = DAO.GetAppointmentByID(e.AppointmentID);
 
-            AppointmentM appointment = await AppointmentMlab.GetAppointmentByID(e.AppointmentID,App.ActualUser.Email);
+             selectedAppointment = await AppointmentMlab.GetAppointmentByID(e.AppointmentID,App.ActualUser.Email);
 
-            selectedCustomerApp = DAO.GetCustomerByID(appointment.PatientID);
-            selectedCustomerApp.Print();
+            selectedCustomerApp = DAO.GetCustomerByID(selectedAppointment.PatientID);
+           
 
 
 
             NameLabel.Text = selectedCustomerApp.name + " " + selectedCustomerApp.surname;
-            DateLabel.Text = appointment.Date.ToString("dddd, dd MMMM yyyy HH:mm:ss");
+            DateLabel.Text = selectedAppointment.Date.ToString("dddd, dd MMMM yyyy HH:mm:ss");
 
         }
 
@@ -125,16 +125,15 @@ namespace DentalManagerSys.Views.Appointments
             //display appointments
 
 
-            //av.AddAppointments(aps,0);
             av.AddAppointments(apm,0);
         }
 
-        private void DeleteAppointment_Click(object sender, RoutedEventArgs e)
+        private async void DeleteAppointment_Click(object sender, RoutedEventArgs e)
         {
             selectedAppointment.Status = AppointmentStatus.Cancel;
-            DAO.UpdateAppointment(selectedAppointment);
-
-
+            // DAO.UpdateAppointment(selectedAppointment);
+            Debug.WriteLine(selectedAppointment._id);
+            await AppointmentMlab.UpdateAppointment(selectedAppointment, App.ActualUser.Email);
             ReloadView();
 
 
