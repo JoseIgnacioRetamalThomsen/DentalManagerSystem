@@ -158,7 +158,7 @@ namespace DentalManagerSys.Views
 
         private void CreateTreatmentPlanCompletedB_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("click");
+        
             //get selected item index
             int index = TreatmentsOnPlanLV.SelectedIndex;
             TreatmentOnPlan top = ViewModel.TreatmentsOnPlan[index];
