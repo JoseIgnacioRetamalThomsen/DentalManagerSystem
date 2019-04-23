@@ -1,4 +1,5 @@
 ﻿using DataAccessLibrary;
+using DataAccessLibrary.REST;
 using DentalManagerSys.ViewModel;
 using DentalManagerSys.Views.Form;
 using Models;
@@ -54,9 +55,9 @@ namespace DentalManagerSys.Views.Appointments
 
             //Customer Test = new Customer("12234543-k", "Marco Antonio", "Perez Gonzales", "03/03/1978 00:00:00", "Los leons 29",
             //    "Valpariso", "Valparaiso", "Chile", "gh567", "0983442233", "02122222", DateTime.Now, "Sin alergias");
-          //  ViewModel.Customer = Test;
+            //  ViewModel.Customer = Test;
 
-             av = new ApointmetsView();
+            av = new ApointmetsView();
             ScrollViewer sv = new ScrollViewer();
             sv.Content = av;
             SlotPickSP.Children.Add(sv);
@@ -66,8 +67,10 @@ namespace DentalManagerSys.Views.Appointments
 
             ShowAppointments();
 
-        }
+            CalDate.DateChanged += CalDate_DateChanged;
 
+        }
+        
         DateTime definitive;
         private void Av_OnEmptySlotTapped(object sender, EmptySlotTapped e)
         {
@@ -79,13 +82,13 @@ namespace DentalManagerSys.Views.Appointments
             MessageSP.Visibility = Visibility.Collapsed;
             SelectedDataSP.Visibility = Visibility.Visible;
 
-            int slot = e.Y % 4;
+            int slot = e.Slot;//e.Y % 4;
 
 
 
             int min = ApointmetsView.slot[slot];
-            int hour = e.Y / 4 +8;
-            Debug.WriteLine("houe+" +hour);
+            int hour = e.Y / 4 + 8;
+            Debug.WriteLine("houe+" + hour);
             DateTime dt = CalDate.Date.Value.DateTime;
 
             DateTime startDay;
@@ -97,14 +100,14 @@ namespace DentalManagerSys.Views.Appointments
             }
             else
             {
-                startDay = dt.AddDays(1- (int)dt.DayOfWeek);
+                startDay = dt.AddDays(1 - (int)dt.DayOfWeek);
             }
 
 
 
-            DateTime selectedDay = startDay.AddDays(e.X-1);
+            DateTime selectedDay = startDay.AddDays(e.X - 1);
 
-             definitive = new DateTime(selectedDay.Year,selectedDay.Month,selectedDay.Day,hour,min,00);
+            definitive = new DateTime(selectedDay.Year, selectedDay.Month, selectedDay.Day, hour, min, 00);
 
             SelectedDate.Date = definitive.Date;
             SelectedTime.Time = definitive.TimeOfDay;
@@ -124,7 +127,7 @@ namespace DentalManagerSys.Views.Appointments
             App.Data.AddNewAppointment(ap);
         }
 
-        private void ShowAppointments()
+        private async void ShowAppointments()
         {
             //get starting day of selected week
             DateTime dt = CalDate.Date.Value.DateTime;
@@ -146,11 +149,13 @@ namespace DentalManagerSys.Views.Appointments
 
             //get appointments
             List<Appointment> aps = DAO.GetAppointmetsWeek(startDay);
+            List<AppointmentM> apm = await AppointmentMlab.GetAppointmentsWeek(startDay, App.ActualUser.Email);
 
             //display appointments
 
 
-            av.AddAppointments(aps);
+            // av.AddAppointments(aps,AppointmentStatus.Active);
+            av.AddAppointments(apm, AppointmentStatus.Active);
         }
 
         /// <summary>
@@ -158,7 +163,7 @@ namespace DentalManagerSys.Views.Appointments
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        private async void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             Appointment ap = new Appointment();
 
@@ -166,14 +171,31 @@ namespace DentalManagerSys.Views.Appointments
             ap.PatientID = ViewModel.Customer.iD;
             ap.Status = 0;
 
-            App.Data.AddNewAppointment(ap);
+            long id = App.Data.AddNewAppointment(ap);
+            ap.ID = (int)id;
+            await AppointmentMlab.AddNewAppointment(ap, App.ActualUser.Email);
 
-            Frame.GoBack();
+            // AppointmentMlab.GetAppointmentsWeek(DateTime.Now, App.ActualUser.Email);
+            //Frame.GoBack();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
+        }
+
+        private void CalDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        {
+            SlotPickSP.Children.RemoveAt(0);
+            av = new ApointmetsView();
+            ScrollViewer sv = new ScrollViewer();
+            sv.Content = av;
+            SlotPickSP.Children.Add(sv);
+            av.OnEmptySlotTapped += Av_OnEmptySlotTapped;
+
+           // CalDate.Date = DateTime.Now;
+
+            ShowAppointments();
         }
     }
 }

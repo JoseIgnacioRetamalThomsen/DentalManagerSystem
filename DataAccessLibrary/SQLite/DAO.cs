@@ -422,7 +422,7 @@ namespace DataAccessLibrary
 
 
                  );
-                    //treatment.Print();
+                  
                 }
 
                 db.Close();
@@ -1021,7 +1021,7 @@ namespace DataAccessLibrary
                         query.GetString(12)
 
                      );
-                    customer.Print();
+               
                 }
 
                 db.Close();
@@ -1325,6 +1325,67 @@ namespace DataAccessLibrary
             }
 
             return aps;
+        }
+
+        public static Appointment GetAppointmentByID(int id)
+        {
+            Appointment appointment = null;
+
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT * from Appointment where id=@appointmentID", db);
+                selectCommand.Parameters.AddWithValue("@appointmentID", id);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+
+                    appointment = new Appointment(
+                        query.GetInt32(0),
+                        query.GetString(1),
+                        query.GetDateTime(2),
+                        (AppointmentStatus)query.GetInt32(3)
+
+
+                     );
+                   
+                }
+
+                db.Close();
+            }
+
+            return appointment;
+        }
+
+        public static void UpdateAppointment(Appointment appointment)
+        {
+          
+            using (SqliteConnection db =
+               new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query to prevent SQL injection attacks
+                insertCommand.CommandText = "UPDATE Appointment SET patientId=@PatientId ,date=@Date ,status=@Status where id=@ID;";
+                insertCommand.Parameters.AddWithValue("@ID", appointment.ID);
+                insertCommand.Parameters.AddWithValue("@PatientId", appointment.PatientID);
+                insertCommand.Parameters.AddWithValue("@Date", appointment.Date);
+                insertCommand.Parameters.AddWithValue("@Status", appointment.Status);
+
+                insertCommand.ExecuteNonQuery();
+
+
+
+                db.Close();
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DataAccessLibrary;
 using DentalManagerSys.Views;
 using DentalManagerSys.Views.Appointments;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +28,8 @@ namespace DentalManagerSys
     {
 
         public static DataAccessService Data = new DataAccessService();
+
+       public static User ActualUser;
 
         public static string userName;
         public static bool NewUser=false;
