@@ -71,12 +71,18 @@ namespace DentalManagerSys.Views.Appointments
 
         }
 
+        private void Av_OnUsedSlotTapped(object sender, EmptySlotTapped e)
+        {
+            av.CleartHighLighted();
+            av.HighLightSlot(e.X, e.Y);
+        }
+
         private void CalDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
 
             ReloadView();
 
-            
+
         }
 
         private void ReloadView()

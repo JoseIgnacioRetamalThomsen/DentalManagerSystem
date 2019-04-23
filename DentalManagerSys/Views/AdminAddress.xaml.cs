@@ -20,16 +20,11 @@ namespace DentalManagerSys.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SettingsView : Page
+    public sealed partial class AdminAddress : Page
     {
-        public SettingsView()
+        public AdminAddress()
         {
             this.InitializeComponent();
-        }
-
-        private void SettginsAddUserAddress_PointerPressed(object sender, PointerRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(AdminAddress));
         }
     }
 }

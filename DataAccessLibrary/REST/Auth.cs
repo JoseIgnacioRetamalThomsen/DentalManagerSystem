@@ -11,7 +11,7 @@ namespace DataAccessLibrary.REST
 {
     public class Auth
     {
-        static string serverAddress = "168.63.65.229";//"168.63.65.229";
+        static string serverAddress = "168.63.65.229";
         static string serverPort = "8081";
 
         private static string AddNewUserURL = "/api/newuser";
@@ -36,7 +36,7 @@ namespace DataAccessLibrary.REST
 
             string resBody = await res.Content.ReadAsStringAsync();
             Res response = JsonConvert.DeserializeObject<Res>(resBody);//JsonParse(resBody);
-          
+
 
             return response;
         }

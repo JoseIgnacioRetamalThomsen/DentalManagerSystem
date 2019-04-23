@@ -18,6 +18,7 @@ namespace DentalManagerSys.Views.Form
     {
         List<Customer> customers = new List<Customer>();
         public event EventHandler<EmptySlotTapped> OnEmptySlotTapped;
+
         public event EventHandler<SlotWithAppointmetTappedEvent> OnUsedSlotTapped;
 
 
@@ -262,7 +263,7 @@ namespace DentalManagerSys.Views.Form
         }
 
         List<Border> highlitedBorders = new List<Border>();
-        public void HighLightSlot(int x, int y)
+        public void HighLightSlot(int x,int y)
         {
 
             Border brd = new Border()
@@ -280,7 +281,7 @@ namespace DentalManagerSys.Views.Form
 
         public void CleartHighLighted()
         {
-            foreach (Border br in highlitedBorders)
+            foreach(Border br in highlitedBorders)
             {
                 ApoGrid.Children.Remove(br);
             }

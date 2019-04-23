@@ -59,8 +59,8 @@
 
 
                     <TextBlock x:Uid="/Strings/WeekLabelCreateAppointment"  Style="{StaticResource BaseTextBlockStyle}" Padding="10"/>
-                   
-                    <CalendarDatePicker 
+
+                    <CalendarDatePicker
                         x:Name="CalDate"
                         />
 

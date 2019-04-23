@@ -11,17 +11,17 @@
     <Grid>
         <Grid>
             <RelativePanel>
-                <TextBlock 
-                x:Uid="/Strings/AllAppointmetsTitle" 
-                x:Name="PageTitle" 
+                <TextBlock
+                x:Uid="/Strings/AllAppointmetsTitle"
+                x:Name="PageTitle"
                 Style="{StaticResource PageTitleTextBlock}"/>
 
-                <CommandBar 
+                <CommandBar
                 x:Name="PatientsCommandBar"
                 Style="{StaticResource CommandBarStyle}"
                 RelativePanel.RightOf="PageTitle">
 
-                    <AppBarButton 
+                    <AppBarButton
                         x:Name="DeleteAppointment"
                         Icon="Delete"
                         Tag="DeleteAppointment"
@@ -33,7 +33,7 @@
                     <AppBarButton
                     x:Name="EditTreatmentButton"
                     Icon="Edit"
-               
+
                     x:Uid="/Strings/EditTreatmentButton"
                     IsEnabled="False"/>
 
@@ -52,7 +52,7 @@
 
                     </Grid.RowDefinitions>
 
-                    <StackPanel 
+                    <StackPanel
                         x:Name="TreatmentPlanDBSP"
                         Grid.Column="0"
                         Orientation="Horizontal">
@@ -69,13 +69,13 @@
                     </StackPanel>
 
 
-                    <StackPanel 
+                    <StackPanel
                         x:Name="SelectDateSlot"
                         Grid.Column="0"
                         Grid.Row="1">
 
                         <ScrollViewer Width="1200" Height="400">
-                            <StackPanel 
+                            <StackPanel
                                 x:Name="SlotPickSP"
                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                 ScrollViewer.VerticalScrollBarVisibility="Auto">

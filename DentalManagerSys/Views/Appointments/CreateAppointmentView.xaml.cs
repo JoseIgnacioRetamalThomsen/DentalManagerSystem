@@ -70,7 +70,7 @@ namespace DentalManagerSys.Views.Appointments
             CalDate.DateChanged += CalDate_DateChanged;
 
         }
-        
+
         DateTime definitive;
         private void Av_OnEmptySlotTapped(object sender, EmptySlotTapped e)
         {

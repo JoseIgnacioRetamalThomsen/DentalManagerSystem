@@ -10,5 +10,16 @@
 
     <Grid>
 
+        <StackPanel>
+            <TextBlock 
+                x:Name="SettginsAddUserAddress" 
+                x:Uid="/Strings/AccountManagementButton"
+                Foreground="DodgerBlue"
+                TextAlignment="Center" 
+                VerticalAlignment="Center"
+                FontSize="16"
+                PointerPressed="SettginsAddUserAddress_PointerPressed"/>
+        </StackPanel>
+        
     </Grid>
 </Page>
