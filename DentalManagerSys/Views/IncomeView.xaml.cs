@@ -33,10 +33,18 @@ namespace DentalManagerSys.Views
 
         private void FromDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
-            selectedDate = FromDate.Date.ToString();
-            formatedDate = ""+ selectedDate[0] + selectedDate[1] + "-" + selectedDate[3] + selectedDate[4] + "-" + selectedDate[6] + selectedDate[7] + selectedDate[8] + selectedDate[9];
-            Decimal sumAmount= DAO.GetSumPaymentByDate(formatedDate);
-            Amount.Text = sumAmount.ToString();
+            try
+            {
+                selectedDate = FromDate.Date.ToString();
+                formatedDate = "" + selectedDate[0] + selectedDate[1] + "-" + selectedDate[3] + selectedDate[4] + "-" + selectedDate[6] + selectedDate[7] + selectedDate[8] + selectedDate[9];
+                Decimal sumAmount = DAO.GetSumPaymentByDate(formatedDate);
+                Amount.Text = sumAmount.ToString();
+            }
+            catch
+            {
+                Debug.WriteLine("Select a date!");
+            }
+            
         }
     }
 }
