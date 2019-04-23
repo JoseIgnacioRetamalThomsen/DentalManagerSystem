@@ -58,17 +58,6 @@
 
 
                     <StackPanel 
-                x:Name="ToDate1"
-               Grid.Column="1">
-                        <TextBlock 
-                x:Uid="/Strings/ToDateTitle" 
-                x:Name="ToDate2" 
-                Style="{StaticResource PageTitleTextBlock}"/>
-                        <CalendarDatePicker x:Name="ToDate"/>
-                    </StackPanel>
-
-
-                    <StackPanel 
                 x:Name="SelectDateSlot"
                Grid.Column="0"
                     Grid.Row="1">

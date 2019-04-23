@@ -635,8 +635,9 @@ namespace DataAccessLibrary
                 db.Close();
             }
         }
-        public void AddNewTreatmentPlanTreatments(TreatmentOnPlan t)
+        public long AddNewTreatmentPlanTreatments(TreatmentOnPlan t)
         {
+            long id = 0;
 
             int _isDone = (t.IsDone) ? 1 : 0;
             using (SqliteConnection db =
@@ -660,8 +661,17 @@ namespace DataAccessLibrary
 
                 insertCommand.ExecuteReader();
 
+                SqliteCommand insertCommand1 = new SqliteCommand();
+                insertCommand1.Connection = db;
+
+                string sql = @"select last_insert_rowid()";
+                insertCommand1.CommandText = sql;
+                id = (long)insertCommand1.ExecuteScalar();
+
                 db.Close();
             }
+
+            return id;
         }
 
 
@@ -787,7 +797,36 @@ namespace DataAccessLibrary
             return payment;
         }
 
+        /// <summary>
+        /// Get the sum of payment for a particular period
+        /// </summary>
+        /// <param name="selectedDate"></param>
+        /// <returns></returns>
+        public static decimal GetSumPaymentByDate(string selectedDate)
+        {
 
+            decimal sumPayments = 0;
+
+            using (SqliteConnection db =
+                 new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("select *, strftime('%d-%m-%Y', treatmentCompleteDate) as date from payments where date<=@SelectedDate", db);
+                selectCommand.Parameters.AddWithValue("@SelectedDate", selectedDate);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    sumPayments += (decimal)query.GetFloat(3);
+                }
+
+                db.Close();
+            }
+            return sumPayments;
+        }
 
         public static void AddData(string inputText)
         {

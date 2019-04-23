@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLibrary;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -23,18 +24,19 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class IncomeView : Page
     {
+        string selectedDate;
+        string formatedDate;
         public IncomeView()
         {
             this.InitializeComponent();
-
-            // Set dates to current date
-            FromDate.Date = DateTime.Now;
-            ToDate.Date = DateTime.Now;
         }
 
         private void FromDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
-            Debug.WriteLine("im working");
+            selectedDate = FromDate.Date.ToString();
+            formatedDate = ""+ selectedDate[0] + selectedDate[1] + "-" + selectedDate[3] + selectedDate[4] + "-" + selectedDate[6] + selectedDate[7] + selectedDate[8] + selectedDate[9];
+            Decimal sumAmount= DAO.GetSumPaymentByDate(formatedDate);
+            Amount.Text = sumAmount.ToString();
         }
     }
 }

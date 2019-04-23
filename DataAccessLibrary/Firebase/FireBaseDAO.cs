@@ -76,29 +76,37 @@ namespace DataAccessLibrary
         {
             ConnectToFirebase();
 
-            string userName = DAO.GetUserID();
-            String myUsername = userName;
-            myUsername = myUsername.Replace(".", "-");
-            String node = "CounterRecord" + "/";
-
-            FbCnt fbCnt = new FbCnt
+            try
             {
-                cnt = counterNum,
-                username = myUsername,
-            };
+                string userName = DAO.GetUserID();
+                String myUsername = userName;
+                myUsername = myUsername.Replace(".", "-");
+                String node = "CounterRecord" + "/";
 
-            var results = await firebase.Child(node).OnceAsync<FbCnt>();
-            foreach (var details in results)
-            {
-                if (details.Object.username == myUsername)
+                FbCnt fbCnt = new FbCnt
                 {
-                    //Delete the old row by key Id
-                    await firebase.Child(node).Child(details.Key).DeleteAsync();
-                }
-            }
+                    cnt = counterNum,
+                    username = myUsername,
+                };
 
-            //Add a new row.
-            await firebase.Child(node).PostAsync<FbCnt>(fbCnt);
+                var results = await firebase.Child(node).OnceAsync<FbCnt>();
+                foreach (var details in results)
+                {
+                    if (details.Object.username == myUsername)
+                    {
+                        //Delete the old row by key Id
+                        await firebase.Child(node).Child(details.Key).DeleteAsync();
+                    }
+                }
+
+                //Add a new row.
+                await firebase.Child(node).PostAsync<FbCnt>(fbCnt);
+            }
+            catch
+            {
+                Debug.WriteLine("No Internet Connection");
+            }
+            
            
         }
 
@@ -515,7 +523,7 @@ namespace DataAccessLibrary
         /// <param name="treatmentID"></param>
         /// <param name="price"></param>
         /// <param name="treatmentCompleteDate"></param>
-        public async void AddNewTreatmentPlanTreatments(TreatmentOnPlan t)
+        public async void AddNewTreatmentPlanTreatments(TreatmentOnPlan t, int id)
         {
             ConnectToFirebase();
 
@@ -526,7 +534,7 @@ namespace DataAccessLibrary
 
             var treatmentPlanTreatmentsData = new TreatmentPlanTreatmentsData
             {
-                treatmentPlanTreatmentsID = t.TreatmentPlanTreatmentsID.ToString(),
+                treatmentPlanTreatmentsID = id.ToString(),
                 treatmentPlanID = t.TreatmentPlanID,
                 treatmentID = t.TreatmentID,
                 price = t.Price,
@@ -570,12 +578,8 @@ namespace DataAccessLibrary
             {
                 if (t.TreatmentPlanTreatmentsID == details.Object.treatmentPlanID)
                 {
-                    Debug.WriteLine("t.TreatmentPlanTreatmentsID  " + t.TreatmentPlanTreatmentsID);
-                    Debug.WriteLine("details.Object.treatmentPlanID  " + details.Object.treatmentPlanID);
-                    Debug.WriteLine("State changed................!");
-                    //await firebase.Child(node).Child(details.Key).DeleteAsync();
                     //Delete the old row by key id
-                     await firebase.Child(node).Child(details.Key).DeleteAsync();
+                    await firebase.Child(node).Child(details.Key).DeleteAsync();
                     //add the new row
                     await firebase.Child(node).PostAsync<TreatmentPlanTreatmentsData>(treatmentPlanTreatmentsData);
                     break;
@@ -1161,7 +1165,7 @@ namespace DataAccessLibrary
                     name
                     );
 
-                    AddNewTreatmentPlanTreatments(treatmentOnPlan);
+                    AddNewTreatmentPlanTreatments(treatmentOnPlan, treatmentOnPlan.TreatmentPlanTreatmentsID);
                 }
 
                 db.Close();

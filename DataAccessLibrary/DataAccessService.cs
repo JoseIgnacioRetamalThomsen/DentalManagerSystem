@@ -157,9 +157,9 @@ namespace DataAccessLibrary
             sqlite.UpdateCountRecordSQlite(DAOCount);
             firebaseDAO.UpdateCountRecordFB(FBCount);
 
-            sqlite.AddNewTreatmentPlanTreatments(t);
-
-            firebaseDAO.AddNewTreatmentPlanTreatments(t);
+            int id = (int)sqlite.AddNewTreatmentPlanTreatments(t);
+ 
+            firebaseDAO.AddNewTreatmentPlanTreatments(t, id);
         }
 
         public void AddNewAppointment(Appointment appointment)
