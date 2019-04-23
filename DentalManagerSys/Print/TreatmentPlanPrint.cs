@@ -33,13 +33,14 @@ namespace DentalManagerSys.Print
         private List<TreatmentOnPlan> treatments;
 
         private User user;
+        private Customer customer;
         #region constructors
         public TreatmentPlanPrint(User _user)
         {
             this.Width = 800;
 
             user = _user;
-           // this.Height = 5000;
+            // this.Height = 5000;
             this.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
 
             InitStrings();
@@ -54,13 +55,14 @@ namespace DentalManagerSys.Print
 
         }
 
-        public TreatmentPlanPrint(Customer c, List<TreatmentOnPlan> list,User u)
+        public TreatmentPlanPrint(Customer c, List<TreatmentOnPlan> list, User u)
         {
             this.Width = 800;
             // this.Height = 5000;
             this.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
-
-            InitStrings(u,c);
+            customer = c;
+            user = u;
+            InitStrings(u, c);
             InitGrid();
             InitTreatments(list);
             SetTitle();
@@ -85,7 +87,7 @@ namespace DentalManagerSys.Print
         private void InitTreatments(List<TreatmentOnPlan> list)
         {
             treatments = new List<TreatmentOnPlan>(list);
-           
+
 
         }
 
@@ -94,11 +96,11 @@ namespace DentalManagerSys.Print
         {
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
 
-            
-            
+
+
             //static
             patienNameLabelString = resourceLoader.GetString("/Strings/patienNameLabelString/Text");
-            patienAddressLabelString = resourceLoader.GetString("/Strings/patienAddressLabelString/Text"); 
+            patienAddressLabelString = resourceLoader.GetString("/Strings/patienAddressLabelString/Text");
             TreatmentNumberLabelString = resourceLoader.GetString("/Strings/TreatmentNumberLabelString/Text");
 
             treatmentLabel = resourceLoader.GetString("/Strings/treatmentLabel/Text");
@@ -106,9 +108,9 @@ namespace DentalManagerSys.Print
             amountLabel = resourceLoader.GetString("/Strings/amountLabel/Text");
             totalLabel = resourceLoader.GetString("/Strings/totalLabel/Text");
 
-            
 
-              title = resourceLoader.GetString("/Strings/titlePrintPreview/Text"); 
+
+            title = resourceLoader.GetString("/Strings/titlePrintPreview/Text");
             subTitle = resourceLoader.GetString("/Strings/subTitlePlanPreview/Text");
 
             //dinamic
@@ -121,7 +123,7 @@ namespace DentalManagerSys.Print
 
 
         }
-        private void InitStrings(User u,Customer c)
+        private void InitStrings(User u, Customer c)
         {
 
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
@@ -137,7 +139,7 @@ namespace DentalManagerSys.Print
             teathNumberLabel = resourceLoader.GetString("/Strings/teathNumberLabel/Text");
             amountLabel = resourceLoader.GetString("/Strings/amountLabel/Text");
             totalLabel = resourceLoader.GetString("/Strings/totalLabel/Text");
-                        
+
             title = resourceLoader.GetString("/Strings/titlePrintPreview/Text");
             subTitle = resourceLoader.GetString("/Strings/subTitlePlanPreview/Text");
 
@@ -147,13 +149,43 @@ namespace DentalManagerSys.Print
             date = DateTime.Now.ToString("dd/MM/yyyy");
 
             patientName = c.name + " " + c.surname;
-            patientAddress = c.street+", " + c.city + ", " + c.country +". " + c.postcode;
+            patientAddress = c.street + ", " + c.city + ", " + c.country + ". " + c.postcode;
             treatmentNumber = "1";
 
 
         }
 
         #endregion
+
+        public string GetStringEmail()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendFormat("{0} \n", title);
+            sb.AppendFormat("{0} \n", subTitle);
+            sb.AppendFormat("{0} \n\n", doctorName);
+
+            sb.AppendFormat("Patient: {0} \n", patientName);
+            sb.AppendFormat("Address: {0} \n", patientAddress);
+            sb.AppendFormat("Threatment num: {0} \n\n\n", treatmentNumber);
+            
+            sb.AppendFormat("{0,-35} {1,-20} {2,-10} \n",
+                                        treatmentLabel, teathNumberLabel, amountLabel);
+
+            sb.Append("------------------------------------------------------------------------------\n");
+            decimal total = 0;
+            foreach (TreatmentOnPlan trm in treatments)
+            {
+                sb.AppendFormat("{0,-35} {1,-20} {2,-10} \n",
+                                        trm.Name, trm.Tooth, trm.Price);
+                total += trm.Price;
+            }
+            sb.Append("------------------------------------------------------------------------------\n");
+            sb.AppendFormat("\n{0,50} {1,-10}  \n",
+                                     totalLabel,total);
+
+            return sb.ToString();
+        }
 
         //row 5
         private void SetTreatmentNum()
@@ -194,7 +226,7 @@ namespace DentalManagerSys.Print
             ColumnDefinition c1 = new ColumnDefinition
             {
                 Width = new Windows.UI.Xaml.GridLength(400),
-                
+
             };
             ColumnDefinition c2 = new ColumnDefinition
             {
@@ -206,7 +238,7 @@ namespace DentalManagerSys.Print
                 Width = new Windows.UI.Xaml.GridLength(300)
             };
 
-            
+
 
 
             grid.ColumnDefinitions.Add(c1);
@@ -215,7 +247,7 @@ namespace DentalManagerSys.Print
 
 
             RowDefinition r1 = new RowDefinition();
-            
+
             RowDefinition r2 = new RowDefinition();
 
             grid.RowDefinitions.Add(r1);
@@ -267,7 +299,7 @@ namespace DentalManagerSys.Print
 
 
 
-            
+
             /*
             RowDefinition r2 = new RowDefinition();
             RowDefinition r3 = new RowDefinition();
@@ -279,7 +311,7 @@ namespace DentalManagerSys.Print
             //add indivudual treatment
             int rowCount = 2;
             decimal total = 0;
-            foreach(TreatmentOnPlan t in treatments)
+            foreach (TreatmentOnPlan t in treatments)
             {
                 grid.RowDefinitions.Add(new RowDefinition());
 
@@ -299,7 +331,7 @@ namespace DentalManagerSys.Print
                 //code
                 TextBlock t2 = new TextBlock()
                 {
-                    Text = ""+t.Tooth,
+                    Text = "" + t.Tooth,
                     FontSize = 18,
                     HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center,
                     TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
@@ -319,7 +351,7 @@ namespace DentalManagerSys.Print
                     TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
                     Width = 250
                 };
-                             
+
                 Grid.SetRow(t3, rowCount);
                 Grid.SetColumn(t3, 2);
                 grid.Children.Add(t3);
@@ -374,7 +406,7 @@ namespace DentalManagerSys.Print
 
         }
 
-       
+
 
         //row1
         private void SetDate()
@@ -471,7 +503,7 @@ namespace DentalManagerSys.Print
             };
 
             //set position on grid
-                    this.Children.Add(titleSP);
+            this.Children.Add(titleSP);
             titleSP.Children.Add(new TextBlock()
             {
                 Text = title,
@@ -501,7 +533,7 @@ namespace DentalManagerSys.Print
         Grid topGrid;
         private void InitGrid()
         {
-           topGrid = new Grid();
+            topGrid = new Grid();
             ColumnDefinition c1 = new ColumnDefinition();
 
             ColumnDefinition c2 = new ColumnDefinition();
@@ -525,7 +557,7 @@ namespace DentalManagerSys.Print
             topGrid.RowDefinitions.Add(r4);
             topGrid.RowDefinitions.Add(r5);
             topGrid.RowDefinitions.Add(r6);
-          
+
 
         }
     }
