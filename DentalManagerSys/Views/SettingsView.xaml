@@ -13,7 +13,7 @@
         <StackPanel>
             <TextBlock 
                 x:Name="SettginsAddUserAddress" 
-                x:Uid="/Strings/AccountManagementButton"
+                x:Uid="/Strings/AdminAddressButton"
                 Foreground="DodgerBlue"
                 TextAlignment="Center" 
                 VerticalAlignment="Center"

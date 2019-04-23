@@ -59,6 +59,9 @@ namespace DataAccessLibrary
                 SqliteCommand createCountRecord = new SqliteCommand(countRecord, db);
                 createCountRecord.ExecuteReader();
 
+                String adminDetails = "CREATE TABLE IF NOT EXISTS adminDetails(firstName varchar(30)NOT NULL,surname varchar(30)NOT NULL,street varchar(45),city varchar(30),province varchar(30),country varchar(15),postcode varchar(15),mobileNum varchar(15),fixNum varchar(15),email varchar(45),PRIMARY KEY (email))";
+                SqliteCommand createAdminDetails = new SqliteCommand(adminDetails, db);
+                createAdminDetails.ExecuteReader();
 
             }
 
