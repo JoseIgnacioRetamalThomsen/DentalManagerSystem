@@ -35,8 +35,14 @@
                     Icon="Print"
                     x:Uid="/Strings/PrintButtonPreview"
                     Click="Print_Click"/>
+                <AppBarButton
+                    x:Name="Email"
+                    Icon="Mail"
+                    x:Uid="/Strings/PrintButtonPreview"
+                    Click="Email_Click"/>
 
-        </CommandBar>
+
+            </CommandBar>
             <StackPanel 
                 x:Name="MainContainer"
                 RelativePanel.Below="PreviewCommandBar"

@@ -690,4 +690,31 @@
   <data name="SaveUserDetailsButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Save Details</value>
   </data>
+  <data name="amountLabel.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="patienAddressLabelString.Text" xml:space="preserve">
+    <value>Address : </value>
+  </data>
+  <data name="patienNameLabelString.Text" xml:space="preserve">
+    <value>Name :</value>
+  </data>
+  <data name="subTitlePlanPreview.Text" xml:space="preserve">
+    <value>Dental Clinic</value>
+  </data>
+  <data name="teathNumberLabel.Text" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="titlePrintPreview.Text" xml:space="preserve">
+    <value>Plan Budget</value>
+  </data>
+  <data name="totalLabel.Text" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="treatmentLabel.Text" xml:space="preserve">
+    <value>Treatments</value>
+  </data>
+  <data name="TreatmentNumberLabelString.Text" xml:space="preserve">
+    <value>Treatment Num :</value>
+  </data>
 </root>

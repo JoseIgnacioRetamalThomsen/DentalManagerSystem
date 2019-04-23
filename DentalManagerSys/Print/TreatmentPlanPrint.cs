@@ -89,20 +89,26 @@ namespace DentalManagerSys.Print
 
         private void InitStrings()
         {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
 
+            
+            
             //static
-            patienNameLabelString = "Name :";
-            patienAddressLabelString = "Address : ";
-            TreatmentNumberLabelString = "Treatment Num : ";
+            patienNameLabelString = resourceLoader.GetString("/Strings/patienNameLabelString/Text");
+            patienAddressLabelString = resourceLoader.GetString("/Strings/patienAddressLabelString/Text"); 
+            TreatmentNumberLabelString = resourceLoader.GetString("/Strings/TreatmentNumberLabelString/Text");
 
-            treatmentLabel = "Treatments";
-            teathNumberLabel = "Code";
-            amountLabel = "Price";
-            totalLabel = "Total";
+            treatmentLabel = resourceLoader.GetString("/Strings/treatmentLabel/Text");
+            teathNumberLabel = resourceLoader.GetString("/Strings/teathNumberLabel/Text");
+            amountLabel = resourceLoader.GetString("/Strings/amountLabel/Text");
+            totalLabel = resourceLoader.GetString("/Strings/totalLabel/Text");
+
+            
+
+              title = resourceLoader.GetString("/Strings/titlePrintPreview/Text"); 
+            subTitle = resourceLoader.GetString("/Strings/subTitlePlanPreview/Text");
 
             //dinamic
-            title = "Plan Budget";
-            subTitle = "Dental Clinic";
             doctorName = "Dr. Manual Arraigado";
             date = "18/03/2019";
 

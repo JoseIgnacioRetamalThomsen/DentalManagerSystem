@@ -1,4 +1,6 @@
-﻿using DentalManagerSys.Print;
+﻿using DataAccessLibrary.REST;
+using DentalManagerSys.Print;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -110,6 +112,12 @@ namespace DentalManagerSys.Views
 
                 await noPrintingDialog.ShowAsync();
             }
+        }
+
+        private async void Email_Click(object sender, RoutedEventArgs e)
+        {
+            EmailData id = new EmailData("G00351330@gmit.ie",App.ActualUser.Email,"email Header","Email Body.");
+             await  Emailer.SendEmail(id);
         }
     }
 }
