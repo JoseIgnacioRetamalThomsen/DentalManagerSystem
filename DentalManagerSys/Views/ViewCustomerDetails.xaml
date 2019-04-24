@@ -118,7 +118,7 @@
                     <toolkit:Expander 
                         x:Name="AcceptedTPExpander"
                         Style="{StaticResource ExpanderStyle}"
-                        
+                       
                         IsExpanded="True">
                         <toolkit:Expander.Header>
                             <Grid>

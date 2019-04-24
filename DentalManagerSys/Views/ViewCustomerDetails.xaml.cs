@@ -28,6 +28,7 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class ViewCustomerDetails : Page
     {
+        #region Properties
         /// <summary>
         /// Customer id
         /// </summary>
@@ -41,12 +42,15 @@ namespace DentalManagerSys.Views
         /// <summary>
         /// Create page
         /// </summary>
+        #endregion
+        #region Constructors
         public ViewCustomerDetails()
         {
             this.InitializeComponent();
 
         }
-
+        #endregion
+        #region UI Setup
         /// <summary>
         /// Call when naviagtion on page, Create ViewModel , Set sources for List
         /// View of plans and paymenrs
@@ -54,7 +58,6 @@ namespace DentalManagerSys.Views
         /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-
             ViewModel = new CustomerDetailsViewModel();
 
             if (e.Parameter == null)
@@ -75,7 +78,6 @@ namespace DentalManagerSys.Views
 
             ViewModel.SetPayments();
             AllPaymentsLV.ItemsSource = ViewModel.PaymentsOC;
-
         }
 
         /// <summary>
@@ -103,21 +105,8 @@ namespace DentalManagerSys.Views
             emailTextBox.Text = temp.email;
             commentsTextBox.Text = temp.comments;
         }
-
-
-        /// <summary>
-        /// Navigate to page where new treatment plan can be created
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e">Send customer id as parameter</param>
-        private void CreateTreatmentPlan_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(NewTreatmentPlanView), iD,
-                   new DrillInNavigationTransitionInfo());
-        }
-
-
-
+        #endregion
+        #region ListView
         /// <summary>
         /// Navigate to treatment on click
         /// </summary>
@@ -125,10 +114,11 @@ namespace DentalManagerSys.Views
         /// <param name="e"></param>
         private void AcceptedTPListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             ListView lv = (ListView)sender;
             int id = lv.SelectedIndex;
             string name = lv.Name;
-                        
+
             TreatmentPlan tp = null;
             switch (name)
             {
@@ -148,7 +138,8 @@ namespace DentalManagerSys.Views
                   new DrillInNavigationTransitionInfo());
 
         }
-
+        #endregion
+        #region Buttons
         /// <summary>
         /// Navigate to view where new payment can be added
         /// </summary>
@@ -156,7 +147,7 @@ namespace DentalManagerSys.Views
         /// <param name="e"></param>
         private void NewPaymentButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(NewPaymentView), new NewPaymentData( ViewModel.Customer.iD,0,false),
+            Frame.Navigate(typeof(NewPaymentView), new NewPaymentData(ViewModel.Customer.iD, 0, false),
                  new DrillInNavigationTransitionInfo());
         }
 
@@ -170,5 +161,16 @@ namespace DentalManagerSys.Views
             Frame.Navigate(typeof(CreateAppointmentView), new NewPaymentData(ViewModel.Customer.iD, 0, false),
                new DrillInNavigationTransitionInfo());
         }
+        /// <summary>
+        /// Navigate to page where new treatment plan can be created
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Send customer id as parameter</param>
+        private void CreateTreatmentPlan_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(NewTreatmentPlanView), iD,
+                   new DrillInNavigationTransitionInfo());
+        }
+        #endregion
     }
 }

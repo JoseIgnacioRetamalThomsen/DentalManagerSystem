@@ -32,12 +32,11 @@
 
 
                     <StackPanel 
-                x:Name="FromDate1"
-               Grid.Column="0" Grid.Row="0">
+                        x:Name="FromDate1"
+                        Grid.Column="0" Grid.Row="0">
                         <TextBlock 
-                x:Uid="/Strings/FromDateTitle" 
-                x:Name="FromDate2" 
-                />
+                            x:Uid="/Strings/FromDateTitle" 
+                            x:Name="FromDate2"/>
                         <CalendarDatePicker x:Name="FromDate"
                                             DateChanged="FromDate_DateChanged"/>
 
@@ -60,7 +59,7 @@
                         <TextBlock 
                 x:Uid="/Strings/PeriodTitle" 
                  />
-                        
+
                         <ComboBox x:Name="DatePeriodDropDownList" Width="200"
                x:Uid="/Strings/SelectedDatePeriod"
               SelectionChanged="DatePeriodDropDownList_SelectionChanged" >

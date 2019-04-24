@@ -4,7 +4,7 @@
 ///  Profesional Practice in IT project
 ///  GMIT 2019
 ///  
-///  Markm Ndpeanoch
+///  Markm Ndipenoch
 ///  Jose I. Retamal
 ///------------------------------------------
 ///
@@ -131,7 +131,7 @@ namespace DentalManagerSys.Views
                 return;
             }
 
-            ViewModel.PriceBefore = t._Price;
+            ViewModel.PriceBefore = (int)t.Price;
             ViewModel.BeforeTreatment = t;
             isTreament = true;
             EnableAddButton();
