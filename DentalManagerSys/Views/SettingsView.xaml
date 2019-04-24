@@ -21,20 +21,48 @@
                 PointerPressed="SettginsAddUserAddress_PointerPressed"/>
             <TextBlock
                 Text="Settings"
-                 Style="{StaticResource HeaderTextBlockStyle}"/>
+                 Style="{StaticResource BaseTextBlockStyle}"/>
             <TextBlock
                 Text="User"
                 Style="{StaticResource SubheaderTextBlockStyle}"/>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
                 <Button Content="+" />
-                <TextBlock x:Uid="/Strings/AdminAddressButton"></TextBlock>
-    
-                
-              
-
+                <TextBlock x:Uid="/Strings/AdminAddressButton" VerticalAlignment="Center" Margin="5"/>
             </StackPanel>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
+                <Button Content="+" />
+                <TextBlock Text="Change Password." VerticalAlignment="Center" Margin="5"/>
+            </StackPanel>
+
+            <TextBlock
+                Text="Internet"
+                Style="{StaticResource SubheaderTextBlockStyle}"/>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
+                <ToggleSwitch x:Name="WorkOfflineTS" Header="Work OffLine"/>
+                <TextBlock Text="Appointmets are not availabel offline" VerticalAlignment="Center" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
+                <ToggleSwitch x:Name="RequestLogin" Header="Login Validation"/>
+                <TextBlock Text="You can use this for work where there is no Internet" VerticalAlignment="Center" Margin="5"/>
+            </StackPanel>
+
+            <TextBlock
+                Text="About This App"
+                Style="{StaticResource SubheaderTextBlockStyle}"/>
+            <TextBlock Text="@GMIT 2019 Group Project" Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0"/>
+            <TextBlock Text="© Dental Manager System" Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0"/>
+            <TextBlock Text="Mark Ndipenoch" Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0"/>
+            <TextBlock Text="Jose Retamal" Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0"/>
+
+            <Button Content="Give FeedBack" Margin="0,20,0,0"/>
+
         </StackPanel>
-        
+
+
+
     </Grid>
 </Page>
