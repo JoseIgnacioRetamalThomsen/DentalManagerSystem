@@ -39,6 +39,7 @@ namespace DentalManagerSys.Views
                 formatedDate = "" + selectedDate[0] + selectedDate[1] + "-" + selectedDate[3] + selectedDate[4] + "-" + selectedDate[6] + selectedDate[7] + selectedDate[8] + selectedDate[9];
                 Decimal sumAmount = DAO.GetSumPaymentByDate(formatedDate);
                 Amount.Text = sumAmount.ToString();
+                decimal result = DAO.GetTotalMonth(DateTime.Now);
             }
             catch
             {

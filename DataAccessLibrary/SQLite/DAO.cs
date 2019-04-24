@@ -1513,5 +1513,35 @@ namespace DataAccessLibrary
                 db.Close();
             }
         }
+
+        public static decimal GetTotalMonth(DateTime date)
+        {
+          
+            decimal result;
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query
+                insertCommand.CommandText = "select sum(amount) from payments WHERE CAST(strftime('%m',treatmentCompleteDate) as INTEGER)= @Month";
+                insertCommand.Parameters.AddWithValue("@Month", date.Month);
+
+
+                SqliteDataReader query = insertCommand.ExecuteReader();
+
+                query.Read();
+                result = query.GetDecimal(0) ;
+
+
+                db.Close();
+            }
+
+            return result;
+
+        }
     }
 }

@@ -1,6 +1,9 @@
-﻿using DentalManagerSys.Print;
+﻿using DataAccessLibrary.REST;
+using DentalManagerSys.Print;
+using Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -66,6 +69,8 @@ namespace DentalManagerSys.Views
         private string nsTitle;
         private string nsContent;
 
+        private string TreatmentPlanEmailHeader;
+
         private void InitStaticString()
         {
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
@@ -74,6 +79,8 @@ namespace DentalManagerSys.Views
             npOKButton = resourceLoader.GetString("/Strings/npOKButton/Text");
             nsTitle = resourceLoader.GetString("/Strings/nsTitle/Text");
             nsContent = resourceLoader.GetString("/Strings/nsContent/Text");
+          
+            TreatmentPlanEmailHeader = resourceLoader.GetString("/Strings/TreatmentPlanEmailHeader/Text");
         }
 
         private async void Print_Click(object sender, RoutedEventArgs e)
@@ -110,6 +117,13 @@ namespace DentalManagerSys.Views
 
                 await noPrintingDialog.ShowAsync();
             }
+        }
+
+        private async void Email_Click(object sender, RoutedEventArgs e)
+        {
+            EmailData id = new EmailData("G00351330@gmit.ie",App.ActualUser.Email, TreatmentPlanEmailHeader, tp.GetStringEmail());
+            
+            await  Emailer.SendEmail(id);
         }
     }
 }

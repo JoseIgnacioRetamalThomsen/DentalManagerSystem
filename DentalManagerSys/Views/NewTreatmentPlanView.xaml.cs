@@ -244,7 +244,7 @@ namespace DentalManagerSys.Views
         private void PreviewTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
         {
             //create treatment plan for print 
-            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan));
+            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan),App.ActualUser);
             Frame.Navigate(typeof(TreatmentPlanPreviewView), tp);
 
         }
@@ -252,7 +252,7 @@ namespace DentalManagerSys.Views
         private void PrintTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
         {
             //create treatment plan for print 
-            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan));
+            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan),App.ActualUser);
             Frame.Navigate(typeof(TreatmentPlanPreviewView), tp);
         }
 
