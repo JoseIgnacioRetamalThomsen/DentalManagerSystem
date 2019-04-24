@@ -19,6 +19,21 @@
                 VerticalAlignment="Center"
                 FontSize="16"
                 PointerPressed="SettginsAddUserAddress_PointerPressed"/>
+            <TextBlock
+                Text="Settings"
+                 Style="{StaticResource HeaderTextBlockStyle}"/>
+            <TextBlock
+                Text="User"
+                Style="{StaticResource SubheaderTextBlockStyle}"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Content="+" />
+                <TextBlock x:Uid="/Strings/AdminAddressButton"></TextBlock>
+    
+                
+              
+
+            </StackPanel>
         </StackPanel>
         
     </Grid>

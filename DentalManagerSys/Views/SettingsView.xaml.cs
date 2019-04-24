@@ -25,6 +25,7 @@ namespace DentalManagerSys.Views
         public SettingsView()
         {
             this.InitializeComponent();
+            
         }
 
         private void SettginsAddUserAddress_PointerPressed(object sender, PointerRoutedEventArgs e)
