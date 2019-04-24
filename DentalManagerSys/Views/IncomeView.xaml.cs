@@ -47,5 +47,18 @@ namespace DentalManagerSys.Views
             }
             
         }
+
+        private void DatePeriodDropDownList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(DatePeriodDropDownList.SelectedIndex == 0)
+            {
+                Debug.WriteLine("hello oooooooo  0:" );
+            }
+
+            if (DatePeriodDropDownList.SelectedIndex == 1)
+            {
+                Debug.WriteLine("hello oooooooo 1:");
+            }
+        }
     }
 }
