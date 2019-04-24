@@ -40,7 +40,7 @@
                     Tapped="CreateTreatmentPlanButton_Tapped"/>
                 <AppBarSeparator/>
 
-                <AppBarButton
+                <!--<AppBarButton
                     x:Name="PrintTreatmentPlan"
                     Icon="Print"
                     x:Uid="/Strings/PrintTreatmentPlanNew"
@@ -54,9 +54,7 @@
                     x:Uid="/Strings/PreviewTreatmentPlan"
                     IsEnabled="True"
                     Tapped="PreviewTreatmentPlan_Tapped"/>
-                <AppBarSeparator/>
-
-
+                <AppBarSeparator/>-->
 
             </CommandBar>
 

@@ -33,18 +33,15 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class NewTreatmentPlanView : Page
     {
-
+        #region Properties
         ObservableCollection<Treatment> treatments = null;
         //ObservableCollection<Treatment> treatmentsOnPlan = new ObservableCollection<Treatment>();
 
         public NewTreatmentPlanViewModel ViewModel { get; set; }
         public object TreatmentPanPrint { get; private set; }
-
-        /// <summary>
-        /// Print helper
-        /// </summary>
-        PrintHelper ph;
-        #region Constructors and build
+        private AdminDetails ad;
+        #endregion
+        #region Constructors 
         public NewTreatmentPlanView()
         {
             this.InitializeComponent();
@@ -59,17 +56,16 @@ namespace DentalManagerSys.Views
 
 
         }
-
+        #endregion
+        #region Build
         private void InitTreamentsCB()
         {
             treatments = new ObservableCollection<Treatment>(DAO.GetAllTreatment());
             TreatmentsCB.ItemsSource = treatments;
-            //TreatmentsCB.SelectedIndex = 0;
+            ad = DAO.GetAdminDetails(App.ActualUser.Email);
+            Debug.WriteLine(ad.city);
         }
 
-        #endregion
-
-        #region Navigation methods
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter == null)
@@ -78,9 +74,6 @@ namespace DentalManagerSys.Views
             }
             else
             {
-                Debug.WriteLine(e.Parameter);
-                //DisplayDetails(e.Parameter.ToString());
-                //iD = e.Parameter.ToString();
                 ViewModel.ActualCustomer = DAO.GetCustomerByID(e.Parameter.ToString());
                 PageTitle.Text = ViewModel.ActualCustomer.name + " " + ViewModel.ActualCustomer.surname;
 
@@ -96,7 +89,6 @@ namespace DentalManagerSys.Views
         #endregion
 
         #region buttons and events handlers 
-
         /// <summary>
         /// There is a treatmet selected, when hapens the treatment price can be change or the 
         /// treatment can be removed.
@@ -149,6 +141,28 @@ namespace DentalManagerSys.Views
         }
 
         /// <summary>
+        /// Select tooth.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SelectToothCB_DropDownClosed(object sender, object e)
+        {
+            isToothNumber = true;
+            try
+            {
+                ViewModel.Tooth = Convert.ToInt32(((ComboBox)sender).SelectedValue.ToString());
+            }
+            catch
+            {
+                //no selection, do nothing
+                return;
+            }
+            EnableAddButton();
+        }
+        #endregion
+
+        #region buttons
+        /// <summary>
         /// Create the treatmwent plan an go back
         /// </summary>
         /// <param name="sender"></param>
@@ -156,7 +170,9 @@ namespace DentalManagerSys.Views
         private void CreateTreatmentPlanButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             ViewModel.CreateNewTreatmentPlan();
-            Frame.GoBack();
+            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan), App.ActualUser, ad);
+            Frame.Navigate(typeof(TreatmentPlanPreviewView), tp);
+            // Frame.GoBack();
         }
 
         /// <summary>
@@ -180,10 +196,8 @@ namespace DentalManagerSys.Views
             int ItemIndex = TreatmentsDoneListView.SelectedIndex;
             ViewModel.TreatmentsOnPlan.RemoveAt(ItemIndex);
             EditDone();
-          
-        }
 
-      
+        }
 
         /// <summary>
         /// Add the treatment to plan.
@@ -203,28 +217,9 @@ namespace DentalManagerSys.Views
             ViewModel.PriceBefore = 0;
         }
 
-        /// <summary>
-        /// Select tooth.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SelectToothCB_DropDownClosed(object sender, object e)
-        {
-            isToothNumber = true;
-            try
-            {
-                ViewModel.Tooth = Convert.ToInt32(((ComboBox)sender).SelectedValue.ToString());
-            }
-            catch
-            {
-                //no selection, do nothing
-                return;
-            }
-            EnableAddButton();
-        }
+        private bool isTreament = false;
+        private bool isToothNumber = false;
 
-        bool isTreament = false;
-        bool isToothNumber = false;
         /// <summary>
         /// Enable the add buton when tooth and treatement are selected
         /// </summary>
@@ -244,7 +239,7 @@ namespace DentalManagerSys.Views
         private void PreviewTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
         {
             //create treatment plan for print 
-            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan),App.ActualUser);
+            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan), App.ActualUser, ad);
             Frame.Navigate(typeof(TreatmentPlanPreviewView), tp);
 
         }
@@ -252,7 +247,7 @@ namespace DentalManagerSys.Views
         private void PrintTreatmentPlan_Tapped(object sender, TappedRoutedEventArgs e)
         {
             //create treatment plan for print 
-            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan),App.ActualUser);
+            TreatmentPlanPrint tp = new TreatmentPlanPrint(ViewModel.ActualCustomer, new List<TreatmentOnPlan>(ViewModel.TreatmentsOnPlan), App.ActualUser, ad);
             Frame.Navigate(typeof(TreatmentPlanPreviewView), tp);
         }
 

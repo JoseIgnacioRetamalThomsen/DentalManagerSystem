@@ -39,7 +39,7 @@ namespace DentalManagerSys.Views
             Boolean AdminExsitance = dao.CheckAdmidDetailsExist(userName);
             if (AdminExsitance == true)
             {
-             adminDetails = dao.GetAdminDetails(userName);
+             adminDetails = DAO.GetAdminDetails(userName);
 
                 inputName.Text = adminDetails.firstName;
                 inputSurename.Text = adminDetails.surname;

@@ -291,7 +291,7 @@ namespace DataAccessLibrary
             }
         }
 
-        public AdminDetails GetAdminDetails(string email)
+        public static AdminDetails GetAdminDetails(string email)
         {
             AdminDetails adminDetails = null;
 
@@ -320,7 +320,7 @@ namespace DataAccessLibrary
                     query.GetString(8),
                     query.GetString(9)
                     );
-                }
+               }
 
                 db.Close();
             }

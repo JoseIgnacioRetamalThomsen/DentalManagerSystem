@@ -67,8 +67,8 @@ namespace DentalManagerSys.Print
 
         private void Paginate(object sender, PaginateEventArgs e)
         {
-            // As I only want to print one Rectangle, so I set the count to 1
-            printDoc.SetPreviewPageCount(1, PreviewPageCountType.Final);
+           
+            printDoc.SetPreviewPageCount(1, PreviewPageCountType.Intermediate);
         }
 
         private void GetPreviewPage(object sender, GetPreviewPageEventArgs e)
