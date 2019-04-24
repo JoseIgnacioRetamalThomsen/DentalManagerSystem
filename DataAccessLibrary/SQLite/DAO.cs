@@ -954,6 +954,133 @@ namespace DataAccessLibrary
             return sumPayments;
         }
 
+   
+        /// <summary>
+        /// Get total payment by day
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static decimal GetTotalDay(DateTime date)
+        {
+
+            decimal result;
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query
+                insertCommand.CommandText = "select sum(amount) from payments WHERE CAST(strftime('%d',treatmentCompleteDate) as INTEGER)= @Day";
+                insertCommand.Parameters.AddWithValue("@Day", date.Day);
+
+                SqliteDataReader query = insertCommand.ExecuteReader();
+
+                query.Read();
+                result = query.GetDecimal(0);
+
+                db.Close();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get Total payment for the month
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static decimal GetTotalMonth(DateTime date)
+        {
+
+            decimal result;
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query
+                insertCommand.CommandText = "select sum(amount) from payments WHERE CAST(strftime('%m',treatmentCompleteDate) as INTEGER)= @Month";
+                insertCommand.Parameters.AddWithValue("@Month", date.Month);
+
+
+                SqliteDataReader query = insertCommand.ExecuteReader();
+
+                query.Read();
+                result = query.GetDecimal(0);
+
+
+                db.Close();
+            }
+
+            return result;
+
+        }
+
+        /// <summary>
+        /// Get total payment for the year
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static decimal GetTotalYear(DateTime date)
+        {
+
+            decimal result;
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query
+                insertCommand.CommandText = "select sum(amount) from payments WHERE CAST(strftime('%Y',treatmentCompleteDate) as INTEGER)= @Year";
+                insertCommand.Parameters.AddWithValue("@Year", date.Year);
+
+                SqliteDataReader query = insertCommand.ExecuteReader();
+
+                query.Read();
+                result = query.GetDecimal(0);
+
+                db.Close();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get total of all the payments
+        /// </summary>
+        /// <returns></returns>
+        public static decimal GetTotalPayments()
+        {
+
+            decimal result;
+            using (SqliteConnection db =
+                new SqliteConnection("Filename=dentalManagerDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                // Use parameterized query
+                insertCommand.CommandText = "select sum(amount) from payments";
+
+                SqliteDataReader query = insertCommand.ExecuteReader();
+
+                query.Read();
+                result = query.GetDecimal(0);
+
+                db.Close();
+            }
+            return result;
+        }
+
         public static void AddData(string inputText)
         {
             using (SqliteConnection db =
@@ -1514,34 +1641,6 @@ namespace DataAccessLibrary
             }
         }
 
-        public static decimal GetTotalMonth(DateTime date)
-        {
-          
-            decimal result;
-            using (SqliteConnection db =
-                new SqliteConnection("Filename=dentalManagerDB.db"))
-            {
-                db.Open();
-
-                SqliteCommand insertCommand = new SqliteCommand();
-                insertCommand.Connection = db;
-
-                // Use parameterized query
-                insertCommand.CommandText = "select sum(amount) from payments WHERE CAST(strftime('%m',treatmentCompleteDate) as INTEGER)= @Month";
-                insertCommand.Parameters.AddWithValue("@Month", date.Month);
-
-
-                SqliteDataReader query = insertCommand.ExecuteReader();
-
-                query.Read();
-                result = query.GetDecimal(0) ;
-
-
-                db.Close();
-            }
-
-            return result;
-
-        }
+      
     }
 }
