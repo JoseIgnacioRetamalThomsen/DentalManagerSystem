@@ -367,7 +367,6 @@ namespace DataAccessLibrary
         public void UpdateTreatmentPlanState(TreatmentPlaneState state, int iD)
         {
 
-
             using (SqliteConnection db =
                new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -943,7 +942,6 @@ namespace DataAccessLibrary
                 SqliteCommand selectCommand = new SqliteCommand
                     ("select *, strftime('%d-%m-%Y', treatmentCompleteDate) as date from payments where date<=@SelectedDate", db);
                 selectCommand.Parameters.AddWithValue("@SelectedDate", selectedDate);
-
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
                 while (query.Read())

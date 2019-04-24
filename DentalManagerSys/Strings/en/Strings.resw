@@ -690,4 +690,10 @@
   <data name="SaveUserDetailsButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Save Details</value>
   </data>
+  <data name="PeriodTitle.Text" xml:space="preserve">
+    <value>Periods</value>
+  </data>
+  <data name="SelectedDatePeriod.PlaceholderText" xml:space="preserve">
+    <value>Select Period</value>
+  </data>
 </root>

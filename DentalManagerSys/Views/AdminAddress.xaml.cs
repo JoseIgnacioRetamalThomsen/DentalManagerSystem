@@ -128,7 +128,7 @@ namespace DentalManagerSys.Views
             }
             else
             {
-                dao.UpdateAdminDetails(
+            dao.UpdateAdminDetails(
             inputName.Text, //name
             inputSurename.Text,//surname
             streetInput.Text, //street address

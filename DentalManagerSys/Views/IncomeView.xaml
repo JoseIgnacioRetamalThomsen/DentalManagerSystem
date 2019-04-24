@@ -33,11 +33,11 @@
 
                     <StackPanel 
                 x:Name="FromDate1"
-               Grid.Column="0">
+               Grid.Column="0" Grid.Row="0">
                         <TextBlock 
                 x:Uid="/Strings/FromDateTitle" 
                 x:Name="FromDate2" 
-                Style="{StaticResource PageTitleTextBlock}"/>
+                />
                         <CalendarDatePicker x:Name="FromDate"
                                             DateChanged="FromDate_DateChanged"/>
 
@@ -54,6 +54,26 @@
                     x:Name="Amount"
                     MinWidth="60"
                     Text="0"  IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0" Grid.Column="1">
+                        <TextBlock 
+                x:Uid="/Strings/PeriodTitle" 
+                 />
+                        
+                        <ComboBox x:Name="DatePeriodDropDownList" Width="200"
+               x:Uid="/Strings/SelectedDatePeriod"
+              SelectionChanged="DatePeriodDropDownList_SelectionChanged" >
+                            <x:String>Today</x:String>
+                            <x:String>This Week</x:String>
+                            <x:String>This Month</x:String>
+                            <x:String>This Year</x:String>
+                            <x:String>All</x:String>
+                        </ComboBox>
+
+                        <Rectangle x:Name="colorRectangle" Height="30" Width="100"
+               Margin="0,8,0,0" HorizontalAlignment="Left"/>
+
                     </StackPanel>
 
 
