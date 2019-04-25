@@ -198,7 +198,7 @@ namespace DentalManagerSys.Views.Form
                     int min = Convert.ToInt32(apnt.Date.ToString("mm"));
 
                     int timeslot = (hour - 8) * 4 + (slot.IndexOf(min) + 1);
-                    Debug.WriteLine("this" + cust.name + " " + timeslot);
+                   
 
                     customers.Add(cust);
 

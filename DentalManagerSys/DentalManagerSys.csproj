@@ -110,6 +110,9 @@
     <Compile Include="ViewModel\TreatmentPlanViewModel.cs" />
     <Compile Include="ViewModel\TreatmentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="Views\Settings\FeedbackFormView.xaml.cs">
+      <DependentUpon>FeedbackFormView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\User\AdminAddress.xaml.cs">
       <DependentUpon>AdminAddress.xaml</DependentUpon>
     </Compile>
@@ -215,6 +218,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\FeedbackFormView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\User\AdminAddress.xaml">
       <SubType>Designer</SubType>

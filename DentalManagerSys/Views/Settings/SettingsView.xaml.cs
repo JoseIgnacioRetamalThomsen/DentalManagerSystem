@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DentalManagerSys.Views.Settings;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,7 +30,12 @@ namespace DentalManagerSys.Views
             RequestLoginTS.IsOn = App.AppLocalSettings.IsLoginRequerid;
             RequestLoginTS.Toggled += RequestLoginTS_Toggled;
 
+            BackupTS.IsOn = App.AppLocalSettings.IsBackup;
+            BackupTS.Toggled += WorkOfflineTS_Toggled;
+
         }
+
+     
 
         private void AddminAddressButton_Click(object sender, RoutedEventArgs e)
         {
@@ -45,6 +51,16 @@ namespace DentalManagerSys.Views
         private void RequestLoginTS_Toggled(object sender, RoutedEventArgs e)
         {
             App.AppLocalSettings.ChangeIsLoginRequerid();
+        }
+
+        private void WorkOfflineTS_Toggled(object sender, RoutedEventArgs e)
+        {
+            App.Data.IsWorkOffline = App.AppLocalSettings.ChangeIsBackup();
+        }
+
+        private void FeedBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(FeedbackFormView));
         }
     }
 }

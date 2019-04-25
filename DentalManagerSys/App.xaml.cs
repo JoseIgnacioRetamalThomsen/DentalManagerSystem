@@ -45,9 +45,26 @@ namespace DentalManagerSys
         }
 
 
-        public static DataAccessService Data = new DataAccessService();
+       // public static DataAccessService Data = new DataAccessService();
 
-       public static User ActualUser;
+        /// <summary>
+        /// local settings
+        /// </summary>
+        private static DataAccessService data;
+
+        public static DataAccessService Data
+        {
+            get
+            {
+                if (data == null)
+                {
+                    data = new DataAccessService(App.AppLocalSettings.IsBackup);
+                }
+                return data;
+            }
+        }
+
+        public static User ActualUser;
 
         public static string userName;
         public static bool NewUser=false;
@@ -60,6 +77,8 @@ namespace DentalManagerSys
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+           
         }
 
         /// <summary>

@@ -31,6 +31,15 @@ namespace DentalManagerSys
         {
             this.InitializeComponent();
 
+
+         //   Windows.Storage.ApplicationDataContainer localSettings =
+         //Windows.Storage.ApplicationData.Current.LocalSettings;
+
+
+         //   localSettings.Values["isBackup"] = "True";
+
+            App.ActualUser = DAO.GetUser();
+
             int firebaseCnt;
             int sqliteCnt;
 
@@ -39,7 +48,7 @@ namespace DentalManagerSys
             DAO d = new DAO();
             App.userName = DAO.GetUserID();
             //Add create a new user count table if it is a new user.
-            
+
             if (App.NewUser == true)
             {
                 d.NewUserCount(App.userName, 0);
@@ -49,46 +58,52 @@ namespace DentalManagerSys
             }
             else
             {
-                sqliteCnt = DAO.GetUserCountSqlite(App.userName);
-                //Because it is an async method so, must be called on an await, that is why is done like so...
-                readfromFb();
-                async void readfromFb()
-                {
-                    firebaseCnt = await f.GetUserCountFb(App.userName);
+                 if (App.AppLocalSettings.IsBackup)
+                 {
+                    sqliteCnt = DAO.GetUserCountSqlite(App.userName);
+                    //Because it is an async method so, must be called on an await, that is why is done like so...
+                    readfromFb();
+                    async void readfromFb()
+                    {
+                        firebaseCnt = await f.GetUserCountFb(App.userName);
 
-                    if (firebaseCnt > sqliteCnt)
-                    {
-                        f.ReadDataFromFirebase();
-                        //Inizialise the count records.
-                        GetCountRecordFb();
-                        async void GetCountRecordFb()
+                        if (firebaseCnt > sqliteCnt)
                         {
-                            DataAccessService.FBCount = await f.GetUserCountFb(App.userName);
-                            DataAccessService.DAOCount = DataAccessService.FBCount;
+                            f.ReadDataFromFirebase();
+                            //Inizialise the count records.
+                            GetCountRecordFb();
+                            async void GetCountRecordFb()
+                            {
+                                DataAccessService.FBCount = await f.GetUserCountFb(App.userName);
+                                DataAccessService.DAOCount = DataAccessService.FBCount;
+                            }
                         }
-                    }
-                    else if (sqliteCnt > firebaseCnt)
-                    {
-                        f.ReadDataFromSQLite();
-                        //Inizialise the count records.
-                        DataAccessService.DAOCount = DAO.GetUserCountSqlite(App.userName);
-                        DataAccessService.FBCount = DataAccessService.DAOCount;
-                    }
-                    else
-                    {
-                        //Inizialise the count records.
-                        GetCountRecordFb();
-                        async void GetCountRecordFb()
+                        else if (sqliteCnt > firebaseCnt)
                         {
-                            DataAccessService.FBCount = await f.GetUserCountFb(App.userName);
+                            f.ReadDataFromSQLite();
+                            //Inizialise the count records.
+                            DataAccessService.DAOCount = DAO.GetUserCountSqlite(App.userName);
+                            DataAccessService.FBCount = DataAccessService.DAOCount;
                         }
-                        DataAccessService.DAOCount = DAO.GetUserCountSqlite(App.userName);
-                    }
+                        else
+                        {
+                            //Inizialise the count records.
+                            GetCountRecordFb();
+                            async void GetCountRecordFb()
+                            {
+                                DataAccessService.FBCount = await f.GetUserCountFb(App.userName);
+                            }
+                            DataAccessService.DAOCount = DAO.GetUserCountSqlite(App.userName);
+                        }
 
+                    }
                 }
-                
+                else
+                {
+                    DataAccessService.DAOCount = DAO.GetUserCountSqlite(App.userName);
+                }
             }
-            
+
 
         }
 

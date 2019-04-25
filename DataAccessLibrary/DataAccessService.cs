@@ -21,33 +21,47 @@ namespace DataAccessLibrary
         public static int DAOCount;
         public static int FBCount;
 
+        public bool IsWorkOffline { get; set; } = false;
+
+        public DataAccessService(bool isWorkOffline)
+        {
+            IsWorkOffline = isWorkOffline;
+        }
 
         public void AddNewTreatment(Treatment treatment)
         {
+            //local
             //Keep count for Sychronization
-            DAOCount++;
-            FBCount++;
-            sqlite.UpdateCountRecordSQlite(DAOCount);
-            firebaseDAO.UpdateCountRecordFB(FBCount);
-
             long number = sqlite.AddNewTreatment(treatment.Name, treatment.Price);
+            DAOCount++;
+            sqlite.UpdateCountRecordSQlite(DAOCount);
 
+            //firease
+            if (!IsWorkOffline)
+            {
+                FBCount++;
+                firebaseDAO.UpdateCountRecordFB(FBCount);
+                treatment.ID = (int)number;
+                firebaseDAO.AddNewTreatment(treatment);
+            }
 
-            treatment.ID = (int)number;
-            firebaseDAO.AddNewTreatment(treatment);
         }
 
         public void UpdateTreatment(int iD, string text, decimal v)
         {
             //Keep count for Sychronization
             DAOCount++;
-            FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
-            firebaseDAO.UpdateCountRecordFB(FBCount);
-
             sqlite.UpdateTreatment(new Treatment(iD, text, v));
 
-            firebaseDAO.UpdateTreatment(new Treatment(iD, text, v));
+            //firease
+            if (!IsWorkOffline)
+            {
+                FBCount++;
+                firebaseDAO.UpdateCountRecordFB(FBCount);
+                firebaseDAO.UpdateTreatment(new Treatment(iD, text, v));
+            }
+
 
         }
 
@@ -55,15 +69,17 @@ namespace DataAccessLibrary
         {
             //Keep count for Sychronization
             DAOCount++;
-            FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
-            firebaseDAO.UpdateCountRecordFB(FBCount);
-
             bool temp = false;
             temp = sqlite.AddNewCustomer(idInput, inputName, inputSurename, DOB, streetInput, cityInput, provinceInput, countryInput, postCodeInput, mobilNumInput, homeNumInput, emaillInput, commentsInput);
 
-            firebaseDAO.AddNewCustomer(idInput, inputName, inputSurename, DOB, streetInput, cityInput, provinceInput, countryInput, postCodeInput, mobilNumInput, homeNumInput, emaillInput, commentsInput);
-
+            //firease
+            if (!IsWorkOffline)
+            {
+                FBCount++;
+                firebaseDAO.UpdateCountRecordFB(FBCount);
+                firebaseDAO.AddNewCustomer(idInput, inputName, inputSurename, DOB, streetInput, cityInput, provinceInput, countryInput, postCodeInput, mobilNumInput, homeNumInput, emaillInput, commentsInput);
+            }
 
 
             return temp;
@@ -71,19 +87,20 @@ namespace DataAccessLibrary
 
 
         //Edit Customer is in EditCustomerDetails.xaml.cs
-        public void UpdateCustomerDetails( string idInput, string inputName, string inputSurename, string DOB, string streetInput, string cityInput, string provinceInput, string countryInput, string postCodeInput, string mobilNumInput, string homeNumInput, string emaillInput, string commentsInput)
+        public void UpdateCustomerDetails(string idInput, string inputName, string inputSurename, string DOB, string streetInput, string cityInput, string provinceInput, string countryInput, string postCodeInput, string mobilNumInput, string homeNumInput, string emaillInput, string commentsInput)
         {
             //Keep count for Sychronization
             DAOCount++;
-            FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
-            firebaseDAO.UpdateCountRecordFB(FBCount);
-
             sqlite.UpdateCustomer(idInput, inputName, inputSurename, DOB, streetInput, cityInput, provinceInput, countryInput, postCodeInput, mobilNumInput, homeNumInput, emaillInput, commentsInput);
 
-            firebaseDAO.UpdateCustomer(idInput,inputName,inputSurename,DOB,streetInput,cityInput,provinceInput,countryInput,postCodeInput,mobilNumInput,homeNumInput,emaillInput,commentsInput);
-
-
+            //firease
+            if (!IsWorkOffline)
+            {
+                FBCount++;
+                firebaseDAO.UpdateCountRecordFB(FBCount);
+                firebaseDAO.UpdateCustomer(idInput, inputName, inputSurename, DOB, streetInput, cityInput, provinceInput, countryInput, postCodeInput, mobilNumInput, homeNumInput, emaillInput, commentsInput);
+            }
         }
 
         //Update Treatment Plan(UpdateTreatmentPlanState) table is in TreatmentPlanViewModel
@@ -91,13 +108,16 @@ namespace DataAccessLibrary
         {
             //Keep count for Sychronization
             DAOCount++;
-            FBCount++;
             sqlite.UpdateCountRecordSQlite(DAOCount);
-            firebaseDAO.UpdateCountRecordFB(FBCount);
-
             sqlite.UpdateTreatmentPlanState(state, PlanID);
 
-            firebaseDAO.UpdateTreatmentPlanState(state, PlanID);
+            //firease
+            if (!IsWorkOffline)
+            {
+                FBCount++;
+                firebaseDAO.UpdateCountRecordFB(FBCount);
+                firebaseDAO.UpdateTreatmentPlanState(state, PlanID);
+            }
         }
 
 
@@ -108,14 +128,20 @@ namespace DataAccessLibrary
         {
             //Keep count for Sychronization
             DAOCount++;
-            FBCount++;
+
             sqlite.UpdateCountRecordSQlite(DAOCount);
-            firebaseDAO.UpdateCountRecordFB(FBCount);
+
 
             sqlite.UpdateTreatmentOnPlan(top);
 
-            firebaseDAO.UpdateTreatmentOnPlan(top);
 
+            //firease
+            if (!IsWorkOffline)
+            {
+                FBCount++;
+                firebaseDAO.UpdateCountRecordFB(FBCount);
+                firebaseDAO.UpdateTreatmentOnPlan(top);
+            }
         }
 
         //Add new Payment(AddNewpayment) is in NewPaymentView
@@ -123,33 +149,50 @@ namespace DataAccessLibrary
         {
             //Keep count for Sychronization
             DAOCount++;
-            FBCount++;
-            sqlite.UpdateCountRecordSQlite(DAOCount);
-            firebaseDAO.UpdateCountRecordFB(FBCount);
 
-            long paymentId=sqlite.AddNewpayment(treatmentPlanID, customerID, amount, treatmentCompleteDate);
-            int paymentID = (int)paymentId;
-            firebaseDAO.AddNewpayment(paymentID,treatmentPlanID, customerID, amount, treatmentCompleteDate);
+            sqlite.UpdateCountRecordSQlite(DAOCount);
+
+            long paymentId = sqlite.AddNewpayment(treatmentPlanID, customerID, amount, treatmentCompleteDate);
+
+
+
+            //firease
+            if (!IsWorkOffline)
+            {
+                FBCount++;
+                firebaseDAO.UpdateCountRecordFB(FBCount);
+                int paymentID = (int)paymentId;
+                firebaseDAO.AddNewpayment(paymentID, treatmentPlanID, customerID, amount, treatmentCompleteDate);
+
+            }
         }
 
         public long AddNewTreatmentPlan(string customerID, int state, string creationDate, string treatmentPlanCompleteDate)
         {
             //Keep count for Sychronization
             DAOCount++;
-            FBCount++;
+
             sqlite.UpdateCountRecordSQlite(DAOCount);
-            firebaseDAO.UpdateCountRecordFB(FBCount);
+
 
             // add to sql
             int id = (int)sqlite.AddNewTreatmentPlan(customerID, state, creationDate, treatmentPlanCompleteDate);
 
-            //add to firebase
-            firebaseDAO.AddNewTreatmentPlan(id, customerID, state, creationDate, treatmentPlanCompleteDate);
-                            
+
+
+            //firease
+            if (!IsWorkOffline)
+            {
+                FBCount++;
+                firebaseDAO.UpdateCountRecordFB(FBCount);
+                //add to firebase
+                firebaseDAO.AddNewTreatmentPlan(id, customerID, state, creationDate, treatmentPlanCompleteDate);
+            }
+
             return id;
         }
 
-        public  void AddNewTreatmentPlanTreatments(TreatmentOnPlan t)
+        public void AddNewTreatmentPlanTreatments(TreatmentOnPlan t)
         {
             //Keep count for Sychronization
             DAOCount++;
@@ -158,13 +201,13 @@ namespace DataAccessLibrary
             firebaseDAO.UpdateCountRecordFB(FBCount);
 
             int id = (int)sqlite.AddNewTreatmentPlanTreatments(t);
- 
+
             firebaseDAO.AddNewTreatmentPlanTreatments(t, id);
         }
 
         public long AddNewAppointment(Appointment appointment)
         {
-           return  sqlite.AddAppointment(appointment);
+            return sqlite.AddAppointment(appointment);
         }
     }
 }

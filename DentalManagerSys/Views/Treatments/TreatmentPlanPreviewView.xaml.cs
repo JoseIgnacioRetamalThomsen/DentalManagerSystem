@@ -119,8 +119,8 @@ namespace DentalManagerSys.Views
                 await noPrintingDialog.ShowAsync();
             }
 
-            Frame.Navigate(typeof(ViewCustomerDetails), tp.customer.iD,
-                  new DrillInNavigationTransitionInfo());
+            //Frame.Navigate(typeof(ViewCustomerDetails), tp.customer.iD,
+            //      new DrillInNavigationTransitionInfo());
         }
 
         private async void Email_Click(object sender, RoutedEventArgs e)

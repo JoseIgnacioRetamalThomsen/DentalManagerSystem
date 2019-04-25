@@ -34,12 +34,12 @@
                 Style="{StaticResource SubheaderTextBlockStyle}"/>
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
-                <ToggleSwitch x:Name="WorkOfflineTS" Header="Work OffLine" />
-                <TextBlock Text="Appointmets are not availabel offline" VerticalAlignment="Center" Margin="5"/>
+                <ToggleSwitch x:Name="BackupTS" Header="Backup"/>
+                <TextBlock Text="If you turn on backup you must restart the app" VerticalAlignment="Center" Margin="5"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
-                <ToggleSwitch x:Name="RequestLoginTS" Header="Login Validation"/>
+                <ToggleSwitch x:Name="RequestLoginTS" Header="Request login"/>
                 <TextBlock Text="You can use this for work where there is no Internet" VerticalAlignment="Center" Margin="5"/>
             </StackPanel>
 
@@ -49,14 +49,14 @@
             <TextBlock Text="@GMIT 2019 Group Project" Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0"/>
             <TextBlock Text="© Dental Manager System" Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0"/>
             <TextBlock  Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0">
-                <Hyperlink NavigateUri="http://www.contoso.com">Mark Ndipenoch</Hyperlink>
+                <Hyperlink NavigateUri="https://github.com/ndipenoch">Mark Ndipenoch</Hyperlink>
             </TextBlock>
             <TextBlock  Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0">
-                <Hyperlink NavigateUri="http://www.contoso.com">Jose Retamal</Hyperlink>
+                <Hyperlink NavigateUri="https://github.com/JoseIgnacioRetamalThomsen">Jose Retamal</Hyperlink>
             </TextBlock>
 
 
-            <Button Content="Give FeedBack" Margin="0,20,0,0"/>
+            <Button Content="Give FeedBack" Click="FeedBackButton_Click" Margin="0,20,0,0"/>
 
         </StackPanel>
 

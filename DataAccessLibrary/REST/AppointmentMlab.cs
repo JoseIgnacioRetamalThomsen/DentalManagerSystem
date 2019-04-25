@@ -82,8 +82,8 @@ namespace DataAccessLibrary.REST
 
         public static async Task<List<AppointmentM>> GetAppointmentsWeek(DateTime startingDay,string email)
         {
-            Debug.WriteLine("response");
-            List<AppointmentM> aps= new List<AppointmentM>();//= new List<AppointmentM>();
+           
+            List<AppointmentM> aps= new List<AppointmentM>();
             DateTime endDate = startingDay.AddDays(7);
 
             DateRange dr = new DateRange(startingDay, endDate,email);
@@ -100,8 +100,7 @@ namespace DataAccessLibrary.REST
 
                 var res = await client.PostAsync(URL, content);
 
-                Debug.WriteLine("response");
-                Debug.WriteLine(res.Content);
+               
                 if (res.IsSuccessStatusCode)
                 {
 
