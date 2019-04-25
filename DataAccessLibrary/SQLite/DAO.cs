@@ -964,26 +964,30 @@ namespace DataAccessLibrary
         {
 
             decimal result;
+
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
-                db.Open();
+                
+                    db.Open();
 
-                SqliteCommand insertCommand = new SqliteCommand();
-                insertCommand.Connection = db;
+                    SqliteCommand insertCommand = new SqliteCommand();
+                    insertCommand.Connection = db;
+                    
+                    // Use parameterized query
+                    insertCommand.CommandText = "select sum(amount) from payments WHERE CAST(strftime('%d',treatmentCompleteDate) as INTEGER)= @Day";
+                    insertCommand.Parameters.AddWithValue("@Day", date.Day);
+                    
+                    SqliteDataReader query = insertCommand.ExecuteReader();
 
-                // Use parameterized query
-                insertCommand.CommandText = "select sum(amount) from payments WHERE CAST(strftime('%d',treatmentCompleteDate) as INTEGER)= @Day";
-                insertCommand.Parameters.AddWithValue("@Day", date.Day);
-
-                SqliteDataReader query = insertCommand.ExecuteReader();
-
-                query.Read();
-                result = query.GetDecimal(0);
+                    query.Read();
+                    result = query.GetDecimal(0);
+               
 
                 db.Close();
             }
             return result;
+
         }
 
         /// <summary>
