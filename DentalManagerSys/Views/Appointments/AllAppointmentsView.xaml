@@ -26,7 +26,7 @@
                         Icon="Delete"
                         Tag="DeleteAppointment"
                         x:Uid="/Strings/DeleteAppointmentButton"
-                        IsEnabled="True"
+                        IsEnabled="False"
                         Click="DeleteAppointment_Click"/>
                     <AppBarSeparator />
 

@@ -54,6 +54,8 @@ namespace DentalManagerSys.Views.Appointments
         Customer selectedCustomerApp;
         private async void Av_OnUsedSlotTapped(object sender, SlotWithAppointmetTappedEvent e)
         {
+            DeleteAppointment.IsEnabled = true;
+
             av.CleartHighLighted();
             av.HighLightSlot(e.X, e.Y);
 
@@ -136,7 +138,7 @@ namespace DentalManagerSys.Views.Appointments
             await AppointmentMlab.UpdateAppointment(selectedAppointment, App.ActualUser.Email);
             ReloadView();
 
-
+            DeleteAppointment.IsEnabled = false;
         }
     }
 }
