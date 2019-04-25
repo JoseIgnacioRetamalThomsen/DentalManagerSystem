@@ -157,7 +157,7 @@
     <Compile Include="Views\User\SyncAccountView.xaml.cs">
       <DependentUpon>SyncAccountView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TreatmentPlanPreviewView.xaml.cs">
+    <Compile Include="Views\TreatmentPlan\TreatmentPlanPreviewView.xaml.cs">
       <DependentUpon>TreatmentPlanPreviewView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TreatmentsView.xaml.cs">
@@ -172,10 +172,10 @@
     <Compile Include="Views\NewTreatmentView.xaml.cs">
       <DependentUpon>NewTreatmentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewTreatmentPlanView.xaml.cs">
+    <Compile Include="Views\TreatmentPlan\NewTreatmentPlanView.xaml.cs">
       <DependentUpon>NewTreatmentPlanView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TreatmentPlanView.xaml.cs">
+    <Compile Include="Views\TreatmentPlan\TreatmentPlanView.xaml.cs">
       <DependentUpon>TreatmentPlanView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AllCustomersView.xaml.cs">
@@ -275,7 +275,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TreatmentPlanPreviewView.xaml">
+    <Page Include="Views\TreatmentPlan\TreatmentPlanPreviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -295,11 +295,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewTreatmentPlanView.xaml">
+    <Page Include="Views\TreatmentPlan\NewTreatmentPlanView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TreatmentPlanView.xaml">
+    <Page Include="Views\TreatmentPlan\TreatmentPlanView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

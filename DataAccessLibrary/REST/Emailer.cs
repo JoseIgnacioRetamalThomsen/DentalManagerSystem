@@ -10,7 +10,7 @@ namespace DataAccessLibrary.REST
 {
     public class Emailer
     {
-        static string serverAddress = "localhost";//"168.63.65.229";
+        static string serverAddress = "168.63.65.229";
         static string serverPort = "8081";
 
         private static string EmailURL = "/api/email";

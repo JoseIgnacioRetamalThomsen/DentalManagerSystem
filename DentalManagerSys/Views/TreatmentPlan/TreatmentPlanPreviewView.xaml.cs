@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -117,15 +118,27 @@ namespace DentalManagerSys.Views
 
                 await noPrintingDialog.ShowAsync();
             }
+
+            Frame.Navigate(typeof(ViewCustomerDetails), tp.customer.iD,
+                  new DrillInNavigationTransitionInfo());
         }
 
         private async void Email_Click(object sender, RoutedEventArgs e)
         {
-            EmailData id = new EmailData("G00351330@gmit.ie",App.ActualUser.Email, TreatmentPlanEmailHeader, tp.GetStringEmail());
+            string customerEmail = tp.customer.email;
+            EmailData id = new EmailData(customerEmail, App.ActualUser.Email, TreatmentPlanEmailHeader, tp.GetStringEmail());
             
             await  Emailer.SendEmail(id);
+
+            Frame.Navigate(typeof(ViewCustomerDetails), tp.customer.iD,
+                  new DrillInNavigationTransitionInfo());
         }
 
+        /// <summary>
+        /// Prin and email treatment plan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void PrintAndEmail_Click(object sender, RoutedEventArgs e)
         {
             if (PrintManager.IsSupported())
@@ -161,9 +174,14 @@ namespace DentalManagerSys.Views
                 await noPrintingDialog.ShowAsync();
             }
 
-            EmailData id = new EmailData("G00351330@gmit.ie", App.ActualUser.Email, TreatmentPlanEmailHeader, tp.GetStringEmail());
+            //email
+            string customerEmail = tp.customer.email;
+            EmailData id = new EmailData(customerEmail, App.ActualUser.Email, TreatmentPlanEmailHeader, tp.GetStringEmail());
 
             await Emailer.SendEmail(id);
+
+            Frame.Navigate(typeof(ViewCustomerDetails), tp.customer.iD,
+                    new DrillInNavigationTransitionInfo());
         }
     }
 }

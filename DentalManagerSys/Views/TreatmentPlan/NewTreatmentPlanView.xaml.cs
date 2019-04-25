@@ -62,9 +62,9 @@ namespace DentalManagerSys.Views
         {
             treatments = new ObservableCollection<Treatment>(DAO.GetAllTreatment());
             TreatmentsCB.ItemsSource = treatments;
-            
+
             ad = DAO.GetAdminDetails(App.ActualUser.Email);
-            if(ad == null)
+            if (ad == null)
             {
                 ad = new AdminDetails();
                 ad.firstName = "";
@@ -94,7 +94,6 @@ namespace DentalManagerSys.Views
         }
 
         #endregion
-
         #region buttons and events handlers 
         /// <summary>
         /// There is a treatmet selected, when hapens the treatment price can be change or the 
@@ -167,7 +166,6 @@ namespace DentalManagerSys.Views
             EnableAddButton();
         }
         #endregion
-
         #region buttons
         /// <summary>
         /// Create the treatmwent plan an go back
@@ -263,7 +261,6 @@ namespace DentalManagerSys.Views
             Frame.GoBack();
         }
         #endregion
-
         #region util
         private void ReloadTretmentsListView()
         {
@@ -282,8 +279,6 @@ namespace DentalManagerSys.Views
         }
         #endregion
 
-
     }
-
 
 }

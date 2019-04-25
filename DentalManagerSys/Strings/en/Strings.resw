@@ -703,7 +703,7 @@
     <value>Dental Clinic</value>
   </data>
   <data name="teathNumberLabel.Text" xml:space="preserve">
-    <value>Code</value>
+    <value>Tooth</value>
   </data>
   <data name="titlePrintPreview.Text" xml:space="preserve">
     <value>Plan Budget</value>

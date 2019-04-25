@@ -39,9 +39,9 @@ namespace DentalManagerSys.Print
         private List<TreatmentOnPlan> treatments;
 
         private User user;
-        private Customer customer;
+        public Customer customer;
 
-        private StackPanel mainStackPanel;
+        
         #endregion
         #region constructors
         public TreatmentPlanPrint(User _user)
@@ -122,7 +122,7 @@ namespace DentalManagerSys.Print
         }
         #endregion
 
-        #region load dataa
+        #region load data
         private void InitTreatments()
         {
             treatments = new List<TreatmentOnPlan>();
@@ -211,7 +211,10 @@ namespace DentalManagerSys.Print
 
             sb.AppendFormat("{0} \n", title);
             sb.AppendFormat("{0} \n", subTitle);
-            sb.AppendFormat("{0} \n\n", doctorName);
+            sb.AppendFormat("{0} \n", doctorName);
+
+            sb.AppendFormat("{0}, {1}, {2}. #{3}  #{4}\n", adminDetails.street, adminDetails.city, adminDetails.province, adminDetails.mobileNum, adminDetails.homeNum);
+            sb.AppendFormat("{0}\n\n ", user.Email);
 
             sb.AppendFormat("Patient: {0} \n", patientName);
             sb.AppendFormat("Address: {0} \n", patientAddress);
@@ -231,10 +234,10 @@ namespace DentalManagerSys.Print
             sb.Append("------------------------------------------------------------------------------\n");
             sb.AppendFormat("\n{0,50} {1,-10}  \n",
                                      totalLabel, total);
-
+            sb.AppendFormat("\n\n____________\n{0}\n {1}\n{2} \nMobile #{3}\nFix #{4}", emailFotter,user.Name,user.Email,adminDetails.mobileNum,adminDetails.mobileNum);
             return sb.ToString();
         }
-
+        string emailFotter = "Thanks, please contact me for any enqueries.";
         //row 5
         private void SetTreatmentNum()
         {
@@ -354,18 +357,7 @@ namespace DentalManagerSys.Print
             Grid.SetColumn(label3, 2);
             grid.Children.Add(label3);
 
-
-
-
-            /*
-            RowDefinition r2 = new RowDefinition();
-            RowDefinition r3 = new RowDefinition();
-
-
-            grid.RowDefinitions.Add(r1);
-            grid.RowDefinitions.Add(r2);
-            grid.RowDefinitions.Add(r3);*/
-            //add indivudual treatment
+                                         
             int rowCount = 2;
             decimal total = 0;
             foreach (TreatmentOnPlan t in treatments)
@@ -597,9 +589,7 @@ namespace DentalManagerSys.Print
             TitleAllSP.Children.Add(titleSP);
 
 
-            //ImageBrush BoardBackground = new ImageBrush() { ImageSource = new BitmapImage(new Uri(this.BaseUri, @"Assets\logo.png")) };
-
-
+        
             titleSP.Children.Add(new TextBlock()
             {
                 Text = title,
