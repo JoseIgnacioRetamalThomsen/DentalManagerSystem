@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LocalSettings\LocalSettings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -124,7 +125,7 @@
       <DependentUpon>ViewWeekAppointments.xaml</DependentUpon>
     </Compile>
     <Compile Include="Form\ApointmetsView.cs" />
-    <Compile Include="Views\IncomeView.xaml.cs">
+    <Compile Include="Views\Payments\IncomeView.xaml.cs">
       <DependentUpon>IncomeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\User\AccountManagementSyncOrNew.xaml.cs">
@@ -133,10 +134,10 @@
     <Compile Include="Views\User\AccountManagementView.xaml.cs">
       <DependentUpon>AccountManagementView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditCustomerDetails.xaml.cs">
+    <Compile Include="Views\Customers\EditCustomerDetails.xaml.cs">
       <DependentUpon>EditCustomerDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditTreatmentView.xaml.cs">
+    <Compile Include="Views\Treatments\EditTreatmentView.xaml.cs">
       <DependentUpon>EditTreatmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\User\LoginView.xaml.cs">
@@ -151,40 +152,40 @@
     <Compile Include="Views\User\ResetPasswordView.xaml.cs">
       <DependentUpon>ResetPasswordView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingsView.xaml.cs">
+    <Compile Include="Views\Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\User\SyncAccountView.xaml.cs">
       <DependentUpon>SyncAccountView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TreatmentPlan\TreatmentPlanPreviewView.xaml.cs">
+    <Compile Include="Views\Treatments\TreatmentPlanPreviewView.xaml.cs">
       <DependentUpon>TreatmentPlanPreviewView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TreatmentsView.xaml.cs">
+    <Compile Include="Views\Treatments\TreatmentsView.xaml.cs">
       <DependentUpon>TreatmentsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewCustomer.xaml.cs">
+    <Compile Include="Views\Customers\NewCustomer.xaml.cs">
       <DependentUpon>NewCustomer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewPaymentView.xaml.cs">
+    <Compile Include="Views\Payments\NewPaymentView.xaml.cs">
       <DependentUpon>NewPaymentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewTreatmentView.xaml.cs">
+    <Compile Include="Views\Treatments\NewTreatmentView.xaml.cs">
       <DependentUpon>NewTreatmentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TreatmentPlan\NewTreatmentPlanView.xaml.cs">
+    <Compile Include="Views\Treatments\NewTreatmentPlanView.xaml.cs">
       <DependentUpon>NewTreatmentPlanView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TreatmentPlan\TreatmentPlanView.xaml.cs">
+    <Compile Include="Views\Treatments\TreatmentPlanView.xaml.cs">
       <DependentUpon>TreatmentPlanView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AllCustomersView.xaml.cs">
+    <Compile Include="Views\Customers\AllCustomersView.xaml.cs">
       <DependentUpon>AllCustomersView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewCustomerDetails.xaml.cs">
+    <Compile Include="Views\Customers\ViewCustomerDetails.xaml.cs">
       <DependentUpon>ViewCustomerDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewPaymentDetails.xaml.cs">
+    <Compile Include="Views\Payments\ViewPaymentDetails.xaml.cs">
       <DependentUpon>ViewPaymentDetails.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -231,7 +232,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\IncomeView.xaml">
+    <Page Include="Views\Payments\IncomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,11 +244,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditCustomerDetails.xaml">
+    <Page Include="Views\Customers\EditCustomerDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditTreatmentView.xaml">
+    <Page Include="Views\Treatments\EditTreatmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -267,7 +268,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SettingsView.xaml">
+    <Page Include="Views\Settings\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -275,43 +276,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TreatmentPlan\TreatmentPlanPreviewView.xaml">
+    <Page Include="Views\Treatments\TreatmentPlanPreviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TreatmentsView.xaml">
+    <Page Include="Views\Treatments\TreatmentsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewCustomer.xaml">
+    <Page Include="Views\Customers\NewCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewPaymentView.xaml">
+    <Page Include="Views\Payments\NewPaymentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewTreatmentView.xaml">
+    <Page Include="Views\Treatments\NewTreatmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TreatmentPlan\NewTreatmentPlanView.xaml">
+    <Page Include="Views\Treatments\NewTreatmentPlanView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TreatmentPlan\TreatmentPlanView.xaml">
+    <Page Include="Views\Treatments\TreatmentPlanView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AllCustomersView.xaml">
+    <Page Include="Views\Customers\AllCustomersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ViewCustomerDetails.xaml">
+    <Page Include="Views\Customers\ViewCustomerDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ViewPaymentDetails.xaml">
+    <Page Include="Views\Payments\ViewPaymentDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

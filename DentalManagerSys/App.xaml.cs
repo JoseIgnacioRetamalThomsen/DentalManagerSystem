@@ -27,6 +27,24 @@ namespace DentalManagerSys
     sealed partial class App : Application
     {
 
+        /// <summary>
+        /// local settings
+        /// </summary>
+        private static LocalSettings appLocalSettings;
+
+        public static LocalSettings AppLocalSettings
+        {
+            get
+            {
+                if (appLocalSettings == null)
+                {
+                    appLocalSettings = new LocalSettings();
+                }
+                return appLocalSettings;
+            }
+        }
+
+
         public static DataAccessService Data = new DataAccessService();
 
        public static User ActualUser;
@@ -79,7 +97,13 @@ namespace DentalManagerSys
                     // configuring the new page by passing required information as a navigation
                     // parameter
                     //rootFrame.Navigate(typeof(SettingsView), e.Arguments);
-                    rootFrame.Navigate(typeof(LoginView), e.Arguments);
+                    if (App.AppLocalSettings.IsLoginRequerid)
+                    {
+                        rootFrame.Navigate(typeof(LoginView), e.Arguments);
+                    }else
+                    {
+                        rootFrame.Navigate(typeof(MainPage));
+                    }
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

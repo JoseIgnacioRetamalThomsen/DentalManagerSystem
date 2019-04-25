@@ -25,8 +25,8 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
-                <Button Content="+" />
-                <TextBlock Text="Change Password." VerticalAlignment="Center" Margin="5"/>
+                <Button Content="+" x:Name="ChangePasswordButton" Click="ChangePasswordButton_Click" />
+                <TextBlock  Text="Change Password." VerticalAlignment="Center" Margin="5"/>
             </StackPanel>
 
             <TextBlock
@@ -34,12 +34,12 @@
                 Style="{StaticResource SubheaderTextBlockStyle}"/>
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
-                <ToggleSwitch x:Name="WorkOfflineTS" Header="Work OffLine"/>
+                <ToggleSwitch x:Name="WorkOfflineTS" Header="Work OffLine" />
                 <TextBlock Text="Appointmets are not availabel offline" VerticalAlignment="Center" Margin="5"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
-                <ToggleSwitch x:Name="RequestLogin" Header="Login Validation"/>
+                <ToggleSwitch x:Name="RequestLoginTS" Header="Login Validation"/>
                 <TextBlock Text="You can use this for work where there is no Internet" VerticalAlignment="Center" Margin="5"/>
             </StackPanel>
 

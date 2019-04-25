@@ -27,6 +27,8 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class LoginView : Page
     {
+
+   
         string createAccount;
         string wrongPassword;
         public LoginView()
@@ -44,8 +46,7 @@ namespace DentalManagerSys.Views
 
             wrongPassword = resourceLoader.GetString("/Strings/wrongPassword/Text");
             createAccount = resourceLoader.GetString("/Strings/createAccount/Text");
-           // wrongPassword = "Wrong password";
-            //createAccount = "Please click on Account Management for create your account";
+          
         }
 
         
@@ -87,7 +88,7 @@ namespace DentalManagerSys.Views
                 var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
                 string message = resourceLoader.GetString("/Strings/InternetStatusFalse/Text");
                 InterneStatusText.Text = message;
-                //PassportSignInButton.IsEnabled = false;
+               
             }
         }
 
@@ -114,7 +115,7 @@ namespace DentalManagerSys.Views
             if (App.ActualUser == null)
             {
                 Frame.Navigate(typeof(AccountManagementSyncOrNew));
-               // Frame.Navigate(typeof(NewUserView));
+             
             }
             else
             {

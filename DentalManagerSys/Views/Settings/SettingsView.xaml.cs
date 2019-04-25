@@ -25,13 +25,26 @@ namespace DentalManagerSys.Views
         public SettingsView()
         {
             this.InitializeComponent();
-            
+
+            RequestLoginTS.IsOn = App.AppLocalSettings.IsLoginRequerid;
+            RequestLoginTS.Toggled += RequestLoginTS_Toggled;
+
         }
 
-                    
         private void AddminAddressButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AdminAddress));
+        }
+
+        private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ResetPasswordView));
+        }
+
+
+        private void RequestLoginTS_Toggled(object sender, RoutedEventArgs e)
+        {
+            App.AppLocalSettings.ChangeIsLoginRequerid();
         }
     }
 }
