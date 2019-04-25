@@ -963,7 +963,7 @@ namespace DataAccessLibrary
         public static decimal GetTotalDay(DateTime date)
         {
 
-            decimal result;
+            decimal result =0;
 
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
@@ -981,9 +981,15 @@ namespace DataAccessLibrary
                     SqliteDataReader query = insertCommand.ExecuteReader();
 
                     query.Read();
+                try
+                {
                     result = query.GetDecimal(0);
-               
-
+                }
+                catch
+                {
+                    Debug.WriteLine("The sum amount is zero!");
+                }
+  
                 db.Close();
             }
             return result;
@@ -998,7 +1004,7 @@ namespace DataAccessLibrary
         public static decimal GetTotalMonth(DateTime date)
         {
 
-            decimal result;
+            decimal result =0;
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -1015,7 +1021,14 @@ namespace DataAccessLibrary
                 SqliteDataReader query = insertCommand.ExecuteReader();
 
                 query.Read();
-                result = query.GetDecimal(0);
+                try
+                {
+                    result = query.GetDecimal(0);
+                }
+                catch
+                {
+                    Debug.WriteLine("The sum amount is zero!");
+                }
 
 
                 db.Close();
@@ -1033,7 +1046,7 @@ namespace DataAccessLibrary
         public static decimal GetTotalYear(DateTime date)
         {
 
-            decimal result;
+            decimal result =0;
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -1049,7 +1062,14 @@ namespace DataAccessLibrary
                 SqliteDataReader query = insertCommand.ExecuteReader();
 
                 query.Read();
-                result = query.GetDecimal(0);
+                try
+                {
+                    result = query.GetDecimal(0);
+                }
+                catch
+                {
+                    Debug.WriteLine("The sum amount is zero!");
+                }
 
                 db.Close();
             }
@@ -1063,7 +1083,7 @@ namespace DataAccessLibrary
         public static decimal GetTotalPayments()
         {
 
-            decimal result;
+            decimal result=0;
             using (SqliteConnection db =
                 new SqliteConnection("Filename=dentalManagerDB.db"))
             {
@@ -1078,7 +1098,14 @@ namespace DataAccessLibrary
                 SqliteDataReader query = insertCommand.ExecuteReader();
 
                 query.Read();
-                result = query.GetDecimal(0);
+                try
+                {
+                    result = query.GetDecimal(0);
+                }
+                catch
+                {
+                    Debug.WriteLine("The sum amount is zero!");
+                }
 
                 db.Close();
             }

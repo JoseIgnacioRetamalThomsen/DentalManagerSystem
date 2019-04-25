@@ -64,7 +64,6 @@
                x:Uid="/Strings/SelectedDatePeriod"
               SelectionChanged="DatePeriodDropDownList_SelectionChanged" >
                             <x:String>Today</x:String>
-                            <x:String>This Week</x:String>
                             <x:String>This Month</x:String>
                             <x:String>This Year</x:String>
                             <x:String>All</x:String>
