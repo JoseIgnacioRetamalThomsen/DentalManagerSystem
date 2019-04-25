@@ -654,6 +654,7 @@ namespace DataAccessLibrary
             String myUsername = userName;
             myUsername = myUsername.Replace(".", "-");
             String node = myUsername + "Payments" + "/";
+            string paymentDate = p.completedDate.ToString("yyyy-MM-dd HH:mm:ss");
 
             var paymentsData = new PaymentsData
             {
@@ -661,7 +662,7 @@ namespace DataAccessLibrary
                 treatmentPlanID = p.treatmentPlanID,
                 customerID = p.customerID,
                 amount = Convert.ToDecimal(p.amount),
-                treatmentCompleteDate = p.completedDate.ToString()
+                treatmentCompleteDate = paymentDate
             };
 
             await firebase.Child(node).PostAsync<PaymentsData>(paymentsData);

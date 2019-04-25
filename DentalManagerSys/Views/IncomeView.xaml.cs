@@ -55,15 +55,11 @@ namespace DentalManagerSys.Views
                result = DAO.GetTotalDay(DateTime.Now);
 
             }
-            else if(DatePeriodDropDownList.SelectedIndex == 1)
-            {
-                //result = DAO.GetTotalMonth(DateTime.Now);
-            }
-            else if (DatePeriodDropDownList.SelectedIndex == 2)
+            else if (DatePeriodDropDownList.SelectedIndex == 1)
             {
                 result = DAO.GetTotalMonth(DateTime.Now);
             }
-            else if (DatePeriodDropDownList.SelectedIndex == 3)
+            else if (DatePeriodDropDownList.SelectedIndex == 2)
             {
                 result = DAO.GetTotalMonth(DateTime.Now);
             }
