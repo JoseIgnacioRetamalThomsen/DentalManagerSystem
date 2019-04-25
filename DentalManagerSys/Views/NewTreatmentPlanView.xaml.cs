@@ -62,7 +62,14 @@ namespace DentalManagerSys.Views
         {
             treatments = new ObservableCollection<Treatment>(DAO.GetAllTreatment());
             TreatmentsCB.ItemsSource = treatments;
+            
             ad = DAO.GetAdminDetails(App.ActualUser.Email);
+            if(ad == null)
+            {
+                ad = new AdminDetails();
+                ad.firstName = "";
+                ad.surname = "";
+            }
             Debug.WriteLine(ad.city);
         }
 

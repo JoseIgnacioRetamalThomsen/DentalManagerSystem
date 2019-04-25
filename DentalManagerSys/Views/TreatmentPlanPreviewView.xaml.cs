@@ -125,5 +125,45 @@ namespace DentalManagerSys.Views
             
             await  Emailer.SendEmail(id);
         }
+
+        private async void PrintAndEmail_Click(object sender, RoutedEventArgs e)
+        {
+            if (PrintManager.IsSupported())
+            {
+                try
+                {
+                    // Show print UI
+                    await PrintManager.ShowPrintUIAsync();
+
+                }
+                catch
+                {
+                    // Printing cannot proceed at this time
+                    ContentDialog noPrintingDialog = new ContentDialog()
+                    {
+                        Title = npTittle,
+                        Content = npContent,
+                        PrimaryButtonText = npOKButton
+                    };
+                    await noPrintingDialog.ShowAsync();
+                }
+            }
+            else
+            {
+                // Printing is not supported on this device
+                ContentDialog noPrintingDialog = new ContentDialog()
+                {
+                    Title = nsTitle,
+                    Content = nsContent,
+                    PrimaryButtonText = npOKButton
+                };
+
+                await noPrintingDialog.ShowAsync();
+            }
+
+            EmailData id = new EmailData("G00351330@gmit.ie", App.ActualUser.Email, TreatmentPlanEmailHeader, tp.GetStringEmail());
+
+            await Emailer.SendEmail(id);
+        }
     }
 }

@@ -726,4 +726,22 @@
   <data name="SelectedDatePeriod.PlaceholderText" xml:space="preserve">
     <value>Select Period</value>
   </data>
+  <data name="DoneButton.Label" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="DoneButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Back with not printing or send by email this treatment plan</value>
+  </data>
+  <data name="EmailPlanButton.Label" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailPlanButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Email this treatment plan </value>
+  </data>
+  <data name="PrintAndEmailButton.Label" xml:space="preserve">
+    <value>Print &amp; Email</value>
+  </data>
+  <data name="PrintAndEmailButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Print and Email this Tretment Plan</value>
+  </data>
 </root>

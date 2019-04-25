@@ -30,5 +30,9 @@ namespace Models
             this.homeNum = homeNum;
             this.email = email;
         }
+
+        public AdminDetails()
+        {
+        }
     }
 }
