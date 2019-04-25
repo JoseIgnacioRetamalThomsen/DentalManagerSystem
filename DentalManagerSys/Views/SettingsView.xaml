@@ -11,14 +11,7 @@
     <Grid>
 
         <StackPanel>
-            <TextBlock 
-                x:Name="SettginsAddUserAddress" 
-                x:Uid="/Strings/AdminAddressButton"
-                Foreground="DodgerBlue"
-                TextAlignment="Center" 
-                VerticalAlignment="Center"
-                FontSize="16"
-                PointerPressed="SettginsAddUserAddress_PointerPressed"/>
+            
             <TextBlock
                 Text="Settings"
                  Style="{StaticResource BaseTextBlockStyle}"/>
@@ -27,7 +20,7 @@
                 Style="{StaticResource SubheaderTextBlockStyle}"/>
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
-                <Button Content="+" />
+                <Button x:Name="AddminAddressButton" Content="+" Click="AddminAddressButton_Click" />
                 <TextBlock x:Uid="/Strings/AdminAddressButton" VerticalAlignment="Center" Margin="5"/>
             </StackPanel>
 
@@ -55,8 +48,13 @@
                 Style="{StaticResource SubheaderTextBlockStyle}"/>
             <TextBlock Text="@GMIT 2019 Group Project" Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0"/>
             <TextBlock Text="© Dental Manager System" Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0"/>
-            <TextBlock Text="Mark Ndipenoch" Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0"/>
-            <TextBlock Text="Jose Retamal" Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0"/>
+            <TextBlock  Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0">
+                <Hyperlink NavigateUri="http://www.contoso.com">Mark Ndipenoch</Hyperlink>
+            </TextBlock>
+            <TextBlock  Style="{StaticResource BodyTextBlockStyle}" Margin="0,2,0,0">
+                <Hyperlink NavigateUri="http://www.contoso.com">Jose Retamal</Hyperlink>
+            </TextBlock>
+
 
             <Button Content="Give FeedBack" Margin="0,20,0,0"/>
 

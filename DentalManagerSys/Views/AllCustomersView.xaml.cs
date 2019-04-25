@@ -1,4 +1,5 @@
 ﻿using DataAccessLibrary;
+using DentalManagerSys.Views.Appointments;
 using Models;
 using System;
 using System.Collections.ObjectModel;
@@ -11,44 +12,39 @@ using Windows.UI.Xaml.Media.Animation;
 namespace DentalManagerSys.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Main View, shows all customer(patients)
     /// </summary>
     public sealed partial class ViewAllCustomers : Page
     {
-
+        #region Properties
+        /// <summary>
+        /// List of customer to fill from database
+        /// </summary>
         ObservableCollection<Customer> customerList = null;
-
+        #endregion
+        #region Constructors
+        /// <summary>
+        /// Create view, populate customerList array
+        /// </summary>
         public ViewAllCustomers()
         {
             this.InitializeComponent();
+
             customerList = new ObservableCollection<Customer>(DAO.GetAllCustomer());
 
-            
-
         }
-
-
+        #endregion
+        #region Navbar buttons
         private void SelectCustomer_Button(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(ViewCustomerDetails), ((Customer)DataGrid.SelectedItem).iD,
                     new DrillInNavigationTransitionInfo());
         }
 
-        private void PatientsCommandBar_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void AddNewCustomerButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(NewCustomer));
-        }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ViewCustomerButton.IsEnabled = true;
-            NewPaymentButton.IsEnabled = true;
-            EditBarButton.IsEnabled = true;
         }
 
         private void EditCustomer_Click(object sender, RoutedEventArgs e)
@@ -57,16 +53,36 @@ namespace DentalManagerSys.Views
             Frame.Navigate(typeof(EditCustomerDetails), ((Customer)DataGrid.SelectedItem).iD,
                     new DrillInNavigationTransitionInfo());
         }
-
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(NewPaymentView), new NewPaymentData(((Customer)DataGrid.SelectedItem).iD, 0, false),
                  new DrillInNavigationTransitionInfo());
         }
 
+        private void NewAppointmentButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CreateAppointmentView), new NewPaymentData(((Customer)DataGrid.SelectedItem).iD, 0, false),
+               new DrillInNavigationTransitionInfo());
+        }
+        #endregion
+        #region ListView
+        /// <summary>
+        /// Make buttons for selected customer availble.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ViewCustomerButton.IsEnabled = true;
+            NewPaymentButton.IsEnabled = true;
+            EditBarButton.IsEnabled = true;
+            NewAppointmentButton.IsEnabled = true;
+        }
+        #endregion
+        #region Search Box
         private void SearchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-            if (args.ChosenSuggestion != null|| String.IsNullOrEmpty(sender.Text))
+            if (args.ChosenSuggestion != null || String.IsNullOrEmpty(sender.Text))
             {
                 Debug.WriteLine("eser");
                 customerList.Clear();
@@ -125,8 +141,7 @@ namespace DentalManagerSys.Views
             Frame.Navigate(typeof(ViewCustomerDetails), ((Customer)args.SelectedItem).iD,
                    new DrillInNavigationTransitionInfo());
         }
-
-
+        #endregion
     }
 }
 

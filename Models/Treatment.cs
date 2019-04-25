@@ -24,7 +24,7 @@ namespace Models
 
 
         public string Name { get; set; }
-        public decimal _Price;
+        private decimal _Price;
 
         
         public Treatment(int iD, string name, decimal price)

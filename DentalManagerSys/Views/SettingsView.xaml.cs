@@ -28,7 +28,8 @@ namespace DentalManagerSys.Views
             
         }
 
-        private void SettginsAddUserAddress_PointerPressed(object sender, PointerRoutedEventArgs e)
+                    
+        private void AddminAddressButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AdminAddress));
         }

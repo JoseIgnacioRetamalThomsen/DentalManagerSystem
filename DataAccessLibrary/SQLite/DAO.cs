@@ -291,7 +291,7 @@ namespace DataAccessLibrary
             }
         }
 
-        public AdminDetails GetAdminDetails(string email)
+        public static AdminDetails GetAdminDetails(string email)
         {
             AdminDetails adminDetails = null;
 
@@ -320,7 +320,7 @@ namespace DataAccessLibrary
                     query.GetString(8),
                     query.GetString(9)
                     );
-                }
+               }
 
                 db.Close();
             }
@@ -1374,7 +1374,7 @@ namespace DataAccessLibrary
                 // Use parameterized query to prevent SQL injection attacks
                 insertCommand.CommandText = "UPDATE treatment set treatmentName = @Name, price = @Price where treatmentID = @Id;";
                 insertCommand.Parameters.AddWithValue("@Name", treatment.Name);
-                insertCommand.Parameters.AddWithValue("@Price", treatment._Price);
+                insertCommand.Parameters.AddWithValue("@Price", treatment.Price);
                 insertCommand.Parameters.AddWithValue("@Id", treatment.ID);
 
                 insertCommand.ExecuteNonQuery();

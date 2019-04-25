@@ -22,26 +22,34 @@
                 RelativePanel.RightOf="PageTitle">
 
             <AppBarButton
-                    Tag="Back"
+                    Tag="DoneButton"
                     Icon="Back"
-                    x:Uid="/Strings/BackButton"
+                    x:Uid="/Strings/DoneButton"
                     Click="BackButton_Click"
                     IsEnabled="True"/>
 
-            <AppBarSeparator/>
+                <AppBarButton
+                    Tag="PrintAndEmailButton"
+                    x:Name="PrintAndEmail"
+                    Icon="MailReplyAll"
+                    x:Uid="/Strings/PrintAndEmailButton"
+                    Click="PrintAndEmail_Click"/>
 
-            <AppBarButton
+
+                <AppBarButton
                     x:Name="Print"
                     Icon="Print"
                     x:Uid="/Strings/PrintButtonPreview"
                     Click="Print_Click"/>
+            
                 <AppBarButton
                     x:Name="Email"
                     Icon="Mail"
-                    x:Uid="/Strings/PrintButtonPreview"
+                    x:Uid="/Strings/EmailPlanButton"
                     Click="Email_Click"/>
-
-
+            
+            
+                <AppBarSeparator/>
             </CommandBar>
             <StackPanel 
                 x:Name="MainContainer"

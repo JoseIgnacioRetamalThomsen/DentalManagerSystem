@@ -22,9 +22,9 @@
             <CommandBar
                 x:Name="PatientsCommandBar"
                 Style="{StaticResource CommandBarStyle}"
-                Loaded="PatientsCommandBar_Loaded"
                 RelativePanel.RightOf="PageTitle"
                 RelativePanel.LeftOf="SearchBox">
+
 
                 <AppBarButton 
                     x:Name="ViewCustomerButton"
@@ -33,8 +33,6 @@
                     x:Uid="/Strings/SelectBarButton"
                     IsEnabled="False"/>
 
-                <AppBarSeparator />
-
                 <AppBarButton
                     x:Name="NewPaymentButton"
                     Icon="Add"
@@ -42,7 +40,13 @@
                     Click="AppBarButton_Click"
                     IsEnabled="False"/>
 
-                <AppBarSeparator />
+                <AppBarButton
+                    x:Name="NewAppointmentButton"
+                    Tag="NewAppointmentButton"
+                    Icon="Add"
+                    x:Uid="/Strings/NewAppointment"
+                    Click="NewAppointmentButton_Click"
+                    IsEnabled="False"/>
 
                 <AppBarButton
                      x:Name="EditBarButton"
@@ -88,7 +92,7 @@
                     IsReadOnly="True"
                     SelectionChanged="DataGrid_SelectionChanged"
                    >
-                    
+
                     <toolkit:DataGrid.Columns>
                         <toolkit:DataGridTextColumn
                             Tag="FirstName"
@@ -99,17 +103,17 @@
                             Tag="Surname"
                             Binding="{Binding surname}"
                             x:Uid="/Strings/SurnameDataGrid"/>
-                        
+
                         <toolkit:DataGridTextColumn
                             Tag="ID"
                             Binding="{Binding iD}"
                             x:Uid="/Strings/IDDataGrid"/>
-                        
+
                         <toolkit:DataGridTextColumn
                             Tag="Email"
                             Binding="{Binding email}"
                             x:Uid="/Strings/EmailDataGrid"/>
-                        
+
                         <toolkit:DataGridTextColumn
                             Tag="MobileNum"
                             Binding="{Binding mobileNum}"
