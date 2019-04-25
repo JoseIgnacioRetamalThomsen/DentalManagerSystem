@@ -176,7 +176,7 @@ namespace DentalManagerSys.Views.Appointments
             await AppointmentMlab.AddNewAppointment(ap, App.ActualUser.Email);
 
             // AppointmentMlab.GetAppointmentsWeek(DateTime.Now, App.ActualUser.Email);
-            //Frame.GoBack();
+            Frame.GoBack();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
