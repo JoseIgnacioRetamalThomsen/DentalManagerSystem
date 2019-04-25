@@ -680,6 +680,7 @@ namespace DataAccessLibrary
             String myUsername = userName;
             myUsername = myUsername.Replace(".", "-");
             String node = myUsername + "Payments" + "/";
+            string paymentDate = p.completedDate.ToString("yyyy-MM-dd HH:mm:ss");
 
             var paymentsData = new PaymentsData
             {
@@ -687,7 +688,7 @@ namespace DataAccessLibrary
                 treatmentPlanID = p.treatmentPlanID,
                 customerID = p.customerID,
                 amount = Convert.ToDecimal(p.amount),
-                treatmentCompleteDate = p.completedDate.ToString()
+                treatmentCompleteDate = paymentDate
             };
             
             var results = await firebase.Child(node).OnceAsync<PaymentsData>();
@@ -867,7 +868,7 @@ namespace DataAccessLibrary
                 }
                 catch
                 {
-                    Debug.WriteLine("Nothing Found IN TreatmentPlan in Firebase");
+                    Debug.WriteLine("Nothing Found in TreatmentPlan in Firebase");
                 }
                     db.Close();
                 }
@@ -937,7 +938,7 @@ namespace DataAccessLibrary
 
                         SqliteCommand insertCommand = new SqliteCommand();
                         insertCommand.Connection = db;
-
+                         
                         // Use parameterized query
                         insertCommand.CommandText = "INSERT INTO payments (treatmentPlanID,customerID,amount,treatmentCompleteDate) VALUES (@TreatmentPlanID,@CustomerID,@Amount,@TreatmentCompleteDate);";
                         insertCommand.Parameters.AddWithValue("@TreatmentPlanID", details.Object.treatmentPlanID);

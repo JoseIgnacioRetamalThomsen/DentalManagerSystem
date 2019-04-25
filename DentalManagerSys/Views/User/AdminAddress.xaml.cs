@@ -101,7 +101,7 @@ namespace DentalManagerSys.Views
             ContentDialog noWifiDialog = new ContentDialog()
             {
                 Title = "SUCCESSFUL",
-                Content = "Your Details Was Successfully Updated!",
+                Content = "Your Details Were Successfully Updated!",
                 CloseButtonText = "Ok"
             };
 
