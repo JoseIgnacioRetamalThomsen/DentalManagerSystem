@@ -130,8 +130,8 @@ namespace DentalManagerSys.Views
             
             await  Emailer.SendEmail(id);
 
-            Frame.Navigate(typeof(ViewCustomerDetails), tp.customer.iD,
-                  new DrillInNavigationTransitionInfo());
+            //Frame.Navigate(typeof(ViewCustomerDetails), tp.customer.iD,
+            //      new DrillInNavigationTransitionInfo());
         }
 
         /// <summary>
@@ -180,8 +180,8 @@ namespace DentalManagerSys.Views
 
             await Emailer.SendEmail(id);
 
-            Frame.Navigate(typeof(ViewCustomerDetails), tp.customer.iD,
-                    new DrillInNavigationTransitionInfo());
+            //Frame.Navigate(typeof(ViewCustomerDetails), tp.customer.iD,
+            //        new DrillInNavigationTransitionInfo());
         }
     }
 }
