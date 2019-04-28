@@ -27,6 +27,8 @@ namespace DentalManagerSys.Views
     /// </summary>
     public sealed partial class LoginView : Page
     {
+
+   
         string createAccount;
         string wrongPassword;
         public LoginView()
@@ -44,20 +46,19 @@ namespace DentalManagerSys.Views
 
             wrongPassword = resourceLoader.GetString("/Strings/wrongPassword/Text");
             createAccount = resourceLoader.GetString("/Strings/createAccount/Text");
-           // wrongPassword = "Wrong password";
-            //createAccount = "Please click on Account Management for create your account";
+          
         }
 
-        User user;
+        
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // get user data from local database
-            user = DAO.GetUser();
-            if (user != null)
+            App.ActualUser = DAO.GetUser();
+            if (App.ActualUser != null)
             {
 
                 //set name on view
-                LoginUserName.Text = user.Name;
+                LoginUserName.Text = App.ActualUser.Name;
 
                 //enable login button
                 SignInButton.IsEnabled = true;
@@ -87,15 +88,15 @@ namespace DentalManagerSys.Views
                 var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
                 string message = resourceLoader.GetString("/Strings/InternetStatusFalse/Text");
                 InterneStatusText.Text = message;
-                //PassportSignInButton.IsEnabled = false;
+               
             }
         }
 
         private async void SignInButton_Click(object sender, RoutedEventArgs e)
         {
            
-            user.Password = passwordBox.Password;
-            Res res = await Auth.SignIn(user);
+            App.ActualUser.Password = passwordBox.Password;
+            Res res = await Auth.SignIn(App.ActualUser);
             Debug.WriteLine(res.Success);
             if (res.Success)
             {
@@ -111,10 +112,10 @@ namespace DentalManagerSys.Views
         private void AccountManagementButton_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
             ErrorMessage.Text = "";
-            if (user == null)
+            if (App.ActualUser == null)
             {
                 Frame.Navigate(typeof(AccountManagementSyncOrNew));
-               // Frame.Navigate(typeof(NewUserView));
+             
             }
             else
             {

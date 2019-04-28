@@ -1,0 +1,97 @@
+﻿<Page
+    x:Class="DentalManagerSys.Views.AdminAddress"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DentalManagerSys.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <RelativePanel>
+            <TextBlock  
+                x:Name="PageTitle" 
+                Style="{StaticResource PageTitleTextBlock}"/>
+
+            <CommandBar 
+                x:Name="NewUserAddressCommandBar"
+               Style="{StaticResource CommandBarStyle}"
+                RelativePanel.RightOf="PageTitle"
+                DefaultLabelPosition="Right">
+
+                <AppBarButton 
+                    x:Name="EditBarButton"
+                    Icon="Edit"
+                    Click="EditAddress_Click"
+                    x:Uid="/Strings/EditUserDetailsButton"
+                    IsEnabled="True"/>
+                
+                <AppBarSeparator />
+
+                <AppBarButton
+                    x:Name="SaveUserDetails"
+                    Icon="Save"
+                    x:Uid="/Strings/SaveUserDetailsButton"
+                    Click="SaveUserDetails_Click"
+                    IsEnabled="False"/>
+
+            </CommandBar>
+
+            <Grid 
+                x:Name="NewAddressContainerGrid"
+                Width="400" Height="440"
+                RelativePanel.Below="PageTitle">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="8*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Name="topTextBlock"  Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+
+                <Grid x:Name="NewCustomerDataGrid" Width="400" Height="370" Grid.Row="1" Grid.Column="0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBox x:Name="inputName" x:Uid="/Strings/FirstName"   Grid.Row="0" Grid.Column="0" Margin="2" IsReadOnly="True"  ></TextBox>
+                    <TextBox x:Name="inputSurename" x:Uid="/Strings/Surename"   Grid.Row="0" Grid.Column="1" Margin="2" IsReadOnly="True" ></TextBox>
+
+                    <TextBox x:Name="streetInput" x:Uid="/Strings/Street" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2" IsReadOnly="True" ></TextBox>
+
+                    <TextBox x:Name="cityInput" x:Uid="/Strings/City" Grid.Row="2" Grid.Column="0" Margin="2" IsReadOnly="True" ></TextBox>
+                    <TextBox x:Name="provinceInput" x:Uid="/Strings/Province" Grid.Row="2" Grid.Column="1" Margin="2" IsReadOnly="True" ></TextBox>
+
+                    <TextBox x:Name="countryInput" x:Uid="/Strings/Country" Grid.Row="3" Grid.Column="0" Margin="2" IsReadOnly="True" ></TextBox>
+                    <TextBox x:Name="postCodeInput" x:Uid="/Strings/Postcode" Grid.Row="3" Grid.Column="1" Margin="2" IsReadOnly="True" ></TextBox>
+
+                    <TextBox x:Name="mobilNumInput" x:Uid="/Strings/MobilNum" Grid.Row="4" Grid.Column="0" Margin="2" IsReadOnly="True" ></TextBox>
+                    <TextBox x:Name="homeNumInput" x:Uid="/Strings/HomeNum" Grid.Row="4" Grid.Column="1" Margin="2" IsReadOnly="True" ></TextBox>
+
+              </Grid>
+
+            </Grid>
+
+
+
+        </RelativePanel>
+    </Grid>
+
+</Page>

@@ -9,15 +9,22 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DentalManagerSys</RootNamespace>
     <AssemblyName>DentalManagerSys</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>en</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-    <PackageCertificateKeyFile>DentalManagerSys_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>DentalManagerSys_StoreKey.pfx</PackageCertificateKeyFile>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>529C5871BB9479A09B120918D1B47B5C437D4AAB</PackageCertificateThumbprint>
+    <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
+    <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -91,16 +98,24 @@
   <PropertyGroup>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
+  <PropertyGroup Label="MultilingualAppToolkit">
+    <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
+    <MultilingualFallbackLanguage>en</MultilingualFallbackLanguage>
+    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
+    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LocalSettings\LocalSettings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Print\PrintHelper.cs" />
     <Compile Include="Print\TreatmentPlanPrint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\CreateAppointmentViewModel.cs" />
     <Compile Include="ViewModel\CustomerDetailsViewModel.cs" />
     <Compile Include="ViewModel\EditTreatmentViewModel.cs" />
     <Compile Include="ViewModel\NewPaymentViewModel.cs" />
@@ -108,16 +123,37 @@
     <Compile Include="ViewModel\TreatmentPlanViewModel.cs" />
     <Compile Include="ViewModel\TreatmentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="Views\Settings\FeedbackFormView.xaml.cs">
+      <DependentUpon>FeedbackFormView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\AdminAddress.xaml.cs">
+      <DependentUpon>AdminAddress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Appointments\AllAppointmentsView.xaml.cs">
+      <DependentUpon>AllAppointmentsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Appointments\CreateAppointmentView.xaml.cs">
+      <DependentUpon>CreateAppointmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Appointments\EmptySlotTapped.cs" />
+    <Compile Include="Views\Appointments\SlotWithAppointmetTappedEvent.cs" />
+    <Compile Include="Views\Appointments\ViewWeekAppointments.xaml.cs">
+      <DependentUpon>ViewWeekAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Form\ApointmetsView.cs" />
+    <Compile Include="Views\Payments\IncomeView.xaml.cs">
+      <DependentUpon>IncomeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\User\AccountManagementSyncOrNew.xaml.cs">
       <DependentUpon>AccountManagementSyncOrNew.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\User\AccountManagementView.xaml.cs">
       <DependentUpon>AccountManagementView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditCustomerDetails.xaml.cs">
+    <Compile Include="Views\Customers\EditCustomerDetails.xaml.cs">
       <DependentUpon>EditCustomerDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditTreatmentView.xaml.cs">
+    <Compile Include="Views\Treatments\EditTreatmentView.xaml.cs">
       <DependentUpon>EditTreatmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\User\LoginView.xaml.cs">
@@ -132,40 +168,40 @@
     <Compile Include="Views\User\ResetPasswordView.xaml.cs">
       <DependentUpon>ResetPasswordView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingsView.xaml.cs">
+    <Compile Include="Views\Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\User\SyncAccountView.xaml.cs">
       <DependentUpon>SyncAccountView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TreatmentPlanPreviewView.xaml.cs">
+    <Compile Include="Views\Treatments\TreatmentPlanPreviewView.xaml.cs">
       <DependentUpon>TreatmentPlanPreviewView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TreatmentsView.xaml.cs">
+    <Compile Include="Views\Treatments\TreatmentsView.xaml.cs">
       <DependentUpon>TreatmentsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewCustomer.xaml.cs">
+    <Compile Include="Views\Customers\NewCustomer.xaml.cs">
       <DependentUpon>NewCustomer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewPaymentView.xaml.cs">
+    <Compile Include="Views\Payments\NewPaymentView.xaml.cs">
       <DependentUpon>NewPaymentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewTreatmentView.xaml.cs">
+    <Compile Include="Views\Treatments\NewTreatmentView.xaml.cs">
       <DependentUpon>NewTreatmentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewTreatmentPlanView.xaml.cs">
+    <Compile Include="Views\Treatments\NewTreatmentPlanView.xaml.cs">
       <DependentUpon>NewTreatmentPlanView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TreatmentPlanView.xaml.cs">
+    <Compile Include="Views\Treatments\TreatmentPlanView.xaml.cs">
       <DependentUpon>TreatmentPlanView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AllCustomersView.xaml.cs">
+    <Compile Include="Views\Customers\AllCustomersView.xaml.cs">
       <DependentUpon>AllCustomersView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewCustomerDetails.xaml.cs">
+    <Compile Include="Views\Customers\ViewCustomerDetails.xaml.cs">
       <DependentUpon>ViewCustomerDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewPaymentDetails.xaml.cs">
+    <Compile Include="Views\Payments\ViewPaymentDetails.xaml.cs">
       <DependentUpon>ViewPaymentDetails.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -173,17 +209,61 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="DentalManagerSys_StoreKey.pfx" />
     <None Include="DentalManagerSys_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\es\Strings.resw" />
+    <PRIResource Include="Strings\fr\Strings.resw" />
     <PRIResource Include="Strings\en\Strings.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\logo.png" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +275,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Settings\FeedbackFormView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\AdminAddress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Appointments\AllAppointmentsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Appointments\CreateAppointmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Appointments\ViewWeekAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Payments\IncomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\User\AccountManagementSyncOrNew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -203,11 +307,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditCustomerDetails.xaml">
+    <Page Include="Views\Customers\EditCustomerDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditTreatmentView.xaml">
+    <Page Include="Views\Treatments\EditTreatmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -227,7 +331,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SettingsView.xaml">
+    <Page Include="Views\Settings\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -235,43 +339,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TreatmentPlanPreviewView.xaml">
+    <Page Include="Views\Treatments\TreatmentPlanPreviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TreatmentsView.xaml">
+    <Page Include="Views\Treatments\TreatmentsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewCustomer.xaml">
+    <Page Include="Views\Customers\NewCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewPaymentView.xaml">
+    <Page Include="Views\Payments\NewPaymentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewTreatmentView.xaml">
+    <Page Include="Views\Treatments\NewTreatmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewTreatmentPlanView.xaml">
+    <Page Include="Views\Treatments\NewTreatmentPlanView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TreatmentPlanView.xaml">
+    <Page Include="Views\Treatments\TreatmentPlanView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AllCustomersView.xaml">
+    <Page Include="Views\Customers\AllCustomersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ViewCustomerDetails.xaml">
+    <Page Include="Views\Customers\ViewCustomerDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ViewPaymentDetails.xaml">
+    <Page Include="Views\Payments\ViewPaymentDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -303,11 +407,18 @@
       <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <XliffResource Include="MultilingualResources\DentalManagerSys.es.xlf" />
+    <XliffResource Include="MultilingualResources\DentalManagerSys.fr.xlf" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.PriResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.PriResources.targets')" />
+  <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.PriResources.targets')" Label="MultilingualAppToolkit">
+    <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,5 +1,7 @@
 ﻿using DataAccessLibrary;
 using DentalManagerSys.Views;
+using DentalManagerSys.Views.Appointments;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,11 +27,47 @@ namespace DentalManagerSys
     sealed partial class App : Application
     {
 
-        public static DataAccessService Data = new DataAccessService();
+        /// <summary>
+        /// local settings
+        /// </summary>
+        private static LocalSettings appLocalSettings;
 
-        public static string  userName;
+        public static LocalSettings AppLocalSettings
+        {
+            get
+            {
+                if (appLocalSettings == null)
+                {
+                    appLocalSettings = new LocalSettings();
+                }
+                return appLocalSettings;
+            }
+        }
 
 
+       // public static DataAccessService Data = new DataAccessService();
+
+        /// <summary>
+        /// local settings
+        /// </summary>
+        private static DataAccessService data;
+
+        public static DataAccessService Data
+        {
+            get
+            {
+                if (data == null)
+                {
+                    data = new DataAccessService(App.AppLocalSettings.IsBackup);
+                }
+                return data;
+            }
+        }
+
+        public static User ActualUser;
+
+        public static string userName;
+        public static bool NewUser=false;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -39,6 +77,8 @@ namespace DentalManagerSys
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+           
         }
 
         /// <summary>
@@ -75,8 +115,14 @@ namespace DentalManagerSys
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                   rootFrame.Navigate(typeof(LoginView), e.Arguments);
-                 // rootFrame.Navigate(typeof(NewTreatmentPlanView), e.Arguments);
+                    //rootFrame.Navigate(typeof(SettingsView), e.Arguments);
+                    if (App.AppLocalSettings.IsLoginRequerid)
+                    {
+                        rootFrame.Navigate(typeof(LoginView), e.Arguments);
+                    }else
+                    {
+                        rootFrame.Navigate(typeof(MainPage));
+                    }
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

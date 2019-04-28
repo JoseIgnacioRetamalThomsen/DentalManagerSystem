@@ -1,5 +1,6 @@
 ﻿using DataAccessLibrary;
 using DentalManagerSys.Views;
+using DentalManagerSys.Views.Appointments;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -30,14 +31,83 @@ namespace DentalManagerSys
         {
             this.InitializeComponent();
 
+
+         //   Windows.Storage.ApplicationDataContainer localSettings =
+         //Windows.Storage.ApplicationData.Current.LocalSettings;
+
+
+         //   localSettings.Values["isBackup"] = "True";
+
+            App.ActualUser = DAO.GetUser();
+
+            int firebaseCnt;
+            int sqliteCnt;
+
             DAO.InitializeDatabase();
-            App.userName= DAO.GetUserID();
             FireBaseDAO f = new FireBaseDAO();
-            f.ReadDataFromFirebase();
-            
+            DAO d = new DAO();
+            App.userName = DAO.GetUserID();
+            //Add create a new user count table if it is a new user.
+
+            if (App.NewUser == true)
+            {
+                d.NewUserCount(App.userName, 0);
+                f.CreateCountRecordFB1(0);
+                DataAccessService.FBCount = 0;
+                DataAccessService.DAOCount = 0;
+            }
+            else
+            {
+                 if (App.AppLocalSettings.IsBackup)
+                 {
+                    sqliteCnt = DAO.GetUserCountSqlite(App.userName);
+                    //Because it is an async method so, must be called on an await, that is why is done like so...
+                    readfromFb();
+                    async void readfromFb()
+                    {
+                        firebaseCnt = await f.GetUserCountFb(App.userName);
+
+                        if (firebaseCnt > sqliteCnt)
+                        {
+                            f.ReadDataFromFirebase();
+                            //Inizialise the count records.
+                            GetCountRecordFb();
+                            async void GetCountRecordFb()
+                            {
+                                DataAccessService.FBCount = await f.GetUserCountFb(App.userName);
+                                DataAccessService.DAOCount = DataAccessService.FBCount;
+                            }
+                        }
+                        else if (sqliteCnt > firebaseCnt)
+                        {
+                            f.ReadDataFromSQLite();
+                            //Inizialise the count records.
+                            DataAccessService.DAOCount = DAO.GetUserCountSqlite(App.userName);
+                            DataAccessService.FBCount = DataAccessService.DAOCount;
+                        }
+                        else
+                        {
+                            //Inizialise the count records.
+                            GetCountRecordFb();
+                            async void GetCountRecordFb()
+                            {
+                                DataAccessService.FBCount = await f.GetUserCountFb(App.userName);
+                            }
+                            DataAccessService.DAOCount = DAO.GetUserCountSqlite(App.userName);
+                        }
+
+                    }
+                }
+                else
+                {
+                    DataAccessService.DAOCount = DAO.GetUserCountSqlite(App.userName);
+                }
+            }
 
 
         }
+
+
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)
@@ -98,7 +168,7 @@ namespace DentalManagerSys
                 {
                    {typeof(NewPaymentView), "NewPaymentView"},
                     {typeof(NewCustomer), "newCustomer"}//,
-                  //  {typeof(GamesPage), "games"},
+                   //{typeof(AllAppointmetsView), "games"},
                   //  {typeof(MusicPage), "music"},
                    // {typeof(MyContentPage), "content"}
                 };
@@ -128,8 +198,14 @@ namespace DentalManagerSys
                 case "ManageTreaments":
                     ContentFrame.Navigate(typeof(ManageTreatmentsView));
                     break;
+                case "AppoitmentsView":
+                    ContentFrame.Navigate(typeof(AllAppointmentsView));
+                    break;
                 case "ViewAllTransactionsNV":
                     ContentFrame.Navigate(typeof(NewCustomer));
+                    break;
+                case "IncomeReport":
+                    ContentFrame.Navigate(typeof(IncomeView));
                     break;
                 case "content":
                     ContentFrame.Navigate(typeof(MainPage));

@@ -624,4 +624,124 @@
   <data name="ToothHeader.Text" xml:space="preserve">
     <value>Tooth</value>
   </data>
+  <data name="Appointments.Content" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="IncomeReport.Content" xml:space="preserve">
+    <value>Income Report</value>
+  </data>
+  <data name="FromDateTitle.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="IncomeReportTitle.Text" xml:space="preserve">
+    <value>Income Reports</value>
+  </data>
+  <data name="ToDateTitle.Text" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="SubmitIncome.Content" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="IncomeAmount.Text" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="AllAppointmetsTitle.Text" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="AppointmeDataLabelCreateAppointment.Text" xml:space="preserve">
+    <value>Appointment Date:</value>
+  </data>
+  <data name="CreateAppointmentButton.Label" xml:space="preserve">
+    <value>Create Appointment</value>
+  </data>
+  <data name="CreateAppointmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create a new appointmet with the selected date</value>
+  </data>
+  <data name="DeleteAppointmentButton.Label" xml:space="preserve">
+    <value>Cancel Appointment</value>
+  </data>
+  <data name="DeleteAppointmentButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Cancel selected appointment</value>
+  </data>
+  <data name="HelpLabelCreateAppointment.Text" xml:space="preserve">
+    <value>Click on a empty slot for select a date</value>
+  </data>
+  <data name="NewAppointment.Label" xml:space="preserve">
+    <value>New Appointment</value>
+  </data>
+  <data name="NewAppointment.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create a new appointment for this patient</value>
+  </data>
+  <data name="WeekLabelCreateAppointment.Text" xml:space="preserve">
+    <value>Week:</value>
+  </data>
+  <data name="AdminAddressButton.Text" xml:space="preserve">
+    <value>Administrator Address</value>
+  </data>
+  <data name="EditUserDetailsButton.Label" xml:space="preserve">
+    <value>EDIT</value>
+  </data>
+  <data name="EditUserDetailsButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Edit User Details</value>
+  </data>
+  <data name="SaveUserDetailsButton.Label" xml:space="preserve">
+    <value>SAVE</value>
+  </data>
+  <data name="SaveUserDetailsButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Save Details</value>
+  </data>
+  <data name="amountLabel.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="patienAddressLabelString.Text" xml:space="preserve">
+    <value>Address : </value>
+  </data>
+  <data name="patienNameLabelString.Text" xml:space="preserve">
+    <value>Patient :</value>
+  </data>
+  <data name="subTitlePlanPreview.Text" xml:space="preserve">
+    <value>Dental Clinic</value>
+  </data>
+  <data name="teathNumberLabel.Text" xml:space="preserve">
+    <value>Tooth</value>
+  </data>
+  <data name="titlePrintPreview.Text" xml:space="preserve">
+    <value>Plan Budget</value>
+  </data>
+  <data name="totalLabel.Text" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="treatmentLabel.Text" xml:space="preserve">
+    <value>Treatments</value>
+  </data>
+  <data name="TreatmentNumberLabelString.Text" xml:space="preserve">
+    <value>Treatment Num :</value>
+  </data>
+  <data name="TreatmentPlanEmailHeader.Text" xml:space="preserve">
+    <value>Your Treatement Plan Budget</value>
+  </data>
+  <data name="PeriodTitle.Text" xml:space="preserve">
+    <value>Periods</value>
+  </data>
+  <data name="SelectedDatePeriod.PlaceholderText" xml:space="preserve">
+    <value>Select Period</value>
+  </data>
+  <data name="DoneButton.Label" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="DoneButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Back with not printing or send by email this treatment plan</value>
+  </data>
+  <data name="EmailPlanButton.Label" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailPlanButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Email this treatment plan </value>
+  </data>
+  <data name="PrintAndEmailButton.Label" xml:space="preserve">
+    <value>Print &amp; Email</value>
+  </data>
+  <data name="PrintAndEmailButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Print and Email this Tretment Plan</value>
+  </data>
 </root>

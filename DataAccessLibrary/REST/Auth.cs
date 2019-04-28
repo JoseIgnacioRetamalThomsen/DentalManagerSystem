@@ -36,7 +36,7 @@ namespace DataAccessLibrary.REST
 
             string resBody = await res.Content.ReadAsStringAsync();
             Res response = JsonConvert.DeserializeObject<Res>(resBody);//JsonParse(resBody);
-            Debug.Write("res " + response.Success);
+
 
             return response;
         }

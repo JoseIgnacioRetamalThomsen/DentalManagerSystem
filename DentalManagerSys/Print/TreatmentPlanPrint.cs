@@ -1,16 +1,22 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace DentalManagerSys.Print
 {
     public class TreatmentPlanPrint : StackPanel
     {
+        #region properties
         private string title;
         private string subTitle;
         private string doctorName;
@@ -32,11 +38,26 @@ namespace DentalManagerSys.Print
 
         private List<TreatmentOnPlan> treatments;
 
+        private User user;
+        public Customer customer;
+
+
+        #endregion
         #region constructors
-        public TreatmentPlanPrint()
+        public TreatmentPlanPrint(User _user)
         {
             this.Width = 800;
-           // this.Height = 5000;
+            this.Margin = new Thickness(5);
+            //add border
+            Border border = new Border();
+            this.Children.Add(border);
+            this.BorderBrush = new SolidColorBrush(Colors.Black);
+            this.BorderThickness = new Thickness(5);
+
+
+
+            user = _user;
+            // this.Height = 5000;
             this.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
 
             InitStrings();
@@ -48,27 +69,60 @@ namespace DentalManagerSys.Print
             SetTreatmentNum();
             SetTreatments();
 
-
         }
-
-        public TreatmentPlanPrint(Customer c, List<TreatmentOnPlan> list)
+        Color baseColor = Colors.Blue;
+        private AdminDetails adminDetails;
+        public TreatmentPlanPrint(Customer c, List<TreatmentOnPlan> list, User u, AdminDetails ad)
         {
-            this.Width = 800;
-            // this.Height = 5000;
-            this.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
+            this.Width = 780;
+            this.Margin = new Thickness(5);
+            this.Padding = new Thickness(5);
 
-            InitStrings(c);
+            //add border
+            //Border border = new Border();
+            //this.Children.Add(border);
+            this.BorderBrush = new SolidColorBrush(baseColor);
+            this.BorderThickness = new Thickness(2);
+            adminDetails = ad;
+            this.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
+            customer = c;
+            user = u;
+
+            InitStrings(u, c);
             InitGrid();
             InitTreatments(list);
             SetTitle();
+            SetUserAddress();
             SetDate();
             SetPatientData();
-            SetTreatmentNum();
+            //SetTreatmentNum();
             SetTreatments();
+        }
+
+        private void SetUserAddress()
+        {
+            StackPanel AddressSP = new StackPanel()
+            {
+                Orientation = Orientation.Horizontal,
+                HorizontalAlignment = HorizontalAlignment.Center
+            };
+
+
+            string address = string.Format("{0}, {1}, {2}. #{3}  #{4}", adminDetails.street, adminDetails.city, adminDetails.province, adminDetails.mobileNum, adminDetails.homeNum);
+
+            TextBlock addressTB = new TextBlock()
+            {
+                Text = address,
+                FontSize = 24,
+                TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
+                Foreground = new SolidColorBrush(baseColor)
+            };
+            AddressSP.Children.Add(addressTB);
+            this.Children.Add(AddressSP);
         }
         #endregion
 
-        #region load dataa
+        #region load data
         private void InitTreatments()
         {
             treatments = new List<TreatmentOnPlan>();
@@ -82,27 +136,30 @@ namespace DentalManagerSys.Print
         private void InitTreatments(List<TreatmentOnPlan> list)
         {
             treatments = new List<TreatmentOnPlan>(list);
-           
+
 
         }
 
-
         private void InitStrings()
         {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
 
             //static
-            patienNameLabelString = "Name :";
-            patienAddressLabelString = "Address : ";
-            TreatmentNumberLabelString = "Treatment Num : ";
+            patienNameLabelString = resourceLoader.GetString("/Strings/patienNameLabelString/Text");
+            patienAddressLabelString = resourceLoader.GetString("/Strings/patienAddressLabelString/Text");
+            TreatmentNumberLabelString = resourceLoader.GetString("/Strings/TreatmentNumberLabelString/Text");
 
-            treatmentLabel = "Treatments";
-            teathNumberLabel = "Code";
-            amountLabel = "Price";
-            totalLabel = "Total";
+            treatmentLabel = resourceLoader.GetString("/Strings/treatmentLabel/Text");
+            teathNumberLabel = resourceLoader.GetString("/Strings/teathNumberLabel/Text");
+            amountLabel = resourceLoader.GetString("/Strings/amountLabel/Text");
+            totalLabel = resourceLoader.GetString("/Strings/totalLabel/Text");
+
+
+
+            title = resourceLoader.GetString("/Strings/titlePrintPreview/Text");
+            subTitle = resourceLoader.GetString("/Strings/subTitlePlanPreview/Text");
 
             //dinamic
-            title = "Plan Budget";
-            subTitle = "Dental Clinic";
             doctorName = "Dr. Manual Arraigado";
             date = "18/03/2019";
 
@@ -112,27 +169,31 @@ namespace DentalManagerSys.Print
 
 
         }
-        private void InitStrings(Customer c)
+        private void InitStrings(User u, Customer c)
         {
 
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings");
+
             //static
-            patienNameLabelString = "Name :";
-            patienAddressLabelString = "Address : ";
-            TreatmentNumberLabelString = "Treatment Num : ";
+            patienNameLabelString = resourceLoader.GetString("/Strings/patienNameLabelString/Text");
+            patienAddressLabelString = resourceLoader.GetString("/Strings/patienAddressLabelString/Text");
+            TreatmentNumberLabelString = resourceLoader.GetString("/Strings/TreatmentNumberLabelString/Text");
 
-            treatmentLabel = "Treatments";
-            teathNumberLabel = "Code";
-            amountLabel = "Price";
-            totalLabel = "Total";
+            treatmentLabel = resourceLoader.GetString("/Strings/treatmentLabel/Text");
+            teathNumberLabel = resourceLoader.GetString("/Strings/teathNumberLabel/Text");
+            amountLabel = resourceLoader.GetString("/Strings/amountLabel/Text");
+            totalLabel = resourceLoader.GetString("/Strings/totalLabel/Text");
 
-            //dinamic
-            title = "Plan Budget";
-            subTitle = "Dental Clinic";
-            doctorName = "Dr. Manual Arraigado";
-            date = "18/03/2019";
+            title = resourceLoader.GetString("/Strings/titlePrintPreview/Text");
+            subTitle = resourceLoader.GetString("/Strings/subTitlePlanPreview/Text");
+
+
+            //dynamic
+            doctorName = "Dr. " + u.Name;
+            date = DateTime.Now.ToString("dd/MM/yyyy");
 
             patientName = c.name + " " + c.surname;
-            patientAddress = c.street+", " + c.city + ", " + c.country +". " + c.postcode;
+            patientAddress = c.street + ", " + c.city + ", " + c.country + ". " + c.postcode;
             treatmentNumber = "1";
 
 
@@ -140,6 +201,43 @@ namespace DentalManagerSys.Print
 
         #endregion
 
+        /// <summary>
+        /// Create string of treatment budget plan, used for email
+        /// </summary>
+        /// <returns>the treatment plan on plane stirng</returns>
+        public string GetStringEmail()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendFormat("{0} \n", title);
+            sb.AppendFormat("{0} \n", subTitle);
+            sb.AppendFormat("{0} \n", doctorName);
+
+            sb.AppendFormat("{0}, {1}, {2}. #{3}  #{4}\n", adminDetails.street, adminDetails.city, adminDetails.province, adminDetails.mobileNum, adminDetails.homeNum);
+            sb.AppendFormat("{0}\n\n ", user.Email);
+
+            sb.AppendFormat("Patient: {0} \n", patientName);
+            sb.AppendFormat("Address: {0} \n", patientAddress);
+            sb.AppendFormat("Threatment num: {0} \n\n\n", treatmentNumber);
+
+            sb.AppendFormat("{0,-35} {1,-20} {2,-10} \n",
+                                        treatmentLabel, teathNumberLabel, amountLabel);
+
+            sb.Append("------------------------------------------------------------------------------\n");
+            decimal total = 0;
+            foreach (TreatmentOnPlan trm in treatments)
+            {
+                sb.AppendFormat("{0,-35} {1,-20} {2,-10} \n",
+                                        trm.Name, trm.Tooth, trm.Price);
+                total += trm.Price;
+            }
+            sb.Append("------------------------------------------------------------------------------\n");
+            sb.AppendFormat("\n{0,50} {1,-10}  \n",
+                                     totalLabel, total);
+            sb.AppendFormat("\n\n____________\n{0}\n {1}\n{2} \nMobile #{3}\nFix #{4}", emailFotter, user.Name, user.Email, adminDetails.mobileNum, adminDetails.mobileNum);
+            return sb.ToString();
+        }
+        string emailFotter = "Thanks, please contact me for any enqueries.";
         //row 5
         private void SetTreatmentNum()
         {
@@ -158,6 +256,7 @@ namespace DentalManagerSys.Print
                 FontSize = 24,
                 TextAlignment = Windows.UI.Xaml.TextAlignment.Right
             };
+
             tnSP.Children.Add(tn1);
             tnSP.Children.Add(tn2);
             Grid.SetColumn(tnSP, 0);
@@ -172,14 +271,16 @@ namespace DentalManagerSys.Print
                 Margin = new Windows.UI.Xaml.Thickness(0, 20, 0, 0),
                 //  BorderThickness = new Windows.UI.Xaml.Thickness(20),
                 VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Center,
-
+                BorderThickness = new Thickness(1),
+                BorderBrush = new SolidColorBrush(baseColor),
+                Padding = new Thickness(5)
             };
 
 
             ColumnDefinition c1 = new ColumnDefinition
             {
                 Width = new Windows.UI.Xaml.GridLength(400),
-                
+
             };
             ColumnDefinition c2 = new ColumnDefinition
             {
@@ -188,19 +289,17 @@ namespace DentalManagerSys.Print
             };
             ColumnDefinition c3 = new ColumnDefinition
             {
-                Width = new Windows.UI.Xaml.GridLength(300)
+                Width = new Windows.UI.Xaml.GridLength(200)
             };
-
-            
-
-
+                        
             grid.ColumnDefinitions.Add(c1);
             grid.ColumnDefinitions.Add(c2);
             grid.ColumnDefinitions.Add(c3);
 
 
             RowDefinition r1 = new RowDefinition();
-            
+
+
             RowDefinition r2 = new RowDefinition();
 
             grid.RowDefinitions.Add(r1);
@@ -213,7 +312,9 @@ namespace DentalManagerSys.Print
                 FontSize = 24,
                 VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Center,
                 HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Stretch,
-                Width = 400
+                Width = 400,
+                Foreground = new SolidColorBrush(baseColor),
+                TextLineBounds = TextLineBounds.Full
 
             };
             Grid.SetRow(label1, 0);
@@ -228,7 +329,8 @@ namespace DentalManagerSys.Print
                 VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Center,
                 HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center,
                 TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
-                Width = 100
+                Width = 100,
+                Foreground = new SolidColorBrush(baseColor)
 
             };
             Grid.SetRow(label2, 0);
@@ -243,7 +345,9 @@ namespace DentalManagerSys.Print
                 VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Center,
                 HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center,
                 TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
-                Width = 100
+                Width = 200,
+                Foreground = new SolidColorBrush(baseColor),
+
 
             };
             Grid.SetRow(label3, 0);
@@ -251,20 +355,9 @@ namespace DentalManagerSys.Print
             grid.Children.Add(label3);
 
 
-
-            
-            /*
-            RowDefinition r2 = new RowDefinition();
-            RowDefinition r3 = new RowDefinition();
-
-
-            grid.RowDefinitions.Add(r1);
-            grid.RowDefinitions.Add(r2);
-            grid.RowDefinitions.Add(r3);*/
-            //add indivudual treatment
             int rowCount = 2;
             decimal total = 0;
-            foreach(TreatmentOnPlan t in treatments)
+            foreach (TreatmentOnPlan t in treatments)
             {
                 grid.RowDefinitions.Add(new RowDefinition());
 
@@ -284,7 +377,7 @@ namespace DentalManagerSys.Print
                 //code
                 TextBlock t2 = new TextBlock()
                 {
-                    Text = ""+t.Tooth,
+                    Text = "" + t.Tooth,
                     FontSize = 18,
                     HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center,
                     TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
@@ -302,9 +395,10 @@ namespace DentalManagerSys.Print
                     FontSize = 18,
                     HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center,
                     TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
-                    Width = 250
+                    Width = 200,
+                   // Foreground = new SolidColorBrush(Colors.Green)
                 };
-                             
+
                 Grid.SetRow(t3, rowCount);
                 Grid.SetColumn(t3, 2);
                 grid.Children.Add(t3);
@@ -312,23 +406,23 @@ namespace DentalManagerSys.Print
                 rowCount++;
                 total += t.Price;
 
-
             }
 
             //total
 
             grid.RowDefinitions.Add(new RowDefinition());
+
             TextBlock totalL = new TextBlock()
             {
                 Text = totalLabel,
                 FontSize = 18,
                 HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center,
                 TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
-                Width = 100
+                Width = 100,
+                Foreground = new SolidColorBrush(baseColor),
+                Margin = new Thickness(0, 5, 0, 0)
 
             };
-
-
 
             Grid.SetRow(totalL, rowCount);
             Grid.SetColumn(totalL, 1);
@@ -340,7 +434,9 @@ namespace DentalManagerSys.Print
                 FontSize = 18,
                 HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center,
                 TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
-                Width = 100
+                Width = 100,
+              //  Foreground = new SolidColorBrush(Colors.Green),
+                Margin = new Thickness(0, 5, 0, 0)
 
             };
 
@@ -350,8 +446,6 @@ namespace DentalManagerSys.Print
             Grid.SetColumn(totalA, 2);
             grid.Children.Add(totalA);
 
-
-
             Grid.SetRow(grid, 6);
             Grid.SetColumn(grid, 0);
             Grid.SetColumnSpan(grid, 3);
@@ -359,26 +453,25 @@ namespace DentalManagerSys.Print
 
         }
 
-       
 
         //row1
         private void SetDate()
         {
             StackPanel dataSP = new StackPanel()
             {
-                Height = 50
+                Height = 50,
+                HorizontalAlignment = HorizontalAlignment.Center
             };
 
             TextBlock dateTB = new TextBlock()
             {
-                Text = "Date: " + date,
+                Text = date,
                 FontSize = 28,
-                TextAlignment = Windows.UI.Xaml.TextAlignment.Left
+                TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
+                Foreground = new SolidColorBrush(baseColor)
             };
             dataSP.Children.Add(dateTB);
-            Grid.SetColumn(dataSP, 0);
-            Grid.SetRow(dataSP, 1);
-            Grid.SetColumnSpan(dataSP, 2);
+
             this.Children.Add(dataSP);
         }
 
@@ -390,7 +483,10 @@ namespace DentalManagerSys.Print
             Grid.SetColumn(patienDataGrid, 0);
             Grid.SetColumnSpan(patienDataGrid, 2);
             this.Children.Add(patienDataGrid);
-            ColumnDefinition c1 = new ColumnDefinition();
+            ColumnDefinition c1 = new ColumnDefinition()
+            {
+                Width = new GridLength(100)
+            };
 
             ColumnDefinition c2 = new ColumnDefinition();
 
@@ -411,7 +507,9 @@ namespace DentalManagerSys.Print
             TextBlock nameTB = new TextBlock()
             {
                 Text = patienNameLabelString,
-                FontSize = 24
+                FontSize = 24,
+                TextAlignment = Windows.UI.Xaml.TextAlignment.Left,
+                Foreground = new SolidColorBrush(baseColor)
             };
             Grid.SetColumn(nameTB, 0);
             Grid.SetRow(nameTB, 0);
@@ -420,7 +518,9 @@ namespace DentalManagerSys.Print
             TextBlock addressTB = new TextBlock()
             {
                 Text = patienAddressLabelString,
-                FontSize = 24
+                FontSize = 24,
+                TextAlignment = Windows.UI.Xaml.TextAlignment.Left,
+                Foreground = new SolidColorBrush(baseColor)
             };
             Grid.SetColumn(addressTB, 0);
             Grid.SetRow(addressTB, 1);
@@ -430,7 +530,9 @@ namespace DentalManagerSys.Print
             TextBlock nameDTB = new TextBlock()
             {
                 Text = patientName,
-                FontSize = 24
+                FontSize = 24,
+                TextAlignment = Windows.UI.Xaml.TextAlignment.Left,
+                Foreground = new SolidColorBrush(baseColor)
             };
             Grid.SetColumn(nameDTB, 1);
             Grid.SetRow(nameDTB, 0);
@@ -439,7 +541,9 @@ namespace DentalManagerSys.Print
             TextBlock addressDTB = new TextBlock()
             {
                 Text = patientAddress,
-                FontSize = 24
+                FontSize = 24,
+                TextAlignment = Windows.UI.Xaml.TextAlignment.Left,
+                Foreground = new SolidColorBrush(baseColor)
             };
             Grid.SetColumn(addressDTB, 1);
             Grid.SetRow(addressDTB, 1);
@@ -450,18 +554,38 @@ namespace DentalManagerSys.Print
         //row0
         private void SetTitle()
         {
+            StackPanel TitleAllSP = new StackPanel()
+            {
+                Orientation = Orientation.Horizontal,
+                HorizontalAlignment = HorizontalAlignment.Center
+            };
             StackPanel titleSP = new StackPanel()
             {
                 Height = 150
             };
 
-            //set position on grid
-                    this.Children.Add(titleSP);
+
+
+            Image simpleImage = new Image();
+            simpleImage.Width = 200;
+            simpleImage.Margin = new Thickness(5);
+
+            BitmapImage bi = new BitmapImage();
+
+
+            bi.UriSource = new Uri("ms-appx:///Assets/logo.png", UriKind.RelativeOrAbsolute);
+            simpleImage.Source = bi;
+            TitleAllSP.Children.Add(simpleImage);
+            TitleAllSP.Children.Add(titleSP);
+
+
+
             titleSP.Children.Add(new TextBlock()
             {
                 Text = title,
                 FontSize = 36,
-                TextAlignment = Windows.UI.Xaml.TextAlignment.Center
+                TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
+                Foreground = new SolidColorBrush(baseColor)
 
             });
 
@@ -469,16 +593,19 @@ namespace DentalManagerSys.Print
             {
                 Text = subTitle,
                 FontSize = 36,
-                TextAlignment = Windows.UI.Xaml.TextAlignment.Center
+                TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
+                Foreground = new SolidColorBrush(baseColor)
             });
 
             titleSP.Children.Add(new TextBlock()
             {
                 Text = doctorName,
-                FontSize = 24,
-                TextAlignment = Windows.UI.Xaml.TextAlignment.Center
+                FontSize = 42,
+                TextAlignment = Windows.UI.Xaml.TextAlignment.Center,
+                Foreground = new SolidColorBrush(Colors.Purple)
             });
 
+            this.Children.Add(TitleAllSP);
 
 
         }
@@ -486,7 +613,8 @@ namespace DentalManagerSys.Print
         Grid topGrid;
         private void InitGrid()
         {
-           topGrid = new Grid();
+            topGrid = new Grid();
+
             ColumnDefinition c1 = new ColumnDefinition();
 
             ColumnDefinition c2 = new ColumnDefinition();
@@ -510,7 +638,7 @@ namespace DentalManagerSys.Print
             topGrid.RowDefinitions.Add(r4);
             topGrid.RowDefinitions.Add(r5);
             topGrid.RowDefinitions.Add(r6);
-          
+
 
         }
     }

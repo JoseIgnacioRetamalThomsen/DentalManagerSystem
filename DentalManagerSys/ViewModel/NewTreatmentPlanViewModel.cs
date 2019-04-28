@@ -108,13 +108,8 @@ namespace DentalManagerSys.ViewModel
         }
 
 
-
-
-
         public void CreateNewTreatmentPlan()
         {
-
-
 
             FireBaseDAO f = new FireBaseDAO();
             //int id = (int)DAO.AddNewTreatmentPlan(ActualCustomer.iD, (int)TreatmentPlaneState.Created, DateTime.Now.ToString(), "0");

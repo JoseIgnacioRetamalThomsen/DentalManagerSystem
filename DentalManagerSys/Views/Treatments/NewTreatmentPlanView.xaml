@@ -1,0 +1,292 @@
+﻿<Page
+    x:Class="DentalManagerSys.Views.NewTreatmentPlanView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DentalManagerSys.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:local1="using:Models"
+     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <RelativePanel >
+            <TextBlock   
+                x:Name="PageTitle"
+                Text=""
+                Style="{StaticResource PageTitleTextBlock}"
+                MinWidth="300"/>
+
+
+            <CommandBar 
+                x:Name="PatientsCommandBar"
+                Style="{StaticResource CommandBarStyle}"
+                RelativePanel.RightOf="PageTitle"
+                DefaultLabelPosition="Right">
+
+                <AppBarButton
+                    x:Name="BackButton"
+                    Icon="Back"
+                    x:Uid="/Strings/BackButton"
+                    IsEnabled="True"
+                    Click="BackButton_Click"/>
+
+                <AppBarButton
+                    x:Name="CreateTreatmentPlanButton"
+                    Icon="Add"
+                    x:Uid="/Strings/CreateNewTreatmentPlanButton"
+                    IsEnabled="True"
+                    Tapped="CreateTreatmentPlanButton_Tapped"/>
+                <AppBarSeparator/>
+
+                <!--<AppBarButton
+                    x:Name="PrintTreatmentPlan"
+                    Icon="Print"
+                    x:Uid="/Strings/PrintTreatmentPlanNew"
+                    IsEnabled="True"
+                    Tapped="PrintTreatmentPlan_Tapped"/>
+                <AppBarSeparator/>
+
+                <AppBarButton
+                    x:Name="PreviewTreatmentPlan"
+                    Icon="Preview"
+                    x:Uid="/Strings/PreviewTreatmentPlan"
+                    IsEnabled="True"
+                    Tapped="PreviewTreatmentPlan_Tapped"/>
+                <AppBarSeparator/>-->
+
+            </CommandBar>
+
+            <Grid 
+                x:Name="TopGrid"
+                RelativePanel.Below="PageTitle">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+
+                    <TextBlock  
+                        x:Uid="/Strings/CreateTreatmentPlanText" 
+                        Style="{StaticResource TitleTextBlockStyle}" 
+                        Margin="2">
+                    </TextBlock>
+                    <TextBlock 
+                        Text="Add treatment:"
+                        Style="{StaticResource BaseTextBlockStyle}"
+                        Margin="2">
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel 
+                    Grid.Column="0" 
+                    Grid.Row="1" 
+                    Orientation="Horizontal"  
+                    Grid.ColumnSpan="2" 
+                    VerticalAlignment="Center" 
+                    Margin="5">
+
+                    <StackPanel Margin="5" >
+
+                        <TextBlock x:Uid="/Strings/SelectTooth"/>
+
+                        <ComboBox
+                            x:Name="SelectToothCB"
+                            DropDownClosed="SelectToothCB_DropDownClosed"
+                            x:Uid="/Strings/SelectToothCB"
+                            MinWidth="100"/>
+
+                    </StackPanel>
+
+                    <StackPanel Margin="5" >
+
+                        <TextBlock x:Uid="/Strings/AddTreatment" ></TextBlock>
+
+                        <ComboBox 
+                            x:Name="TreatmentsCB" 
+                            MinWidth="200" 
+                            DropDownClosed="TreatmentsCB_DropDownClosed"
+                            x:Uid="/Strings/TreatmentsCB"/>
+
+                    </StackPanel>
+
+
+                    <StackPanel Margin="5" >
+                        <TextBlock x:Uid="/Strings/TreatmentPriceTB"/>
+                        <TextBox
+                            x:Name="PriceTB"
+                            MinWidth="100"
+                             x:Uid="/Strings/PriceTBox"
+                            Text="{x:Bind ViewModel.PriceBefore, Mode=OneWay}"
+                            TextChanging="EditPriceTB_TextChanging"/>
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Bottom" Margin="5" >
+                        <TextBox 
+                            x:Name="CommentTB"
+                            x:Uid="/Strings/CommentTB"
+                            MinWidth="120"
+                            MaxWidth="120"/>
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Bottom" Margin="5">
+
+                        <Button
+                            x:Name="AddButon"
+                            Click="AddButon_Click"
+                            x:Uid="/Strings/AddButton"
+                            IsEnabled="False"
+                            MinWidth="200"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+
+            <Grid Margin="0,10,0,0"
+                  x:Name="TreatmentsGrip"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="TopGrid">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+
+
+                <RelativePanel Grid.Row="0" Background="{StaticResource AppBarBackgroundThemeBrush}">
+                    <TextBox 
+                        x:Name="EditPriceTB"
+                        Margin="10"
+                        TextChanging="EditPriceTB_TextChanging">
+
+                    </TextBox>
+
+                    <CommandBar 
+                        x:Name="EditTreatmentPriceCommandBar"
+                        HorizontalAlignment="Stretch"
+                        Background="Transparent"
+                        RelativePanel.RightOf="EditPriceTB"
+                        DefaultLabelPosition="Right">
+
+                        <AppBarButton
+                            x:Name="SaveChangedPriceButton"
+                            Icon="Accept"
+                            x:Uid="/Strings/SaveChangedPriceButton"
+                            IsEnabled="false"
+                            Tapped="SaveChangedPriceButton_Tapped"/>
+
+                        <AppBarSeparator/>
+                        <AppBarButton
+                            x:Name="RemoveTreatmentButton"
+                            Icon="Delete"
+                            x:Uid="/Strings/RemoveTreatmentButton"
+                            IsEnabled="false"
+                            Tapped="RemoveTreatmentButton_Tapped"/>
+
+                    </CommandBar>
+
+                </RelativePanel>
+
+                <ListView 
+                    x:Name="TreatmentsDoneListView" Height="200"
+                    ScrollViewer.HorizontalScrollMode="Enabled" 
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                    ScrollViewer.VerticalScrollMode="Enabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    SelectionMode="Single"
+                    IsItemClickEnabled="True"
+                    SelectionChanged="TreatmentsDoneListView_SelectionChanged"
+                    Grid.Row="1">
+
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition  Width="250"/>
+                                    <ColumnDefinition  Width="150"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Border BorderBrush="Gray" BorderThickness="0,0,0.5,0.5" Grid.Column="0" Grid.Row="0">
+                                    <TextBlock Foreground="Gray" TextAlignment="Center" x:Uid="/Strings/NameHeader"/>
+                                </Border>
+                                <Border BorderBrush="Gray" BorderThickness="0,0,0.5,0.5" Grid.Column="1" Grid.Row="0">
+                                    <TextBlock  Foreground="Gray" TextAlignment="Center" x:Uid="/Strings/ToothHeader"/>
+                                </Border>
+                                <Border BorderBrush="Gray" BorderThickness="0,0,0.5,0.5" Grid.Column="2" Grid.Row="0">
+                                    <TextBlock  Foreground="Gray"  MaxWidth="120" TextAlignment="Center" x:Uid="/Strings/CommentHeader"/>
+                                </Border>
+                                <Border BorderBrush="Gray" BorderThickness="0,0,0,0.5" Grid.Column="3" Grid.Row="0">
+                                    <TextBlock Foreground="Gray" TextAlignment="Center" x:Uid="/Strings/PriceHeader"/>
+                                </Border>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate  x:DataType="local1:TreatmentOnPlan">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition  Width="250"/>
+                                    <ColumnDefinition  Width="150"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock  Text="{x:Bind Name}" Grid.Column="0" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Tooth}" Grid.Column="1" Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind Comment}" Grid.Column="2" Grid.Row="0"  MaxWidth="120"/>
+                                <TextBlock Text="{x:Bind ShowPrice}" Grid.Column="3" Grid.Row="0"/>
+
+                            </Grid>
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            </Grid>
+            <StackPanel
+                RelativePanel.Below="TreatmentsGrip">
+                <StackPanel
+                    Orientation="Horizontal"
+                    x:Name="TotalSP"
+                    Margin="5">
+                    <TextBlock 
+                        x:Uid="/Strings/TotalTB"
+                        Margin="5"/>
+                    <TextBox 
+                        x:Name="TotalTB"
+                        Text="{x:Bind Path=ViewModel.ShowTotal, Mode=OneWay}"
+                        MinWidth="200"
+                        IsReadOnly="True"/>
+                </StackPanel>
+            </StackPanel>
+        </RelativePanel>
+
+
+
+    </Grid>
+</Page>
