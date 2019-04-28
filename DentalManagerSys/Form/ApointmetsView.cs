@@ -67,11 +67,10 @@ namespace DentalManagerSys.Views.Form
                     BorderThickness = new Windows.UI.Xaml.Thickness(1, 1, 1, 0),
                     BorderBrush = new SolidColorBrush(Colors.Black),
 
-                    //Background = new SolidColorBrush(Colors.Black)
+                    
                 };
 
-                // border.SetValue(Grid.RowProperty, i);
-                // border.SetValue(Grid.ColumnProperty, 0);
+         
                 Grid.SetColumn(border, 0);
                 Grid.SetRow(border, i);
 
@@ -85,8 +84,7 @@ namespace DentalManagerSys.Views.Form
                 };
                 Grid.SetColumn(label, 0);
                 Grid.SetRow(label, i);
-                //label.SetValue(Grid.RowProperty, i);
-                // label.SetValue(Grid.ColumnProperty, 0);
+             
                 ApoGrid.Children.Add(label);
                 ApoGrid.Children.Add(border);
 
@@ -125,8 +123,7 @@ namespace DentalManagerSys.Views.Form
                         //Background = new SolidColorBrush(Colors.Black)
                     };
 
-                    // border.SetValue(Grid.RowProperty, i);
-                    // border.SetValue(Grid.ColumnProperty, 0);
+                  
                     Grid.SetColumn(border, col);
                     Grid.SetRow(border, row);
 
@@ -148,10 +145,9 @@ namespace DentalManagerSys.Views.Form
 
         private void EmptySlot_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            // Debug.WriteLine("tapped");
+            
             FrameworkElement b = (FrameworkElement)sender;
-
-
+            
             EmptySlotTapped evnt = new EmptySlotTapped();
             evnt.X = (int)b.GetValue(Grid.ColumnProperty);
             evnt.Y = (int)b.GetValue(Grid.RowProperty) - 1;
@@ -198,7 +194,7 @@ namespace DentalManagerSys.Views.Form
                     int min = Convert.ToInt32(apnt.Date.ToString("mm"));
 
                     int timeslot = (hour - 8) * 4 + (slot.IndexOf(min) + 1);
-                   
+
 
                     customers.Add(cust);
 
@@ -217,13 +213,9 @@ namespace DentalManagerSys.Views.Form
             {
                 //Height = 20,
                 Width = columnwidth,
-                // BorderThickness = new Windows.UI.Xaml.Thickness(1, 1, 1, 0),
-                //  BorderBrush = new SolidColorBrush(Colors.Black)
                 Background = new SolidColorBrush(Colors.LightGreen)
             };
 
-            // border.SetValue(Grid.RowProperty, i);
-            // border.SetValue(Grid.ColumnProperty, 0);
             Grid.SetColumn(border, day);
             Grid.SetRow(border, timeSlot);
 
@@ -238,8 +230,7 @@ namespace DentalManagerSys.Views.Form
             };
             Grid.SetColumn(label, day);
             Grid.SetRow(label, timeSlot);
-            //label.SetValue(Grid.RowProperty, i);
-            // label.SetValue(Grid.ColumnProperty, 0);
+
 
             ApoGrid.Children.Add(border);
             ApoGrid.Children.Add(label);
@@ -256,14 +247,13 @@ namespace DentalManagerSys.Views.Form
             evnt.X = (int)b.GetValue(Grid.ColumnProperty);
             evnt.Y = (int)b.GetValue(Grid.RowProperty) - 1;
             string key = "" + (int)b.GetValue(Grid.ColumnProperty) + (int)b.GetValue(Grid.RowProperty);
-            //evnt.AppointmentID = appointmentsOnGrid[key].ID;
             evnt.AppointmentID = appointmentsOnGridM[key]._id;
             Debug.WriteLine(evnt.AppointmentID);
             OnUsed(evnt);
         }
 
         List<Border> highlitedBorders = new List<Border>();
-        public void HighLightSlot(int x,int y)
+        public void HighLightSlot(int x, int y)
         {
 
             Border brd = new Border()
@@ -281,7 +271,7 @@ namespace DentalManagerSys.Views.Form
 
         public void CleartHighLighted()
         {
-            foreach(Border br in highlitedBorders)
+            foreach (Border br in highlitedBorders)
             {
                 ApoGrid.Children.Remove(br);
             }
