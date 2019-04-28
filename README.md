@@ -1,22 +1,22 @@
-**Availability to the public**
+# Dental Manager System
+
+![Please check out our wiki!](https://github.com/JoseIgnacioRetamalThomsen/DentalManagerSystem/wiki)
+
+## Latest release
 
 * [Windows Store](https://www.microsoft.com/en-us/p/dental-clinic-manager/9p6gj9bftjv4?rtc=1),  Release Version 3.
 
 
-**Minimum Requirements**
+## Minimum Requirements
 
-* Windows 10
-* Internet
-* Mouse
-* Keyboard
-* 1G of data
-* 1G of RAM
+Windows 10 Fall Creators Update, Build 16299.
+
 
 **Technologies**
+*  C#, Visual Studio 2017,  as development platform
 * [Firebase](https://firebase.google.com/), to store data remotely in real time and for authentication.
 * [SQlite](https://www.sqlite.org/index.html), to store data locally
 * [MongoDB](https://www.mongodb.com/what-is-mongodb), to store data remotely(It's a document database and more suited for appointments than Firebase)
-* Visual Studio 2017,  as development platform
 * [NodeJS](https://nodejs.org/en/) to run the server
 
 **Plugins**
