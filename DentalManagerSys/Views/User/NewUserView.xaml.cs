@@ -88,7 +88,7 @@ namespace DentalManagerSys.Views
                     {
                         App.NewUser = true;
                         //add user to local DB
-                        DAO.AddNewUser(new User(userNameInput.Text, newPasswordBox.Password, Email.Text));
+                        DAO.AddNewUser(new User(userNameInput.Text, "PASSWORD_STORE_ONLINE", Email.Text));
 
                         //navigate to login page
                         Frame.Navigate(typeof(LoginView));
