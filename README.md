@@ -6,6 +6,9 @@
 
 * [Windows Store](https://www.microsoft.com/en-us/p/dental-clinic-manager/9p6gj9bftjv4?rtc=1),  Release Version 3.
 
+## Screencast
+
+[Our screencast on vimeo](https://vimeo.com/332526815)
 
 ## Minimum Requirements
 
